@@ -8,7 +8,6 @@ const AdminRouter = Router().use(_catch(admin))
 AdminRouter.use('/pokemon', require('./routers/pokemon'))
 AdminRouter.use('/item', require('./routers/item'))
 AdminRouter.use('/move', require('./routers/move'))
-AdminRouter.use('/nature', require('./routers/nature'))
 AdminRouter.use('/ability', require('./routers/ability'))
 
 const UserRouter = Router().use(_catch(user))

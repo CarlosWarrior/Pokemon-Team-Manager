@@ -9,6 +9,9 @@ const BattleController = {
     },
     create: async(req, res) => {
         res.send('battle create')
+    },
+    addLog: async(req, res) => {
+        res.send('battle add log')
     }
 }
 
