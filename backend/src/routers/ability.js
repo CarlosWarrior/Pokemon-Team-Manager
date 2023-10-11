@@ -142,7 +142,7 @@ AbilityRouter.put('/', audit('Ability-update'), _catch(AbilityController.update)
  *          401:
  *              description: admin token invalid
  *          422:
- *              descripton: Ability is assigned to a Pokémon
+ *              description: Ability is assigned to a Pokémon
  *          200:
  *              description: A single ability is removed
  *          
