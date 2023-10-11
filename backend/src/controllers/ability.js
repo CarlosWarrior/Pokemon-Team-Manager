@@ -9,7 +9,13 @@ const AbilityController = {
     },
     create: async(req, res) => {
         res.send('ability create')
-    }
+    },
+    update: async(req, res) => {
+        res.send('ability update')
+    },
+    delete: async(req, res) => {
+        res.send('ability delete')
+    },
 }
 
 module.exports = AbilityController

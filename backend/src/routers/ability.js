@@ -73,6 +73,9 @@ AbilityRouter.get('/:name', audit('Ability-get'), _catch(AbilityController.get))
  *              required:
  *                  - name
  *                  - effect
+ *          - in: header
+ *            name: token
+ *            required: true
  *      responses:
  *          400:
  *              description: admin token not provided
@@ -85,5 +88,65 @@ AbilityRouter.get('/:name', audit('Ability-get'), _catch(AbilityController.get))
  *          
  */
 AbilityRouter.post('/', audit('Ability-create'), _catch(AbilityController.create))
+
+/**
+ * @swagger
+ * /admin/ability/:
+ *  put:
+ *      description: Endpoint to update an ability
+ *      tags:
+ *          - admin/ability
+ *      parameters:
+ *          - in: body
+ *            name: ability
+ *            schema:
+ *              type: object
+ *              properties:
+ *                  name:
+ *                      type: string
+ *                      example: "overgrow"
+ *                  effect:
+ *                      type: string
+ *                      example: "Strengthens grass moves to inflict 1.5× damage at 1/3 max HP or less."
+ *          - in: header
+ *            name: token
+ *            required: true
+ *      responses:
+ *          400:
+ *              description: admin token not provided
+ *          401:
+ *              description: admin token invalid
+ *          200:
+ *              description: Ability updated
+ *          
+ */
+AbilityRouter.put('/', audit('Ability-update'), _catch(AbilityController.update))
+
+/**
+ * @swagger
+ * /admin/ability/{name}:
+ *  delete:
+ *      description: Endpoint to remove a single ability
+ *      tags:
+ *          - admin/ability
+ *      parameters:
+ *          - in: path
+ *            name: name
+ *            required: true
+ *          - in: header
+ *            name: token
+ *            required: true
+ *      responses:
+ *          400:
+ *              description: admin token not provided
+ *          401:
+ *              description: admin token invalid
+ *          422:
+ *              descripton: Ability is assigned to a Pokémon
+ *          200:
+ *              description: A single ability is removed
+ *          
+ */
+AbilityRouter.delete('/:name', audit('Ability-delete'), _catch(AbilityController.delete))
 
 module.exports = AbilityRouter
