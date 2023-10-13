@@ -9,6 +9,12 @@ const PokemonController = {
     },
     create: async(req, res) => {
         res.send('pokemon create')
+    },
+    update: async(req, res) => {
+        res.send('pokemon update')
+    },
+    delete: async(req, res) => {
+        res.send('pokemon delete')
     }
 }
 

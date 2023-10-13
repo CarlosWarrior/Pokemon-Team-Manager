@@ -8,5 +8,6 @@ TeamRouter.get('/', audit('Team-list'), _catch(TeamController.list))
 TeamRouter.get('/:name', audit('Team-get'), _catch(TeamController.get))
 TeamRouter.post('/', audit('Team-create'), _catch(TeamController.create))
 TeamRouter.put('/', audit('Team-update'), _catch(TeamController.update))
+TeamRouter.delete('/', audit('Team-delete'), _catch(TeamController.delete))
 
 module.exports = TeamRouter

@@ -12,6 +12,9 @@ const TeamController = {
     },
     update: async(req, res) => {
         res.send('team update')
+    },
+    delete: async(req, res) => {
+        res.send('team delete')
     }
 }
 
