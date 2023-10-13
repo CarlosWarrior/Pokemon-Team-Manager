@@ -154,7 +154,7 @@ PokemonRouter.post('/', audit('Pokemon-create'), _catch(PokemonController.create
 /**
  * @swagger
  * /admin/pokemon/:
- *  post:
+ *  put:
  *      description: Endpoint to create a pokemon
  *      tags:
  *          - admin/pokemon
