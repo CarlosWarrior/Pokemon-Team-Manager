@@ -69,6 +69,12 @@ const AuthController = {
         const token = tokenize(user.toJSON())
         res.send({token})
     },
+    admin_register_token: async(req, res)=>{
+        res.send('auth register token')
+    },
+    admin_register: async(req, res)=>{
+        res.send('auth register')
+    },
     password_reset_token: async(req, res)=>{
         res.send('auth password reset token')
     },
