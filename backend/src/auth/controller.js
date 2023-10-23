@@ -30,7 +30,7 @@ const AuthController = {
         }
 
         const token = tokenize(user.toJSON())
-        res.send({token})
+        res.send({...token, date: new Date().toISOString()})
     },
     login: async(req, res)=>{
         if(!req.body.password || !req.body.email)
@@ -47,7 +47,7 @@ const AuthController = {
             return raise({status:401})
 
         const token = tokenize(user.toJSON())
-        res.send({token})
+        res.send({...token, date: new Date().toISOString()})
     },
     register: async(req, res)=>{
         if(!req.body.password || !req.body.email || !req.body.name)
@@ -67,7 +67,7 @@ const AuthController = {
         }
 
         const token = tokenize(user.toJSON())
-        res.send({token})
+        res.send({...token, date: new Date().toISOString()})
     },
     admin_register_token: async(req, res)=>{
         res.send('auth register token')

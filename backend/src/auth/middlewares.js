@@ -1,6 +1,14 @@
 const { raise } = require("../middlewares/errors")
 const { User, Admin } = require("./models")
 const { decode } = require("./crypto")
+
+function isExpired  (timeString) {
+	const now = new Date()
+	const then = new Date(timeString)
+	const elapsed = Math.abs(now - then) / 36e5
+	return isNaN(elapsed) || elapsed >= 10
+}
+
 function parseToken(token){
     let decoded;
     try {
@@ -10,13 +18,26 @@ function parseToken(token){
     }
     return decoded;
 }
+
+function validatetoken(req){
+    const token = req.headers.token
+    if(!token)
+        return raise({status: 400, message: "Token not provided"})
+    const decoded = parseToken(token)
+    if(!decoded)
+        return raise({status: 400, message: "Invalid token"})
+    if(isExpired(decoded.date))
+        return raise({status: 400, message: "Token expired"})
+    return decoded
+}
+
 const AuthMiddlewares = {
     user: async(req, res, next) => {
-        if(!req.headers.token)
-            return raise({status:400, message: 'No token'})
-        const token = parseToken(req.headers.token)
-        if(!token)
-            return raise({status: 401, message: 'Invalid token'})
+        try {
+            const token = validatetoken(req)  
+        } catch (error) {
+            return raise(error)
+        }
         const user = await User.findOne({where: {email: token.email}})
         if(!user)
             return raise({status: 401, message: 'User not found'})
@@ -24,11 +45,11 @@ const AuthMiddlewares = {
         next()
     },
     admin: async(req, res, next) => {
-        if(!req.headers.token)
-            return raise({status:400, message: 'No token'})
-        const token = parseToken(req.headers.token)
-        if(!token)
-            return raise({status: 401, message: 'Invalid token'})
+        try {
+            const token = validatetoken(req)
+        } catch (error) {
+            return raise(error)
+        }
         const admin = await Admin.findOne({where: {email: token.email}})
         if(!admin)
             return raise({status: 401, message: 'Admin not found'})
