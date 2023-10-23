@@ -23,4 +23,9 @@ exports._catch = (fn) => {
   };
 };
 
-exports.raise = raise = c => {throw new AppError(c)};
+exports.raise = raise = error => {
+  if( error instanceof AppError)
+    throw error
+  else
+    throw new AppError(error)
+};
