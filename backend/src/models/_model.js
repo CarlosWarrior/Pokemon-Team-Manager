@@ -1,4 +1,8 @@
-module.exports = (Model) => ({
+module.exports = (Model, attributes = {}) => ({
+    ...attributes,
+    count:async(filter)=>{
+        return await Model.countDocuments(filter)
+    },
     find: async({filter={}, fields=[], limit = 0, skip = 0, lean=false})=>{
         let query = Model.find(filter)
         if(fields.length)
@@ -22,8 +26,7 @@ module.exports = (Model) => ({
         return model
     },
     create: async(body)=>{
-        const model = new Model(body)
-        await model.save()
+        const model = await ( new Model(body) ).save()
         return model
     },
     update: async(filter, body)=>{
