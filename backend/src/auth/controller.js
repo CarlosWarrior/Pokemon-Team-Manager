@@ -1,9 +1,10 @@
 const { raise } = require("../middlewares/errors")
-const { User } = require("./models")
+const { User, Admin } = require("./models")
 const { isExpired } = require('../utils/dates')
-const { tokenize, decode, compareHash, randomString } = require("./crypto")
+const { tokenize, decode, compareHash, randomString, encrypt, decrypt } = require("./crypto")
 const { ses } = require('../services/aws')
 const user_email_confirmation_email = require('../mails/user_email_confirmation')
+const admin_register_token_email = require('../mails/admin_register_token')
 
 const AuthController = {
     google: async(req, res)=>{
@@ -111,10 +112,50 @@ const AuthController = {
         
     },
     admin_register_token: async(req, res)=>{
-        res.send('auth register token')
+        if(!req.body.email)
+            return raise({status: 400})
+        const email = req.body.email
+        let admin = await Admin.findOne({filter:{ email }})
+        if(admin)
+            return raise({status:400, message: "Admin already exists"})  
+        const tokenData = { email, date: new Date().toISOString(), random: randomString(16)}
+        const stringTokenData = JSON.stringify(tokenData)
+        const token = encrypt(stringTokenData)
+        ses.sendEmail(admin_register_token_email({ token, ToAddresses:[email] }))
+            .then(() => res.sendStatus(200))
+            .catch((error) => raise({status:500, message:"Email failed", error}))
     },
     admin_register: async(req, res)=>{
-        res.send('auth register')
+        if(!req.body.password || !req.body.name)
+            return raise({status: 400})
+        if(!req.headers.token)
+            return raise({status:400, message: "Token missing"})
+        const register_token = req.headers.token
+        console.log(register_token)
+        let decrypted
+        try {
+            decrypted = JSON.parse(decrypt(register_token))
+        } catch (error) {
+            return raise({status:400, message: "Invalid token", error})
+        }
+        if(!decrypted.email || !decrypted.date || !decrypted.random)
+            return raise({status:400, message: "Malformed token"})
+        if(isExpired(decrypted.date))
+            return raise({status:400, message: "Token expired"})
+        const email = decrypted.email
+        let admin = await Admin.findOne({filter:{ email}})
+        if(admin)
+            return raise({status:400, message: "Admin already exists"})
+        const name = req.body.name
+        const password = req.body.password
+        try {
+            admin = await Admin.create({ name, email, password })
+        } catch (error) {
+            return raise({status: 400, message: "Invalid admin body", error})
+        }
+        const token = tokenize({...admin.toJSON(), date: new Date().toISOString() })
+        return res.send({ token })
+
     },
     password_reset_token: async(req, res)=>{
         res.send('auth password reset token')
