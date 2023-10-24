@@ -2,12 +2,7 @@ const { raise } = require("../middlewares/errors")
 const { User, Admin } = require("./models")
 const { decode } = require("./crypto")
 
-function isExpired  (timeString) {
-	const now = new Date()
-	const then = new Date(timeString)
-	const elapsed = Math.abs(now - then) / 36e5
-	return isNaN(elapsed) || elapsed >= 10
-}
+const {isExpired} = require('../utils/dates')
 
 function parseToken(token){
     let decoded;

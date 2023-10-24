@@ -2,6 +2,7 @@ const { raise } = require("../middlewares/errors")
 const { decode } = require('jsonwebtoken')
 const { User } = require("./models")
 const { tokenize, compareHash } = require("./crypto")
+const { isExpired } = require('../utils/dates')
 
 const AuthController = {
     google: async(req, res)=>{
