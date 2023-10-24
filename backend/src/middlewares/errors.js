@@ -1,3 +1,26 @@
+const AsyncFunction = (async () => {}).constructor;
+function _catch(error, res){
+  const status = error.statusCode?error.statusCode:500
+  console.log('\t', "Catched", status)
+  if(error.message)
+    return res.status(status).send({message:error.message, status:error.statusCode, errors:error.errors});
+  else
+    return res.sendStatus(status)
+}
+exports._catch = (fn) => {
+  return (req, res, next) => {
+    if (fn instanceof AsyncFunction)    
+      fn(req, res, next)
+        .catch((error) => _catch(error, res))
+      else
+        try {
+          fn(req, res, next)
+        } catch (error) {
+          _catch(error, res)
+        }
+  };
+};
+
 class AppError extends Error {
   constructor({status, message, errors = null}) {
     super(message)
@@ -7,22 +30,6 @@ class AppError extends Error {
     Error.captureStackTrace(this, this.constructor);
   }
 }
-
-
-exports._catch = (fn) => {
-  return (req, res, next) => {
-    fn(req, res, next)
-      .catch((e) => {
-        const status = e.statusCode?e.statusCode:500
-        console.log('\t', "Catched", status)
-        if(e.message)
-          return res.status(status).send({message:e.message, status:e.statusCode, errors:e.errors});
-        else
-          return res.sendStatus(status)
-      })
-  };
-};
-
 exports.raise = raise = error => {
   if( error instanceof AppError)
     throw error

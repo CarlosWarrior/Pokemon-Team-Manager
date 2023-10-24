@@ -21,6 +21,8 @@ function validatetoken(req){
     const decoded = parseToken(token)
     if(!decoded)
         return raise({status: 400, message: "Invalid token"})
+    if(!decoded.email || !decoded.date)
+        return raise({ status: 400, message: "Malformed token" })
     if(isExpired(decoded.date))
         return raise({status: 400, message: "Token expired"})
     return decoded
@@ -28,8 +30,9 @@ function validatetoken(req){
 
 const AuthMiddlewares = {
     user: async(req, res, next) => {
+        let token
         try {
-            const token = validatetoken(req)  
+            token = validatetoken(req)  
         } catch (error) {
             return raise(error)
         }
@@ -40,8 +43,9 @@ const AuthMiddlewares = {
         next()
     },
     admin: async(req, res, next) => {
+        let token
         try {
-            const token = validatetoken(req)
+            token = validatetoken(req)
         } catch (error) {
             return raise(error)
         }

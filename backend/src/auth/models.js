@@ -19,6 +19,7 @@ const UserSchema = new Schema({
     name: String,
     email: emailType,
     password: passwordType,
+    valid: { type: Boolean, default: false, },
     
     createdAt: { type: Date, default: Date.now },
     updatedAt: { type: Date, default: Date.now },
@@ -36,7 +37,7 @@ const AdminSchema = new Schema({
     name: String,
     email: emailType,
     password: passwordType,
-    
+
     createdAt: { type: Date, default: Date.now },
     updatedAt: { type: Date, default: Date.now },
 }, {
@@ -54,7 +55,6 @@ exports.Admin = require('../models/_model')(Admin)
 
 function containsPassword (Model){
     Model.pre('save', function(next) {
-        console.log('pre save')
         var hashable = this
         if (!hashable.isModified('password')) return next()
         
