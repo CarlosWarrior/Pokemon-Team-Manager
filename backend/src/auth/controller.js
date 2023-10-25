@@ -5,6 +5,7 @@ const { tokenize, decode, compareHash, randomString, encrypt, decrypt } = requir
 const { ses } = require('../services/aws')
 const user_email_confirmation_email = require('../mails/user_email_confirmation')
 const admin_register_token_email = require('../mails/admin_register_token')
+const password_reset_token_email = require('../mails/password_reset_token')
 
 const AuthController = {
     google: async(req, res)=>{
@@ -47,7 +48,7 @@ const AuthController = {
         if(!user)
             return raise({ status:401, message: "User does not exists" })
         
-        const attempt = compareHash(password, user.password)
+        const attempt = await compareHash(password, user.password)
         if(!attempt)
             return raise({ status:401, message: "Invalid credentials" })
 
@@ -158,10 +159,46 @@ const AuthController = {
 
     },
     password_reset_token: async(req, res)=>{
-        res.send('auth password reset token')
+        if(!req.body.email)
+            return raise({status: 400, message: "Email missing"})
+        const email = req.body.email
+        const user = await User.findOne({filter:{ email }})
+        if(!user)
+            return raise({status:400, message: "User does not exists"})
+        const tokenData = { email, date: new Date().toISOString(), random: randomString(16)}
+        const stringTokenData = JSON.stringify(tokenData)
+        const token = encrypt(stringTokenData)
+        ses.sendEmail(password_reset_token_email({ token, ToAddresses:[email] }))
+            .then(() => res.sendStatus(200))
+            .catch((error) => raise({status:500, message:"Email failed", error}))
     },
     password_reset: async(req, res)=>{
-        res.send('auth password reset')
+        if(!req.headers.token)
+            return raise({status:400, message: "Token missing"})
+        if(!req.body.password)
+            return raise({status:400, message: "Password missing"})
+        
+        const token = req.headers.token
+        let decrypted 
+        try {
+            decrypted = JSON.parse(decrypt(token))
+        } catch (error) {
+            return raise({status:400, message: "Invalid token", error})
+        }
+        if( !decrypted.email || !decrypted.date || !decrypted.random)
+            return raise({status:400, message: "Malformed token"})
+        if(isExpired(decrypted.date))
+            return raise({status:400, message: "Token expired"})
+        const email = decrypted.email
+        const user = await User.findOne({filter:{ email }})
+        if(!user)
+            return raise({status:400, message: "User does not exists"})
+
+        const password = req.body.password
+        user.password = password
+        await user.save()
+        res.sendStatus(200)
+
     },
 }
 
