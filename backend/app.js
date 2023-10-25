@@ -32,6 +32,8 @@ app.use('/', require("./src/routes"))
 
 function init(){
 	console.log("listening on port: ", process.env.port)
+	const { createInitialAdmin } = require('./src/startup')
+	createInitialAdmin()
 }
 function mount(){
 	app.listen(process.env.port,init)

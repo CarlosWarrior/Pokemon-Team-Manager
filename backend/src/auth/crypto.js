@@ -22,16 +22,18 @@ const decode = value => verify(value, process.env.key)
 
 
 const encrypt = (message) => {
-  const cipher = createCipheriv(algorithm, key, iv);
-  return `${cipher.update(message, "utf-8", "hex")}${cipher.final("hex")}`;
-};
+  const cipher = createCipheriv(algorithm, key, iv)
+  let content = cipher.update(message, "utf-8", "hex")
+  content += cipher.final("hex")
+  return content
+}
 
 const decrypt = (message) => {
-  const decipher = createDecipheriv(algorithm, key, iv);
-  return `${decipher.update(message, "hex", "utf-8")}${decipher.final(
-    "utf-8"
-  )}`;
-};
+  const decipher = createDecipheriv(algorithm, key, iv)
+  let content = decipher.update(message, "hex", "utf-8")
+  content += decipher.final("utf-8")
+  return content;
+}
 
 
 module.exports = {
