@@ -2,7 +2,7 @@ const {Router} = require('express')
 const { _catch } = require('./middlewares/errors')
 const log = require('./middlewares/log')
 const {admin, user} = require('./auth/middlewares')
-const AuthRouter = require('./auth/router')
+const AuthRouter = require('./routers/auth')
 
 const AdminRouter = Router().use(_catch(admin))
 AdminRouter.use('/pokemon', require('./routers/pokemon'))

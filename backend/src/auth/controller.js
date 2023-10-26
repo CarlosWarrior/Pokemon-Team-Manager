@@ -97,7 +97,7 @@ const AuthController = {
         
         let user = await User.findOne({filter:{ email }})
         if(user)
-            return raise({status:400})
+            return raise({status:400, message: "Account exists"})
 
         try {
            user = await User.create({ name, email, password })
