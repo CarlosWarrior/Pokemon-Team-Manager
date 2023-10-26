@@ -194,6 +194,40 @@ AuthRouter.post('/admin_register', audit('Auth-admin_register'), _catch(AuthCont
 
 /**
  * @swagger
+ * /auth/admin_login/:
+ *  post:
+ *      description: Endpoint to login with email and password as an admin
+ *      tags:
+ *          - auth
+ *      parameters:
+ *          - in: body
+ *            name: credentials
+ *            schema:
+ *              type: object
+ *              properties:
+ *                  email:
+ *                      type: string
+ *                      example: "example@example.com"
+ *                  password:
+ *                      type: string
+ *                      example: "Password123"
+ *              required:
+ *                  - email
+ *                  - password
+
+ *      responses:
+ *          400:
+ *              description: email or password not provided
+ *          401:
+ *              description: admin invalid or attempt failed
+ *          200:
+ *              description: Logged in and token provided
+ *          
+ */
+AuthRouter.post('/admin_login', audit('Auth-admin_login'), _catch(AuthController.admin_login))
+
+/**
+ * @swagger
  * /auth/password_reset_token/:
  *  post:
  *      description: Endpoint to create a password reset token

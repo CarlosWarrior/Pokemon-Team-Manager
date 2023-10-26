@@ -1,5 +1,5 @@
 const { genSaltSync, hashSync, compare } = require('bcrypt')
-const { sign, verify } = require('jsonwebtoken')
+const { sign, verify, decode:decode_raw } = require('jsonwebtoken')
 const { createCipheriv,  createDecipheriv, randomBytes } = require('crypto') 
 const secretkey = process.env.cipher_key
 const ivkey = process.env.iv_key
@@ -19,6 +19,7 @@ const compareHash = (text, pass) => new Promise(resolve => compare(text, pass, (
 
 const tokenize = value => sign(value, process.env.key)
 const decode = value => verify(value, process.env.key)
+const jwt = value => decode_raw(value)
 
 
 const encrypt = (message) => {
@@ -42,6 +43,7 @@ module.exports = {
     compareHash,
     tokenize,
     decode,
+    jwt,
     encrypt,
     decrypt
 }

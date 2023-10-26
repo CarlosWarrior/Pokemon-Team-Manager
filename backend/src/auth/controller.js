@@ -1,7 +1,7 @@
 const { raise } = require("../middlewares/errors")
 const { User, Admin } = require("./models")
 const { isExpired } = require('../utils/dates')
-const { tokenize, decode, compareHash, randomString, encrypt, decrypt } = require("./crypto")
+const { tokenize, decode, compareHash, randomString, encrypt, decrypt, jwt } = require("./crypto")
 const { ses } = require('../services/aws')
 const user_email_confirmation_email = require('../mails/user_email_confirmation')
 const admin_register_token_email = require('../mails/admin_register_token')
@@ -11,11 +11,10 @@ const AuthController = {
     google: async(req, res)=>{
         if(!req.body.credential || !req.body.select_by)
             return raise({ status: 400 })
-        
         const gtoken = req.body.credential
         let decoded;
         try {
-            decoded = decode(gtoken)
+            decoded = jwt(gtoken)
         } catch (error) {
             return raise({ status: 400, message: "Invalid token", error })
         }
@@ -33,9 +32,10 @@ const AuthController = {
                 return raise({ status: 400, message: "Invalid payload", error })
             }
         }
-
-        const token = tokenize({ ...user.toJSON(), date: new Date().toISOString() })
-        return res.send({ token })
+        user = user.toJSON()
+        user['role'] = 'user'
+        const token = tokenize({ ...user, date: new Date().toISOString() })
+        return res.send({ user, token })
     },
     login: async(req, res)=>{
         if(!req.body.password || !req.body.email)
@@ -44,7 +44,7 @@ const AuthController = {
         const email = req.body.email
         const password = req.body.password
         
-        const user = await User.findOne({ filter:{ email } })
+        let user = await User.findOne({ filter:{ email } })
         if(!user)
             return raise({ status:401, message: "User does not exists" })
         
@@ -52,8 +52,10 @@ const AuthController = {
         if(!attempt)
             return raise({ status:401, message: "Invalid credentials" })
 
-        const token = tokenize({ ...user.toJSON(), date: new Date().toISOString() })
-        return res.send({ token })
+        user = user.toJSON()
+        user['role'] = 'user'
+        const token = tokenize({ ...user, date: new Date().toISOString() })
+        return res.send({ user, token })
     },
     confirm: async(req, res) => {
         if(!req.headers.token)
@@ -85,8 +87,10 @@ const AuthController = {
         user.valid = true
         await user.save()
 
-        const token = tokenize({ ...user.toJSON(), date: new Date().toISOString() })
-        return res.send({ token })
+        user = user.toJSON()
+        user['role'] = 'user'
+        const token = tokenize({ ...user, date: new Date().toISOString() })
+        return res.send({ user, token })
     },
     register: async(req, res)=>{
         if(!req.body.password || !req.body.email || !req.body.name)
@@ -157,6 +161,26 @@ const AuthController = {
         const token = tokenize({...admin.toJSON(), date: new Date().toISOString() })
         return res.send({ token })
 
+    },
+    admin_login: async(req, res)=>{
+        if(!req.body.password || !req.body.email)
+            return raise({status: 400})
+
+        const email = req.body.email
+        const password = req.body.password
+        
+        let admin = await Admin.findOne({ filter:{ email } })
+        if(!admin)
+            return raise({ status:401, message: "Admin does not exists" })
+        
+        const attempt = await compareHash(password, admin.password)
+        if(!attempt)
+            return raise({ status:401, message: "Invalid credentials" })
+
+        admin = admin.toJSON()
+        admin['role'] = 'admin'
+        const token = tokenize({ ...admin, date: new Date().toISOString() })
+        return res.send({ user: admin, token })
     },
     password_reset_token: async(req, res)=>{
         if(!req.body.email)
