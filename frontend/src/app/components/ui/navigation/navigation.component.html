@@ -1,0 +1,26 @@
+<nav>
+    <ul>
+        <ng-container *ngIf="entity && entity.role == 'admin'">
+            <li [activeLink]="'/admin/pokemons'" ><a routerLink="/admin/pokemons">Pokémons</a></li>
+            <li [activeLink]="'/admin/items'" ><a routerLink="/admin/items">Items</a></li>
+            <li [activeLink]="'/admin/moves'" ><a routerLink="/admin/moves">Moves</a></li>
+            <li [activeLink]="'/admin/nature'" ><a routerLink="/admin/nature">Natures</a></li>
+            <li [activeLink]="'/admin/ability'" ><a routerLink="/admin/ability">Abilities</a></li>
+            <li [activeLink]="'/admin/ability'" ><a (click)="logout()">Logout</a></li>
+        </ng-container>
+        <ng-container *ngIf="entity && entity.role == 'user'">
+            <li [activeLink]="'/user/builder'" ><a routerLink="/user/builder">Builder</a></li>
+            <li [activeLink]="'/user/team'" ><a routerLink="/user/team">Teams</a></li>
+            <li [activeLink]="'/user/battle'" ><a routerLink="/user/battle">Battles</a></li>
+            <li [activeLink]="'/user/account'" ><a routerLink="/user/account">Account</a></li>
+            <li ><a (click)="logout()">Logout</a></li>
+        </ng-container>
+        <ng-container *ngIf="!entity">
+            <li [activeLink]="'/auth/login'" ><a routerLink="/auth/login">Login</a></li>
+            <li [activeLink]="'/auth/register'" ><a routerLink="/auth/register">Register</a></li>
+            <li [activeLink]="'/auth/reset'" ><a routerLink="/auth/reset">Reset</a></li>
+            <li [activeLink]="'/auth/admin'" ><a routerLink="/auth/admin">Admin</a></li>
+        </ng-container>
+        
+    </ul>
+</nav>
