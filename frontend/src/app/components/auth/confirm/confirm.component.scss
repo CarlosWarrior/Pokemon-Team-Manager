@@ -1,0 +1,18 @@
+:host{
+    
+    mat-card{
+        position: absolute;
+        transform: translate(-50%, -50%);
+        top: 50%;
+        left: 50%;
+        display: flex;
+        justify-content: center;
+        mat-card-content{
+            width: fit-content;
+        }
+        mat-card-content{
+            padding: 30px;
+        }
+    }
+    a.terms, a.terms:visited { color: white; }
+}

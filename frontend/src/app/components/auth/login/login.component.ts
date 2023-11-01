@@ -1,33 +1,41 @@
-import { AfterViewInit, Component, NgZone } from '@angular/core';
-import { accounts } from 'google-one-tap';
+import { Component } from '@angular/core';
+import { FormControl, Validators } from '@angular/forms';
+import { Credentials } from 'src/app/interfaces/auth';
 import { AuthService } from 'src/app/services/auth.service';
-import { environment } from 'src/environments/environment.development';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })
-export class LoginComponent implements AfterViewInit{
-  constructor(private ngZone: NgZone, private authService: AuthService) {}
+export class LoginComponent {
+  constructor(private authService: AuthService) {}
 
-  ngAfterViewInit() {
-    const GoogleAccounts: accounts = window.google.accounts;
+  email = new FormControl('', [Validators.required, Validators.email]);
+  password = new FormControl('', [Validators.required, Validators.minLength(6), Validators.maxLength(32)]);
+  
 
-    GoogleAccounts.id.initialize({
-      client_id: environment.google_api_client,
-      ux_mode: 'popup',
-      cancel_on_tap_outside: true,
-      callback: (parameters) => {
-        this.ngZone.run(() => {
-          this.authService.google(parameters);
-        });
-      },
-    });
-
-    GoogleAccounts.id.renderButton(document.getElementById('google-login') as HTMLElement, {
-      size: 'large',
-      width: 320,
-    });
+  emailError() {
+    if(this.email.hasError('required'))
+      return 'Email required'
+    if(this.email.hasError('email'))
+      return 'Not a valid email'
+    return ''
   }
+  passwordError() {
+    if (this.password.hasError('required')) 
+      return 'Password required';
+    if(this.password.hasError('minlength'))
+      return 'Minimum 6 charaters'
+    if(this.password.hasError('maxlength'))
+      return 'Maximmum 32 charaters'
+    return ''
+  }
+
+  login(){
+    console.log(this.email.value, this.password.value)
+    const credentials: Credentials = { email: this.email.value||'', password: this.password.value||''}
+    this.authService.login(credentials)
+  }
+
 }

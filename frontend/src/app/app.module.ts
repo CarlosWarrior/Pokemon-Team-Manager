@@ -22,6 +22,9 @@ import { MaterialModule } from './modules/material/material.module';
 import { HttpClientModule } from '@angular/common/http';
 import { ResetComponent } from './components/auth/reset/reset.component';
 import { AdminComponent } from './components/auth/admin/admin.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { GoogleComponent } from './components/auth/google/google.component';
+import { ConfirmComponent } from './components/auth/confirm/confirm.component';
 
 @NgModule({
   declarations: [
@@ -42,12 +45,16 @@ import { AdminComponent } from './components/auth/admin/admin.component';
     ActiveDirective,
     ResetComponent,
     AdminComponent,
+    GoogleComponent,
+    ConfirmComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     MaterialModule,
+    FormsModule,
+    ReactiveFormsModule,
     HttpClientModule
   ],
   providers: [],

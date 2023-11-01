@@ -16,12 +16,14 @@ import { LoginComponent } from './components/auth/login/login.component';
 import { RegisterComponent } from './components/auth/register/register.component';
 import { ResetComponent } from './components/auth/reset/reset.component';
 import { AdminComponent } from './components/auth/admin/admin.component';
+import { ConfirmComponent } from './components/auth/confirm/confirm.component';
 
 
 const routes: Routes = [
-  {path: 'auth', canActivate:[authGuard], children:[
-    {path: "login", component: LoginComponent},
+  {path: '', canActivate:[authGuard], children:[
     {path: "register", component: RegisterComponent},
+    {path: "confirm", component: ConfirmComponent},
+    {path: "login", component: LoginComponent},
     {path: "reset", component: ResetComponent},
     {path: "admin", component: AdminComponent},
   ]},

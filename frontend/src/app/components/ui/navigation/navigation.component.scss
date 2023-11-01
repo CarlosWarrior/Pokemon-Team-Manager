@@ -1,5 +1,6 @@
 @import '../../../../styles/variables';
 ul {
+    display: flex;
     list-style-type: none;
     margin: 0;
     padding: 0;
@@ -22,4 +23,10 @@ ul {
         }
     }
 }
-
+div.spacer{
+    display: flex;
+    flex-grow: 1;
+}
+.logout{
+    cursor: pointer;
+}

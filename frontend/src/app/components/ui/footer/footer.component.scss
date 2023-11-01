@@ -1,0 +1,12 @@
+footer{
+    position: sticky;
+    bottom: 0;
+    width: 100%;
+    div{
+        display: flex;
+        justify-content: space-around;
+    }
+    h6{
+        text-align: center;
+    }
+}

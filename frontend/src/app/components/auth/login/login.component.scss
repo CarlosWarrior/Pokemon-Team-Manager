@@ -1,0 +1,32 @@
+:host{
+    
+    mat-card{
+        position: absolute;
+        transform: translate(-50%, -50%);
+        top: 50%;
+        left: 50%;
+        display: flex;
+        justify-content: center;
+        mat-card-content{
+            width: fit-content;
+        }
+        mat-form-field{
+            width: 100%;
+        }
+        mat-card-content{
+            padding: 30px;
+        }
+        mat-divider{
+            width: 100%;
+            padding: 7px 0;
+            margin-top: 15px;
+        }
+        form{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+        }
+    }
+    a.forgot, a.forgot:visited { color: white; }
+}
