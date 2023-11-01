@@ -33,6 +33,10 @@ const AuthController = {
                 return raise({ status: 400, message: "Invalid payload", error })
             }
         }
+        else if(!user.valid){
+            user.valid = true
+            await user.save()
+        }
         user = user.toJSON()
         user['role'] = 'user'
         const token = tokenize({ ...user, date: new Date().toISOString() })
