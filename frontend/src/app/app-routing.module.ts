@@ -18,6 +18,7 @@ import { PasswordResetTokenComponent } from './components/auth/password-reset-to
 import { PasswordResetComponent } from './components/auth/password-reset/password-reset.component';
 import { AdminComponent } from './components/auth/admin/admin.component';
 import { ConfirmComponent } from './components/auth/confirm/confirm.component';
+import { AdminLoginComponent } from './components/auth/admin-login/admin-login.component';
 
 
 const routes: Routes = [
@@ -28,6 +29,7 @@ const routes: Routes = [
     {path: "password_reset", component: PasswordResetComponent},
     {path: "reset", component: PasswordResetTokenComponent},
     {path: "admin", component: AdminComponent},
+    {path: "admin_login", component: AdminLoginComponent}
   ]},
 
   {path: 'admin', canActivate:[adminGuard], children:[

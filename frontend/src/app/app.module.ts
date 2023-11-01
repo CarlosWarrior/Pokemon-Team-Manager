@@ -26,6 +26,7 @@ import { AdminComponent } from './components/auth/admin/admin.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { GoogleComponent } from './components/auth/google/google.component';
 import { ConfirmComponent } from './components/auth/confirm/confirm.component';
+import { AdminLoginComponent } from './components/auth/admin-login/admin-login.component';
 
 @NgModule({
   declarations: [
@@ -49,6 +50,7 @@ import { ConfirmComponent } from './components/auth/confirm/confirm.component';
     AdminComponent,
     GoogleComponent,
     ConfirmComponent,
+    AdminLoginComponent,
   ],
   imports: [
     BrowserModule,
