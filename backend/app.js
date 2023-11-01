@@ -38,4 +38,4 @@ function init(){
 function mount(){
 	app.listen(process.env.port,init)
 }
-require('./src/db').then(mount).catch(console.log)
+require('./src/db').connection.then(mount).catch(console.log)

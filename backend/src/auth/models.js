@@ -2,12 +2,12 @@ const {Schema, model} = require("mongoose")
 const bcrypt = require('bcrypt')
 
 const validEmail = value => (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/).test(value)
-const emailType = {
+const emailType = (unique) => ({
     type: String,
-    unique: true,
+    unique,
     required: true,
     validate: { validator: validEmail },
-}
+})
 const passwordType = {
     type: String,
     required: true,
@@ -17,7 +17,7 @@ const passwordType = {
 
 const UserSchema = new Schema({
     name: String,
-    email: emailType,
+    email: emailType(true),
     password: passwordType,
     valid: { type: Boolean, default: false, },
     
@@ -35,7 +35,7 @@ const User = new model('User', containsPassword(UserSchema))
 
 const AdminSchema = new Schema({
     name: String,
-    email: emailType,
+    email: emailType(true),
     password: passwordType,
 
     createdAt: { type: Date, default: Date.now },
@@ -50,8 +50,18 @@ const AdminSchema = new Schema({
 })
 const Admin = new model('Admin', containsPassword(AdminSchema))
 
+const TokenSchema = new Schema({
+    email: emailType(false),
+    token: String,
+    active: { type: Boolean, default: true },
+    createdAt: { type: Date, default: Date.now },
+    updatedAt: { type: Date, default: Date.now },
+})
+const Token = new model('Token ', TokenSchema)
+
 exports.User = require('../models/_model')(User)
 exports.Admin = require('../models/_model')(Admin)
+exports.Token = require('../models/_model')(Token)
 
 function containsPassword (Model){
     Model.pre('save', function(next) {
