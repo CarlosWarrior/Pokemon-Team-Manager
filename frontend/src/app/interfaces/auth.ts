@@ -17,3 +17,8 @@ export interface Session{
     token: string,
     user: Entity,
 }
+
+export interface Passwords{
+    password: string,
+    confirm_password: string,
+}

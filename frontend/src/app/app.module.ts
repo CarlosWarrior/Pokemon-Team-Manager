@@ -20,7 +20,8 @@ import { ActiveDirective } from './directives/ui/active.directive';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './modules/material/material.module';
 import { HttpClientModule } from '@angular/common/http';
-import { ResetComponent } from './components/auth/reset/reset.component';
+import { PasswordResetComponent } from './components/auth/password-reset/password-reset.component';
+import { PasswordResetTokenComponent } from './components/auth/password-reset-token/password-reset-token.component';
 import { AdminComponent } from './components/auth/admin/admin.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { GoogleComponent } from './components/auth/google/google.component';
@@ -43,7 +44,8 @@ import { ConfirmComponent } from './components/auth/confirm/confirm.component';
     NaturesComponent,
     AbilitiesComponent,
     ActiveDirective,
-    ResetComponent,
+    PasswordResetComponent,
+    PasswordResetTokenComponent,
     AdminComponent,
     GoogleComponent,
     ConfirmComponent,

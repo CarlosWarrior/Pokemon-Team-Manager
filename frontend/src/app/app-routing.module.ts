@@ -14,7 +14,8 @@ import { BattleComponent } from './components/user/battle/battle.component';
 import { AccountComponent } from './components/user/account/account.component';
 import { LoginComponent } from './components/auth/login/login.component';
 import { RegisterComponent } from './components/auth/register/register.component';
-import { ResetComponent } from './components/auth/reset/reset.component';
+import { PasswordResetTokenComponent } from './components/auth/password-reset-token/password-reset-token.component';
+import { PasswordResetComponent } from './components/auth/password-reset/password-reset.component';
 import { AdminComponent } from './components/auth/admin/admin.component';
 import { ConfirmComponent } from './components/auth/confirm/confirm.component';
 
@@ -24,7 +25,8 @@ const routes: Routes = [
     {path: "register", component: RegisterComponent},
     {path: "confirm", component: ConfirmComponent},
     {path: "login", component: LoginComponent},
-    {path: "reset", component: ResetComponent},
+    {path: "password_reset", component: PasswordResetComponent},
+    {path: "reset", component: PasswordResetTokenComponent},
     {path: "admin", component: AdminComponent},
   ]},
 

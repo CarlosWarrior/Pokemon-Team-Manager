@@ -21,7 +21,7 @@
                 <input matInput placeholder="password" formControlName="confirm_password" type="password" required autocomplete="confirm_password">
                 <mat-error *ngIf="form.controls['confirm_password'].value != form.controls['password'].value">{{confirmPasswordError()}}</mat-error>
             </mat-form-field>
-            <button mat-raised-button color="primary" [disabled]="form.controls['email'].invalid || form.controls['password'].invalid || form.controls['confirm_password'].invalid">Register</button>
+            <button mat-raised-button color="primary" [disabled]="form.controls['email'].invalid || form.controls['name'].invalid || form.controls['password'].invalid || form.controls['confirm_password'].invalid">Register</button>
             <mat-divider></mat-divider>
             <app-google></app-google>
             <mat-divider></mat-divider>

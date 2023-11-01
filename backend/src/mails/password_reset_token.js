@@ -12,10 +12,10 @@ const PasswordResetTokenEmail = ({token, ToAddresses, CcAddresses = [], BccAddre
         },
         Body: {
             Text: {
-                Data: `Follow this link to reset your password: ${process.env.ui_url}/auth/password_reset?token=${token}`,
+                Data: `Follow this link to reset your password: ${process.env.ui_url}/password_reset?token=${token}`,
             },
             Html: {
-                Data: PasswordResetTokenEmailHtml({action: `${process.env.ui_url}/auth/password_reset?token=${token}`}),
+                Data: PasswordResetTokenEmailHtml({action: `${process.env.ui_url}/password_reset?token=${token}`}),
             },
         },
     }

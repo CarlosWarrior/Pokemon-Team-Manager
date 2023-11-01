@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 import { environment } from 'src/environments/environment';
 import { CredentialResponse, accounts } from 'google-one-tap';
 import { BehaviorSubject, Observable, Subscription } from 'rxjs';
-import { Credentials, Session, Entity, Registration } from '../interfaces/auth';
+import { Credentials, Session, Entity, Registration, Passwords } from '../interfaces/auth';
 import { MatSnackBar, MatSnackBarConfig, MatSnackBarRef, TextOnlySnackBar } from '@angular/material/snack-bar';
 import { ErrorResponse } from '../interfaces/requests';
 
@@ -71,6 +71,34 @@ export class AuthService {
       error: this._notifyError("auth/confirm")
     })
   }
+
+  resetPasswordToken(email: string){
+    const url: string = `${environment.api}/auth/password_reset_token`
+    return this.httpClient.post(url, {email}, {responseType: 'text'}).subscribe({
+      next: () => {
+        const reset_token_snackbar: MatSnackBarRef<TextOnlySnackBar> = this.snackbar.open(`An email was sent to: ${email}`, "Ok", this._request_snackbar_config)
+        const reset_token_callback = () => this.router.navigate(['/login'])
+        reset_token_snackbar.onAction().subscribe(reset_token_callback)
+        reset_token_snackbar.afterDismissed().subscribe(reset_token_callback)
+      },
+      error: this._notifyError("auth/reset")
+    })
+  }
+
+  resetPassword(passwords: Passwords, token: string){
+    const url: string = `${environment.api}/auth/password_reset`
+    return this.httpClient.post(url, passwords, {responseType: 'text', headers: { token }}).subscribe({
+      next: () => {
+        const reset_snackbar: MatSnackBarRef<TextOnlySnackBar> = this.snackbar.open(`Password reset successfully`, "Ok", this._request_snackbar_config)
+        const reset_callback = () => this.router.navigate(['/login'])
+        reset_snackbar.onAction().subscribe(reset_callback)
+        reset_snackbar.afterDismissed().subscribe(reset_callback)
+      },
+      error: this._notifyError("auth/reset")
+    })
+  }
+
+
   
   admin_login(credentials: Credentials): Subscription {
     const url: string = `${environment.api}/auth/admin_login`
@@ -124,5 +152,7 @@ export class AuthService {
     this.snackbar.open(error && error.message || "An error occurred", "Ok", this._request_snackbar_config)
     console.log(scope, {error})
   }
+
+  
   
 }
