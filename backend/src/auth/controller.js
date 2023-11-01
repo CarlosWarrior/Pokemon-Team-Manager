@@ -6,6 +6,7 @@ const { ses } = require('../services/aws')
 const user_email_confirmation_email = require('../mails/user_email_confirmation')
 const admin_register_token_email = require('../mails/admin_register_token')
 const password_reset_token_email = require('../mails/password_reset_token')
+const { verify_email } = require("../utils/email")
 
 const AuthController = {
     google: async(req, res)=>{
@@ -51,6 +52,9 @@ const AuthController = {
         const attempt = await compareHash(password, user.password)
         if(!attempt)
             return raise({ status:401, message: "Invalid credentials" })
+        
+        if(!user.valid)
+            return raise({ status:401, message: "Email needs to be confirmed" })
 
         user = user.toJSON()
         user['role'] = 'user'
@@ -98,6 +102,10 @@ const AuthController = {
         const name = req.body.name
         const email = req.body.email
         const password = req.body.password
+
+        const valid_email = await verify_email(email)
+        if(!valid_email)
+            return raise({status:400, message: "Invalid email"})
         
         let user = await User.findOne({filter:{ email }})
         if(user)
@@ -110,16 +118,21 @@ const AuthController = {
         }
 
         const token = tokenize({ user:user.toJSON(), date: new Date().toISOString(), random: randomString(16) })
-
-        ses.sendEmail(user_email_confirmation_email({ token, ToAddresses:[email] }))
-            .then(() => res.sendStatus(200))
-            .catch((error) => raise({status:500, message:"Email failed", error}))
-        
+        try {
+            await ses.sendEmail(user_email_confirmation_email({ token, ToAddresses:[email] }))
+        } catch (error) {
+            await User.delete(user._id)
+            return raise({status:500, message:"Invalid email", error})
+        }
+        return res.sendStatus(200)
     },
     admin_register_token: async(req, res)=>{
         if(!req.body.email)
             return raise({status: 400})
         const email = req.body.email
+        const valid_email = await verify_email(email)
+        if(!valid_email)
+            return raise({status:400, message: "Invalid email"})
         let admin = await Admin.findOne({filter:{ email }})
         if(admin)
             return raise({status:400, message: "Admin already exists"})  

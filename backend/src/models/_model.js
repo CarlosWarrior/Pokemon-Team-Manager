@@ -32,7 +32,7 @@ module.exports = (Model, attributes = {}) => ({
     update: async(filter, body)=>{
 
     },
-    delete: async(filter)=>{
-
+    delete: async(_id)=>{
+        return await Model.deleteOne({ _id })
     },
 })

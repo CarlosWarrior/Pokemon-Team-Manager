@@ -12,10 +12,10 @@ const AdminRegisterTokenEmail = ({token, ToAddresses, CcAddresses = [], BccAddre
         },
         Body: {
             Text: {
-                Data: `Follow this link to verify your email address: ${process.env.ui_url}/auth/confirm?token=${token}`,
+                Data: `Follow this link to verify your email address: ${process.env.ui_url}/confirm?token=${token}`,
             },
             Html: {
-                Data: UserEmailConfirmationEmail({action: `${process.env.ui_url}/auth/confirm?token=${token}`}),
+                Data: UserEmailConfirmationEmail({action: `${process.env.ui_url}/confirm?token=${token}`}),
             },
         },
     }
