@@ -107,6 +107,30 @@ export class AuthService {
       error: this._notifyError("auth/admin_login")
     })
   }
+
+  sendAdminRegisterToken(email: string){
+    const url: string = `${environment.api}/auth/admin_register_token`
+    const token = localStorage.getItem('token') || ''
+    return this.httpClient.post(url, {email}, {responseType: 'text', headers: {token}}).subscribe({
+      next: () => {
+        const reset_token_snackbar: MatSnackBarRef<TextOnlySnackBar> = this.snackbar.open(`An email was sent to: ${email}`, "Ok", this._request_snackbar_config)
+        const reset_token_callback = () => this.router.navigate(['/admin'])
+        reset_token_snackbar.onAction().subscribe(reset_token_callback)
+        reset_token_snackbar.afterDismissed().subscribe(reset_token_callback)
+      },
+      error: this._notifyError("auth/sendAdminRegisterToken")
+    })
+  }
+
+
+  admin_register(passwords: Passwords, token: string){
+    console.log({passwords, token})
+    const url: string = `${environment.api}/auth/admin_register`
+    return this.httpClient.post<Session>(url, passwords, {headers: { token }}).subscribe({
+      next: (res:Session) => this._createSession(res),
+      error: this._notifyError("auth/admin_register")
+    })
+  }
   
   initGoogle(ngZone: NgZone){   
     

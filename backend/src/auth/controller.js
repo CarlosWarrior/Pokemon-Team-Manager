@@ -1,6 +1,5 @@
 const { raise } = require("../middlewares/errors")
-const { session } = require("../db")
-const { User, Admin, Token } = require("./models")
+const { User, Admin } = require("./models")
 const { isExpired } = require('../utils/dates')
 const { tokenize, decode, compareHash, randomString, encrypt, decrypt, jwt } = require("./crypto")
 const { ses } = require('../services/aws')
@@ -154,6 +153,7 @@ const AuthController = {
         if(!req.headers.token)
             return raise({status:400, message: "Token missing"})
         const register_token = req.headers.token
+        console.log(register_token)
         let decrypted
         try {
             decrypted = JSON.parse(decrypt(register_token))
@@ -175,8 +175,10 @@ const AuthController = {
         } catch (error) {
             return raise({status: 400, message: "Invalid admin body", error})
         }
-        const token = tokenize({...admin.toJSON(), date: new Date().toISOString() })
-        return res.send({ token })
+        admin = admin.toJSON()
+        admin['role'] = 'admin'
+        const token = tokenize({...admin, date: new Date().toISOString() })
+        return res.send({ user: admin, token })
 
     },
     admin_login: async(req, res)=>{
@@ -209,7 +211,6 @@ const AuthController = {
         const tokenData = { email, date: new Date().toISOString(), random: randomString(16)}
         const stringTokenData = JSON.stringify(tokenData)
         const token = encrypt(stringTokenData)
-        await Token.create({ email, token })
         ses.sendEmail(password_reset_token_email({ token, ToAddresses:[email] }))
             .then(() => res.sendStatus(200))
             .catch((error) => raise({status:500, message:"Email failed", error}))
@@ -221,10 +222,6 @@ const AuthController = {
             return raise({status:400, message: "Password missing"})
         
         const token = req.headers.token
-        const _token = await Token.findOne({filters: { token }})
-        if(!_token)
-            return raise({status:400, message: "Invalid token"})
-
         let decrypted 
         try {
             decrypted = JSON.parse(decrypt(token))
@@ -233,25 +230,18 @@ const AuthController = {
         }
         if( !decrypted.email || !decrypted.date || !decrypted.random)
             return raise({status:400, message: "Malformed token"})
-        if(isExpired(decrypted.date)){
-            _token.valid = false
-            await _token.save()
+        if(isExpired(decrypted.date))
             return raise({status:400, message: "Token expired"})
-        }
         const email = decrypted.email
         const user = await User.findOne({filter:{ email }})
         if(!user)
             return raise({status:400, message: "User does not exists"})
 
-        await session(async() => {
-            _token.valid = false
-            await _token.save()
-            const password = req.body.password
-            user.password = password
-            await user.save()
-        })
-
+        const password = req.body.password
+        user.password = password
+        await user.save()
         res.sendStatus(200)
+
     },
 }
 

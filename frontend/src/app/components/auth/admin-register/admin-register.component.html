@@ -1,0 +1,22 @@
+<mat-card>
+    <mat-card-content>
+        <form (ngSubmit)="register()" [formGroup]="form">
+            <mat-form-field>
+                <mat-label>name</mat-label>
+                <input matInput placeholder="name" formControlName="name">
+                <mat-error *ngIf="form.controls['name'].invalid">{{nameError()}}</mat-error>
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label>password</mat-label>
+                <input matInput placeholder="password" formControlName="password" type="password" required autocomplete="password">
+                <mat-error *ngIf="form.controls['password'].invalid">{{passwordError()}}</mat-error>
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label>confirm password</mat-label>
+                <input matInput placeholder="password" formControlName="confirm_password" type="password" required autocomplete="confirm_password">
+                <mat-error *ngIf="form.controls['confirm_password'].value != form.controls['password'].value">{{confirmPasswordError()}}</mat-error>
+            </mat-form-field>
+            <button mat-raised-button color="primary" [disabled]="form.controls['password'].invalid || form.controls['confirm_password'].invalid">Register</button>
+        </form>
+    </mat-card-content>
+</mat-card>

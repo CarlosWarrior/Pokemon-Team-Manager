@@ -12,12 +12,12 @@ const AdminRegisterTokenEmail = ({token, ToAddresses, CcAddresses = [], BccAddre
         },
         Body: {
             Text: {
-                Data: `Follow this link to create a Pokemon Team Manager Admin Account: ${process.env.ui_url}/auth/admin_register?token=${token}`,
+                Data: `Follow this link to create a Pokemon Team Manager Admin Account: ${process.env.ui_url}/admin_register?token=${token}`,
             },
             Html: {
-                Data: AdminRegisterTokenEmailHtml({action: `${process.env.ui_url}/auth/admin_register?token=${token}`}),
+                Data: AdminRegisterTokenEmailHtml({action: `${process.env.ui_url}/admin_register?token=${token}`}),
             },
-        },
+        },  
     }
 });
 
