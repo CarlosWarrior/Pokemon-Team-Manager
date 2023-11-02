@@ -12,8 +12,11 @@ export class ConfirmComponent {
     if(this.route.snapshot.queryParamMap.get('token') == null)
       this.authService.goToHome()
   }
+  loading:boolean = false
   confirm(){
-    if(this.route.snapshot.queryParamMap.get('token') != null)
-      this.authService.confirm(this.route.snapshot.queryParamMap.get('token')!)
+    if(this.route.snapshot.queryParamMap.get('token') != null){
+      this.loading = true
+      this.authService.confirm(this.route.snapshot.queryParamMap.get('token')!, () => this.loading = false)
+    }
   }
 }

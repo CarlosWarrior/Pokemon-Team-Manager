@@ -26,6 +26,7 @@ export class PasswordResetComponent {
 
     
   }
+  loading:boolean = false
   form: FormGroup
   
   passwordError() {
@@ -45,8 +46,10 @@ export class PasswordResetComponent {
 
   resetPassword() {
     if(this.form.valid) {
-      if(this.route.snapshot.queryParamMap.get('token') != null)
-        this.authService.resetPassword(this.form.value, this.route.snapshot.queryParamMap.get('token')!)
+      if(this.route.snapshot.queryParamMap.get('token') != null){
+        this.loading = true
+        this.authService.resetPassword(this.form.value, this.route.snapshot.queryParamMap.get('token')!, () => this.loading = false)
+      }
     }
   }
   

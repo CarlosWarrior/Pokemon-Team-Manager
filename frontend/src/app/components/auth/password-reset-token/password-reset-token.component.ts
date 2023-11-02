@@ -9,6 +9,7 @@ import { AuthService } from 'src/app/services/auth.service';
 })
 export class PasswordResetTokenComponent {
   constructor(private authService: AuthService) {}
+  loading:boolean = false
   email = new FormControl('', [Validators.required, Validators.email]);
 
   emailError() {
@@ -21,7 +22,8 @@ export class PasswordResetTokenComponent {
 
   resetPasswordToken() {
     if(this.email.valid) {
-      this.authService.resetPasswordToken(this.email.value!)
+      this.loading = true
+      this.authService.resetPasswordToken(this.email.value!, () => this.loading = false)
     }
   }
 

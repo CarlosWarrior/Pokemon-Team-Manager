@@ -29,6 +29,7 @@ import { ConfirmComponent } from './components/auth/confirm/confirm.component';
 import { AdminLoginComponent } from './components/auth/admin-login/admin-login.component';
 import { AdminRegisterTokenComponent } from './components/auth/admin-register-token/admin-register-token.component';
 import { AdminRegisterComponent } from './components/auth/admin-register/admin-register.component';
+import { LoadingButtonComponent } from './components/ui/loading-button/loading-button.component';
 
 @NgModule({
   declarations: [
@@ -55,6 +56,7 @@ import { AdminRegisterComponent } from './components/auth/admin-register/admin-r
     AdminLoginComponent,
     AdminRegisterTokenComponent,
     AdminRegisterComponent,
+    LoadingButtonComponent,
   ],
   imports: [
     BrowserModule,

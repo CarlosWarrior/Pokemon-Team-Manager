@@ -12,8 +12,7 @@
                 <input matInput placeholder="password" [formControl]="password" type="password" required autocomplete="password">
                 <mat-error *ngIf="password.invalid">{{passwordError()}}</mat-error>
             </mat-form-field>
-            
-            <button mat-raised-button color="primary" [disabled]="email.invalid || password.invalid">Login</button>
+            <app-loading-button [loading]="loading" [disabled]="email.invalid || password.invalid || loading">Login</app-loading-button>
             <mat-divider></mat-divider>
             <app-google></app-google>
             <mat-divider></mat-divider>

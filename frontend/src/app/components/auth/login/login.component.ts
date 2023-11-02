@@ -10,7 +10,7 @@ import { AuthService } from 'src/app/services/auth.service';
 })
 export class LoginComponent {
   constructor(private authService: AuthService) {}
-
+  loading:boolean = false
   email = new FormControl('', [Validators.required, Validators.email]);
   password = new FormControl('', [Validators.required, Validators.minLength(6), Validators.maxLength(32)]);
   
@@ -33,9 +33,11 @@ export class LoginComponent {
   }
 
   login(){
-    console.log(this.email.value, this.password.value)
-    const credentials: Credentials = { email: this.email.value||'', password: this.password.value||''}
-    this.authService.login(credentials)
+    if(this.email.valid && this.password.valid){
+      this.loading = true
+      const credentials: Credentials = { email: this.email.value||'', password: this.password.value||''}
+      this.authService.login(credentials, () => this.loading = false)
+    }
   }
 
 }

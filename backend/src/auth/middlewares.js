@@ -29,6 +29,28 @@ function validatetoken(req){
 }
 
 const AuthMiddlewares = {
+    load: async(req) =>{
+        let session
+        try {
+            session = validatetoken(req)  
+        } catch (error) {
+            return raise(error)
+        }
+        let user = null
+        switch (session.role) {
+            case 'user':
+                user = await User.findById(session._id)
+            break;
+            case 'admin':
+                user = await Admin.findById(session._id)
+            break;
+        }
+        if(user){
+            user = user.toJSON()
+            user['role'] = session.role
+        }
+        return user
+    },
     user: async(req, res, next) => {
         let token
         try {

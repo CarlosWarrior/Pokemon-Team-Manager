@@ -20,7 +20,6 @@ exports.verify_email = async (email)=>{
         return false
 
     const MXcheck = await new Promise((resolve, reject) => dns.resolveMx(domain, (err, mxRecords) => {
-        console.log({mxRecords, err})
         if(err)
             resolve(null)
         if (mxRecords && mxRecords.length > 0){
@@ -59,7 +58,6 @@ exports.verify_email = async (email)=>{
             }
         })
         socket.on('success', () => {
-            console.log("success")
             if (socket.writable && !socket.destroyed) {
                 socket.write(`quit\r\n`);
                 socket.end();
@@ -120,7 +118,6 @@ exports.verify_email = async (email)=>{
         });
 
         socket.on('error', (err) => {
-            console.log({err})
             resolve(false);
         });
     

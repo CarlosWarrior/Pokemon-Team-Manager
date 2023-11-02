@@ -12,7 +12,7 @@ import { AuthService } from 'src/app/services/auth.service';
 export class AdminLoginComponent {
 
   constructor(private authService: AuthService) {}
-  
+  loading:boolean = false
   email = new FormControl('', [Validators.required, Validators.email]);
   password = new FormControl('', [Validators.required, Validators.minLength(6), Validators.maxLength(32)]);
   
@@ -34,9 +34,9 @@ export class AdminLoginComponent {
   }
 
   login(){
-    console.log(this.email.value, this.password.value)
+    this.loading = true
     const credentials: Credentials = { email: this.email.value||'', password: this.password.value||''}
-    this.authService.admin_login(credentials)
+    this.authService.admin_login(credentials, () => this.loading = false )
   }
 
 }

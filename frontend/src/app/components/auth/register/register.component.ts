@@ -18,7 +18,7 @@ export class RegisterComponent {
     })
     this.form.addControl('confirm_password', new FormControl('', [confirmedValidator(this.form)]))
   }
-  
+  loading:boolean = false
   form: FormGroup
 
   nameError(){
@@ -51,7 +51,10 @@ export class RegisterComponent {
   }
   
   register(){
-    this.authService.register(this.form.value)
+    if(this.form.valid){
+      this.loading = true
+      this.authService.register(this.form.value, () => this.loading = false)
+    }
   }
 
 }

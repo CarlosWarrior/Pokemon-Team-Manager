@@ -11,6 +11,7 @@ import { AuthService } from 'src/app/services/auth.service';
 export class AdminRegisterTokenComponent {
 
   constructor(private authService: AuthService) {}
+  loading:boolean = false
   email = new FormControl('', [Validators.required, Validators.email]);
 
   emailError() {
@@ -23,7 +24,8 @@ export class AdminRegisterTokenComponent {
 
   sendAdminRegisterToken() {
     if(this.email.valid) {
-      this.authService.sendAdminRegisterToken(this.email.value!)
+      this.loading = true
+      this.authService.sendAdminRegisterToken(this.email.value!, () => this.loading = false)
     }
   }
 }

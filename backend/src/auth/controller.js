@@ -7,8 +7,17 @@ const user_email_confirmation_email = require('../mails/user_email_confirmation'
 const admin_register_token_email = require('../mails/admin_register_token')
 const password_reset_token_email = require('../mails/password_reset_token')
 const { verify_email } = require("../utils/email")
+const { load } = require("./middlewares")
 
 const AuthController = {
+    load: async(req, res) =>{
+        const user = await load(req)
+        if(!user)
+            return raise({status: 401, message: 'User not found'})
+
+        const token = tokenize({ ...user, date: new Date().toISOString() })
+        return res.send({ user, token })
+    },
     google: async(req, res)=>{
         if(!req.body.credential || !req.body.select_by)
             return raise({ status: 400 })
@@ -137,6 +146,9 @@ const AuthController = {
         const valid_email = await verify_email(email)
         if(!valid_email)
             return raise({status:400, message: "Invalid email"})
+        let user = await User.findOne({filter:{ email }})
+        if(user)
+            return raise({status:400, message: "User cant be admin"})  
         let admin = await Admin.findOne({filter:{ email }})
         if(admin)
             return raise({status:400, message: "Admin already exists"})  

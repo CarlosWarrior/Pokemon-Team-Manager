@@ -5,6 +5,28 @@ const { admin } = require('../auth/middlewares')
 const AuthController = require('../auth/controller')
 
 const AuthRouter = Router()
+
+/**
+ * @swagger
+ * /auth/load/:
+ *  post:
+ *      description: Endpoint to load a session with a given token
+ *      tags:
+ *          - auth
+ *      parameters:
+ *          - in: header
+ *            name: token
+ *            required: true
+ *      responses:
+ *          400:
+ *              description: token not provided or invalid or expired token
+
+ *          200:
+ *              description: Logged in with a token provided
+ *          
+ */
+AuthRouter.post('/load', audit('Auth-load'), _catch(AuthController.load))
+
 /**
  * @swagger
  * /auth/google/:

@@ -12,7 +12,7 @@
                 <mat-error *ngIf="password.invalid">{{passwordError()}}</mat-error>
             </mat-form-field>
             
-            <button mat-raised-button color="primary" [disabled]="email.invalid || password.invalid">Login</button>
+            <app-loading-button [loading]="loading" [disabled]="email.invalid || password.invalid || loading">Login</app-loading-button>
         </form>
     </mat-card-content>
 </mat-card>
