@@ -46,10 +46,6 @@ jobs:
         FILE_NAME: "devops/git.key"
         FILE_DATA: "${{ secrets.GIT_KEY }}"
 
-    - name: Log files
-      run: "echo `ls -all`"
-      working-directory: devops
-
     - name: Create environment file
       uses: jsdaniell/create-json@v1.2.2
       with:

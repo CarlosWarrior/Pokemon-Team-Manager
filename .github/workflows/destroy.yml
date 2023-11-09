@@ -1,0 +1,48 @@
+name: 'App Deployment'
+
+on:
+  workflow_dispatch:
+
+
+permissions:
+  contents: read
+
+jobs:
+  terraform:
+    name: 'Terraform Destroy'
+    runs-on: ubuntu-latest
+    environment: production
+
+    defaults:
+      run:
+        shell: bash
+
+    steps:
+
+    - name: Checkout
+      uses: actions/checkout@v3
+
+    - name: Create environment file
+      uses: jsdaniell/create-json@v1.2.2
+      with:
+        name: "devops/.env.json"
+        json: '{
+            "AWS_ACCESS_KEY": "${{ secrets.AWS_ACCESS_KEY }}",
+            "AWS_ACCESS_SECRET": "${{ secrets.AWS_ACCESS_SECRET }}",
+            "AWS_REGION": "${{ vars.AWS_REGION }}",
+            "APP_REPO": "${{ vars.APP_REPO }}",
+            "APP_BRANCH": "${{ vars.APP_BRANCH }}",
+            "APP_ENV_FILE": "app.env",
+            "APP_CERTIFICATE_FILE": "app.cert",
+            "APP_KEY_FILE": "app.key",
+            "GIT_KEY_FILE": "git.key"
+          }'
+
+    
+    - name: Terraform Init
+      working-directory: devops
+      run: terraform init
+
+    - name: Terraform Destroy'
+      working-directory: devops
+      run: terraform destroy -input=false -var-file=.env.json

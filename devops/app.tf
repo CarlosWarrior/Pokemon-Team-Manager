@@ -19,7 +19,7 @@ data "aws_key_pair" "app_key_pair" {
 }
 
 data "template_file" "app_setup" {
-  template    = "./setup.sh"
+  template    = "${file("./setup.sh")}"
   vars = {
     app_system                  = "/home/ubuntu/App"
     app_repo                    = "${var.APP_REPO}"
