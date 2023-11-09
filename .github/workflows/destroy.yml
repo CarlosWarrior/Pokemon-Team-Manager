@@ -22,6 +22,30 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v3
 
+    - name: Create app environment
+      uses: finnp/create-file-action@master
+      env:
+        FILE_NAME: "devops/app.env"
+        FILE_DATA: ""
+    
+    - name: Create app certificate
+      uses: finnp/create-file-action@master
+      env:
+        FILE_NAME: "devops/app.cert"
+        FILE_DATA: ""
+    
+    - name: Create app key
+      uses: finnp/create-file-action@master
+      env:
+        FILE_NAME: "devops/app.key"
+        FILE_DATA: ""
+    
+    - name: Create git key
+      uses: finnp/create-file-action@master
+      env:
+        FILE_NAME: "devops/git.key"
+        FILE_DATA: ""
+
     - name: Create environment file
       uses: jsdaniell/create-json@v1.2.2
       with:
@@ -38,6 +62,10 @@ jobs:
             "GIT_KEY_FILE": "git.key"
           }'
 
+    - name: Setup Terraform
+      uses: hashicorp/setup-terraform@v1
+      with:
+        cli_config_credentials_token: ${{ secrets.TF_API_TOKEN }}
     
     - name: Terraform Init
       working-directory: devops
@@ -45,4 +73,4 @@ jobs:
 
     - name: Terraform Destroy'
       working-directory: devops
-      run: terraform destroy -input=false -var-file=.env.json
+      run: terraform destroy -var-file=.env.json -auto-approve
