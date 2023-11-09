@@ -1,6 +1,7 @@
 node_modules
 **/*.key
 **/*.cert
+**/*.crt
 **/*.env
 **/*.env.json
 **/.DS_Store
