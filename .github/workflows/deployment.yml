@@ -43,8 +43,19 @@ jobs:
         cat <<EOF > git.key
         $GIT_KEY
         EOF;
-        pwd >> $GITHUB_OUTPUT;
-        ls -all >> $GITHUB_OUTPUT;
+
+    - name: Fetch action
+      id: pl
+      uses: Rishabh510/Path-lister-action@master
+      with:
+        path: "devops"
+
+    - name: Output results
+      run: |
+        echo "Found ${{ steps.pl.outputs.path_count }} file(s) with this extension:"
+        for i in ${{ steps.pl.outputs.paths }}; do
+        echo $i
+        done
 
     - name: Create environment file
       uses: jsdaniell/create-json@v1.2.2
