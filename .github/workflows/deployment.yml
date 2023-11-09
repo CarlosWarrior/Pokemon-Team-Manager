@@ -1,0 +1,76 @@
+name: 'App Deployment'
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  terraform:
+    name: 'Terraform'
+    runs-on: ubuntu-latest
+    environment: production
+
+    defaults:
+      run:
+        shell: bash
+
+    steps:
+
+    - name: Checkout
+      uses: actions/checkout@v3
+
+    - name: Create certificate files
+      env:
+        APP_ENV: "${{ secrets.APP_ENV }}"
+        APP_CERTIFICATE_CONTENT: "${{ secrets.APP_CERTIFICATE_CONTENT }}"
+        APP_KEY_CONTENT: "${{ secrets.APP_KEY_CONTENT }}"
+        GIT_KEY: "${{ secrets.GIT_KEY }}"
+      working-directory: devops
+      run: |
+        cat <<EOF > app.env
+        $APP_ENV
+        EOF;
+        cat <<EOF > app.cert
+        $APP_CERTIFICATE_CONTENT
+        EOF;
+        cat <<EOF > app.key
+        $APP_KEY_CONTENT
+        EOF;
+        cat <<EOF > git.key
+        $GIT_KEY
+        EOF;
+
+    - name: Create environment file
+      uses: jsdaniell/create-json@v1.2.2
+      with:
+        name: "devops/.env.json"
+        json: '{
+            "AWS_ACCESS_KEY": "${{ secrets.AWS_ACCESS_KEY }}",
+            "AWS_ACCESS_SECRET": "${{ secrets.AWS_ACCESS_SECRET }}",
+            "AWS_REGION": "${{ vars.AWS_REGION }}",
+            "APP_REPO": "${{ vars.APP_REPO }}",
+            "APP_BRANCH": "${{ vars.APP_BRANCH }}",
+            "APP_ENV_FILE": "app.env",
+            "APP_CERTIFICATE_FILE": "app.cert",
+            "APP_KEY_FILE": "app.key",
+            "GIT_KEY_FILE": "git.key"
+          }'
+
+    - name: Setup Terraform
+      uses: hashicorp/setup-terraform@v1
+      with:
+        cli_config_credentials_token: ${{ secrets.TF_API_TOKEN }}
+    
+    - name: Terraform Init
+      working-directory: devops
+      run: terraform init
+
+    - name: Terraform Plan
+      working-directory: devops
+      run: terraform plan -input=false -var-file=.env.json
+
+    - name: Terraform Apply
+      working-directory: devops
+      run: terraform apply -auto-approve -input=false -var-file=.env.json
