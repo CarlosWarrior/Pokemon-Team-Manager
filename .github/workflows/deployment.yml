@@ -22,40 +22,33 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v3
 
-    - name: Create certificate files
-      id: certificates
+    - name: Create app environment
+      uses: finnp/create-file-action@master
       env:
-        APP_ENV: "${{ secrets.APP_ENV }}"
-        APP_CERTIFICATE_CONTENT: "${{ secrets.APP_CERTIFICATE_CONTENT }}"
-        APP_KEY_CONTENT: "${{ secrets.APP_KEY_CONTENT }}"
-        GIT_KEY: "${{ secrets.GIT_KEY }}"
+        FILE_NAME: "devops/app.env"
+        FILE_DATA: "${{ secrets.APP_ENV }}"
+    
+    - name: Create app certificate
+      uses: finnp/create-file-action@master
+      env:
+        FILE_NAME: "devops/app.cert"
+        FILE_DATA: "${{ secrets.APP_CERTIFICATE_CONTENT }}"
+    
+    - name: Create app key
+      uses: finnp/create-file-action@master
+      env:
+        FILE_NAME: "devops/app.key"
+        FILE_DATA: "${{ secrets.APP_KEY_CONTENT }}"
+    
+    - name: Create git key
+      uses: finnp/create-file-action@master
+      env:
+        FILE_NAME: "devops/git.key"
+        FILE_DATA: "${{ secrets.GIT_KEY }}"
+
+    - name: Log files
+      run: "echo `ls -all`"
       working-directory: devops
-      run: |
-        cat <<EOF > app.env
-        $APP_ENV
-        EOF;
-        cat <<EOF > app.cert
-        $APP_CERTIFICATE_CONTENT
-        EOF;
-        cat <<EOF > app.key
-        $APP_KEY_CONTENT
-        EOF;
-        cat <<EOF > git.key
-        $GIT_KEY
-        EOF;
-
-    - name: Fetch action
-      id: pl
-      uses: Rishabh510/Path-lister-action@master
-      with:
-        path: "./"
-
-    - name: Output results
-      run: |
-        echo "Found ${{ steps.pl.outputs.path_count }} file(s) with this extension:"
-        for i in ${{ steps.pl.outputs.paths }}; do
-        echo $i
-        done
 
     - name: Create environment file
       uses: jsdaniell/create-json@v1.2.2
