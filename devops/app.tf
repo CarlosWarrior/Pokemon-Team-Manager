@@ -26,8 +26,8 @@ data "template_file" "app_setup" {
     app_branch                  = "${var.APP_BRANCH}"
     app_certificate_content     = "${file(var.APP_CERTIFICATE_FILE)}"
     app_key_content             = "${file(var.APP_KEY_FILE)}"
+    git_key_content             = "${file(var.GIT_KEY_FILE)}"
     app_env                     = "${file(var.APP_ENV_FILE)}"
-    git_key                     = "${file(var.GIT_KEY_FILE)}"
   }
 }
 
