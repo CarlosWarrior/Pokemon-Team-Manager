@@ -3,6 +3,7 @@ name: 'App Deployment'
 on:
   workflow_dispatch:
 
+
 permissions:
   contents: read
 
@@ -22,6 +23,7 @@ jobs:
       uses: actions/checkout@v3
 
     - name: Create certificate files
+      id: certificates
       env:
         APP_ENV: "${{ secrets.APP_ENV }}"
         APP_CERTIFICATE_CONTENT: "${{ secrets.APP_CERTIFICATE_CONTENT }}"
@@ -41,8 +43,8 @@ jobs:
         cat <<EOF > git.key
         $GIT_KEY
         EOF;
-        pwd;
-        ls -all;
+        pwd >> $GITHUB_OUTPUT;
+        ls -all >> $GITHUB_OUTPUT;
 
     - name: Create environment file
       uses: jsdaniell/create-json@v1.2.2
