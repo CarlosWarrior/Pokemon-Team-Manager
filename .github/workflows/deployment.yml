@@ -41,6 +41,8 @@ jobs:
         cat <<EOF > git.key
         $GIT_KEY
         EOF;
+        pwd;
+        ls -all;
 
     - name: Create environment file
       uses: jsdaniell/create-json@v1.2.2
