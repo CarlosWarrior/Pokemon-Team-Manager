@@ -22,6 +22,30 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v3
 
+    - name: Create app environment
+      uses: finnp/create-file-action@master
+      env:
+        FILE_NAME: "devops/app.env"
+        FILE_DATA: ""
+    
+    - name: Create app certificate
+      uses: finnp/create-file-action@master
+      env:
+        FILE_NAME: "devops/app.cert"
+        FILE_DATA: ""
+    
+    - name: Create app key
+      uses: finnp/create-file-action@master
+      env:
+        FILE_NAME: "devops/app.key"
+        FILE_DATA: ""
+    
+    - name: Create git key
+      uses: finnp/create-file-action@master
+      env:
+        FILE_NAME: "devops/git.key"
+        FILE_DATA: ""
+
     - name: Create environment file
       uses: jsdaniell/create-json@v1.2.2
       with:
