@@ -1,3 +1,4 @@
+
 const { raise } = require("../middlewares/errors")
 const { User, Admin } = require("./models")
 const { isExpired } = require('../utils/dates')
@@ -8,6 +9,7 @@ const admin_register_token_email = require('../mails/admin_register_token')
 const password_reset_token_email = require('../mails/password_reset_token')
 const { verify_email } = require("../utils/email")
 const { load } = require("./middlewares")
+const { oauthclient } = require("../services/google")
 
 const AuthController = {
     load: async(req, res) =>{
@@ -22,13 +24,20 @@ const AuthController = {
         if(!req.body.credential || !req.body.select_by)
             return raise({ status: 400 })
         const gtoken = req.body.credential
+        try {
+            await oauthclient.verifyIdToken({
+                idToken: gtoken,
+                audience: process.env.google_client_id
+            })
+        } catch (error) {
+            return raise({ status: 400, message: "Invalid token", error })
+        }
         let decoded;
         try {
             decoded = jwt(gtoken)
         } catch (error) {
             return raise({ status: 400, message: "Invalid token", error })
         }
-        
         let user = await User.findOne({ filter: { email: decoded.email } })
         if(!user){
             try {
