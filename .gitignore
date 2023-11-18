@@ -3,6 +3,7 @@ node_modules
 **/*.env
 **/*.env.json
 **/*.cert
+**/*.crt
 **/*.key
 **/*.hcl
 **/.DS_Store

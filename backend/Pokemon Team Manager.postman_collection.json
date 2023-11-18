@@ -1,0 +1,789 @@
+{
+	"info": {
+		"_postman_id": "ea2f1ecf-6f99-482d-b196-d558c6323d89",
+		"name": "Pokemon Team Manager",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "30699328"
+	},
+	"item": [
+		{
+			"name": "auth",
+			"item": [
+				{
+					"name": "login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\": \"username\",\n    \"password\": \"password\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{endpoint}}/auth/login",
+							"host": [
+								"{{endpoint}}"
+							],
+							"path": [
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "register",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"is730820@iteso.mx\",\n    \"password\": \"password00\",\n    \"name\": \"Axel\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{endpoint}}/auth/register",
+							"host": [
+								"{{endpoint}}"
+							],
+							"path": [
+								"auth",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "password reset",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{endpoint}}/auth/password_reset",
+							"host": [
+								"{{endpoint}}"
+							],
+							"path": [
+								"auth",
+								"password_reset"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "confirm",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Im5hbWUiOiJBeGVsIiwiZW1haWwiOiJpczczMDgyMEBpdGVzby5teCIsInZhbGlkIjpmYWxzZSwiX2lkIjoiNjUzODJhZTY2MjEyNTBhNjA0MjIzMGM2IiwiY3JlYXRlZEF0IjoiMjAyMy0xMC0yNFQyMDozNjo1NC40MjlaIiwidXBkYXRlZEF0IjoiMjAyMy0xMC0yNFQyMDozNjo1NC40MjlaIn0sImRhdGUiOiIyMDIzLTEwLTI0VDIwOjM2OjU3LjgyM1oiLCJyYW5kb20iOiJFcHV4NFZpUVdzMFRhM3plIiwiaWF0IjoxNjk4MTc5ODE3fQ.pkXRo2gDmMnwbNfKAplYwa41G2SWgBoGdfQkReYwxPQ",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{endpoint}}/auth/confirm",
+							"host": [
+								"{{endpoint}}"
+							],
+							"path": [
+								"auth",
+								"confirm"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "admin_register_token",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"email\":\"axel.orozco.hernandez1a@gmail.com\"}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{endpoint}}/auth/admin_register_token",
+							"host": [
+								"{{endpoint}}"
+							],
+							"path": [
+								"auth",
+								"admin_register_token"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "admin_register",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "token",
+								"value": "bb4fc2e9e969ea3414db59da21005b30d53a557b9cf90eab223ae6a37b3c6de7dc510c5f36be358a43f9a6a21b80b4a171404456cf509fb37f3c75863441b911a373168cc3ad112df5cc4b5699ac859afa018bba1789fffb95c0bff2ee08c35950824a787ab7f65fa33cb78c4e6ac50f",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\":\"Axel\",\n    \"password\":\"Passw0rd\"  \n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{endpoint}}/auth/admin_register",
+							"host": [
+								"{{endpoint}}"
+							],
+							"path": [
+								"auth",
+								"admin_register"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "user",
+			"item": [
+				{
+					"name": "team",
+					"item": [
+						{
+							"name": "team list",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{endpoint}}/user/team/",
+									"host": [
+										"{{endpoint}}"
+									],
+									"path": [
+										"user",
+										"team",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "team get",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{endpoint}}/user/team/name",
+									"host": [
+										"{{endpoint}}"
+									],
+									"path": [
+										"user",
+										"team",
+										"name"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "team create",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "{{endpoint}}/user/team/",
+									"host": [
+										"{{endpoint}}"
+									],
+									"path": [
+										"user",
+										"team",
+										""
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "builder",
+					"item": [
+						{
+							"name": "builder data",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{endpoint}}/user/builder/",
+									"host": [
+										"{{endpoint}}"
+									],
+									"path": [
+										"user",
+										"builder",
+										""
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "battle",
+					"item": [
+						{
+							"name": "battle list",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{endpoint}}/user/battle/",
+									"host": [
+										"{{endpoint}}"
+									],
+									"path": [
+										"user",
+										"battle",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "battle get",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{endpoint}}/user/battle/name",
+									"host": [
+										"{{endpoint}}"
+									],
+									"path": [
+										"user",
+										"battle",
+										"name"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "battle create",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "{{endpoint}}/user/battle/",
+									"host": [
+										"{{endpoint}}"
+									],
+									"path": [
+										"user",
+										"battle",
+										""
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "account",
+					"item": [
+						{
+							"name": "account get",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{endpoint}}/user/account/",
+									"host": [
+										"{{endpoint}}"
+									],
+									"path": [
+										"user",
+										"account",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "account update",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"url": {
+									"raw": "{{endpoint}}/user/account/",
+									"host": [
+										"{{endpoint}}"
+									],
+									"path": [
+										"user",
+										"account",
+										""
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			],
+			"auth": {
+				"type": "apikey",
+				"apikey": [
+					{
+						"key": "value",
+						"value": "{{token}}",
+						"type": "string"
+					},
+					{
+						"key": "key",
+						"value": "token",
+						"type": "string"
+					}
+				]
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "admin",
+			"item": [
+				{
+					"name": "pokemon",
+					"item": [
+						{
+							"name": "pokemon list",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{endpoint}}/admin/pokemon/",
+									"host": [
+										"{{endpoint}}"
+									],
+									"path": [
+										"admin",
+										"pokemon",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "pokemon get",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{endpoint}}/admin/pokemon/name",
+									"host": [
+										"{{endpoint}}"
+									],
+									"path": [
+										"admin",
+										"pokemon",
+										"name"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "pokemon create",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "{{endpoint}}/admin/pokemon/",
+									"host": [
+										"{{endpoint}}"
+									],
+									"path": [
+										"admin",
+										"pokemon",
+										""
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "item",
+					"item": [
+						{
+							"name": "item list",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{endpoint}}/admin/item/",
+									"host": [
+										"{{endpoint}}"
+									],
+									"path": [
+										"admin",
+										"item",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "item get",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{endpoint}}/admin/item/name",
+									"host": [
+										"{{endpoint}}"
+									],
+									"path": [
+										"admin",
+										"item",
+										"name"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "item create",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "{{endpoint}}/admin/item/",
+									"host": [
+										"{{endpoint}}"
+									],
+									"path": [
+										"admin",
+										"item",
+										""
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "move",
+					"item": [
+						{
+							"name": "move list",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{endpoint}}/admin/move/",
+									"host": [
+										"{{endpoint}}"
+									],
+									"path": [
+										"admin",
+										"move",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "move get",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{endpoint}}/admin/move/name",
+									"host": [
+										"{{endpoint}}"
+									],
+									"path": [
+										"admin",
+										"move",
+										"name"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "move create",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "{{endpoint}}/admin/move/",
+									"host": [
+										"{{endpoint}}"
+									],
+									"path": [
+										"admin",
+										"move",
+										""
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "nature",
+					"item": [
+						{
+							"name": "nature list",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{endpoint}}/admin/nature/",
+									"host": [
+										"{{endpoint}}"
+									],
+									"path": [
+										"admin",
+										"nature",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "nature get",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{endpoint}}/admin/nature/name",
+									"host": [
+										"{{endpoint}}"
+									],
+									"path": [
+										"admin",
+										"nature",
+										"name"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "nature create",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "{{endpoint}}/admin/nature/",
+									"host": [
+										"{{endpoint}}"
+									],
+									"path": [
+										"admin",
+										"nature",
+										""
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "ability",
+					"item": [
+						{
+							"name": "ability list",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{endpoint}}/admin/ability/",
+									"host": [
+										"{{endpoint}}"
+									],
+									"path": [
+										"admin",
+										"ability",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "ability get",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{endpoint}}/admin/ability/name",
+									"host": [
+										"{{endpoint}}"
+									],
+									"path": [
+										"admin",
+										"ability",
+										"name"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "ability create",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "{{endpoint}}/admin/ability/",
+									"host": [
+										"{{endpoint}}"
+									],
+									"path": [
+										"admin",
+										"ability",
+										""
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			],
+			"auth": {
+				"type": "apikey",
+				"apikey": [
+					{
+						"key": "value",
+						"value": "{{admin_token}}",
+						"type": "string"
+					},
+					{
+						"key": "key",
+						"value": "token",
+						"type": "string"
+					}
+				]
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "endpoint",
+			"value": "localhost:3000",
+			"type": "string"
+		},
+		{
+			"key": "token",
+			"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NTM4MmFlNjYyMTI1MGE2MDQyMjMwYzYiLCJuYW1lIjoiQXhlbCIsImVtYWlsIjoiaXM3MzA4MjBAaXRlc28ubXgiLCJ2YWxpZCI6dHJ1ZSwiY3JlYXRlZEF0IjoiMjAyMy0xMC0yNFQyMDozNjo1NC40MjlaIiwidXBkYXRlZEF0IjoiMjAyMy0xMC0yNFQyMDozNjo1NC40MjlaIiwiZGF0ZSI6IjIwMjMtMTAtMjRUMjA6Mzk6NTQuMzE1WiIsImlhdCI6MTY5ODE3OTk5NH0.Gajd5L1N098PvbHUEs9lh5ARSvhQGYS-SUYPIiGFTQQ",
+			"type": "string"
+		},
+		{
+			"key": "admin_token",
+			"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiQXhlbCIsImVtYWlsIjoiYXhlbC5vcm96Y28uaGVybmFuZGV6MWFAZ21haWwuY29tIiwiX2lkIjoiNjUzODM1YzY0ODIzMTFkNDFmYTQ5ZGZjIiwiY3JlYXRlZEF0IjoiMjAyMy0xMC0yNFQyMToyMzoxOC41MTFaIiwidXBkYXRlZEF0IjoiMjAyMy0xMC0yNFQyMToyMzoxOC41MTFaIiwiZGF0ZSI6IjIwMjMtMTAtMjRUMjE6MjM6MjEuOTA3WiIsImlhdCI6MTY5ODE4MjYwMX0.1E9IstW12xJaaLY9aBrbrQizAFwndtWp7-mrkcXw68k",
+			"type": "string"
+		}
+	]
+}

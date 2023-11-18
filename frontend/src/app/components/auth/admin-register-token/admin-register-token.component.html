@@ -1,0 +1,14 @@
+<mat-card>
+    <mat-card-content>
+        <h2>You're creating and sending a token that we allow to admin to be created using the following email</h2>
+        <form (ngSubmit)="sendAdminRegisterToken()">
+            <mat-form-field>
+                <mat-label>email</mat-label>
+                <input matInput placeholder="email@example.com" [formControl]="email" type="email" required>
+                <mat-error *ngIf="email.invalid">{{emailError()}}</mat-error>
+            </mat-form-field>
+
+            <app-loading-button [loading]="loading" [disabled]="email.invalid || loading">Invite Admin</app-loading-button>
+        </form>
+    </mat-card-content>
+</mat-card>

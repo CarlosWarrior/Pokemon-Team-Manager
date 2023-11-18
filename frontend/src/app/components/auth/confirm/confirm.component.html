@@ -1,0 +1,10 @@
+
+<mat-card>
+    <mat-card-content>
+        <div class="mat-typography">
+            <h2>By confirming your address you are accepting the <a class="terms" href="#">Terms and Conditions</a></h2>
+        
+            <app-loading-button (click)="confirm()" [loading]="loading" [disabled]="loading">Confirm</app-loading-button>
+          </div>
+    </mat-card-content>
+</mat-card>

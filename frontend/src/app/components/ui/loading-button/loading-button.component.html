@@ -1,0 +1,6 @@
+<button mat-raised-button color="primary" [disabled]="disabled">
+    <div>
+        <ng-content></ng-content>
+        <mat-spinner *ngIf="loading" diameter="20"></mat-spinner>
+    </div>
+</button>
