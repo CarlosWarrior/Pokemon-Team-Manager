@@ -1,10 +1,11 @@
 node_modules
-**/*.key
-**/*.cert
-**/*.crt
+.angular
 **/*.env
 **/*.env.json
+**/*.cert
+**/*.crt
+**/*.key
+**/*.hcl
 **/.DS_Store
-.terraform
-.terraform.lock.hcl
 **/*.css.map
+.terraform
