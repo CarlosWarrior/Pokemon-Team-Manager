@@ -2,6 +2,7 @@
   "name": "pokemon-team-manager",
   "version": "0.0.0",
   "scripts": {
+    "server": "node server.js",
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build --configuration=production",
