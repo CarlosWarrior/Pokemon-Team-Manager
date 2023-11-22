@@ -1,0 +1,76 @@
+name: 'App Destory'
+
+on:
+  workflow_dispatch:
+
+
+permissions:
+  contents: read
+
+jobs:
+  terraform:
+    name: 'Terraform Destroy'
+    runs-on: ubuntu-latest
+    environment: production
+
+    defaults:
+      run:
+        shell: bash
+
+    steps:
+
+    - name: Checkout
+      uses: actions/checkout@v3
+
+    - name: Create app environment
+      uses: finnp/create-file-action@master
+      env:
+        FILE_NAME: "devops/app.env"
+        FILE_DATA: ""
+    
+    - name: Create app certificate
+      uses: finnp/create-file-action@master
+      env:
+        FILE_NAME: "devops/app.cert"
+        FILE_DATA: ""
+    
+    - name: Create app key
+      uses: finnp/create-file-action@master
+      env:
+        FILE_NAME: "devops/app.key"
+        FILE_DATA: ""
+    
+    - name: Create git key
+      uses: finnp/create-file-action@master
+      env:
+        FILE_NAME: "devops/git.key"
+        FILE_DATA: ""
+
+    - name: Create environment file
+      uses: jsdaniell/create-json@v1.2.2
+      with:
+        name: "devops/.env.json"
+        json: '{
+            "AWS_ACCESS_KEY": "${{ secrets.AWS_ACCESS_KEY }}",
+            "AWS_ACCESS_SECRET": "${{ secrets.AWS_ACCESS_SECRET }}",
+            "AWS_REGION": "${{ vars.AWS_REGION }}",
+            "APP_REPO": "${{ vars.APP_REPO }}",
+            "APP_BRANCH": "${{ vars.APP_BRANCH }}",
+            "APP_ENV_FILE": "app.env",
+            "APP_CERTIFICATE_FILE": "app.cert",
+            "APP_KEY_FILE": "app.key",
+            "GIT_KEY_FILE": "git.key"
+          }'
+
+    - name: Setup Terraform
+      uses: hashicorp/setup-terraform@v1
+      with:
+        cli_config_credentials_token: ${{ secrets.TF_API_TOKEN }}
+    
+    - name: Terraform Init
+      working-directory: devops
+      run: terraform init
+
+    - name: Terraform Destroy'
+      working-directory: devops
+      run: terraform destroy -var-file=.env.json -auto-approve
