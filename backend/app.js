@@ -1,9 +1,6 @@
 if(process.env.build){
-	const fs = require("fs")
-	console.log(fs.existsSync("../.env"))
-	console.log(fs.existsSync("/etc/secrets/.env"))
 	console.log("Using build configuration file")
-	require('dotenv').config({path: "../.env"})
+	require('dotenv').config({path: "/etc/secrets/.env"})
 }
 else{
 	console.log("Using development configuration file")
