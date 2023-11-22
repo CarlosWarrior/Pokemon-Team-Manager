@@ -17,6 +17,7 @@ UserRouter.use('/battle', require('./routers/battle'))
 UserRouter.use('/account', require('./routers/account'))
 
 const AppRouter = Router().use(log)
+AppRouter.get('/', (req, res) => res.sendStatus(200))
 AppRouter.use('/auth', AuthRouter)
 AppRouter.use('/admin', AdminRouter)
 AppRouter.use('/user', UserRouter)

@@ -4,9 +4,14 @@
   "description": "Backend of Pokémon Damage Calculator App",
   "main": "app.js",
   "scripts": {
+    "prod": "node app.js",
     "start": "nodemon .",
     "styles": "sass src/styles:public/assets/styles --no-source-map",
     "watch-styles": "sass src/styles:public/assets/styles --no-source-map --watch"
+  },
+  "engines": {
+    "node": "20.5.1",
+    "npm": "9.8.0"
   },
   "author": "",
   "license": "ISC",
