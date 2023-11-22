@@ -1,4 +1,8 @@
-require('dotenv').config()
+if(process.env.build)
+	require('dotenv').config({path: "../.env"})
+else
+	require('dotenv').config()
+
 const express = require("express")
 const { readFileSync, existsSync } = require('fs')
 const app = express()
@@ -32,13 +36,13 @@ app.use('/', require("./src/routes"))
 
 
 function init(){
-	console.log("listening on port: ", process.env.port)
+	console.log("listening on port: ", process.env.PORT)
 	const { createInitialAdmin } = require('./src/startup')
 	createInitialAdmin()
 }
 function mount(){
 	if(process.env.production != 1)
-		return app.listen(process.env.port, init)
+		return app.listen(process.env.PORT, init)
 	else if(existsSync("./storage/keys/private.key") && existsSync("./storage/keys/public.crt")){
 		let ssl = {
 			key: readFileSync("./storage/keys/private.key"),
@@ -46,7 +50,7 @@ function mount(){
 		}
 		return require('https')
 			.createServer(ssl, app)
-			.listen(process.env.port, init)
+			.listen(process.env.PORT, init)
 	}
 	else{
 		console.log("SSL files do not exists")
