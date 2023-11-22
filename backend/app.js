@@ -1,7 +1,11 @@
-if(process.env.build)
+if(process.env.build){
+	console.log("Using build configuration file")
 	require('dotenv').config({path: "../.env"})
-else
+}
+else{
+	console.log("Using development configuration file")
 	require('dotenv').config()
+}
 
 const express = require("express")
 const { readFileSync, existsSync } = require('fs')
