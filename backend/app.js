@@ -1,4 +1,5 @@
 if(process.env.build){
+	console.log(require("fs").existsSync("../.env"))
 	console.log("Using build configuration file")
 	require('dotenv').config({path: "../.env"})
 }
