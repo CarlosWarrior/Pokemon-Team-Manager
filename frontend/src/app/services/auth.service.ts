@@ -1,19 +1,19 @@
 import { Injectable, NgZone } from '@angular/core';
-import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { environment } from 'src/environments/environment';
-import { CredentialResponse, accounts } from 'google-one-tap';
+import { CredentialResponse, } from 'google-one-tap';
 import { BehaviorSubject, Observable, Subscription } from 'rxjs';
 import { Credentials, Session, Entity, Registration, Passwords } from '../interfaces/auth';
 import { MatSnackBar, MatSnackBarConfig, MatSnackBarRef, TextOnlySnackBar } from '@angular/material/snack-bar';
-import { ErrorResponse } from '../interfaces/requests';
+import { notifyError } from '../utils/errors';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
   constructor(private httpClient: HttpClient, private router: Router, private snackbar: MatSnackBar) {
-    const token = localStorage.getItem('token')
+    const token = localStorage.getItem(environment.tokenName)
     if(token)
       this._loadUser(token)
   }
@@ -22,38 +22,20 @@ export class AuthService {
     return this._entity$
   }
 
-  _request_snackbar_config: MatSnackBarConfig = { horizontalPosition: 'center', verticalPosition: 'top', duration: 10000}
-  _parseErrorResponse(error: HttpErrorResponse){
-    let _error:ErrorResponse | undefined
-    try {
-      if(typeof error.error == 'string')
-      _error = JSON.parse(error.error)
-      else if(error instanceof Object)
-      _error = error.error
-      
-    } catch (e) {
-      _error = undefined
-    }
-    return _error
-  }
-  _notifyError = (e: HttpErrorResponse, scope: string) => {
-    const error: ErrorResponse | undefined = this._parseErrorResponse(e)
-    this.snackbar.open(error && error.message || "An error occurred", "Ok", this._request_snackbar_config)
-    console.log(scope, {error})
-  }
+  _request_snackbar_config: MatSnackBarConfig = { horizontalPosition: 'center', verticalPosition: 'bottom', duration: 10000}
 
   _loadUser(token: string){
     const url: string = `${environment.api}/auth/load`
     this.httpClient.post<Session>(url, {}, { headers: { token } }).subscribe({
       next: (res: Session) => this._createSession(res),
-      error: () => localStorage.removeItem('token')
+      error: () => localStorage.removeItem(environment.tokenName)
     })
   }
 
   _createSession(res: Session){
     this.snackbar.open(`Welcome ${res.user.name}`, undefined, {...this._request_snackbar_config, duration: 2000})
     this._entity$.next(res.user)
-    localStorage.setItem('token', res.token)
+    localStorage.setItem(environment.tokenName, res.token)
     this.goToHome()
   }
   
@@ -62,7 +44,7 @@ export class AuthService {
   }
   
   logout(){
-    localStorage.removeItem('token')
+    localStorage.removeItem(environment.tokenName)
     this._entity$.next(undefined)
     this.router.navigate(['/auth/login'])
   }
@@ -71,7 +53,7 @@ export class AuthService {
     const url: string = `${environment.api}/auth/google`
     this.httpClient.post<Session>(url, google).subscribe({
       next: (res: Session) => this._createSession(res),
-      error: (e: HttpErrorResponse) => this._notifyError(e, "auth/google")
+      error: (e: HttpErrorResponse) => notifyError(e, "auth/google", this.snackbar, this._request_snackbar_config)
     })
   }
   
@@ -83,7 +65,7 @@ export class AuthService {
         callback()
       },
       error: (e: HttpErrorResponse) => {
-        this._notifyError(e, "auth/login")
+        notifyError(e, "auth/login", this.snackbar, this._request_snackbar_config)
         callback()
       }
     })
@@ -100,7 +82,7 @@ export class AuthService {
         callback()
       },
       error: (e: HttpErrorResponse) => {
-        this._notifyError(e, "auth/register")
+        notifyError(e, "auth/register", this.snackbar, this._request_snackbar_config)
         callback()
       }
     })
@@ -114,7 +96,7 @@ export class AuthService {
         callback()
       },
       error: (e: HttpErrorResponse) => {
-        this._notifyError(e, "auth/confirm")
+        notifyError(e, "auth/confirm", this.snackbar, this._request_snackbar_config)
         callback()
       }
     })
@@ -131,7 +113,7 @@ export class AuthService {
         callback()
       },
       error: (e: HttpErrorResponse) => {
-        this._notifyError(e, "auth/reset")
+        notifyError(e, "auth/reset", this.snackbar, this._request_snackbar_config)
         callback()
       }
     })
@@ -148,7 +130,7 @@ export class AuthService {
         callback()
       },
       error: (e: HttpErrorResponse) => {
-        this._notifyError(e, "auth/reset")
+        notifyError(e, "auth/reset", this.snackbar, this._request_snackbar_config)
         callback()
       }
     })
@@ -162,7 +144,7 @@ export class AuthService {
         callback()
       },
       error: (e: HttpErrorResponse) => {
-        this._notifyError(e, "auth/admin_login")
+        notifyError(e, "auth/admin_login", this.snackbar, this._request_snackbar_config)
         callback()
       }
     })
@@ -170,7 +152,7 @@ export class AuthService {
 
   sendAdminRegisterToken(email: string, callback: ()=>void){
     const url: string = `${environment.api}/auth/admin_register_token`
-    const token = localStorage.getItem('token') || ''
+    const token = localStorage.getItem(environment.tokenName) || ''
     return this.httpClient.post(url, {email}, {responseType: 'text', headers: {token}}).subscribe({
       next: () => {
         const reset_token_snackbar: MatSnackBarRef<TextOnlySnackBar> = this.snackbar.open(`An email was sent to: ${email}`, "Ok", this._request_snackbar_config)
@@ -180,7 +162,7 @@ export class AuthService {
         callback()
       },
       error: (e: HttpErrorResponse) => {
-        this._notifyError(e, "auth/sendAdminRegisterToken")
+        notifyError(e, "auth/sendAdminRegisterToken", this.snackbar, this._request_snackbar_config)
         callback()
       }
     })
@@ -194,7 +176,7 @@ export class AuthService {
         callback()
       },
       error: (e: HttpErrorResponse) => {
-        this._notifyError(e, "auth/admin_register")
+        notifyError(e, "auth/admin_register", this.snackbar, this._request_snackbar_config)
         callback()
       }
     })

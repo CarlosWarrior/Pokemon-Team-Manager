@@ -30,6 +30,10 @@ import { AdminLoginComponent } from './components/auth/admin-login/admin-login.c
 import { AdminRegisterTokenComponent } from './components/auth/admin-register-token/admin-register-token.component';
 import { AdminRegisterComponent } from './components/auth/admin-register/admin-register.component';
 import { LoadingButtonComponent } from './components/ui/loading-button/loading-button.component';
+import { TypesComponent } from './components/admin/types/types.component';
+import { TypeEditDialogComponent } from './components/admin/types/dialogs/type-edit-dialog/type-edit-dialog.component';
+import { TypeCreateDialogComponent } from './components/admin/types/dialogs/type-create-dialog/type-create-dialog.component';
+import { TypeDeleteDialogComponent } from './components/admin/types/dialogs/type-delete-dialog/type-delete-dialog.component';
 
 @NgModule({
   declarations: [
@@ -57,6 +61,10 @@ import { LoadingButtonComponent } from './components/ui/loading-button/loading-b
     AdminRegisterTokenComponent,
     AdminRegisterComponent,
     LoadingButtonComponent,
+    TypesComponent,
+    TypeEditDialogComponent,
+    TypeCreateDialogComponent,
+    TypeDeleteDialogComponent,
   ],
   imports: [
     BrowserModule,

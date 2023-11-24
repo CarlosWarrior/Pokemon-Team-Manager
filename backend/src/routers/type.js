@@ -73,10 +73,14 @@ TypeRouter.get('/:name', audit('Type-get'), _catch(TypeController.get))
  *                  image:
  *                      type: string
  *                      example: "https://archives.bulbagarden.net/media/upload/5/5e/Fire_icon.png"
+ *                  teracrystalImage:
+ *                      type: string
+ *                      example: "https://richi3f.github.io/pokemon-team-planner/static/img/type/fire_tera.png"
  *              required:
  *                  - name
  *                  - color
  *                  - image
+ *                  - teracrystalImage
  *          - in: header
  *            name: token
  *            required: true
@@ -86,7 +90,7 @@ TypeRouter.get('/:name', audit('Type-get'), _catch(TypeController.get))
  *          401:
  *              description: admin token invalid
  *          422:
- *              description: name or color or image not provided
+ *              description: name or color or image or teracrystalImage not provided
  *          200:
  *              description: Type created
  *          
@@ -106,6 +110,9 @@ TypeRouter.post('/', audit('Type-create'), _catch(TypeController.create))
  *            schema:
  *              type: object
  *              properties:
+ *                  _id:
+ *                      type: string
+ *                      example: "id"
  *                  name:
  *                      type: string
  *                      example: "Fire"
@@ -115,6 +122,11 @@ TypeRouter.post('/', audit('Type-create'), _catch(TypeController.create))
  *                  image:
  *                      type: string
  *                      example: "https://archives.bulbagarden.net/media/upload/5/5e/Fire_icon.png"
+ *                  teracrystalImage:
+ *                      type: string
+ *                      example: "https://richi3f.github.io/pokemon-team-planner/static/img/type/fire_tera.png"
+ *              required:
+ *                  - _id
  *          - in: header
  *            name: token
  *            required: true

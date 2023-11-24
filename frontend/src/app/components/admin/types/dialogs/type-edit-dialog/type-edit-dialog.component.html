@@ -1,0 +1,23 @@
+<div mat-dialog-content class="content">
+  <p>Edit a type</p>
+  <mat-form-field>
+    <mat-label>Name</mat-label>
+    <input matInput [(ngModel)]="data.name">
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Color</mat-label>
+    <input matInput [(ngModel)]="data.color">
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Image</mat-label>
+    <input matInput [(ngModel)]="data.image">
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Teracrystal Image</mat-label>
+    <input matInput [(ngModel)]="data.teracrystalImage">
+  </mat-form-field>
+</div>
+<div mat-dialog-actions class="actions">
+  <button mat-button (click)="onNoClick()">Cancel</button>
+  <button mat-raised-button color="primary" [mat-dialog-close]="data" cdkFocusInitial>Save</button>
+</div>
