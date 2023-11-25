@@ -1,0 +1,15 @@
+<div mat-dialog-content class="content">
+    <p>Create an Ability</p>
+    <mat-form-field>
+        <mat-label>Name</mat-label>
+        <input matInput [(ngModel)]="ability.name">
+    </mat-form-field>
+    <mat-form-field>
+        <mat-label>Description</mat-label>
+        <input matInput [(ngModel)]="ability.description">
+    </mat-form-field>
+</div>
+<div mat-dialog-actions class="actions">
+    <button mat-button (click)="onNoClick()">Cancel</button>
+    <button mat-raised-button color="primary" [mat-dialog-close]="ability" cdkFocusInitial>Create</button>
+</div>

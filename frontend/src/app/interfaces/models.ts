@@ -5,3 +5,9 @@ export interface TypeModel {
     image: string;
     teracrystalImage: string;
 }
+
+export interface AbilityModel {
+    _id?: string,
+    name: string;
+    description: string;
+}

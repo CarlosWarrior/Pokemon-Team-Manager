@@ -34,6 +34,9 @@ import { TypesComponent } from './components/admin/types/types.component';
 import { TypeEditDialogComponent } from './components/admin/types/dialogs/type-edit-dialog/type-edit-dialog.component';
 import { TypeCreateDialogComponent } from './components/admin/types/dialogs/type-create-dialog/type-create-dialog.component';
 import { TypeDeleteDialogComponent } from './components/admin/types/dialogs/type-delete-dialog/type-delete-dialog.component';
+import { AbilitiesCreateDialogComponent } from './components/admin/abilities/dialogs/abilities-create-dialog/abilities-create-dialog.component';
+import { AbilitiesEditDialogComponent } from './components/admin/abilities/dialogs/abilities-edit-dialog/abilities-edit-dialog.component';
+import { AbilitiesDeleteDialogComponent } from './components/admin/abilities/dialogs/abilities-delete-dialog/abilities-delete-dialog.component';
 
 @NgModule({
   declarations: [
@@ -65,6 +68,9 @@ import { TypeDeleteDialogComponent } from './components/admin/types/dialogs/type
     TypeEditDialogComponent,
     TypeCreateDialogComponent,
     TypeDeleteDialogComponent,
+    AbilitiesCreateDialogComponent,
+    AbilitiesEditDialogComponent,
+    AbilitiesDeleteDialogComponent,
   ],
   imports: [
     BrowserModule,
