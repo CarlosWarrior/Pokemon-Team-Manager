@@ -9,16 +9,16 @@ const AbilityController = {
         res.send('ability get')
     },
     create: async(req, res) => {
-        if(!req.body.name || !req.body.description)
+        if(!req.body.name || !req.body.effect)
             return raise({status: 422, message: "Body malformed" })
         let ability
 
         try {
             const name = req.body.name
-            const description = req.body.description
+            const effect = req.body.effect
             ability = await Ability.create({
                 name,
-                description,
+                effect,
             })
         } catch (error) {
             return raise({ status: 422, message: "Body malformed", errors: error})
@@ -26,7 +26,7 @@ const AbilityController = {
         res.send(ability)
     },
     update: async(req, res) => {
-        if(!req.body._id || (!req.body.name && ! req.body.description) )
+        if(!req.body._id || (!req.body.name && ! req.body.effect) )
             return raise({status: 422, message: "Body malformed" })
         const id = req.body._id
         let ability
@@ -41,9 +41,9 @@ const AbilityController = {
         const name = req.body.name
         if(name)
             ability.name = name
-        const description = req.body.description
-        if(description)
-            ability.description = description
+        const effect = req.body.effect
+        if(effect)
+            ability.effect = effect
         try {
             await ability.save()
         } catch (error) {

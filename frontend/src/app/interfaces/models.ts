@@ -9,5 +9,5 @@ export interface TypeModel {
 export interface AbilityModel {
     _id?: string,
     name: string;
-    description: string;
+    effect: string;
 }

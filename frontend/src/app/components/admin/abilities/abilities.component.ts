@@ -14,7 +14,7 @@ import { AbilitiesDeleteDialogComponent } from './dialogs/abilities-delete-dialo
 })
 export class AbilitiesComponent  {
 
-  displayedColumns: string[] = [ 'name', 'description' ];
+  displayedColumns: string[] = [ 'name', 'effect' ];
   abilities: AbilityModel[] = [];
   selected: AbilityModel[] = [];
   constructor(private ablilityService: AbilityService, public dialog: MatDialog){
