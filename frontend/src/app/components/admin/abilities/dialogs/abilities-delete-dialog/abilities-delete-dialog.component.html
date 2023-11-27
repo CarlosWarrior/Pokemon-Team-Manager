@@ -4,5 +4,5 @@
 </div>
 <div mat-dialog-actions class="actions">
     <button mat-button (click)="onNoClick()">Cancel</button>
-    <button mat-raised-button color="warn" [mat-dialog-close]="data" cdkFocusInitial>Delete</button>
+    <button mat-raised-button color="warn" (click)="action()" cdkFocusInitial>Delete</button>
 </div>

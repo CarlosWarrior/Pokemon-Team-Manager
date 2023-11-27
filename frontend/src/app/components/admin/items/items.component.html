@@ -1,4 +1,20 @@
-<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+<div>
+  <mat-toolbar color="primary">
+    <mat-toolbar-row>
+      <span>Moves</span>
+      <span class="spacer"></span>
+      <button (click)="openCreateDialog()" mat-icon-button matTooltip="Create">
+        <mat-icon>add</mat-icon>
+      </button>
+      <button (click)="openEditDialog()" *ngIf="selected.length == 1" mat-icon-button matTooltip="Edit {{ selected[0].name }}">
+        <mat-icon>edit</mat-icon>
+      </button>
+      <button (click)="openDeleteDialog()" *ngIf="selected.length" mat-icon-button matTooltip="Delete {{selected.length}}">
+        <mat-icon>delete</mat-icon>
+      </button>
+    </mat-toolbar-row>
+  </mat-toolbar>
+  <table mat-table [dataSource]="items" class="mat-elevation-z8">
           
     <!-- Name Column -->
     <ng-container matColumnDef="name">
@@ -20,7 +36,7 @@
   
 
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;" (click)="handleSelect(row)" [class.isSelected]="isSelected(row)"></tr>
   </table>
-  
-  
+</div>
+

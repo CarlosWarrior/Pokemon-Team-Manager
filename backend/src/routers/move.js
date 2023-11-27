@@ -116,6 +116,9 @@ MoveRouter.post('/', audit('Move-create'), _catch(MoveController.create))
  *            schema:
  *              type: object
  *              properties:
+ *                  _id:
+ *                      type: string
+ *                      example: "id"
  *                  name:
  *                      type: string
  *                      example: "Karate Chop"
@@ -135,12 +138,7 @@ MoveRouter.post('/', audit('Move-create'), _catch(MoveController.create))
  *                      type: string
  *                      example: "Fighting"
  *              required:
- *                  - name
- *                  - accuracy
- *                  - damage_class
- *                  - power
- *                  - pp
- *                  - type
+ *                  - _id
  *          - in: header
  *            name: token
  *            required: true
@@ -166,6 +164,7 @@ MoveRouter.put('/', audit('Move-update'), _catch(MoveController.update))
  *            moves: array
  *            items:
  *              type: string
+ *            example: ["id1", "id2"]
  *          - in: header
  *            name: token
  *            required: true

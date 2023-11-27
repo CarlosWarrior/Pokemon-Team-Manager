@@ -1,12 +1,16 @@
 <div mat-dialog-content class="content">
-    <p>Create an Ability</p>
+    <p>Create an item</p>
     <mat-form-field>
         <mat-label>Name</mat-label>
-        <input matInput [(ngModel)]="ability.name">
+        <input matInput [(ngModel)]="item.name">
     </mat-form-field>
     <mat-form-field>
-        <mat-label>Effect</mat-label>
-        <input matInput [(ngModel)]="ability.effect">
+        <mat-label>Description</mat-label>
+        <input matInput [(ngModel)]="item.description">
+    </mat-form-field>
+    <mat-form-field>
+        <mat-label>Image</mat-label>
+        <input matInput [(ngModel)]="item.image">
     </mat-form-field>
 </div>
 <div mat-dialog-actions class="actions">

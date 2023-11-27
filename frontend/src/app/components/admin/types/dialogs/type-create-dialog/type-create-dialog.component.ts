@@ -10,6 +10,10 @@ import { TypeModel } from 'src/app/interfaces/models';
 export class TypeCreateDialogComponent {
   constructor( public dialogRef: MatDialogRef<TypeCreateDialogComponent>) {}
   type: TypeModel = {name: '', image: '', teracrystalImage: '', color: ''}
+
+  action(){
+    this.dialogRef.close(this.type)
+  }
   onNoClick(): void {
     this.dialogRef.close();
   }

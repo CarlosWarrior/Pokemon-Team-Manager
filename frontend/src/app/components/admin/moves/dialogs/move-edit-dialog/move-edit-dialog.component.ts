@@ -15,6 +15,9 @@ interface MoveEditDialogData{
 export class MoveEditDialogComponent {
   constructor( public dialogRef: MatDialogRef<MoveEditDialogComponent>, @Inject(MAT_DIALOG_DATA) public data: MoveEditDialogData, ) {}
   
+  action(){
+    this.dialogRef.close(this.data)
+  }
   onNoClick(): void {
     this.dialogRef.close(undefined);
   }

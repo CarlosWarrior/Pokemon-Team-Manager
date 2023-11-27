@@ -7,6 +7,10 @@ div{
     .spacer {
         flex: 1 1 auto;
     }
+    mat-toolbar{
+        position: sticky;
+        top: 0;
+    }
     table {
         width: 100%;
         .mat-mdc-row .mat-mdc-cell {

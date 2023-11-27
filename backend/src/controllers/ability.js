@@ -26,7 +26,7 @@ const AbilityController = {
         res.send(ability)
     },
     update: async(req, res) => {
-        if(!req.body._id || await Type.count({_id: req.body._id}) < 1)
+        if(!req.body._id || await Ability.count({_id: req.body._id}) < 1)
             return raise({ status: 404, message: "Not found" })
         if(!req.body.name && ! req.body.effect )
             return raise({status: 422, message: "Body malformed" })

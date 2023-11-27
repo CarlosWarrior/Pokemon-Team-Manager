@@ -14,6 +14,10 @@ interface MoveCreateDialogData{
 export class MoveCreateDialogComponent {
   constructor( public dialogRef: MatDialogRef<MoveCreateDialogComponent>, @Inject(MAT_DIALOG_DATA) public data: MoveCreateDialogData, ) {}
   move: MoveModel = {name: "", type: "", category: MoveCategory.Physical, power: 0, accuracy: 0, pp: 0, effect: "", }
+  
+  action(){
+    this.dialogRef.close(this.move)
+  }
   onNoClick(): void {
     this.dialogRef.close(undefined);
   }

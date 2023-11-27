@@ -39,6 +39,9 @@ import { AbilitiesDeleteDialogComponent } from './components/admin/abilities/dia
 import { MoveCreateDialogComponent } from './components/admin/moves/dialogs/move-create-dialog/move-create-dialog.component';
 import { MoveEditDialogComponent } from './components/admin/moves/dialogs/move-edit-dialog/move-edit-dialog.component';
 import { MoveDeleteDialogComponent } from './components/admin/moves/dialogs/move-delete-dialog/move-delete-dialog.component';
+import { ItemCreateDialogComponent } from './components/admin/items/dialogs/item-create-dialog/item-create-dialog.component';
+import { ItemEditDialogComponent } from './components/admin/items/dialogs/item-edit-dialog/item-edit-dialog.component';
+import { ItemDeleteDialogComponent } from './components/admin/items/dialogs/item-delete-dialog/item-delete-dialog.component';
 
 @NgModule({
   declarations: [
@@ -75,6 +78,9 @@ import { MoveDeleteDialogComponent } from './components/admin/moves/dialogs/move
     MoveCreateDialogComponent,
     MoveEditDialogComponent,
     MoveDeleteDialogComponent,
+    ItemCreateDialogComponent,
+    ItemEditDialogComponent,
+    ItemDeleteDialogComponent,
   ],
   imports: [
     BrowserModule,

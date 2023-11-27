@@ -10,6 +10,9 @@ const BattleController = {
     create: async(req, res) => {
         res.send('battle create')
     },
+    delete: async(req, res) => {
+        res.send('battle delete')
+    },
     addLog: async(req, res) => {
         res.send('battle add log')
     }

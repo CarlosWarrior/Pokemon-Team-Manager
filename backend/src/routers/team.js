@@ -104,9 +104,9 @@ TeamRouter.post('/', audit('Team-create'), _catch(TeamController.create))
  *            schema:
  *              type: object
  *              properties:
- *                  id:
- *                      type: integer
- *                      example: 1
+ *                  _id:
+ *                      type: string
+ *                      example: "id"
  *                  user: 
  *                      type: string
  *                      example: "user"
@@ -129,15 +129,17 @@ TeamRouter.put('/', audit('Team-update'), _catch(TeamController.update))
 
 /**
  * @swagger
- * /admin/team/{name}:
+ * /admin/team/:
  *  delete:
  *      description: Endpoint to remove a team
  *      tags:
  *          - admin/team
  *      parameters:
- *          - in: path
- *            name: name
- *            required: true
+ *          - in: body
+ *            types: array
+ *            items:
+ *              type: string
+ *            example: ["id1", "id2"]
  *          - in: header
  *            name: token
  *            required: true

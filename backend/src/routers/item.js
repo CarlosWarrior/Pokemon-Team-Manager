@@ -101,6 +101,9 @@ ItemRouter.post('/', audit('Item-create'), _catch(ItemController.create))
  *            schema:
  *              type: object
  *              properties:
+ *                  _id:
+ *                      type: string
+ *                      example: "id"
  *                  name:
  *                      type: string
  *                      example: "Assault Vest"
@@ -123,15 +126,19 @@ ItemRouter.put('/', audit('Item-update'), _catch(ItemController.update))
 
 /**
  * @swagger
- * /admin/item/{name}:
+ * /admin/item/:
  *  delete:
  *      description: Endpoint to remove a single item
  *      tags:
  *          - admin/item
  *      parameters:
- *          - in: path
- *            name: name
- *            required: true
+ *          - in: body
+ *            items: items
+ *            schema:
+ *              type: array
+ *              items:
+ *                  type: string
+ *            example: ["id1", "id2"]
  *          - in: header
  *            name: token
  *            required: true
@@ -146,7 +153,7 @@ ItemRouter.put('/', audit('Item-update'), _catch(ItemController.update))
  *              description: A single item is removed
  *          
  */
-ItemRouter.delete('/:name', audit('Item-delete'), _catch(ItemController.delete))
+ItemRouter.delete('/', audit('Item-delete'), _catch(ItemController.delete))
 
 
 module.exports = ItemRouter

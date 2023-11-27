@@ -10,6 +10,9 @@ import { TypeModel } from 'src/app/interfaces/models';
 export class TypeEditDialogComponent {
   constructor( public dialogRef: MatDialogRef<TypeEditDialogComponent>, @Inject(MAT_DIALOG_DATA) public data: TypeModel, ) {}
   
+  action(){
+    this.dialogRef.close(this.data)
+  }
   onNoClick(): void {
     this.dialogRef.close();
   }

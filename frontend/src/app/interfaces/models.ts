@@ -27,3 +27,10 @@ export interface MoveModel {
     pp: Number,
     effect: String,
 }
+
+export interface ItemModel {
+    _id?: string,
+    name: string;
+    description: string;
+    image: string;
+}

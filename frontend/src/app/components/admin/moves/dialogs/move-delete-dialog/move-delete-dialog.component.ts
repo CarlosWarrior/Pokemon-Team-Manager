@@ -10,6 +10,9 @@ import { MoveModel } from 'src/app/interfaces/models';
 export class MoveDeleteDialogComponent {
   constructor( public dialogRef: MatDialogRef<MoveDeleteDialogComponent>, @Inject(MAT_DIALOG_DATA) public data: MoveModel[], ) {}
   
+  action(){
+    this.dialogRef.close(this.data)
+  }
   onNoClick(): void {
     this.dialogRef.close();
   }

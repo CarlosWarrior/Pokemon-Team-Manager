@@ -43,7 +43,7 @@ export class AbilitiesComponent  {
   }
   
   openEditDialog(){
-    const dialogRef = this.dialog.open(AbilitiesCreateDialogComponent, {
+    const dialogRef = this.dialog.open(AbilitiesEditDialogComponent, {
       data: this.selected[0],
     });
     

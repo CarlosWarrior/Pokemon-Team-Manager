@@ -10,6 +10,9 @@ import { AbilityModel } from 'src/app/interfaces/models';
 export class AbilitiesEditDialogComponent {
   constructor( public dialogRef: MatDialogRef<AbilitiesEditDialogComponent>, @Inject(MAT_DIALOG_DATA) public data: AbilityModel, ) {}
   
+  action(){
+    this.dialogRef.close(this.data)
+  }
   onNoClick(): void {
     this.dialogRef.close();
   }

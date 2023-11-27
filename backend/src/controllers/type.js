@@ -10,7 +10,7 @@ const TypeController = {
         res.send('type get')
     },
     create: async(req, res) => {
-         if(!req.body.name || !req.body.color || !req.body.image || !req.body.teracrystalImage)
+        if(!req.body.name || !req.body.color || !req.body.image || !req.body.teracrystalImage)
             return raise({status: 422, message: "Body malformed" })
         if(!isUrl(req.body.image) || !isUrl(req.body.teracrystalImage) || !isColor(req.body.color))
             return raise({status: 422, message: "Invalid formats" })

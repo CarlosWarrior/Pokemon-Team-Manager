@@ -150,9 +150,10 @@ TypeRouter.put('/', audit('Type-update'), _catch(TypeController.update))
  *          - admin/type
  *      parameters:
  *          - in: body
- *            moves: array
+ *            types: array
  *            items:
  *              type: string
+ *            example: ["id1", "id2"]
  *          - in: header
  *            name: token
  *            required: true

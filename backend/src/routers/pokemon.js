@@ -164,6 +164,9 @@ PokemonRouter.post('/', audit('Pokemon-create'), _catch(PokemonController.create
  *            schema:
  *              type: object
  *              properties:
+ *                  _id:
+ *                      type: string
+ *                      example: "id"
  *                  name:
  *                      type: string
  *                      example: "bulbasaur"
@@ -252,9 +255,11 @@ PokemonRouter.put('/', audit('Pokemon-update'), _catch(PokemonController.update)
  *      tags:
  *          - admin/pokemon
  *      parameters:
- *          - in: path
- *            name: name
- *            required: true
+ *          - in: body
+ *            types: array
+ *            items:
+ *              type: string
+ *            example: ["id1", "id2"]
  *          - in: header
  *            name: token
  *            required: true

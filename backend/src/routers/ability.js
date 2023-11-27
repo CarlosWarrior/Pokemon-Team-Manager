@@ -101,7 +101,10 @@ AbilityRouter.post('/', audit('Ability-create'), _catch(AbilityController.create
  *            name: ability
  *            schema:
  *              type: object
- *              properties:
+  *              properties:
+ *                  _id:
+ *                      type: string
+ *                      example: "id"
  *                  name:
  *                      type: string
  *                      example: "overgrow"
@@ -132,8 +135,6 @@ AbilityRouter.put('/', audit('Ability-update'), _catch(AbilityController.update)
  *      parameters:
  *          - in: body
  *            abilitites: array
- *            items:
- *              type: string
  *          - in: header
  *            name: token
  *            required: true

@@ -11,6 +11,9 @@ import { AbilityModel } from 'src/app/interfaces/models';
 export class AbilitiesCreateDialogComponent {
   constructor( public dialogRef: MatDialogRef<AbilitiesCreateDialogComponent>) {}
   ability: AbilityModel = {name: '', effect: ''}
+  action(){
+    this.dialogRef.close(this.ability)
+  }
   onNoClick(): void {
     this.dialogRef.close();
   }

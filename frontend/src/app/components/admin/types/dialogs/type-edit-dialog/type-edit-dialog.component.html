@@ -19,5 +19,5 @@
 </div>
 <div mat-dialog-actions class="actions">
   <button mat-button (click)="onNoClick()">Cancel</button>
-  <button mat-raised-button color="primary" [mat-dialog-close]="data" cdkFocusInitial>Save</button>
+  <button mat-raised-button color="primary" (click)="action()" cdkFocusInitial>Save</button>
 </div>
