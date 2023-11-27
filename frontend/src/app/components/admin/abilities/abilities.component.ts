@@ -34,7 +34,7 @@ export class AbilitiesComponent  {
   }
   
   openCreateDialog(){
-    const dialogRef = this.dialog.open(AbilitiesCreateDialogComponent);
+    const dialogRef = this.dialog.open(AbilitiesCreateDialogComponent, {data: {abilitiesNames: this.abilities.map((ability: AbilityModel) => ability.name)}});
     
     dialogRef.afterClosed().subscribe((newAbility: AbilityModel) => {
       if(newAbility)
@@ -44,7 +44,10 @@ export class AbilitiesComponent  {
   
   openEditDialog(){
     const dialogRef = this.dialog.open(AbilitiesEditDialogComponent, {
-      data: this.selected[0],
+      data: {
+        ability: this.selected[0],
+        abilityNames: this.abilities.map((ability: AbilityModel) => ability.name).filter(ab => ab != this.selected[0].name)
+      },
     });
     
     dialogRef.afterClosed().subscribe((editedAbility: AbilityModel) => {
