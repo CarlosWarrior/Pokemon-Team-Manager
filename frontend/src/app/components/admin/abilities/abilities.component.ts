@@ -28,16 +28,17 @@ export class AbilitiesComponent  {
   
   handleSelect(ability: AbilityModel){
     if(this.isSelected(ability))
-    this.selected = this.selected.filter(ab => ab.name != ability.name)
+      this.selected = this.selected.filter(ab => ab.name != ability.name)
     else
-    this.selected.push(ability)
+      this.selected.push(ability)
   }
   
   openCreateDialog(){
     const dialogRef = this.dialog.open(AbilitiesCreateDialogComponent);
     
     dialogRef.afterClosed().subscribe((newAbility: AbilityModel) => {
-      this.ablilityService.create(newAbility)
+      if(newAbility)
+        this.ablilityService.create(newAbility)
     });
   }
   
@@ -47,17 +48,19 @@ export class AbilitiesComponent  {
     });
     
     dialogRef.afterClosed().subscribe((editedAbility: AbilityModel) => {
-      this.ablilityService.edit(editedAbility)
+      if(editedAbility)
+        this.ablilityService.edit(editedAbility)
     });
   }
   
   openDeleteDialog(){
-    const dialogRef = this.dialog.open(AbilitiesCreateDialogComponent, {
+    const dialogRef = this.dialog.open(AbilitiesDeleteDialogComponent, {
       data: this.selected
     });
     
     dialogRef.afterClosed().subscribe((deletedAbilities: AbilityModel[]) => {
-      this.ablilityService.delete(deletedAbilities.map((ability: AbilityModel) => ability._id!))
+      if(deletedAbilities)
+        this.ablilityService.delete(deletedAbilities.map((ability: AbilityModel) => ability._id!))
     });
   }
 

@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { TypeModel } from '../../../interfaces/models'
-import { TypesService } from 'src/app/services/types.service';
+import { TypeService } from 'src/app/services/type.service';
 import { MatDialog } from '@angular/material/dialog';
 import { TypeEditDialogComponent } from './dialogs/type-edit-dialog/type-edit-dialog.component';
 import { TypeCreateDialogComponent } from './dialogs/type-create-dialog/type-create-dialog.component';
@@ -15,7 +15,7 @@ export class TypesComponent {
   displayedColumns: string[] = [ 'name', 'image', 'teracrystalImage' ];
   types: TypeModel[] = [];
   selected: TypeModel[] = [];
-  constructor(private typeService: TypesService, public dialog: MatDialog){
+  constructor(private typeService: TypeService, public dialog: MatDialog){
     this.typeService.getList()
     this.typeService.types.subscribe((types: TypeModel[]) => this.types = types)
   }
@@ -26,16 +26,17 @@ export class TypesComponent {
   
   handleSelect(element: TypeModel){
     if(this.isSelected(element))
-    this.selected = this.selected.filter(el => el.name != element.name)
+      this.selected = this.selected.filter(el => el.name != element.name)
     else
-    this.selected.push(element)
+      this.selected.push(element)
   }
   
   openCreateDialog(){
     const dialogRef = this.dialog.open(TypeCreateDialogComponent);
     
     dialogRef.afterClosed().subscribe((newType: TypeModel) => {
-      this.typeService.create(newType)
+      if(newType)
+        this.typeService.create(newType)
     });
   }
   
@@ -45,7 +46,8 @@ export class TypesComponent {
     });
     
     dialogRef.afterClosed().subscribe((editedType: TypeModel) => {
-      this.typeService.edit(editedType)
+      if(editedType)
+        this.typeService.edit(editedType)
     });
   }
   
@@ -55,7 +57,8 @@ export class TypesComponent {
     });
     
     dialogRef.afterClosed().subscribe((deletedTypes: TypeModel[]) => {
-      this.typeService.delete(deletedTypes.map((type: TypeModel) => type._id!))
+      if(deletedTypes)
+        this.typeService.delete(deletedTypes.map((type: TypeModel) => type._id!))
     });
   }
 }

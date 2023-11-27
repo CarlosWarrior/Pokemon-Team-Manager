@@ -124,15 +124,16 @@ AbilityRouter.put('/', audit('Ability-update'), _catch(AbilityController.update)
 
 /**
  * @swagger
- * /admin/ability/{name}:
+ * /admin/ability/:
  *  delete:
  *      description: Endpoint to remove a single ability
  *      tags:
  *          - admin/ability
  *      parameters:
- *          - in: path
- *            name: name
- *            required: true
+ *          - in: body
+ *            abilitites: array
+ *            items:
+ *              type: string
  *          - in: header
  *            name: token
  *            required: true
@@ -147,6 +148,6 @@ AbilityRouter.put('/', audit('Ability-update'), _catch(AbilityController.update)
  *              description: A single ability is removed
  *          
  */
-AbilityRouter.delete('/:name', audit('Ability-delete'), _catch(AbilityController.delete))
+AbilityRouter.delete('/', audit('Ability-delete'), _catch(AbilityController.delete))
 
 module.exports = AbilityRouter

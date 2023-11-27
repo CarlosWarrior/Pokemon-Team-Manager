@@ -32,7 +32,9 @@ const TypeController = {
         res.send(type)
     },
     update: async(req, res) => {
-        if(!req.body._id || (!req.body.name && ! req.body.color && !req.body.image && !req.body.teracrystalImage) )
+        if(!req.body._id || await Type.count({_id: req.body._id}) < 1)
+            return raise({ status: 404, message: "Not found" })
+        if(!req.body.name && ! req.body.color && !req.body.image && !req.body.teracrystalImage )
             return raise({status: 422, message: "Body malformed" })
         if(( req.body.image && !isUrl(req.body.image)) || ( req.body.teracrystalImage && !isUrl(req.body.teracrystalImage) )|| ( req.body.color && !isColor(req.body.color) ))
             return raise({status: 422, message: "Body malformed" })

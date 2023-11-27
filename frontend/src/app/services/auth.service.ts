@@ -46,7 +46,7 @@ export class AuthService {
   logout(){
     localStorage.removeItem(environment.tokenName)
     this._entity$.next(undefined)
-    this.router.navigate(['/auth/login'])
+    this.router.navigate(['/login'])
   }
   
   google(google: CredentialResponse){

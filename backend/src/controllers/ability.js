@@ -26,7 +26,9 @@ const AbilityController = {
         res.send(ability)
     },
     update: async(req, res) => {
-        if(!req.body._id || (!req.body.name && ! req.body.effect) )
+        if(!req.body._id || await Type.count({_id: req.body._id}) < 1)
+            return raise({ status: 404, message: "Not found" })
+        if(!req.body.name && ! req.body.effect )
             return raise({status: 422, message: "Body malformed" })
         const id = req.body._id
         let ability
@@ -52,7 +54,7 @@ const AbilityController = {
         res.send(ability)
     },
     delete: async(req, res) => {
-        if(!req.body.name || !req.body.abilities.length)
+        if(!req.body.abilities || !req.body.abilities.length)
             return raise({status: 422, message: "Body malformed" })
         const abilities = req.body.abilities
         const _abilities = []

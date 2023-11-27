@@ -1,5 +1,13 @@
 const { Schema, model } = require("mongoose")
 const { isUrl, isColor } = require("../utils/formats")
+const typeExists = async(typeIds, model) => {
+    let count = true
+    for (let typeIndex = 0; typeIndex < typeIds.length; typeIndex++) {
+        const typeName = typeIds[typeIndex];
+        count = count && await model.countDocuments({ _id: typeName })
+    }
+    return count
+}
 const TypeSchema = new Schema({
     name: { 
         type: String, 
@@ -20,6 +28,21 @@ const TypeSchema = new Schema({
         type: String, 
         required: true,
         validate: { validator: isUrl }
+    },
+    attackAdvantage: {
+        type: [String],
+        validate: { validator: async(value) => await typeExists(value, this) },
+        default: []
+    },
+    defenseAdvantage: {
+        type: [String],
+        validate: { validator: async(value) => await typeExists(value, this) },
+        default: []
+    },
+    defenseWeakness: {
+        type: [String],
+        validate: { validator: async(value) => await typeExists(value, this) },
+        default: []
     },
     createdAt: { type: Date, default: Date.now },
     updatedAt: { type: Date, default: Date.now },

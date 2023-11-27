@@ -11,3 +11,19 @@ export interface AbilityModel {
     name: string;
     effect: string;
 }
+
+export enum MoveCategory{
+    Physical = "physical",
+    Special = "special",
+    Status = "status",
+}
+export interface MoveModel {
+    _id?: string,
+    name: String,
+    type: String,
+    category: MoveCategory,
+    power: Number,
+    accuracy: Number,
+    pp: Number,
+    effect: String,
+}

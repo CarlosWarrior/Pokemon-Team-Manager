@@ -10,3 +10,7 @@ exports.isUrl = function isUrl(urlStr) {
 exports.isColor = function isColor(colorStr) {
   return /^#[0-9A-F]{6}$/i.test(colorStr) || /^#[0-9A-F]{6}[0-9a-f]{0,2}$/i.test(colorStr)
 }
+
+exports.isNumber = function isNumber(value){
+  return (typeof value === 'number' || (typeof value === 'string' && !isNaN(+value)));
+}

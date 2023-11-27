@@ -14,7 +14,6 @@ import { AccountComponent } from './components/user/account/account.component';
 import { FooterComponent } from './components/ui/footer/footer.component';
 import { LoginComponent } from './components/auth/login/login.component';
 import { RegisterComponent } from './components/auth/register/register.component';
-import { NaturesComponent } from './components/admin/natures/natures.component';
 import { AbilitiesComponent } from './components/admin/abilities/abilities.component';
 import { ActiveDirective } from './directives/ui/active.directive';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -37,6 +36,9 @@ import { TypeDeleteDialogComponent } from './components/admin/types/dialogs/type
 import { AbilitiesCreateDialogComponent } from './components/admin/abilities/dialogs/abilities-create-dialog/abilities-create-dialog.component';
 import { AbilitiesEditDialogComponent } from './components/admin/abilities/dialogs/abilities-edit-dialog/abilities-edit-dialog.component';
 import { AbilitiesDeleteDialogComponent } from './components/admin/abilities/dialogs/abilities-delete-dialog/abilities-delete-dialog.component';
+import { MoveCreateDialogComponent } from './components/admin/moves/dialogs/move-create-dialog/move-create-dialog.component';
+import { MoveEditDialogComponent } from './components/admin/moves/dialogs/move-edit-dialog/move-edit-dialog.component';
+import { MoveDeleteDialogComponent } from './components/admin/moves/dialogs/move-delete-dialog/move-delete-dialog.component';
 
 @NgModule({
   declarations: [
@@ -52,7 +54,6 @@ import { AbilitiesDeleteDialogComponent } from './components/admin/abilities/dia
     FooterComponent,
     LoginComponent,
     RegisterComponent,
-    NaturesComponent,
     AbilitiesComponent,
     ActiveDirective,
     PasswordResetComponent,
@@ -71,6 +72,9 @@ import { AbilitiesDeleteDialogComponent } from './components/admin/abilities/dia
     AbilitiesCreateDialogComponent,
     AbilitiesEditDialogComponent,
     AbilitiesDeleteDialogComponent,
+    MoveCreateDialogComponent,
+    MoveEditDialogComponent,
+    MoveDeleteDialogComponent,
   ],
   imports: [
     BrowserModule,

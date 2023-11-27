@@ -9,6 +9,9 @@
         <button (click)="openEditDialog()" *ngIf="selected.length == 1" mat-icon-button matTooltip="Edit {{ selected[0].name }}">
           <mat-icon>edit</mat-icon>
         </button>
+        <button (click)="openDeleteDialog()" *ngIf="selected.length" mat-icon-button matTooltip="Delete {{selected.length}}">
+          <mat-icon>delete</mat-icon>
+        </button>
       </mat-toolbar-row>
     </mat-toolbar>
     <table mat-table matSort [dataSource]="abilities" class="mat-elevation-z8">

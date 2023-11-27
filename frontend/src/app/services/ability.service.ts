@@ -54,10 +54,10 @@ export class AbilityService {
 
   }
 
-  delete(abilitiess: string[]){
+  delete(abilities: string[]){
     const token = localStorage.getItem(environment.tokenName)
     if(token){
-      this.httpClient.delete<string[]>(`${environment.api}/admin/ability/`, { body: { abilitiess }, headers: { token } }).subscribe({
+      this.httpClient.delete<string[]>(`${environment.api}/admin/ability/`, { body: { abilities }, headers: { token } }).subscribe({
         next:(abilities: string[]) => this.abilities.next(this.abilities.getValue().filter((_ability: AbilityModel) => !abilities.includes(_ability._id!))),
         error:(e: HttpErrorResponse) => notifyError(e, "admin/abilities/delete", this.snackbar, this._request_snackbar_config)
       })

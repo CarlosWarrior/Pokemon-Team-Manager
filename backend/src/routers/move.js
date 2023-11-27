@@ -156,15 +156,16 @@ MoveRouter.post('/', audit('Move-create'), _catch(MoveController.create))
 MoveRouter.put('/', audit('Move-update'), _catch(MoveController.update))
 /**
  * @swagger
- * /admin/move/{name}:
+ * /admin/move/:
  *  delete:
  *      description: Endpoint to remove a single move
  *      tags:
  *          - admin/move
  *      parameters:
- *          - in: path
- *            name: name
- *            required: true
+ *          - in: body
+ *            moves: array
+ *            items:
+ *              type: string
  *          - in: header
  *            name: token
  *            required: true
@@ -179,6 +180,6 @@ MoveRouter.put('/', audit('Move-update'), _catch(MoveController.update))
  *              description: A single move is removed
  *          
  */
-MoveRouter.delete('/:name', audit('Move-delete'), _catch(MoveController.delete))
+MoveRouter.delete('/', audit('Move-delete'), _catch(MoveController.delete))
 
 module.exports = MoveRouter

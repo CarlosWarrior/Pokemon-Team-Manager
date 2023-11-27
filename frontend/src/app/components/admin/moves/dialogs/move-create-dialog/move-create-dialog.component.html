@@ -1,0 +1,43 @@
+<div mat-dialog-content class="content">
+    <p>Create a move</p>
+    <mat-form-field>
+        <mat-label>Name</mat-label>
+        <input matInput [(ngModel)]="move.name">
+    </mat-form-field>
+
+
+    <mat-form-field>
+    <mat-label>Type</mat-label>
+    <mat-select [(value)]="move.type">
+        <mat-option *ngFor="let type of data.types" value="{{type.name}}">{{type.name}}</mat-option>
+    </mat-select>
+    </mat-form-field>
+
+    <mat-form-field>
+    <mat-label>Category</mat-label>
+    <mat-select [(value)]="move.category">
+        <mat-option *ngFor="let category of data.moveCategories" value="{{category}}">{{category}}</mat-option>
+    </mat-select>
+    </mat-form-field>
+
+    <mat-form-field>
+        <mat-label>Power</mat-label>
+        <input matInput [(ngModel)]="move.power">
+    </mat-form-field>
+    <mat-form-field>
+        <mat-label>Accuracy</mat-label>
+        <input matInput [(ngModel)]="move.accuracy">
+    </mat-form-field>
+    <mat-form-field>
+        <mat-label>Power Points</mat-label>
+        <input matInput [(ngModel)]="move.pp">
+    </mat-form-field>
+    <mat-form-field>
+        <mat-label>Effect</mat-label>
+        <input matInput [(ngModel)]="move.effect">
+    </mat-form-field>
+</div>
+<div mat-dialog-actions class="actions">
+    <button mat-button (click)="onNoClick()">Cancel</button>
+    <button mat-raised-button color="primary" [mat-dialog-close]="move" cdkFocusInitial>Create</button>
+</div>

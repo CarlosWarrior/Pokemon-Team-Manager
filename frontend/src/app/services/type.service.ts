@@ -12,7 +12,7 @@ const _typeSort = (a: TypeModel, b: TypeModel) => a.name > b.name ? 1 : -1
 @Injectable({
   providedIn: 'root'
 })
-export class TypesService {
+export class TypeService {
 
   constructor(private httpClient: HttpClient,  private snackbar: MatSnackBar) { }
   _request_snackbar_config: MatSnackBarConfig = { horizontalPosition: 'center', verticalPosition: 'top', duration: 10000}

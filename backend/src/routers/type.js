@@ -143,15 +143,16 @@ TypeRouter.put('/', audit('Type-update'), _catch(TypeController.update))
 
 /**
  * @swagger
- * /admin/type/{name}:
+ * /admin/type/:
  *  delete:
  *      description: Endpoint to remove a single type
  *      tags:
  *          - admin/type
  *      parameters:
- *          - in: path
- *            name: name
- *            required: true
+ *          - in: body
+ *            moves: array
+ *            items:
+ *              type: string
  *          - in: header
  *            name: token
  *            required: true

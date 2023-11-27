@@ -6,7 +6,6 @@ import { userGuard } from './guards/user.guard';
 import { PokemonsComponent } from './components/admin/pokemons/pokemons.component';
 import { ItemsComponent } from './components/admin/items/items.component';
 import { MovesComponent } from './components/admin/moves/moves.component';
-import { NaturesComponent } from './components/admin/natures/natures.component';
 import { AbilitiesComponent } from './components/admin/abilities/abilities.component';
 import { TeambuilderComponent } from './components/user/teambuilder/teambuilder.component';
 import { TeamsComponent } from './components/user/teams/teams.component';
@@ -41,7 +40,6 @@ const routes: Routes = [
     {path: "items", component: ItemsComponent},
     {path: "types", component: TypesComponent },
     {path: "moves", component: MovesComponent},
-    {path: "nature", component: NaturesComponent},
     {path: "ability", component: AbilitiesComponent},
     {path: "sendAdminRegisterToken", component: AdminRegisterTokenComponent}
     
