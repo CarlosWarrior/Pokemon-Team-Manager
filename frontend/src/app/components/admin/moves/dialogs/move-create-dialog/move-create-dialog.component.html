@@ -1,8 +1,11 @@
 <div mat-dialog-content class="content">
+    <form (ngSubmit)="action()"  [formGroup]="form">
     <p>Create a move</p>
+
     <mat-form-field>
         <mat-label>Name</mat-label>
-        <input matInput [(ngModel)]="move.name">
+        <input matInput formControlName="name">
+        <mat-error *ngIf="form.controls['name'].invalid">{{nameError()}}</mat-error>
     </mat-form-field>
 
 
@@ -22,21 +25,27 @@
 
     <mat-form-field>
         <mat-label>Power</mat-label>
-        <input matInput [(ngModel)]="move.power">
+        <input matInput formControlName="power">
+        <mat-error *ngIf="form.controls['power'].invalid">{{powerError()}}</mat-error>
     </mat-form-field>
     <mat-form-field>
         <mat-label>Accuracy</mat-label>
-        <input matInput [(ngModel)]="move.accuracy">
+        <input matInput formControlName="accuracy">
+        <mat-error *ngIf="form.controls['accuracy'].invalid">{{accuracyError()}}</mat-error>
     </mat-form-field>
     <mat-form-field>
         <mat-label>Power Points</mat-label>
-        <input matInput [(ngModel)]="move.pp">
+        <input matInput formControlName="pp">
+        <mat-error *ngIf="form.controls['pp'].invalid">{{ppError()}}</mat-error>
     </mat-form-field>
     <mat-form-field>
         <mat-label>Effect</mat-label>
-        <input matInput [(ngModel)]="move.effect">
+        <input matInput formControlName="effect">
+        <mat-error *ngIf="form.controls['effect'].invalid">{{effectError()}}</mat-error>
     </mat-form-field>
+    </form>
 </div>
+
 <div mat-dialog-actions class="actions">
     <button mat-button (click)="onNoClick()">Cancel</button>
     <button mat-raised-button color="primary" (click)="action()" cdkFocusInitial>Create</button>
