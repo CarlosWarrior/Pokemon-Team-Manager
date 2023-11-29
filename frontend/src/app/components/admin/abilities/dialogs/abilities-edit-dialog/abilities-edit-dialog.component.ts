@@ -1,11 +1,8 @@
 import { Component, Inject } from '@angular/core';
-import { AbstractControl, FormControl, FormGroup, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
+import { AbstractControl, FormControl, FormGroup, ValidationErrors, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { AbilityModel } from 'src/app/interfaces/models';
 
-
-const _uniqueValidator = (_control:FormGroup, abilityNames:String[]): ValidatorFn => (control: AbstractControl): ValidationErrors | null => 
-  abilityNames.includes(_control.controls['name'].value ) ? {exists: {value: control.value}} : null
 
 interface AbilitiesEditDialogData{
   ability: AbilityModel,
@@ -47,7 +44,7 @@ export class AbilitiesEditDialogComponent {
   
   action(){
     if(this.form.valid)
-      this.dialogRef.close(this.data)
+      this.dialogRef.close(this.form.value)
   }
   onNoClick(): void {
     this.dialogRef.close();

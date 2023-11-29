@@ -34,7 +34,11 @@ export class AbilitiesComponent  {
   }
   
   openCreateDialog(){
-    const dialogRef = this.dialog.open(AbilitiesCreateDialogComponent, {data: {abilitiesNames: this.abilities.map((ability: AbilityModel) => ability.name)}});
+    const dialogRef = this.dialog.open(AbilitiesCreateDialogComponent, {
+      data: {
+        abilityNames: this.abilities.map((ability: AbilityModel) => ability.name)
+      }
+    });
     
     dialogRef.afterClosed().subscribe((newAbility: AbilityModel) => {
       if(newAbility)
