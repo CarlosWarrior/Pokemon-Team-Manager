@@ -25,6 +25,10 @@ export class AbilitiesComponent  {
   isSelected(ability: AbilityModel){
     return this.selected.find(ab => ab.name == ability.name)
   }
+
+  unselect(){
+    this.selected = []
+  }
   
   handleSelect(ability: AbilityModel){
     if(this.isSelected(ability))
@@ -43,7 +47,8 @@ export class AbilitiesComponent  {
     dialogRef.afterClosed().subscribe((newAbility: AbilityModel) => {
       if(newAbility)
         this.ablilityService.create(newAbility)
-    });
+        this.unselect()
+      });
   }
   
   openEditDialog(){
@@ -57,7 +62,8 @@ export class AbilitiesComponent  {
     dialogRef.afterClosed().subscribe((editedAbility: AbilityModel) => {
       if(editedAbility)
         this.ablilityService.edit(editedAbility)
-    });
+        this.unselect()
+      });
   }
   
   openDeleteDialog(){
@@ -68,7 +74,8 @@ export class AbilitiesComponent  {
     dialogRef.afterClosed().subscribe((deletedAbilities: AbilityModel[]) => {
       if(deletedAbilities)
         this.ablilityService.delete(deletedAbilities.map((ability: AbilityModel) => ability._id!))
-    });
+        this.unselect()
+      });
   }
 
 }

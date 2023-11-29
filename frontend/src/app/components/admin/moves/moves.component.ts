@@ -38,6 +38,8 @@ export class MovesComponent {
   openCreateDialog(){
     const dialogRef = this.dialog.open(MoveCreateDialogComponent, {
       data: { 
+        
+        moveNames: this.moves.map((move: MoveModel) => move.name),
         moveCategories: this.moveCategories,
         types: this.types,
       }
@@ -46,6 +48,7 @@ export class MovesComponent {
     dialogRef.afterClosed().subscribe((newMove: MoveModel) => {
       if(newMove)
         this.moveService.create(newMove)
+      this.unselect()
     });
   }
   
@@ -53,6 +56,7 @@ export class MovesComponent {
     const dialogRef = this.dialog.open(MoveEditDialogComponent, {
       data: {
         move: this.selected[0],
+        moveNames: this.moves.map((move: MoveModel) => move.name).filter(ab => ab != this.selected[0].name),
         moveCategories: this.moveCategories,
         types: this.types,
       }
@@ -61,6 +65,7 @@ export class MovesComponent {
     dialogRef.afterClosed().subscribe((editedMove: MoveModel) => {
       if(editedMove)
         this.moveService.edit(editedMove)
+      this.unselect()
     });
   }
   
@@ -72,6 +77,11 @@ export class MovesComponent {
     dialogRef.afterClosed().subscribe((deletedMoves: MoveModel[]) => {
       if(deletedMoves)
         this.moveService.delete(deletedMoves.map((move: MoveModel) => move._id!))
+      this.unselect()
     });
+  }
+
+  unselect(){
+    this.selected = []
   }
 }

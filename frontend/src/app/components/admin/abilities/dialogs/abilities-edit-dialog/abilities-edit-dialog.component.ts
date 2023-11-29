@@ -19,7 +19,7 @@ export class AbilitiesEditDialogComponent {
     const uniqueValidator = (control: AbstractControl): ValidationErrors | null => this.data.abilityNames.includes(control.value ) ? {exists: {value: control.value}} : null
     this.form = new FormGroup({
       name: new FormControl(data.ability.name, [Validators.required, Validators.minLength(3), Validators.maxLength(32), uniqueValidator]),
-      effect:new FormControl(data.ability.effect, [Validators.required, Validators.minLength(6), Validators.maxLength(32)]),
+      effect:new FormControl(data.ability.effect, [Validators.required, Validators.minLength(1)]),
     })
   }
   form: FormGroup
@@ -35,16 +35,17 @@ export class AbilitiesEditDialogComponent {
   }
 
   effectError(){
+    console.log(this.form.controls)
     if(this.form.controls['effect'].hasError('required'))
       return 'Effect required'
     if(this.form.controls['effect'].hasError('minlength'))
-      return 'Minimum 3 charaters'
+      return 'Minimum 1 charaters'
     return ''
   }
   
   action(){
     if(this.form.valid)
-      this.dialogRef.close(this.form.value)
+      this.dialogRef.close({...this.form.value, _id: this.data.ability._id})
   }
   onNoClick(): void {
     this.dialogRef.close();
