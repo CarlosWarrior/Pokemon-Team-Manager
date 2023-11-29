@@ -1,16 +1,22 @@
 const {Schema, model} = require("mongoose")
 const MoveCategories = require("./enums/MoveCategory")
+const Type = require("./type")
 const isMovecategory = (value) => {
     return MoveCategories.includes(value)
+}
+const typeExists = async(type) => {
+    return await Type.countDocuments({ name: type }) > 0
 }
 const MoveSchema = new Schema({
     name: {
         type: String,
         required: true,
+        unique: true,
     },
     type: {
         type: String,
         required: true,
+        validate: { validator: async(value) => typeExists(value) },
     },
     category: {
         type: String,

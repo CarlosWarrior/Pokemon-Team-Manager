@@ -1,9 +1,9 @@
 const { Schema, model } = require("mongoose")
 const { isUrl, isColor } = require("../utils/formats")
-const typeExists = async(typeIds, model) => {
+const typeExists = async(typeNames, model) => {
     let count = true
-    for (let typeIndex = 0; typeIndex < typeIds.length; typeIndex++) {
-        const typeName = typeIds[typeIndex];
+    for (let typeIndex = 0; typeIndex < typeNames.length; typeIndex++) {
+        const typeName = typeNames[typeIndex];
         count = count && await model.countDocuments({ _id: typeName })
     }
     return count

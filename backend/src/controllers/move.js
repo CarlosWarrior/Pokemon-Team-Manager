@@ -3,7 +3,6 @@ const Move = require('../models/move')
 const Type = require('../models/type')
 const MoveCategories = require('../models/enums/MoveCategory')
 const { isNumber } = require("../utils/formats")
-const move = require("../models/move")
 
 const MoveController = {
     list: async(req, res) => {
@@ -43,7 +42,7 @@ const MoveController = {
                 effect,
             })
         } catch (error) {
-            return raise({ status:500, message: "Move creation failked", errors: error})
+            return raise({ status:500, message: "Move creation failed", errors: error})
         }
 
         return res.send(move)

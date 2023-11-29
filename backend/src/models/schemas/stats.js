@@ -1,8 +1,11 @@
 const {Schema, model} = require("mongoose")
 const StatSchema = new Schema({
-    
-    createdAt: { type: Date, default: Date.now },
-    updatedAt: { type: Date, default: Date.now },
+    hp: Number,
+    attack: Number,
+    defense: Number,
+    specialAttack: Number,
+    specialDefense: Number,
+    speed: Number,
 })
 
 module.exports = StatSchema
