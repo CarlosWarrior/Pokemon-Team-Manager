@@ -12,7 +12,8 @@ import { TypeDeleteDialogComponent } from './dialogs/type-delete-dialog/type-del
   styleUrls: ['./types.component.scss']
 })
 export class TypesComponent {
-  displayedColumns: string[] = [ 'name', 'image', 'teracrystalImage' ];
+
+  displayedColumns: string[] = [ 'name', 'image', 'teracrystalImage', 'color', 'attackAdvantage', 'defenseAdvantage', 'defenseWeakness' ];
   types: TypeModel[] = [];
   selected: TypeModel[] = [];
   constructor(private typeService: TypeService, public dialog: MatDialog){
@@ -23,6 +24,10 @@ export class TypesComponent {
   isSelected(element: TypeModel){
     return this.selected.find(el => el.name == element.name)
   }
+
+  unselect(){
+    this.selected = []
+  }
   
   handleSelect(element: TypeModel){
     if(this.isSelected(element))
@@ -32,22 +37,33 @@ export class TypesComponent {
   }
   
   openCreateDialog(){
-    const dialogRef = this.dialog.open(TypeCreateDialogComponent);
+    const dialogRef = this.dialog.open(TypeCreateDialogComponent, {
+      data: { 
+        typeNames: this.types.map((type: TypeModel) => type.name)
+
+      }
+    });
     
     dialogRef.afterClosed().subscribe((newType: TypeModel) => {
       if(newType)
         this.typeService.create(newType)
+      this.unselect()
     });
   }
   
   openEditDialog(){
     const dialogRef = this.dialog.open(TypeEditDialogComponent, {
-      data: this.selected[0],
+      data: {
+        type: this.selected[0],
+        typeNames: this.types.map((type: TypeModel) => type.name).filter(ab => ab != this.selected[0].name),
+
+      }
     });
     
     dialogRef.afterClosed().subscribe((editedType: TypeModel) => {
       if(editedType)
         this.typeService.edit(editedType)
+      this.unselect()
     });
   }
   
@@ -59,6 +75,8 @@ export class TypesComponent {
     dialogRef.afterClosed().subscribe((deletedTypes: TypeModel[]) => {
       if(deletedTypes)
         this.typeService.delete(deletedTypes.map((type: TypeModel) => type._id!))
+
+      this.unselect()
     });
   }
 }

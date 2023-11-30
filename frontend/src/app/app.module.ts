@@ -42,6 +42,7 @@ import { MoveDeleteDialogComponent } from './components/admin/moves/dialogs/move
 import { ItemCreateDialogComponent } from './components/admin/items/dialogs/item-create-dialog/item-create-dialog.component';
 import { ItemEditDialogComponent } from './components/admin/items/dialogs/item-edit-dialog/item-edit-dialog.component';
 import { ItemDeleteDialogComponent } from './components/admin/items/dialogs/item-delete-dialog/item-delete-dialog.component';
+import { MatFormField } from '@angular/material/form-field';
 
 @NgModule({
   declarations: [
@@ -89,7 +90,8 @@ import { ItemDeleteDialogComponent } from './components/admin/items/dialogs/item
     MaterialModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -4,6 +4,9 @@ export interface TypeModel {
     color: string;
     image: string;
     teracrystalImage: string;
+    attackAdvantage: string[],
+    defenseAdvantage: string[],
+    defenseWeakness: string[],
 }
 
 export interface AbilityModel {

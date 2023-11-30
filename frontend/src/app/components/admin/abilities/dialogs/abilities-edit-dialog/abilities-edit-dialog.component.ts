@@ -45,7 +45,7 @@ export class AbilitiesEditDialogComponent {
   
   action(){
     if(this.form.valid)
-      this.dialogRef.close({...this.form.value, _id: this.data.ability._id})
+      this.dialogRef.close({...this.form.value, _id: this.data.ability._id}) 
   }
   onNoClick(): void {
     this.dialogRef.close();
