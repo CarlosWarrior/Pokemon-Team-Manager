@@ -59,7 +59,7 @@ export class ItemsComponent {
     
     dialogRef.afterClosed().subscribe((deletedItems: ItemModel[]) => {
       if(deletedItems)
-        this.itemService.delete(deletedItems.map((type: ItemModel) => type._id!))
+        this.itemService.delete(deletedItems.map((item: ItemModel) => item._id!))
     });
   }
 }

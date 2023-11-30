@@ -21,9 +21,12 @@ import { AdminLoginComponent } from './components/auth/admin-login/admin-login.c
 import { AdminRegisterTokenComponent } from './components/auth/admin-register-token/admin-register-token.component';
 import { AdminRegisterComponent } from './components/auth/admin-register/admin-register.component';
 import { TypesComponent } from './components/admin/types/types.component';
+import { HomeComponent } from './components/ui/home/home.component';
 
 
 const routes: Routes = [
+  {path: '', component: HomeComponent },
+
   {path: '', canActivate:[authGuard], children:[
     {path: "register", component: RegisterComponent},
     {path: "confirm", component: ConfirmComponent},

@@ -42,6 +42,11 @@ import { MoveDeleteDialogComponent } from './components/admin/moves/dialogs/move
 import { ItemCreateDialogComponent } from './components/admin/items/dialogs/item-create-dialog/item-create-dialog.component';
 import { ItemEditDialogComponent } from './components/admin/items/dialogs/item-edit-dialog/item-edit-dialog.component';
 import { ItemDeleteDialogComponent } from './components/admin/items/dialogs/item-delete-dialog/item-delete-dialog.component';
+import { HomeComponent } from './components/ui/home/home.component';
+import { PokemonCreateDialogComponent } from './components/admin/pokemons/dialogs/pokemon-create-dialog/pokemon-create-dialog.component';
+import { PokemonEditDialogComponent } from './components/admin/pokemons/dialogs/pokemon-edit-dialog/pokemon-edit-dialog.component';
+import { PokemonDeleteDialogComponent } from './components/admin/pokemons/dialogs/pokemon-delete-dialog/pokemon-delete-dialog.component';
+import { PokemonAdminCardComponent } from './components/admin/pokemons/pokemon-admin-card/pokemon-admin-card.component';
 
 @NgModule({
   declarations: [
@@ -81,6 +86,11 @@ import { ItemDeleteDialogComponent } from './components/admin/items/dialogs/item
     ItemCreateDialogComponent,
     ItemEditDialogComponent,
     ItemDeleteDialogComponent,
+    HomeComponent,
+    PokemonCreateDialogComponent,
+    PokemonEditDialogComponent,
+    PokemonDeleteDialogComponent,
+    PokemonAdminCardComponent,
   ],
   imports: [
     BrowserModule,

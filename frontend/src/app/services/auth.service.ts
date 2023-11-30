@@ -13,9 +13,12 @@ import { notifyError } from '../utils/errors';
 })
 export class AuthService {
   constructor(private httpClient: HttpClient, private router: Router, private snackbar: MatSnackBar) {
+    const route = window.location.pathname
     const token = localStorage.getItem(environment.tokenName)
     if(token)
-      this._loadUser(token)
+      this._loadUser(token, () => {
+        this.router.navigate([route])
+      })
   }
   private _entity$ = new BehaviorSubject<Entity | undefined>(undefined)
   public get entity(): Observable<Entity | undefined>{
@@ -24,22 +27,26 @@ export class AuthService {
 
   _request_snackbar_config: MatSnackBarConfig = { horizontalPosition: 'center', verticalPosition: 'bottom', duration: 10000}
 
-  _loadUser(token: string){
+  _loadUser(token: string, callback: () => void){
     const url: string = `${environment.api}/auth/load`
     this.httpClient.post<Session>(url, {}, { headers: { token } }).subscribe({
-      next: (res: Session) => this._createSession(res),
+      next: (res: Session) => {
+        this._createSession(res, false)
+        callback()
+      },
       error: () => localStorage.removeItem(environment.tokenName)
     })
   }
 
-  _createSession(res: Session){
+  _createSession(res: Session, redirect: boolean = true){
     this.snackbar.open(`Welcome ${res.user.name}`, undefined, {...this._request_snackbar_config, duration: 2000})
     this._entity$.next(res.user)
     localStorage.setItem(environment.tokenName, res.token)
-    this.goToHome()
+    redirect && this.router.navigate([''])
   }
   
   goToHome(){
+    alert("redirecting")
     this.router.navigate(['/'])
   }
   

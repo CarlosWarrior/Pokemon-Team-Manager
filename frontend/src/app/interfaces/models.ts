@@ -34,3 +34,23 @@ export interface ItemModel {
     description: string;
     image: string;
 }
+
+
+export interface Stats{
+    hp: Number;
+    attack: Number;
+    defense: Number;
+    specialAttack: Number;
+    specialDefense: Number;
+    speed: Number;
+}
+export interface PokemonModel{
+    _id?: string,
+    name: string;
+    image: string;
+    type1: string;
+    type2?: string;
+    moves: string[];
+    abilities: string[];
+    stats: Stats;
+}

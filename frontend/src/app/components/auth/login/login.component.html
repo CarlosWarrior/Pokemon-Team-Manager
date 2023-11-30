@@ -6,7 +6,7 @@
                 <mat-label>email</mat-label>
                 <input matInput placeholder="email@example.com" [formControl]="email" type="email" required>
                 <mat-error *ngIf="email.invalid">{{emailError()}}</mat-error>
-              </mat-form-field>
+            </mat-form-field>
             <mat-form-field>
                 <mat-label>password</mat-label>
                 <input matInput placeholder="password" [formControl]="password" type="password" required autocomplete="password">
