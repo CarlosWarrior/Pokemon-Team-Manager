@@ -1,23 +1,47 @@
 <div mat-dialog-content class="content">
-  <p>Edit a type</p>
+  <form (ngSubmit)="action()"  [formGroup]="form">
+  <p>Create a type</p>
   <mat-form-field>
-    <mat-label>Name</mat-label>
-    <input matInput [(ngModel)]="data.name">
+      <mat-label>Name</mat-label>
+      <input matInput formControlName="name">
+      <mat-error *ngIf="form.controls['name'].invalid">{{nameError()}}</mat-error>
   </mat-form-field>
   <mat-form-field>
-    <mat-label>Color</mat-label>
-    <input matInput [(ngModel)]="data.color">
+      <mat-label>Color</mat-label>
+      <input matInput formControlName="color">
+      <mat-error *ngIf="form.controls['color'].invalid">{{colorError()}}</mat-error>
   </mat-form-field>
   <mat-form-field>
-    <mat-label>Image</mat-label>
-    <input matInput [(ngModel)]="data.image">
+      <mat-label>Image</mat-label>
+      <input matInput formControlName="image">
+      <mat-error *ngIf="form.controls['image'].invalid">{{imageError()}}</mat-error>
   </mat-form-field>
   <mat-form-field>
-    <mat-label>Teracrystal Image</mat-label>
-    <input matInput [(ngModel)]="data.teracrystalImage">
+      <mat-label>Teracrystal Image</mat-label>
+      <input matInput formControlName="teracrystalImage">
+      <mat-error *ngIf="form.controls['teracrystalImage'].invalid">{{teracrystalImageError()}}</mat-error>
   </mat-form-field>
+  <mat-form-field>
+      <mat-label>Attack Advantage</mat-label>
+      <mat-select formControlName="attackAdvantage" multiple>
+          <mat-option *ngFor="let type of data.typeNames" value="{{type}}">{{type}}</mat-option>
+      </mat-select>
+  </mat-form-field>
+  <mat-form-field>
+      <mat-label>Defense Advantage</mat-label>
+      <mat-select formControlName="defenseAdvantage" multiple>
+          <mat-option *ngFor="let type of data.typeNames" value="{{type}}">{{type}}</mat-option>
+      </mat-select>
+  </mat-form-field>
+  <mat-form-field>
+      <mat-label>Defense Weakness</mat-label>
+      <mat-select formControlName="defenseWeakness" multiple>
+          <mat-option *ngFor="let type of data.typeNames" value="{{type}}">{{type}}</mat-option>
+      </mat-select>
+  </mat-form-field>
+</form>
 </div>
 <div mat-dialog-actions class="actions">
   <button mat-button (click)="onNoClick()">Cancel</button>
-  <button mat-raised-button color="primary" (click)="action()" cdkFocusInitial>Save</button>
+  <button mat-raised-button color="primary" (click)="action()" cdkFocusInitial>Update</button>
 </div>

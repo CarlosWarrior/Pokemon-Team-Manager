@@ -6,7 +6,6 @@ import { AbilitiesCreateDialogComponent } from './dialogs/abilities-create-dialo
 import { AbilitiesEditDialogComponent } from './dialogs/abilities-edit-dialog/abilities-edit-dialog.component';
 import { AbilitiesDeleteDialogComponent } from './dialogs/abilities-delete-dialog/abilities-delete-dialog.component';
 
-
 @Component({
   selector: 'app-abilities',
   templateUrl: './abilities.component.html',

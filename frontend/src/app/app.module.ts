@@ -99,7 +99,8 @@ import { PokemonAdminCardComponent } from './components/admin/pokemons/pokemon-a
     MaterialModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+
   ],
   providers: [],
   bootstrap: [AppComponent]
