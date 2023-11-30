@@ -1,4 +1,4 @@
-exports.isUrl = function isUrl(urlStr) {
+function isUrl(urlStr) {
     try {
     new URL(urlStr);
     return true;
@@ -7,11 +7,11 @@ exports.isUrl = function isUrl(urlStr) {
   }
 }
 
-exports.isColor = function isColor(colorStr) {
+function isColor(colorStr) {
   return /^#[0-9A-F]{6}$/i.test(colorStr) || /^#[0-9A-F]{6}[0-9a-f]{0,2}$/i.test(colorStr)
 }
 
-exports.isNumber = function isNumber(value){
+function isNumber(value){
   return (typeof value === 'number' || (typeof value === 'string' && !isNaN(+value)));
 }
 
@@ -23,7 +23,7 @@ const _stats = Object.freeze([
   "specialDefense",
   "speed",
 ])
-exports.isStats = function validateStats(statsObject){
+function isStats(statsObject){
   if(!statsObject)
     return false
   const stats = Object.keys(statsObject)
@@ -34,4 +34,10 @@ exports.isStats = function validateStats(statsObject){
     if(!stats.includes(stat) || !isNumber(statsObject[stat]))
       return false
   }
+  return true
 }
+
+exports.isUrl = isUrl
+exports.isColor = isColor
+exports.isNumber = isNumber
+exports.isStats = isStats

@@ -6,6 +6,6 @@ const StatSchema = new Schema({
     specialAttack: Number,
     specialDefense: Number,
     speed: Number,
-})
+}, {_id: false,})
 
 module.exports = StatSchema

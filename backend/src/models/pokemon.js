@@ -8,7 +8,7 @@ const movesExists = async(moves) => {
     let count = true
     for (let moveIndex = 0; moveIndex < moves.length; moveIndex++) {
         const moveName = moves[moveIndex];
-        count = count && await Move.countDocuments({ name: moveName }) > 0
+        count = count && await Move.count({ name: moveName }) > 0
     }
     return count
 }
@@ -16,12 +16,12 @@ const abilititesExists = async(abilitites) => {
     let count = true
     for (let ablityIndex = 0; ablityIndex < abilitites.length; ablityIndex++) {
         const ablityName = abilitites[ablityIndex];
-        count = count && await Ability.countDocuments({ name: ablityName }) > 0
+        count = count && await Ability.count({ name: ablityName }) > 0
     }
     return count
 }
 const typeExists = async(type) => {
-    return await Type.countDocuments({ name: type }) > 0
+    return await Type.count({ name: type }) > 0
 }
 const PokemonSchema = new Schema({
     name: {

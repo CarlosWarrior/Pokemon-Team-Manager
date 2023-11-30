@@ -1,45 +1,25 @@
-@use "sass:math";
+@import '../../../../styles/grid';
 @import '../../../../styles/variables';
 
-// Define variables for grid settings
-$grid-columns: 24;
-$grid-gutter: 20px;
-$breakpoint-small: 576px;
-$breakpoint-medium: 768px;
-$breakpoint-large: 992px;
-// Define variables
-$grid-columns: 12;
-$grid-gutter: 20px;
-
-// Mixin for container
-@mixin container {
-  max-width: 1200px;
-  margin-left: auto;
-  margin-right: auto;
-  padding-left:  math.div($grid-gutter, 2);
-  padding-right:  math.div($grid-gutter, 2);
+:host{
+  display: inline-block;
+  width: 100vw;
 }
 
-// Mixin for columns
-@mixin col($columns, $offset: 0) {
-  flex: 0 0 percentage(math.div($columns, $grid-columns));
-  margin-left: percentage(math.div($offset, $grid-columns));
+section{
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    .spacer {
+        flex: 1 1 auto;
+    }
+    mat-toolbar{
+        position: sticky;
+        top: 0;
+    } 
 }
 
-// Container class
-.container {
-  @include container;
-}
-
-// Row class
-.row {
-  display: flex;
-  flex-wrap: wrap;
-  margin-left: - math.div($grid-gutter, 2);
-  margin-right: - math.div($grid-gutter, 2);
-}
-
-// Example usage
 .grid {
   @extend .container;
   
@@ -51,21 +31,16 @@ $grid-gutter: 20px;
         background-color: $primaryColor;
       }
       @media (min-width: $breakpoint-small) {
-        @include col(4); // 12 columns wide on small screens
+        @include col(4);
       }
 
       @media (min-width: $breakpoint-medium) {
-        @include col(3); // 6 columns wide on medium screens
+        @include col(3);
       }
 
       @media (min-width: $breakpoint-large) {
-        @include col(1); // 4 columns wide on large screens
+        @include col(1);
       }
     }
   }
-}
-
-:host{
-  display: inline-block;
-  width: 100vw;
 }

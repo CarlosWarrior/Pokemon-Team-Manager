@@ -7,7 +7,7 @@ import { notifyError } from '../utils/errors';
 import { MatSnackBar, MatSnackBarConfig } from '@angular/material/snack-bar';
 
 const _pokemons: PokemonModel[] = []
-const pokemonSort = (a: PokemonModel, b: PokemonModel) => a.name > b.name ? 1 : -1
+const _pokemonSort = (a: PokemonModel, b: PokemonModel) => a.name > b.name ? 1 : -1
 
 @Injectable({
   providedIn: 'root'
@@ -33,7 +33,7 @@ export class PokemonService {
         next:(pokemon: PokemonModel) => {
           const _pokemons: PokemonModel[] = this.pokemons.getValue()
           _pokemons.push(pokemon)
-          _pokemons.sort(pokemonSort)
+          _pokemons.sort(_pokemonSort)
           this.pokemons.next([..._pokemons])
         },
         error:(e: HttpErrorResponse) => notifyError(e, "admin/pokemons/create", this.snackbar, this._request_snackbar_config)
@@ -46,7 +46,7 @@ export class PokemonService {
     const token = localStorage.getItem(environment.tokenName)
     if(token){
       this.httpClient.put<PokemonModel>(`${environment.api}/admin/pokemon/`, pokemon, { headers: { token } }).subscribe({
-        next:(pokemon: PokemonModel) => this.pokemons.next(this.pokemons.getValue().map((pokemon: PokemonModel) => pokemon._id == pokemon._id?pokemon:pokemon)),
+        next:(pokemon: PokemonModel) => this.pokemons.next(this.pokemons.getValue().map((_pokemon: PokemonModel) => _pokemon._id == pokemon._id?pokemon:_pokemon)),
         error:(e: HttpErrorResponse) => notifyError(e, "admin/pokemons/edit", this.snackbar, this._request_snackbar_config)
       })
     }

@@ -1,10 +1,13 @@
 import { Component } from '@angular/core';
-import { PokemonModel } from '../../../interfaces/models'
+import { AbilityModel, MoveModel, PokemonModel, TypeModel } from '../../../interfaces/models'
 import { PokemonService } from 'src/app/services/pokemon.service';
 import { MatDialog } from '@angular/material/dialog';
 import { PokemonEditDialogComponent } from './dialogs/pokemon-edit-dialog/pokemon-edit-dialog.component';
 import { PokemonCreateDialogComponent } from './dialogs/pokemon-create-dialog/pokemon-create-dialog.component';
 import { PokemonDeleteDialogComponent } from './dialogs/pokemon-delete-dialog/pokemon-delete-dialog.component';
+import { TypeService } from 'src/app/services/type.service';
+import { MoveService } from 'src/app/services/move.service';
+import { AbilityService } from 'src/app/services/ability.service';
 
 @Component({
   selector: 'app-pokemons',
@@ -14,14 +17,27 @@ import { PokemonDeleteDialogComponent } from './dialogs/pokemon-delete-dialog/po
 export class PokemonsComponent {
   displayedColumns: string[] = ['name', 'description', 'image'];
   pokemons: PokemonModel[] = [];
+  moves: MoveModel[] = [];
+  types: TypeModel[] = [];
+  abilities: AbilityModel[] = [];
   selected: PokemonModel[] = [];
-  constructor(private pokemonService: PokemonService, public dialog: MatDialog){
+  constructor(private pokemonService: PokemonService, private moveService: MoveService, private typeService: TypeService, private abilityService: AbilityService, public dialog: MatDialog){
+    this.moveService.getList()
+    this.typeService.getList()
+    this.abilityService.getList()
     this.pokemonService.getList()
+    this.moveService.moves.subscribe((moves: MoveModel[]) => this.moves = moves)
+    this.typeService.types.subscribe((types: TypeModel[]) => this.types = types)
+    this.abilityService.abilities.subscribe((abilities: AbilityModel[]) => this.abilities = abilities)
     this.pokemonService.pokemons.subscribe((pokemons: PokemonModel[]) => this.pokemons = pokemons)
   }
   
   isSelected(element: PokemonModel){
     return this.selected.find(el => el.name == element.name)
+  }
+
+  unselect(){
+    this.selected = []
   }
   
   handleSelect(element: PokemonModel){
@@ -32,22 +48,39 @@ export class PokemonsComponent {
   }
   
   openCreateDialog(){
-    const dialogRef = this.dialog.open(PokemonCreateDialogComponent);
+    const dialogRef = this.dialog.open(PokemonCreateDialogComponent, {
+      data:{
+        pokemonNames: this.pokemons.map((pokemon: PokemonModel) => pokemon.name),
+        typeNames: this.types.map((type: TypeModel) => type.name),
+        moveNames: this.moves.map((move: MoveModel) => move.name),
+        abilityNames: this.abilities.map((ability: AbilityModel) => ability.name),
+      }
+    });
     
     dialogRef.afterClosed().subscribe((newPokemon: PokemonModel) => {
-      if(newPokemon)
+      if(newPokemon){
         this.pokemonService.create(newPokemon)
+        this.unselect()
+      }
     });
   }
   
   openEditDialog(){
     const dialogRef = this.dialog.open(PokemonEditDialogComponent, {
-      data: this.selected[0],
+      data: {
+        pokemon: this.selected[0],
+        pokemonNames: this.pokemons.map((pokemon: PokemonModel) => pokemon.name),
+        typeNames: this.types.map((type: TypeModel) => type.name),
+        moveNames: this.moves.map((move: MoveModel) => move.name),
+        abilityNames: this.abilities.map((ability: AbilityModel) => ability.name),
+      },
     });
     
     dialogRef.afterClosed().subscribe((editedPokemon: PokemonModel) => {
-      if(editedPokemon)
+      if(editedPokemon){
         this.pokemonService.edit(editedPokemon)
+        this.unselect()
+      }
     });
   }
   
@@ -57,8 +90,10 @@ export class PokemonsComponent {
     });
     
     dialogRef.afterClosed().subscribe((deletedPokemons: PokemonModel[]) => {
-      if(deletedPokemons)
+      if(deletedPokemons){
         this.pokemonService.delete(deletedPokemons.map((pokemon: PokemonModel) => pokemon._id!))
+        this.unselect()
+      }
     });
   }
 }
