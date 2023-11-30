@@ -3,7 +3,7 @@ const Type = require('../models/type')
 const { isUrl, isColor } = require("../utils/formats")
 
 const validModifiers = async(attackAdvantage, defenseAdvantage, defenseWeakness)=>{
-    const valid = true
+    let valid = true
     if(attackAdvantage)
         for (let index = 0; index < attackAdvantage.length; index++) {
             const type = attackAdvantage[index];

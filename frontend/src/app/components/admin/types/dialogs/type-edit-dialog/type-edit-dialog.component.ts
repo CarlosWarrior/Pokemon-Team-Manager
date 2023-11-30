@@ -24,9 +24,9 @@ export class TypeEditDialogComponent {
       image: new FormControl(data.type.image, [Validators.required]),
       teracrystalImage: new FormControl(data.type.teracrystalImage, [Validators.required]),
       color: new FormControl(data.type.color, [Validators.required]),
-      attackAdvantage: new FormControl([data.type.attackAdvantage]),
-      defenseAdvantage: new FormControl([data.type.defenseAdvantage]),
-      defenseWeakness: new FormControl([data.type.defenseWeakness]),
+      attackAdvantage: new FormControl(data.type.attackAdvantage),
+      defenseAdvantage: new FormControl(data.type.defenseAdvantage),
+      defenseWeakness: new FormControl(data.type.defenseWeakness),
     })
   }
   

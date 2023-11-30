@@ -5,7 +5,7 @@ const isMovecategory = (value) => {
     return MoveCategories.includes(value)
 }
 const typeExists = async(type) => {
-    return await Type.countDocuments({ name: type }) > 0
+    return await Type.count({ name: type }) > 0
 }
 const MoveSchema = new Schema({
     name: {
