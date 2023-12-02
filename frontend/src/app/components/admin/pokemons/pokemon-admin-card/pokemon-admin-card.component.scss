@@ -12,3 +12,13 @@
     background-color: inherit;
 
 }
+
+.card{
+	position: relative;
+	p{
+		position: absolute;
+		top: 0;
+		left: 0;
+		color: white;
+	}
+}

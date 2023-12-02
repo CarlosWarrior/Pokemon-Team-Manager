@@ -15,6 +15,10 @@ function isNumber(value){
   return (typeof value === 'number' || (typeof value === 'string' && !isNaN(+value)));
 }
 
+function existsNumber(number) {
+  return number != undefined && number != null && isNumber(number)
+}
+
 const _stats = Object.freeze([
   "hp",
   "attack",
@@ -37,6 +41,7 @@ function isStats(statsObject){
   return true
 }
 
+exports.existsNumber = existsNumber
 exports.isUrl = isUrl
 exports.isColor = isColor
 exports.isNumber = isNumber

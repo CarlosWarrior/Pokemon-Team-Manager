@@ -62,6 +62,9 @@ PokemonRouter.get('/:name', audit('Pokemon-get'), _catch(PokemonController.get))
  *            schema:
  *              type: object
  *              properties:
+ *                  number:
+ *                      type: integer
+ *                      example: 1
  *                  name:
  *                      type: string
  *                      example: "bulbasaur"
@@ -167,6 +170,9 @@ PokemonRouter.post('/', audit('Pokemon-create'), _catch(PokemonController.create
  *                  _id:
  *                      type: string
  *                      example: "id"
+ *                  number:
+ *                      type: integer
+ *                      example: 1
  *                  name:
  *                      type: string
  *                      example: "bulbasaur"

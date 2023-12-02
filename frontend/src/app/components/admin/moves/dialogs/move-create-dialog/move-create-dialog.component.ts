@@ -21,10 +21,11 @@ export class MoveCreateDialogComponent {
       power: new FormControl("", [Validators.required, Validators.min(1), Validators.max(500), Validators.pattern("^[0-9]*$")]),
       accuracy: new FormControl("", [Validators.required, Validators.max(100), Validators.pattern("^[0-9]*$")]),
       pp: new FormControl("", [Validators.required, Validators.min(1), Validators.max(100), Validators.pattern("^[0-9]*$")]),
+      priority: new FormControl("", [Validators.min(-6), Validators.max(6), Validators.pattern("^[0-9]*$")]),
       effect:new FormControl("", [Validators.required, Validators.minLength(6), Validators.maxLength(32)]),
     })
   }
-  move: MoveModel = {name: "", type: "", category: MoveCategory.Physical, power: 0, accuracy: 0, pp: 0, effect: "", }
+  move: MoveModel = {name: "", type: "", category: MoveCategory.Physical, power: 0, accuracy: 0, pp: 0, priority: 0, effect: "", }
   
   form: FormGroup
   
@@ -77,6 +78,18 @@ export class MoveCreateDialogComponent {
     if(this.form.controls['pp'].hasError('max'))
       return 'Maximum 100'
     if(this.form.controls['pp'].hasError('pattern'))
+      return 'Integer'
+    return ''
+  }
+
+  priorityError(){
+    if(this.form.controls['priority'].hasError('required'))
+      return 'Priority required'
+    if(this.form.controls['priority'].hasError('min'))
+      return 'Minimum -6'
+    if(this.form.controls['priority'].hasError('max'))
+      return 'Maximum 6'
+    if(this.form.controls['priority'].hasError('pattern'))
       return 'Integer'
     return ''
   }

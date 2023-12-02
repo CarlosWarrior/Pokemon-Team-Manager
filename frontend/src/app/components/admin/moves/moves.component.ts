@@ -12,7 +12,7 @@ import { TypeService } from 'src/app/services/type.service';
   styleUrls: ['./moves.component.scss']
 })
 export class MovesComponent {
-  displayedColumns: string[] = [ "name", "type", "category", "power", "accuracy", "pp", "effect", ];
+  displayedColumns: string[] = [ "name", "type", "category", "power", "accuracy", "pp", "priority", "effect", ];
   moveCategories: MoveCategory[] = Object.values(MoveCategory)
   moves: MoveModel[] = [];
   types: TypeModel[] = [];

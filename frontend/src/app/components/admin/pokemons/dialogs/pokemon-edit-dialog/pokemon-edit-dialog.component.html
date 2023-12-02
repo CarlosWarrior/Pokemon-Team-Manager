@@ -1,6 +1,11 @@
 <div mat-dialog-content class="content">
     <form (ngSubmit)="action()"  [formGroup]="form">
-    <p>Create a type</p>
+    <p>Edit pokemon</p>
+    <mat-form-field>
+        <mat-label>Number</mat-label>
+        <input matInput formControlName="number">
+        <mat-error *ngIf="form.controls['number'].invalid">{{numberError()}}</mat-error>
+    </mat-form-field>
     <mat-form-field>
         <mat-label>Name</mat-label>
         <input matInput formControlName="name">

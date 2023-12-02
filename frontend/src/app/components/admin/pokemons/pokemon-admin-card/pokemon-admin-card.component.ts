@@ -14,6 +14,7 @@ export class PokemonAdminCardComponent {
   @Input()
   pokemon: PokemonModel = {
     _id:"",
+    number:0,
     name:"",
     image:"",
     type1:"",

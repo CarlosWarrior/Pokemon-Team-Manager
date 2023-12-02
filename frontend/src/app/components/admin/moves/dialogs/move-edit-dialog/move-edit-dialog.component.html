@@ -39,6 +39,11 @@
         <mat-error *ngIf="form.controls['pp'].invalid">{{ppError()}}</mat-error>
     </mat-form-field>
     <mat-form-field>
+        <mat-label>Priority</mat-label>
+        <input matInput formControlName="priority">
+        <mat-error *ngIf="form.controls['priority'].invalid">{{priorityError()}}</mat-error>
+    </mat-form-field>
+    <mat-form-field>
         <mat-label>Effect</mat-label>
         <input matInput formControlName="effect">
         <mat-error *ngIf="form.controls['effect'].invalid">{{effectError()}}</mat-error>

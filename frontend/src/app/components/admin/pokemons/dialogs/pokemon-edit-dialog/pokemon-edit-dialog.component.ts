@@ -20,6 +20,7 @@ export class PokemonEditDialogComponent {
     const uniqueValidator = (control: AbstractControl): ValidationErrors | null => control.value != this.data.pokemon.name && this.data.pokemonNames.includes(control.value ) ? {exists: {value: control.value}} : null
     this.form = new FormGroup({
       name: new FormControl(this.data.pokemon.name, [Validators.required, Validators.minLength(3), Validators.maxLength(32), uniqueValidator]),
+      number: new FormControl(this.data.pokemon.number, [Validators.required, Validators.pattern("^[0-9]*$")]),
       image: new FormControl(this.data.pokemon.image, [Validators.required]),
       type1: new FormControl(this.data.pokemon.type1, [Validators.required]),
       type2: new FormControl(this.data.pokemon.type2),
@@ -30,6 +31,14 @@ export class PokemonEditDialogComponent {
   }
   form: FormGroup
   stats: Stats
+
+  numberError(){
+    if(this.form.controls['number'].hasError('required'))
+      return 'Name required'
+    if(this.form.controls['number'].hasError('pattern'))
+      return 'Must be a number'
+    return ''
+  }
 
   nameError(){
     if(this.form.controls['name'].hasError('required'))

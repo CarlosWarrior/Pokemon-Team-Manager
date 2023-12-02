@@ -25,9 +25,10 @@ export interface MoveModel {
     name: String
     type: String
     category: MoveCategory
-    power: Number
-    accuracy: Number
-    pp: Number
+    power: number
+    accuracy: number
+    pp: number
+    priority: number
     effect: String
 }
 
@@ -40,15 +41,16 @@ export interface ItemModel {
 
 
 export interface Stats{
-    hp: Number
-    attack: Number
-    defense: Number
-    specialAttack: Number
-    specialDefense: Number
-    speed: Number
+    hp: number
+    attack: number
+    defense: number
+    specialAttack: number
+    specialDefense: number
+    speed: number
 }
 export interface PokemonModel{
     _id?: string
+    number: number
     name: string
     image: string
     type1: string

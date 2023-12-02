@@ -2,7 +2,7 @@ const { raise } = require("../middlewares/errors")
 const Move = require('../models/move')
 const Type = require('../models/type')
 const MoveCategories = require('../models/enums/MoveCategory')
-const { isNumber } = require("../utils/formats")
+const { isNumber, existsNumber } = require("../utils/formats")
 
 const MoveController = {
     list: async(req, res) => {
@@ -13,9 +13,9 @@ const MoveController = {
         res.send('move get')
     },
     create: async(req, res) => {
-        if(!req.body.name || !req.body.type || !req.body.category || !req.body.power || !req.body.accuracy || !req.body.pp || !req.body.effect)
+        if(!req.body.name || !req.body.type || !req.body.category || !existsNumber(req.body.power) || !existsNumber(req.body.accuracy) || !existsNumber(req.body.pp) || !req.body.effect)
             return raise({ status: 422, message: "Malformed body" })
-        if(!isNumber(req.body.accuracy) || !isNumber(req.body.pp))
+        if(existsNumber(req.body.priority) && ( priority < -6 || priority > 6))
             return raise({ status: 422, message: "Malformed body" })
         if(await Type.count({ name: req.body.type}) <= 0)
             return raise({ status: 422, message: "Type does not exists" })
@@ -29,6 +29,7 @@ const MoveController = {
         const accuracy = req.body.accuracy
         const pp = req.body.pp
         const effect = req.body.effect
+        const priority = req.body.priority
 
         let move
         try {
@@ -40,6 +41,7 @@ const MoveController = {
                 accuracy,
                 pp,
                 effect,
+                priority,
             })
         } catch (error) {
             return raise({ status:500, message: "Move creation failed", errors: error})
@@ -50,9 +52,7 @@ const MoveController = {
     update: async(req, res) => {
         if(!req.body._id || await Move.count({_id: req.body._id}) < 1)
             return raise({ status: 404, message: "Not found" })
-        if(!req.body.name && !req.body.type && !req.body.category && !req.body.power && !req.body.accuracy && !req.body.pp && !req.body.effect)
-            return raise({ status: 422, message: "Malformed body" })
-        if( (req.body.accuracy && !isNumber(req.body.accuracy))  ||  (req.body.pp && !isNumber(req.body.pp)) )
+        if(!req.body.name && !req.body.type && !req.body.category && !existsNumber(req.body.power) && !existsNumber(req.body.accuracy) && !existsNumber(req.body.pp) && !req.body.effect && !existsNumber(req.body.priority))
             return raise({ status: 422, message: "Malformed body" })
         if(req.body.type && await Type.count({ name: req.body.type}) <= 0)
             return raise({ status: 422, message: "Type does not exists" })
@@ -78,6 +78,9 @@ const MoveController = {
         const pp = req.body.pp
         if(pp)
             move.pp = pp
+        const priority = req.body.priority
+        if(priority)
+            move.priority = priority
         const effect = req.body.effect
         if(effect)
             move.effect = effect

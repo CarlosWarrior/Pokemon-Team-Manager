@@ -4,7 +4,7 @@ const Ability = require("../models/ability")
 const Move = require("../models/move")
 const Type = require("../models/type")
 const StatSchema = require("../models/schemas/stats")
-const { isStats } = require("../utils/formats")
+const { isStats, isNumber } = require("../utils/formats")
 const pokemon = require("../models/pokemon")
 
 const validMoves = async(moves)=>{
@@ -34,8 +34,10 @@ const PokemonController = {
         res.send('pokemon get')
     },
     create: async(req, res) => {
-        if(!req.body.name || !req.body.image || !req.body.type1 || !req.body.moves || !req.body.abilities || !req.body.stats)
+        if(!req.body.number || !req.body.name || !req.body.image || !req.body.type1 || !req.body.moves || !req.body.abilities || !req.body.stats)
             return raise({ status:422, message: "Malformed body" })
+        if(!isNumber(req.body.number))
+            return raise({ status:422, message:"Invalid number" })
         if(!await validAbilities(req.body.abilities))
             return raise({ status:422, message:"Invalid abilities" })
         if(!await validMoves(req.body.moves))
@@ -47,6 +49,7 @@ const PokemonController = {
         if(!isStats(req.body.stats))
             return raise({ status: 422, message: "Invalid stats" })
         
+        const number = req.body.number
         const name = req.body.name
         const image = req.body.image
         const type1 = req.body.type1
@@ -58,6 +61,7 @@ const PokemonController = {
         let pokemon
         try {
             pokemon = await Pokemon.create({
+                number,
                 name,
                 image,
                 type1,
@@ -75,7 +79,7 @@ const PokemonController = {
     update: async(req, res) => {
         if(!req.body._id || !await Pokemon.count({ _id: req.body._id }))
             return raise({ status: 404, message: "Not found" })
-        if(!req.body.name && !req.body.image && !req.body.type1 && !req.body.moves && !req.body.abilities && !req.body.stats)
+        if(!req.body.number && !req.body.name && !req.body.image && !req.body.type1 && !req.body.moves && !req.body.abilities && !req.body.stats)
             return raise({ status:422, message: "Malformed body" })
         if(req.body.abilities && !await validAbilities(req.body.abilities))
             return raise({ status:422, message:"Invalid abilities" })
@@ -98,6 +102,9 @@ const PokemonController = {
         if(!pokemon)
             return raise({ status: 404 })
 
+        const number = req.body.number
+        if(number)
+            pokemon.number = number
         const name = req.body.name
         if(name)
             pokemon.name = name

@@ -24,6 +24,11 @@ const typeExists = async(type) => {
     return await Type.count({ name: type }) > 0
 }
 const PokemonSchema = new Schema({
+    number: {
+        type: Number,
+        required: true,
+        unique: true,
+    },
     name: {
         type: String,
         required: true,

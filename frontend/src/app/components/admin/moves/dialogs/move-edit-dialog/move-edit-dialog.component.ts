@@ -22,6 +22,7 @@ export class MoveEditDialogComponent {
       power: new FormControl(data.move.power, [Validators.required, Validators.min(1), Validators.max(500), Validators.pattern("^[0-9]*$")]),
       accuracy: new FormControl(data.move.accuracy, [Validators.required, Validators.max(100), Validators.pattern("^[0-9]*$")]),
       pp: new FormControl(data.move.pp, [Validators.required, Validators.min(1), Validators.max(100), Validators.pattern("^[0-9]*$")]),
+      priority: new FormControl(data.move.priority, [Validators.required, Validators.min(-6), Validators.max(6), Validators.pattern("^[0-9]*$")]),
       effect:new FormControl(data.move.effect, [Validators.required, Validators.minLength(6), Validators.maxLength(32)]),
     })
     this.type = data.move.type
@@ -81,6 +82,18 @@ export class MoveEditDialogComponent {
     if(this.form.controls['pp'].hasError('max'))
       return 'Maximum 100'
     if(this.form.controls['pp'].hasError('pattern'))
+      return 'Integer'
+    return ''
+  }
+  
+  priorityError(){
+    if(this.form.controls['priority'].hasError('required'))
+      return 'Priority required'
+    if(this.form.controls['priority'].hasError('min'))
+      return 'Minimum -6'
+    if(this.form.controls['priority'].hasError('max'))
+      return 'Maximum 6'
+    if(this.form.controls['priority'].hasError('pattern'))
       return 'Integer'
     return ''
   }
