@@ -1,0 +1,18 @@
+@import '../../../../styles/grid';
+@import '../../../../styles/variables';
+
+:host{
+  display: inline-block;
+  width: 100vw;
+}
+.grid {
+  @extend .container;
+  
+  .line {
+    @extend .row;
+    
+    .pokemon-slot {
+      @include col(4);
+    }
+  }
+}

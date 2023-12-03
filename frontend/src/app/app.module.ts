@@ -47,6 +47,9 @@ import { PokemonCreateDialogComponent } from './components/admin/pokemons/dialog
 import { PokemonEditDialogComponent } from './components/admin/pokemons/dialogs/pokemon-edit-dialog/pokemon-edit-dialog.component';
 import { PokemonDeleteDialogComponent } from './components/admin/pokemons/dialogs/pokemon-delete-dialog/pokemon-delete-dialog.component';
 import { PokemonAdminCardComponent } from './components/admin/pokemons/pokemon-admin-card/pokemon-admin-card.component';
+import { PokemonUserCardComponent } from './components/user/teambuilder/pokemon-user-card/pokemon-user-card.component';
+import { PokemonSlotComponent } from './components/user/teambuilder/pokemon-slot/pokemon-slot.component';
+import { ForDirective } from './directives/for.directive';
 
 @NgModule({
   declarations: [
@@ -91,6 +94,9 @@ import { PokemonAdminCardComponent } from './components/admin/pokemons/pokemon-a
     PokemonEditDialogComponent,
     PokemonDeleteDialogComponent,
     PokemonAdminCardComponent,
+    PokemonUserCardComponent,
+    PokemonSlotComponent,
+    ForDirective,
   ],
   imports: [
     BrowserModule,
