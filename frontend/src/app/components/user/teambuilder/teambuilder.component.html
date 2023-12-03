@@ -1,17 +1,30 @@
-<div class="grid">
-	<div class="line slots">
-			<div class="pokemon-slot" *ngFor="let pokemon of selected">
-				<app-pokemon-slot [name]="pokemon.name" [color]="getType(pokemon.type1).color" [image]="pokemon.image" (click)="handleSelect(pokemon)" ></app-pokemon-slot>
+<section>
+	<mat-toolbar color="primary">
+		<mat-toolbar-row>
+			<span>Team Builder</span>
+			<span class="spacer"></span>
+			<button [disabled]="selected.length < 1" (click)="openCreateDialog()" mat-icon-button matTooltip="Create">
+				<mat-icon>add</mat-icon>
+			</button>
+		</mat-toolbar-row>
+	</mat-toolbar>
+	<div class="builder">
+		<div class="grid">
+			<div class="line slots">
+					<div class="pokemon-slot" *ngFor="let pokemon of selected">
+						<app-pokemon-slot [name]="pokemon.name" [color]="getType(pokemon.type1).color" [image]="pokemon.image" (click)="handleSelect(pokemon)" ></app-pokemon-slot>
+					</div>
+					<div class="pokemon-slot" *for="6-selected.length">
+						<app-pokemon-slot [ngClass]="'slot'" [name]="'?'" [color]="'black'" [image]="'assets/egg.png'" ></app-pokemon-slot>
+					</div>
 			</div>
-			<div class="pokemon-slot" *for="6-selected.length">
-				<app-pokemon-slot [ngClass]="'slot'" [name]="'?'" [color]="'black'" [image]="'assets/egg.png'" ></app-pokemon-slot>
-			</div>
-	</div>
-	<div class="grid">
-		<div class="line">
-				<div class="pokemon" *ngFor="let pokemon of pokemons">
-					<app-pokemon-user-card [pokemon]="pokemon" (click)="handleSelect(pokemon)" [class.isSelected]="isSelected(pokemon)" [ngStyle]="{'backgroundColor': getType(pokemon.type1).color}"></app-pokemon-user-card>
+			<div class="grid">
+				<div class="line">
+						<div class="pokemon" *ngFor="let pokemon of pokemons">
+							<app-pokemon-user-card [pokemon]="pokemon" (click)="handleSelect(pokemon)" [class.isSelected]="isSelected(pokemon)" [ngStyle]="{'backgroundColor': getType(pokemon.type1).color}"></app-pokemon-user-card>
+						</div>
 				</div>
+			</div>
 		</div>
 	</div>
-</div>
+</section>

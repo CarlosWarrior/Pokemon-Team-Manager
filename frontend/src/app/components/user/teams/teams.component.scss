@@ -1,0 +1,33 @@
+@import '../../../../styles/grid';
+@import '../../../../styles/variables';
+
+:host{
+  display: inline-block;
+  width: 100vw;
+}
+
+.spacer {
+	flex: 1 1 auto;
+}
+
+.rankings{
+	display: flex;
+	justify-content: center;
+	align-items: flex-start;
+	flex-direction: column;
+}
+
+.builder{
+
+	.grid {
+		@extend .container;
+		
+		.line {
+			@extend .row;
+			
+			.pokemon-slot {
+				@include col(4);
+			}
+		}
+	}
+}

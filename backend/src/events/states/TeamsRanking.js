@@ -1,3 +1,4 @@
+const Pokemon = require("../../models/pokemon")
 const Team = require("../../models/team")
 const Type = require("../../models/type")
 const Types = require("../../models/type")
@@ -28,7 +29,7 @@ function getDefenseWeakness(pokemon, type, modifiers){
     return count
 }
 
-function rank(team, types, modifiers){
+function rank(team, pokemons, types, modifiers){
     const attackAdvantage = {}
     const defenseAdvantage = {}
     const defenseWeakness = {}
@@ -39,24 +40,26 @@ function rank(team, types, modifiers){
     })
     team.slots.forEach(slot => {
         types.forEach(type => {
-            attackAdvantage[type] += getAttackAdvantage(slot.pokemon, type, modifiers)
-            defenseAdvantage[type] += getDefenseAdvantage(slot.pokemon, type, modifiers)
-            defenseWeakness[type] += getDefenseWeakness(slot.pokemon, type, modifiers)
+            attackAdvantage[type] += getAttackAdvantage(pokemons.find(p => p.name == slot.pokemon), type, modifiers)
+            defenseAdvantage[type] += getDefenseAdvantage(pokemons.find(p => p.name == slot.pokemon), type, modifiers)
+            defenseWeakness[type] += getDefenseWeakness(pokemons.find(p => p.name == slot.pokemon), type, modifiers)
         })
     })
     let coverage = 0
     let defense = 0
     types.forEach(type => {
-        coverage += attackAdvantage[type] = 0
-        defense += defenseAdvantage[type] = 0
-        defense += defenseWeakness[type] = 0
+        coverage += attackAdvantage[type]
+        defense += defenseAdvantage[type]
+        defense -= defenseWeakness[type]
     })
-    return {coverage, defense}
+    return {coverage, defense, attackAdvantage, defenseAdvantage, defenseWeakness}
 }
 
 async function TeamsRanking(){
     const teams = await Team.find({})
-    const types = (await Type.find({})).map(type => type.name)
+    const pokemons = await Pokemon.find({})
+    const types = await Type.find({})
+    const typeNames = types.map(type => type.name)
     const modifiers = {}
     types.forEach(type => {
         modifiers[type.name] = {
@@ -67,13 +70,19 @@ async function TeamsRanking(){
     })
     const teamsCoverage = {}
     const teamsDefense = {}
+    const teamsStates = {}
     teams.forEach(team => {
-        const {coverage, defense} = rank(team, types)
+        const {coverage, defense, attackAdvantage, defenseAdvantage, defenseWeakness} = rank(team, pokemons, typeNames, modifiers)
         teamsCoverage[team._id] = coverage
         teamsDefense[team._id] = defense
+        teamsStates[team._id] = { attackAdvantage, defenseAdvantage, defenseWeakness }
     })
     const teamsCoverageRanking = Object.keys(teamsCoverage).sort((id1, id2) => teamsCoverage[id1] < teamsCoverage[id2]? 1 : -1)
     const teamsDefenseRanking = Object.keys(teamsDefense).sort((id1, id2) => teamsDefense[id1] < teamsDefense[id2]? 1 : -1)
-    return { teamsCoverageRanking, teamsDefenseRanking }
+    return { teamsCoverageRanking, teamsDefenseRanking, teamsCoverage, teamsDefense, teamsStates }
 }
-module.exports = TeamsRanking
+
+module.exports = {
+    rank,
+    TeamsRanking
+}

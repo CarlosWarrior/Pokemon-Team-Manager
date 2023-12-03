@@ -112,7 +112,7 @@ MoveRouter.post('/', audit('Move-create'), _catch(MoveController.create))
  * @swagger
  * /admin/move/:
  *  put:
- *      description: Endpoint to create an move
+ *      description: Endpoint to update an move
  *      tags:
  *          - admin/move
  *      parameters:
@@ -172,7 +172,7 @@ MoveRouter.put('/', audit('Move-update'), _catch(MoveController.update))
  *              moveData: object
  *              properties:
  *                  file:
- *                      move: file
+ *                      type: file
  *              required:
  *                  - file
  *          - in: header

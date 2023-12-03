@@ -47,12 +47,16 @@ import { PokemonEditDialogComponent } from './components/admin/pokemons/dialogs/
 import { PokemonDeleteDialogComponent } from './components/admin/pokemons/dialogs/pokemon-delete-dialog/pokemon-delete-dialog.component';
 import { PokemonAdminCardComponent } from './components/admin/pokemons/pokemon-admin-card/pokemon-admin-card.component';
 import { PokemonUserCardComponent } from './components/user/teambuilder/pokemon-user-card/pokemon-user-card.component';
-import { PokemonSlotComponent } from './components/user/teambuilder/pokemon-slot/pokemon-slot.component';
+import { PokemonSlotComponent } from './components/user/slots/pokemon-slot/pokemon-slot.component';
 import { ForDirective } from './directives/for.directive';
 import { TypeBulkCreateComponent } from './components/admin/types/dialogs/type-bulk-create/type-bulk-create.component';
 import { AbilityBulkCreateComponent } from './components/admin/abilities/dialogs/ability-bulk-create/ability-bulk-create.component';
 import { MoveBulkCreateComponent } from './components/admin/moves/dialogs/move-bulk-create/move-bulk-create.component';
 import { PokemonBulkCreateComponent } from './components/admin/pokemons/dialogs/pokemon-bulk-create/pokemon-bulk-create.component';
+import { TeamCoverageComponent } from './components/user/slots/team-coverage/team-coverage.component';
+import { TeamSetupComponent } from './components/user/slots/team-setup/team-setup.component';
+import { SlotSetupComponent } from './components/user/slots/slot-setup/slot-setup.component';
+import { ItemBulkCreateComponent } from './components/admin/items/dialogs/item-bulk-create/item-bulk-create.component';
 
 @NgModule({
   declarations: [
@@ -104,6 +108,10 @@ import { PokemonBulkCreateComponent } from './components/admin/pokemons/dialogs/
     AbilityBulkCreateComponent,
     MoveBulkCreateComponent,
     PokemonBulkCreateComponent,
+    TeamCoverageComponent,
+    TeamSetupComponent,
+    SlotSetupComponent,
+    ItemBulkCreateComponent,
   ],
   imports: [
     BrowserModule,

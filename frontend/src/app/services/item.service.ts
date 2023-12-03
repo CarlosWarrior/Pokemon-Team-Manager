@@ -64,4 +64,23 @@ export class ItemService {
 
   }
 
+  bulk(data: FormData){
+    const token = localStorage.getItem(environment.tokenName)
+    if(token){
+      this.httpClient.post<ItemModel[]>(`${environment.api}/admin/item/bulk`, data, { headers: { token } }).subscribe({
+        next:(newitems: ItemModel[]) => {
+          const items: ItemModel[] = this.items.getValue()
+          for (let ti = 0; ti < newitems.length; ti++) {
+            const item = newitems[ti];
+            items.push(item)
+          }
+          items.sort(_itemSort)
+          this.items.next([...items])
+        },
+        error:(e: HttpErrorResponse) => notifyError(e, "admin/items/bulk", this.snackbar, this._request_snackbar_config)
+      })
+    }
+
+  }
+
 }

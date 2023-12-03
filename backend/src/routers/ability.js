@@ -141,7 +141,7 @@ AbilityRouter.put('/', audit('Ability-update'), _catch(AbilityController.update)
  *              abilityData: object
  *              properties:
  *                  file:
- *                      ability: file
+ *                      type: file
  *              required:
  *                  - file
  *          - in: header

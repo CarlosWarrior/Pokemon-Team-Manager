@@ -1,3 +1,4 @@
+const { readFileSync } = require("fs")
 const { raise } = require("../middlewares/errors")
 const Item = require('../models/item')
 const { isUrl } = require("../utils/formats")
@@ -66,6 +67,30 @@ const ItemController = {
             return raise({ status: 422, message: "Body malformed", errors: error})
         }
         res.send(item)
+    },
+    bulkCreate: async(req, res) => {
+        if(!req.file)
+            return raise({ status: 422, message: "File not present" })
+        let itemsData, itemsNames
+        try {
+            itemsData = JSON.parse(readFileSync(req.file.path, 'utf8'))
+            itemsNames = Object.keys(itemsData)
+        } catch (error) {
+            return raise({ status: 422, message: "File malformed", errors: error })
+        }
+        const items = []
+        try {
+            for (let ti = 0; ti < itemsNames.length; ti++) {
+                const itemData = itemsData[itemsNames[ti]];
+                console.log(itemData.name, Object.keys(itemData))
+                if(await Item.count({ name: itemData.name}) < 1)
+                    items.push(await Item.create(itemData))
+            }
+        } catch (error) {
+            return raise({ status: 422, message: "Items Data malformed", errors: error })
+        }
+        
+        return res.send(items)
     },
     delete: async(req, res) => {
         if(!req.body.items || !req.body.items.length)

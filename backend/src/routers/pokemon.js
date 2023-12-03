@@ -257,19 +257,19 @@ PokemonRouter.put('/', audit('Pokemon-update'), _catch(PokemonController.update)
 
 /**
  * @swagger
- * /admin/ability/bulk:
+ * /admin/pokemon/bulk:
  *  post:
  *      description: Endpoint to create abilities in bulk
  *      tags:
- *          - admin/ability
+ *          - admin/pokemon
  *      parameters:
  *          - in: body
- *            name: ability
+ *            name: pokemon
  *            schema:
- *              abilityData: object
+ *              pokemonData: object
  *              properties:
  *                  file:
- *                      ability: file
+ *                      type: file
  *              required:
  *                  - file
  *          - in: header

@@ -31,17 +31,7 @@ section{
       .isSelected{
         background-color: $primaryColor;
       }
-      @media (min-width: $breakpoint-small) {
-        @include col(4);
-      }
-
-      @media (min-width: $breakpoint-medium) {
-        @include col(3);
-      }
-
-      @media (min-width: $breakpoint-large) {
-        @include col(1);
-      }
+      @include col(2);
     }
   }
 }

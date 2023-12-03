@@ -4,24 +4,41 @@
 :host{
   display: inline-block;
   width: 100vw;
-
-}
-.slots{
-  position: sticky;
-  top: 0;
-  z-index: 3;
-  background: $positiveColor;
-  border-radius: 10px;
 }
 
-.grid {
-  @extend .container;
-  
-  .line {
-    @extend .row;
-    
-    .pokemon-slot {
-      @include col(4);
+section{
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    .spacer {
+        flex: 1 1 auto;
     }
-  }
+    mat-toolbar{
+        position: sticky;
+        top: 0;
+        z-index: 3;
+    } 
+    .slots{
+      position: sticky;
+      top: 56px;
+      z-index: 3;
+      background: $positiveColor;
+      border-radius: 10px;
+    }
+    
+    .grid {
+      @extend .container;
+      
+      .line {
+        @extend .row;
+        
+        .pokemon-slot {
+          @include col(4);
+        }
+        .pokemon{
+          @include col(2);
+        }
+      }
+    }
 }

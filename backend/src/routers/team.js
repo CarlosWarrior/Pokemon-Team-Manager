@@ -64,19 +64,16 @@ TeamRouter.get('/:name', audit('Team-get'), _catch(TeamController.get))
  *            schema:
  *              type: object
  *              properties:
- *                  id:
- *                      type: integer
- *                      example: 1
- *                  user: 
- *                      type: string
- *                      example: "user"
+ *                  slots:
+ *                      type: array
+ *                      items: object
  *                  name:
  *                      type: string
  *                      example: "teamTrickRoom"
  *              required:
- *                  - id
- *                  - user
  *                  - name
+ *                  - slots
+ * 
  *          - in: header
  *            name: token
  *            required: true

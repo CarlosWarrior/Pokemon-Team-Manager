@@ -5,6 +5,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { ItemEditDialogComponent } from './dialogs/item-edit-dialog/item-edit-dialog.component';
 import { ItemCreateDialogComponent } from './dialogs/item-create-dialog/item-create-dialog.component';
 import { ItemDeleteDialogComponent } from './dialogs/item-delete-dialog/item-delete-dialog.component';
+import { ItemBulkCreateComponent } from './dialogs/item-bulk-create/item-bulk-create.component';
 
 
 @Component({
@@ -60,6 +61,15 @@ export class ItemsComponent {
     dialogRef.afterClosed().subscribe((deletedItems: ItemModel[]) => {
       if(deletedItems)
         this.itemService.delete(deletedItems.map((item: ItemModel) => item._id!))
+    });
+  }
+
+  openBulkCreateDialog(){
+    const dialogRef = this.dialog.open(ItemBulkCreateComponent);
+    
+    dialogRef.afterClosed().subscribe((data:any) => {
+      if(data)
+        this.itemService.bulk(data)
     });
   }
 }

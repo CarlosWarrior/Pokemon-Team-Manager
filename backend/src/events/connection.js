@@ -1,4 +1,4 @@
-const TeamsRanking = require("./states/TeamsRanking")
+const { TeamsRanking } = require("./states/TeamsRanking")
 
 function ConnectionEvent(io){
     io.on('connection', async (socket) => {

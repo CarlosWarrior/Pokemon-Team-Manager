@@ -26,8 +26,9 @@ const validAbilities = async(abilities)=>{
 }
 const PokemonController = {
     list: async(req, res) => {
-        const pokemons = await Pokemon.find({})
-        res.send(pokemons)
+        //const pokemons = await Pokemon.find({})
+        //res.send(pokemons)
+        res.send(require("./pokemons"))
     },
     get: async(req, res) => {
         res.send('pokemon get')

@@ -79,3 +79,57 @@ export interface PokemonModel{
     abilities: string[]
     stats: Stats
 }
+
+export interface SlotSetupData{
+    typeNames: string[]
+    itemNames: string[]
+    abilityNames: string[]
+    moveNames: string[]
+}
+export enum PokemonGender{
+    Male = 'male', 
+    Female = 'female',
+}
+export interface PokemonSlot{
+    pokemon: PokemonModel
+    order: number
+    gender: PokemonGender
+    level: number
+    tera_type: string
+    moves: string[]
+    ability: string
+    evs: Stats
+    ivs: Stats
+    item: string
+
+}
+export interface TeamModel{
+    _id?: string
+    name: string
+    slots: [PokemonSlot]
+}
+
+
+interface Rank{
+    [key: string]: number
+}
+interface TeamStates {
+    [teamId: string]: {
+        attackAdvantage: {
+            [type: string]: number;
+        };
+        defenseAdvantage: {
+            [type: string]: number;
+        };
+        defenseWeakness: {
+            [type: string]: number;
+        };
+    };
+}
+export interface Ranking{
+    teamsCoverage: Rank,
+    teamsDefense: Rank,
+    teamsCoverageRanking: [string]
+    teamsDefenseRanking: [string]
+    teamsStates: TeamStates
+}

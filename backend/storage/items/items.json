@@ -1,0 +1,2072 @@
+[
+    {
+        "name": "Zoom Lens",
+        "description": "Raises a move's accuracy if the holder moves after its target.",
+        "image": "https://img.pokemondb.net/sprites/items/zoom-lens.png"
+    },
+
+
+    {
+        "name": "Zap Plate",
+        "description": "Increases power of Electric-type moves. Changes Arceus' type to Electric.",
+        "image": "https://img.pokemondb.net/sprites/items/zap-plate.png"
+    },
+
+
+    {
+        "name": "Yellow Nectar",
+        "description": "A flower nectar obtained at Melemele Meadow. It changes the form of certain species of Pokémon.",
+        "image": "https://img.pokemondb.net/sprites/items/yellow-nectar.png"
+    },
+
+
+    {
+        "name": "Wise Glasses",
+        "description": "Increases the power of Special-category moves.",
+        "image": "https://img.pokemondb.net/sprites/items/wise-glasses.png"
+    },
+
+
+    {
+        "name": "Wide Lens",
+        "description": "Increases the accuracy of moves.",
+        "image": "https://img.pokemondb.net/sprites/items/wide-lens.png"
+    },
+
+
+    {
+        "name": "White Herb",
+        "description": "An item to be held by a POKéMON. It restores any lowered stat in battle. It can be used only once.",
+        "image": "https://img.pokemondb.net/sprites/items/white-herb.png"
+    },
+
+
+    {
+        "name": "Weakness Policy",
+        "description": "Sharply raises Attack and Special Attack if hit by a super-effective move.",
+        "image": "https://img.pokemondb.net/sprites/items/weakness-policy.png"
+    },
+
+
+    {
+        "name": "Wave Incense",
+        "description": "Increases the power of Water-type moves. Breeding Mantine produces Mantyke when held.",
+        "image": "https://img.pokemondb.net/sprites/items/wave-incense.png"
+    },
+
+
+    {
+        "name": "Waterium Z",
+        "description": "Allows the use of Hydro Vortex, the Water type Z-Move.",
+        "image": "https://img.pokemondb.net/sprites/items/waterium-z.png"
+    },
+
+
+    {
+        "name": "Water Memory",
+        "description": "Changes Silvally and its move Multi-Attack to Water type.",
+        "image": "https://img.pokemondb.net/sprites/items/water-memory.png"
+    },
+
+
+    {
+        "name": "Water Gem",
+        "description": "Increases the power of a Water-type move only once.",
+        "image": "https://img.pokemondb.net/sprites/items/water-gem.png"
+    },
+
+
+    {
+        "name": "Venusaurite",
+        "description": "Enables Venusaur to Mega Evolve during battle.",
+        "image": "https://img.pokemondb.net/sprites/items/venusaurite.png"
+    },
+
+
+    {
+        "name": "Utility Umbrella",
+        "description": "An item to be held by a Pokémon. This sturdy umbrella protects the holder from the effects of weather.",
+        "image": "https://img.pokemondb.net/s.png"
+    },
+
+
+    {
+        "name": "Ultranecrozium Z",
+        "description": "Allows Ultra Necrozma to upgrade Photon Geyser to a Z-Move, Light That Burns the Sky.",
+        "image": "https://img.pokemondb.net/sprites/items/ultranecrozium-z.png"
+    },
+
+
+    {
+        "name": "Tyranitarite",
+        "description": "Enables Tyranitar to Mega Evolve during battle.",
+        "image": "https://img.pokemondb.net/sprites/items/tyranitarite.png"
+    },
+
+
+    {
+        "name": "Twisted Spoon",
+        "description": "Increases the power of Psychic-type moves.",
+        "image": "https://img.pokemondb.net/sprites/items/twisted-spoon.png"
+    },
+
+
+    {
+        "name": "Toxic Plate",
+        "description": "Increases power of Poison-type moves. Changes Arceus' type to Poison.",
+        "image": "https://img.pokemondb.net/sprites/items/toxic-plate.png"
+    },
+
+
+    {
+        "name": "Toxic Orb",
+        "description": "An item to be held by a Pokémon. It is a bizarre orb that badly poisons the holder in battle.",
+        "image": "https://img.pokemondb.net/sprites/items/toxic-orb.png"
+    },
+
+
+    {
+        "name": "Throat Spray",
+        "description": "Raises Sp. Atk when a sound-based move is used.",
+        "image": "https://img.pokemondb.net/s.png"
+    },
+
+
+    {
+        "name": "Thick Club",
+        "description": "Increases Attack when held by Cubone or Marowak.",
+        "image": "https://img.pokemondb.net/sprites/items/thick-club.png"
+    },
+
+
+    {
+        "name": "Terrain Extender",
+        "description": "An item to be held by a Pokémon. It extends the duration of the terrain caused by the holder's move or Ability.",
+        "image": "https://img.pokemondb.net/sprites/items/terrain-extender.png"
+    },
+
+
+    {
+        "name": "Tart Apple",
+        "description": "Evolves Applin into Flapple.",
+        "image": "https://img.pokemondb.net/s.png"
+    },
+
+
+    {
+        "name": "Tapunium Z",
+        "description": "Allows the Tapus to upgrade Nature's Madness to a Z-Move, Guardian of Alola.",
+        "image": "https://img.pokemondb.net/sprites/items/tapunium-z.png"
+    },
+
+
+    {
+        "name": "Syrupy Apple",
+        "description": "Evolves Applin into Dipplin.",
+        "image": "https://img.pokemondb.net/s.png"
+    },
+
+
+    {
+        "name": "Sweet Apple",
+        "description": "Evolves Applin into Appletun.",
+        "image": "https://img.pokemondb.net/s.png"
+    },
+
+
+    {
+        "name": "Swampertite",
+        "description": "Enables Swampert to Mega Evolve during battle.",
+        "image": "https://img.pokemondb.net/sprites/items/swampertite.png"
+    },
+
+
+    {
+        "name": "Strawberry Sweet",
+        "description": "Evolves Milcery into Strawberry Flavor Alcremie.",
+        "image": "https://img.pokemondb.net/s.png"
+    },
+
+
+    {
+        "name": "Stone Plate",
+        "description": "Increases power of Rock-type moves. Changes Arceus' type to Rock.",
+        "image": "https://img.pokemondb.net/sprites/items/stone-plate.png"
+    },
+
+
+    {
+        "name": "Sticky Barb",
+        "description": "A held item that damages the holder on every turn. It may latch on to foes and allies that touch the holder.",
+        "image": "https://img.pokemondb.net/sprites/items/sticky-barb.png"
+    },
+
+
+    {
+        "name": "Steelixite",
+        "description": "Enables Steelix to Mega Evolve during battle.",
+        "image": "https://img.pokemondb.net/sprites/items/steelixite.png"
+    },
+
+
+    {
+        "name": "Steelium Z",
+        "description": "Allows the use of Corkscrew Crash, the Steel type Z-Move.",
+        "image": "https://img.pokemondb.net/sprites/items/steelium-z.png"
+    },
+
+
+    {
+        "name": "Steel Memory",
+        "description": "Changes Silvally and its move Multi-Attack to Steel type.",
+        "image": "https://img.pokemondb.net/sprites/items/steel-memory.png"
+    },
+
+
+    {
+        "name": "Steel Gem",
+        "description": "Increases the power of a Steel-type move only once.",
+        "image": "https://img.pokemondb.net/sprites/items/steel-gem.png"
+    },
+
+
+    {
+        "name": "Star Sweet",
+        "description": "Evolves Milcery into Star Flavor Alcremie.",
+        "image": "https://img.pokemondb.net/s.png"
+    },
+
+
+    {
+        "name": "Spooky Plate",
+        "description": "Increases power of Ghost-type moves. Changes Arceus' type to Ghost.",
+        "image": "https://img.pokemondb.net/sprites/items/spooky-plate.png"
+    },
+
+
+    {
+        "name": "Splash Plate",
+        "description": "Increases power of Water-type moves. Changes Arceus' type to Water.",
+        "image": "https://img.pokemondb.net/sprites/items/splash-plate.png"
+    },
+
+
+    {
+        "name": "Spell Tag",
+        "description": "Increases the power of Ghost-type moves.",
+        "image": "https://img.pokemondb.net/sprites/items/spell-tag.png"
+    },
+
+
+    {
+        "name": "Soul Dew",
+        "description": "Increases the power of Psychic- and Dragon-type moves when held by Latios or Latias. Increases Sp.Atk/Sp.Def prior to Gen 7.",
+        "image": "https://img.pokemondb.net/sprites/items/soul-dew.png"
+    },
+
+
+    {
+        "name": "Soothe Bell",
+        "description": "An item to be held by a Pokémon. It is a bell with a comforting chime that calms the holder and makes it friendly.",
+        "image": "https://img.pokemondb.net/sprites/items/soothe-bell.png"
+    },
+
+
+    {
+        "name": "Solganium Z",
+        "description": "Allows Solgaleo to upgrade Sunsteel Strike to a Z-Move, Searing Sunraze Smash.",
+        "image": "https://img.pokemondb.net/sprites/items/solganium-z.png"
+    },
+
+
+    {
+        "name": "Soft Sand",
+        "description": "Increases the power of Ground-type moves.",
+        "image": "https://img.pokemondb.net/sprites/items/soft-sand.png"
+    },
+
+
+    {
+        "name": "Snowball",
+        "description": "Raises Attack if hit by an Ice-type move.",
+        "image": "https://img.pokemondb.net/sprites/items/snowball.png"
+    },
+
+
+    {
+        "name": "Snorlium Z",
+        "description": "Allows Snorlax to upgrade Giga Impact to a Z-Move, Pulverizing Pancake.",
+        "image": "https://img.pokemondb.net/sprites/items/snorlium-z.png"
+    },
+
+
+    {
+        "name": "Smooth Rock",
+        "description": "A Pokémon held item that extends the duration of the move Sandstorm used by the holder.",
+        "image": "https://img.pokemondb.net/sprites/items/smooth-rock.png"
+    },
+
+
+    {
+        "name": "Smoke Ball",
+        "description": "An item to be held by a Pokémon. It enables the holder to flee from any wild Pokémon without fail.",
+        "image": "https://img.pokemondb.net/sprites/items/smoke-ball.png"
+    },
+
+
+    {
+        "name": "Slowbronite",
+        "description": "Enables Slowbro to Mega Evolve during battle.",
+        "image": "https://img.pokemondb.net/sprites/items/slowbronite.png"
+    },
+
+
+    {
+        "name": "Sky Plate",
+        "description": "Increases power of Flying-type moves. Changes Arceus' type to Flying.",
+        "image": "https://img.pokemondb.net/sprites/items/sky-plate.png"
+    },
+
+
+    {
+        "name": "Silver Powder",
+        "description": "Increases the power of Bug-type moves.",
+        "image": "https://img.pokemondb.net/sprites/items/silver-powder.png"
+    },
+
+
+    {
+        "name": "Silk Scarf",
+        "description": "Increases the power of Normal-type moves.",
+        "image": "https://img.pokemondb.net/sprites/items/silk-scarf.png"
+    },
+
+
+    {
+        "name": "Shock Drive",
+        "description": "Changes Techno Blast to an Electric-type move when held by Genesect.",
+        "image": "https://img.pokemondb.net/sprites/items/shock-drive.png"
+    },
+
+
+    {
+        "name": "Shell Bell",
+        "description": "An item to be held by a Pokémon. The holder's HP is restored a little every time it inflicts damage.",
+        "image": "https://img.pokemondb.net/sprites/items/shell-bell.png"
+    },
+
+
+    {
+        "name": "Shed Shell",
+        "description": "A tough, discarded carapace to be held by a Pokémon. It enables the holder to switch with a waiting Pokémon in battle.",
+        "image": "https://img.pokemondb.net/sprites/items/shed-shell.png"
+    },
+
+
+    {
+        "name": "Sharpedonite",
+        "description": "Enables Sharpedo to Mega Evolve during battle.",
+        "image": "https://img.pokemondb.net/sprites/items/sharpedonite.png"
+    },
+
+
+    {
+        "name": "Sharp Beak",
+        "description": "Increases the power of Flying-type moves.",
+        "image": "https://img.pokemondb.net/sprites/items/sharp-beak.png"
+    },
+
+
+    {
+        "name": "Sea Incense",
+        "description": "Increases the power of Water-type moves. Breeding Marill or Azumarill produces Azurill when held.",
+        "image": "https://img.pokemondb.net/sprites/items/sea-incense.png"
+    },
+
+
+    {
+        "name": "Scope Lens",
+        "description": "Increases critical-hit ratio.",
+        "image": "https://img.pokemondb.net/sprites/items/scope-lens.png"
+    },
+
+
+    {
+        "name": "Scizorite",
+        "description": "Enables Scizor to Mega Evolve during battle.",
+        "image": "https://img.pokemondb.net/sprites/items/scizorite.png"
+    },
+
+
+    {
+        "name": "Sceptilite",
+        "description": "Enables Sceptile to Mega Evolve during battle.",
+        "image": "https://img.pokemondb.net/sprites/items/sceptilite.png"
+    },
+
+
+    {
+        "name": "Salamencite",
+        "description": "Enables Salamence to Mega Evolve during battle.",
+        "image": "https://img.pokemondb.net/sprites/items/salamencite.png"
+    },
+
+
+    {
+        "name": "Safety Goggles",
+        "description": "Prevents damage from weather and powder.",
+        "image": "https://img.pokemondb.net/sprites/items/safety-goggles.png"
+    },
+
+
+    {
+        "name": "Sablenite",
+        "description": "Enables Sableye to Mega Evolve during battle.",
+        "image": "https://img.pokemondb.net/sprites/items/sablenite.png"
+    },
+
+
+    {
+        "name": "Rose Incense",
+        "description": "Increases the power of Grass-type moves. Breeding Roselia or Roserade produces Budew when held.",
+        "image": "https://img.pokemondb.net/sprites/items/rose-incense.png"
+    },
+
+
+    {
+        "name": "Room Service",
+        "description": "Lowers the Pokémon's speed during Trick Room.",
+        "image": "https://img.pokemondb.net/s.png"
+    },
+
+
+    {
+        "name": "Rocky Helmet",
+        "description": "If the holder of this item takes damage, the attacker will also be damaged upon contact.",
+        "image": "https://img.pokemondb.net/sprites/items/rocky-helmet.png"
+    },
+
+
+    {
+        "name": "Rockium Z",
+        "description": "Allows the use of Continental Crush, the Rock type Z-Move.",
+        "image": "https://img.pokemondb.net/sprites/items/rockium-z.png"
+    },
+
+
+    {
+        "name": "Rock Memory",
+        "description": "Changes Silvally and its move Multi-Attack to Rock type.",
+        "image": "https://img.pokemondb.net/sprites/items/rock-memory.png"
+    },
+
+
+    {
+        "name": "Rock Incense",
+        "description": "Increases the power of Rock-type moves. Breeding Sudowoodo produces Bonsly when held.",
+        "image": "https://img.pokemondb.net/sprites/items/rock-incense.png"
+    },
+
+
+    {
+        "name": "Rock Gem",
+        "description": "Increases the power of a Rock-type move only once.",
+        "image": "https://img.pokemondb.net/sprites/items/rock-gem.png"
+    },
+
+
+    {
+        "name": "Ring Target",
+        "description": "Moves that would otherwise have no effect will land on the Pokémon that holds it.",
+        "image": "https://img.pokemondb.net/sprites/items/ring-target.png"
+    },
+
+
+    {
+        "name": "Ribbon Sweet",
+        "description": "Evolves Milcery into Ribbon Flavor Alcremie.",
+        "image": "https://img.pokemondb.net/s.png"
+    },
+
+
+    {
+        "name": "Red Nectar",
+        "description": "A flower nectar obtained at Ula'ula Meadow. It changes the form of certain species of Pokémon.",
+        "image": "https://img.pokemondb.net/sprites/items/red-nectar.png"
+    },
+
+
+    {
+        "name": "Red Card",
+        "description": "A card with a mysterious power. When the holder is struck by a foe, the attacker is removed from battle.",
+        "image": "https://img.pokemondb.net/sprites/items/red-card.png"
+    },
+
+
+    {
+        "name": "Razor Fang",
+        "description": "May cause opponent to flinch. Evolves Gligar when held at night.",
+        "image": "https://img.pokemondb.net/sprites/items/razor-fang.png"
+    },
+
+
+    {
+        "name": "Razor Claw",
+        "description": "Increases critical-hit ratio. Evolves Sneasel when held at night.",
+        "image": "https://img.pokemondb.net/sprites/items/razor-claw.png"
+    },
+
+
+    {
+        "name": "Quick Powder",
+        "description": "Increases Speed when held by Ditto.",
+        "image": "https://img.pokemondb.net/sprites/items/quick-powder.png"
+    },
+
+
+    {
+        "name": "Quick Claw",
+        "description": "An item to be held by a Pokémon. A light, sharp claw that lets the bearer move first occasionally.",
+        "image": "https://img.pokemondb.net/sprites/items/quick-claw.png"
+    },
+
+
+    {
+        "name": "Purple Nectar",
+        "description": "A flower nectar obtained at Poni Meadow. It changes the form of certain species of Pokémon.",
+        "image": "https://img.pokemondb.net/sprites/items/purple-nectar.png"
+    },
+
+
+    {
+        "name": "Pure Incense",
+        "description": "Descreases the likelihood of meeting wild Pokémon. Breeding Chimecho produces Chingling when held.",
+        "image": "https://img.pokemondb.net/sprites/items/pure-incense.png"
+    },
+
+
+    {
+        "name": "Psychium Z",
+        "description": "Allows the use of Shattered Psyche, the Psychic type Z-Move.",
+        "image": "https://img.pokemondb.net/sprites/items/psychium-z.png"
+    },
+
+
+    {
+        "name": "Psychic Seed",
+        "description": "An item to be held by a Pokémon. It boosts Sp. Def on Psychic Terrain. It can only be used once.",
+        "image": "https://img.pokemondb.net/sprites/items/psychic-seed.png"
+    },
+
+
+    {
+        "name": "Psychic Memory",
+        "description": "Changes Silvally and its move Multi-Attack to Psychic type.",
+        "image": "https://img.pokemondb.net/sprites/items/psychic-memory.png"
+    },
+
+
+    {
+        "name": "Psychic Gem",
+        "description": "Increases the power of a Psychic-type move only once.",
+        "image": "https://img.pokemondb.net/sprites/items/psychic-gem.png"
+    },
+
+
+    {
+        "name": "Protective Pads",
+        "description": "An item to be held by a Pokémon. These pads protect the holder from effects caused by making direct contact with the target.",
+        "image": "https://img.pokemondb.net/sprites/items/protective-pads.png"
+    },
+
+
+    {
+        "name": "Prof's Letter",
+        "description": "A letter that Professor Sycamore wrote to your mother. A faint but pleasant perfume seems to cling to the paper.",
+        "image": "https://img.pokemondb.net/sprites/items/profs-letter.png"
+    },
+
+
+    {
+        "name": "Prison Bottle",
+        "description": "Transforms Hoopa Confined to Hoopa Unbound.",
+        "image": "https://img.pokemondb.net/sprites/items/prison-bottle.png"
+    },
+
+
+    {
+        "name": "Primarium Z",
+        "description": "Allows Primarina to upgrade Sparkling Aria to a Z-Move, Oceanic Operetta.",
+        "image": "https://img.pokemondb.net/sprites/items/primarium-z.png"
+    },
+
+
+    {
+        "name": "Power Weight",
+        "description": "A Pokémon held item that promotes HP gain on leveling, but reduces the Speed stat.",
+        "image": "https://img.pokemondb.net/sprites/items/power-weight.png"
+    },
+
+
+    {
+        "name": "Power Plant Pass",
+        "description": "This pass serves as an ID card for gaining access to the power plant that lies along Route 13.",
+        "image": "https://img.pokemondb.net/sprites/items/power-plant-pass.png"
+    },
+
+
+    {
+        "name": "Power Lens",
+        "description": "A Pokémon held item that promotes Sp. Atk gain on leveling, but reduces the Speed stat.",
+        "image": "https://img.pokemondb.net/sprites/items/power-lens.png"
+    },
+
+
+    {
+        "name": "Power Herb",
+        "description": "A single-use item to be held by a Pokémon. It allows the immediate use of a move that charges on the first turn.",
+        "image": "https://img.pokemondb.net/sprites/items/power-herb.png"
+    },
+
+
+    {
+        "name": "Power Bracer",
+        "description": "A Pokémon held item that promotes Attack gain on leveling, but reduces the Speed stat.",
+        "image": "https://img.pokemondb.net/sprites/items/power-bracer.png"
+    },
+
+
+    {
+        "name": "Power Belt",
+        "description": "A Pokémon held item that promotes Defense gain on leveling, but reduces the Speed stat.",
+        "image": "https://img.pokemondb.net/sprites/items/power-belt.png"
+    },
+
+
+    {
+        "name": "Power Band",
+        "description": "A Pokémon held item that promotes Sp. Def gain on leveling, but reduces the Speed stat.",
+        "image": "https://img.pokemondb.net/sprites/items/power-band.png"
+    },
+
+
+    {
+        "name": "Power Anklet",
+        "description": "A Pokémon held item that promotes Speed gain on leveling, but reduces the Speed stat.",
+        "image": "https://img.pokemondb.net/sprites/items/power-anklet.png"
+    },
+
+
+    {
+        "name": "Poisonium Z",
+        "description": "Allows the use of Acid Downpour, the Poison type Z-Move.",
+        "image": "https://img.pokemondb.net/sprites/items/poisonium-z.png"
+    },
+
+
+    {
+        "name": "Poison Memory",
+        "description": "Changes Silvally and its move Multi-Attack to Poison type.",
+        "image": "https://img.pokemondb.net/sprites/items/poison-memory.png"
+    },
+
+
+    {
+        "name": "Poison Gem",
+        "description": "Increases the power of a Poison-type move only once.",
+        "image": "https://img.pokemondb.net/sprites/items/poison-gem.png"
+    },
+
+
+    {
+        "name": "Poison Barb",
+        "description": "Increases the power of Poison-type moves.",
+        "image": "https://img.pokemondb.net/sprites/items/poison-barb.png"
+    },
+
+
+    {
+        "name": "Plasma Card",
+        "description": "A card key needed to enter the password inside the Plasma Frigate.",
+        "image": "https://img.pokemondb.net/sprites/items/plasma-card.png"
+    },
+
+
+    {
+        "name": "Pixie Plate",
+        "description": "Increases power of Fairy-type moves. Changes Arceus' type to Fairy.",
+        "image": "https://img.pokemondb.net/sprites/items/pixie-plate.png"
+    },
+
+
+    {
+        "name": "Pinsirite",
+        "description": "Enables Pinsir to Mega Evolve during battle.",
+        "image": "https://img.pokemondb.net/sprites/items/pinsirite.png"
+    },
+
+
+    {
+        "name": "Pink Nectar",
+        "description": "The flower nectar obtained at the flowering shrubs on Royal Avenue. It changes the form of certain species of Pokémon.",
+        "image": "https://img.pokemondb.net/sprites/items/pink-nectar.png"
+    },
+
+
+    {
+        "name": "Pikashunium Z",
+        "description": "Allows Pikachu in a cap to upgrade Thunderbolt to a Z-Move, 10,000,000 Volt Thunderbolt.",
+        "image": "https://img.pokemondb.net/sprites/items/pikashunium-z.png"
+    },
+
+
+    {
+        "name": "Pikanium Z",
+        "description": "Allows Pikachu to upgrade Volt Tackle to a Z-Move, Catastropika.",
+        "image": "https://img.pokemondb.net/sprites/items/pikanium-z.png"
+    },
+
+
+    {
+        "name": "Pidgeotite",
+        "description": "Enables Pidgeot to Mega Evolve during battle.",
+        "image": "https://img.pokemondb.net/sprites/items/pidgeotite.png"
+    },
+
+
+    {
+        "name": "Pass Orb",
+        "description": "A mysterious orb containing the power of the Unova region, to be used when generating Pass Power.",
+        "image": "https://img.pokemondb.net/sprites/items/pass-orb.png"
+    },
+
+
+    {
+        "name": "Odd Incense",
+        "description": "Increases the power of Psychic-type moves. Breeding Mr. Mime produces Mime Jr. when held.",
+        "image": "https://img.pokemondb.net/sprites/items/odd-incense.png"
+    },
+
+
+    {
+        "name": "Normalium Z",
+        "description": "Allows the use of Breakneck Blitz, the Normal type Z-Move.",
+        "image": "https://img.pokemondb.net/sprites/items/normalium-z.png"
+    },
+
+
+    {
+        "name": "Normal Gem",
+        "description": "Increases the power of a Normal-type move only once.",
+        "image": "https://img.pokemondb.net/sprites/items/normal-gem.png"
+    },
+
+
+    {
+        "name": "Never-Melt Ice",
+        "description": "Increases the power of Ice-type moves.",
+        "image": "https://img.pokemondb.net/sprites/items/never-melt-ice.png"
+    },
+
+
+    {
+        "name": "Mystic Water",
+        "description": "Increases the power of Water-type moves.",
+        "image": "https://img.pokemondb.net/sprites/items/mystic-water.png"
+    },
+
+
+    {
+        "name": "Muscle Band",
+        "description": "Increases the power of Physical-category moves.",
+        "image": "https://img.pokemondb.net/sprites/items/muscle-band.png"
+    },
+
+
+    {
+        "name": "Misty Seed",
+        "description": "An item to be held by a Pokémon. It boosts Sp. Def on Misty Terrain. It can only be used once.",
+        "image": "https://img.pokemondb.net/sprites/items/misty-seed.png"
+    },
+
+
+    {
+        "name": "Mirror Herb",
+        "description": "Copies an opponent's stat increases when consumed.",
+        "image": "https://img.pokemondb.net/s.png"
+    },
+
+
+    {
+        "name": "Miracle Seed",
+        "description": "Increases the power of Grass-type moves.",
+        "image": "https://img.pokemondb.net/sprites/items/miracle-seed.png"
+    },
+
+
+    {
+        "name": "Mind Plate",
+        "description": "Increases power of Psychic-type moves. Changes Arceus' type to Psychic.",
+        "image": "https://img.pokemondb.net/sprites/items/mind-plate.png"
+    },
+
+
+    {
+        "name": "Mimikium Z",
+        "description": "Allows Mimikyu to upgrade Play Rough to a Z-Move, Let's Snuggle Forever.",
+        "image": "https://img.pokemondb.net/sprites/items/mimikium-z.png"
+    },
+
+
+    {
+        "name": "Mewtwonite Y",
+        "description": "Enables Mewtwo to Mega Evolve during battle.",
+        "image": "https://img.pokemondb.net/sprites/items/mewtwonite-y.png"
+    },
+
+
+    {
+        "name": "Mewtwonite X",
+        "description": "Enables Mewtwo to Mega Evolve during battle.",
+        "image": "https://img.pokemondb.net/sprites/items/mewtwonite-x.png"
+    },
+
+
+    {
+        "name": "Mewnium Z",
+        "description": "Allows Mew to upgrade Psychic to a Z-Move, Genesis Supernova.",
+        "image": "https://img.pokemondb.net/sprites/items/mewnium-z.png"
+    },
+
+
+    {
+        "name": "Metronome",
+        "description": "Increases the power of moves used consecutively.",
+        "image": "https://img.pokemondb.net/sprites/items/metronome.png"
+    },
+
+
+    {
+        "name": "Metal Powder",
+        "description": "Increases Defense when held by Ditto.",
+        "image": "https://img.pokemondb.net/sprites/items/metal-powder.png"
+    },
+
+
+    {
+        "name": "Metal Coat",
+        "description": "Increases the power of Steel-type moves. Evolves Onix and Scyther when traded holding the item.",
+        "image": "https://img.pokemondb.net/sprites/items/metal-coat.png"
+    },
+
+
+    {
+        "name": "Metagrossite",
+        "description": "Enables Metagross to Mega Evolve during battle.",
+        "image": "https://img.pokemondb.net/sprites/items/metagrossite.png"
+    },
+
+
+    {
+        "name": "Mental Herb",
+        "description": "An item to be held by a Pokémon. It snaps the holder out of infatuation. It can be used only once.",
+        "image": "https://img.pokemondb.net/sprites/items/mental-herb.png"
+    },
+
+
+    {
+        "name": "Medichamite",
+        "description": "Enables Medicham to Mega Evolve during battle.",
+        "image": "https://img.pokemondb.net/sprites/items/medichamite.png"
+    },
+
+
+    {
+        "name": "Meadow Plate",
+        "description": "Increases power of Grass-type moves. Changes Arceus' type to Grass.",
+        "image": "https://img.pokemondb.net/sprites/items/meadow-plate.png"
+    },
+
+
+    {
+        "name": "Mawilite",
+        "description": "Enables Mawile to Mega Evolve during battle.",
+        "image": "https://img.pokemondb.net/sprites/items/mawilite.png"
+    },
+
+
+    {
+        "name": "Marshadium Z",
+        "description": "Allows Marshadow to upgrade Spectral Thief to a Z-Move, Soul-Stealing 7-Star Strike.",
+        "image": "https://img.pokemondb.net/sprites/items/marshadium-z.png"
+    },
+
+
+    {
+        "name": "Manectite",
+        "description": "Enables Manectric to Mega Evolve during battle.",
+        "image": "https://img.pokemondb.net/sprites/items/manectite.png"
+    },
+
+
+    {
+        "name": "Magnet",
+        "description": "Increases the power of Electric-type moves.",
+        "image": "https://img.pokemondb.net/sprites/items/magnet.png"
+    },
+
+
+    {
+        "name": "Macho Brace",
+        "description": "An item to be held by a Pokémon. It is a stiff and heavy brace that promotes strong growth but lowers Speed.",
+        "image": "https://img.pokemondb.net/sprites/items/macho-brace.png"
+    },
+
+
+    {
+        "name": "Lycanium Z",
+        "description": "Allows Lycanroc to upgrade Stone Edge to a Z-Move, Splintered Stormshards.",
+        "image": "https://img.pokemondb.net/sprites/items/lycanium-z.png"
+    },
+
+
+    {
+        "name": "Lustrous Orb",
+        "description": "Increases the power of Dragon- and Water-type moves when held by Palkia.",
+        "image": "https://img.pokemondb.net/sprites/items/lustrous-orb.png"
+    },
+
+
+    {
+        "name": "Lustrous Globe",
+        "description": "An item to be held by Palkia. This large, glowing orb wells with power and allows the Pokémon to change form.",
+        "image": "https://img.pokemondb.net/s.png"
+    },
+
+
+    {
+        "name": "Lunalium Z",
+        "description": "Allows Lunala to upgrade Moongeist Beam to a Z-Move, Menacing Moonraze Maelstrom.",
+        "image": "https://img.pokemondb.net/sprites/items/lunalium-z.png"
+    },
+
+
+    {
+        "name": "Luminous Moss",
+        "description": "Raises Special Defense if hit by a Water-type move.",
+        "image": "https://img.pokemondb.net/sprites/items/luminous-moss.png"
+    },
+
+
+    {
+        "name": "Lucky Punch",
+        "description": "Increases critical-hit ratio when held by Chansey.",
+        "image": "https://img.pokemondb.net/sprites/items/lucky-punch.png"
+    },
+
+
+    {
+        "name": "Lucky Egg",
+        "description": "An item to be held by a Pokémon. It is an egg filled with happiness that earns extra Exp. Points in battle.",
+        "image": "https://img.pokemondb.net/sprites/items/lucky-egg.png"
+    },
+
+
+    {
+        "name": "Luck Incense",
+        "description": "Doubles prize money if held. Breeding Chansey or Blissey produces Happiny when held.",
+        "image": "https://img.pokemondb.net/sprites/items/luck-incense.png"
+    },
+
+
+    {
+        "name": "Lucarionite",
+        "description": "Enables Lucario to Mega Evolve during battle.",
+        "image": "https://img.pokemondb.net/sprites/items/lucarionite.png"
+    },
+
+
+    {
+        "name": "Love Sweet",
+        "description": "Evolves Milcery into Heart Flavor Alcremie.",
+        "image": "https://img.pokemondb.net/s.png"
+    },
+
+
+    {
+        "name": "Lopunnite",
+        "description": "Enables Lopunny to Mega Evolve during battle.",
+        "image": "https://img.pokemondb.net/sprites/items/lopunnite.png"
+    },
+
+
+    {
+        "name": "Looker Ticket",
+        "description": "A ticket that was handmade by Looker. It's decorated with a liberal amount of glittery paint.",
+        "image": "https://img.pokemondb.net/sprites/items/looker-ticket.png"
+    },
+
+
+    {
+        "name": "Loaded Dice",
+        "description": "Makes multi-strike moves more likely to hit more times.",
+        "image": "https://img.pokemondb.net/s.png"
+    },
+
+
+    {
+        "name": "Light Clay",
+        "description": "A Pokémon held item that extends the duration of barrier moves like Light Screen and Reflect used by the holder.",
+        "image": "https://img.pokemondb.net/sprites/items/light-clay.png"
+    },
+
+
+    {
+        "name": "Light Ball",
+        "description": "An item to be held by PIKACHU. It is a puzzling orb that raises the Attack and Sp. Atk stat.",
+        "image": "https://img.pokemondb.net/sprites/items/light-ball.png"
+    },
+
+
+    {
+        "name": "Life Orb",
+        "description": "Increases the power of moves, but loses HP each turn.",
+        "image": "https://img.pokemondb.net/sprites/items/life-orb.png"
+    },
+
+
+    {
+        "name": "Legend Plate",
+        "description": "A stone tablet imbued with the essence of all creation. When used on a certain Pokémon, it allows that Pokémon to gain the power of every type there is.",
+        "image": "https://img.pokemondb.net/s.png"
+    },
+
+
+    {
+        "name": "Leftovers",
+        "description": "An item to be held by a Pokémon. The holder's HP is gradually restored during battle.",
+        "image": "https://img.pokemondb.net/sprites/items/leftovers.png"
+    },
+
+
+    {
+        "name": "Leek",
+        "description": "Increases critical-hit ratio when held by Farfetch'd.",
+        "image": "https://img.pokemondb.net/sprites/items/leek.png"
+    },
+
+
+    {
+        "name": "Lax Incense",
+        "description": "Lowers the opponent's accuracy. Breeding Wobbuffet produces Wynaut when held.",
+        "image": "https://img.pokemondb.net/sprites/items/lax-incense.png"
+    },
+
+
+    {
+        "name": "Latiosite",
+        "description": "Enables Latios to Mega Evolve during battle.",
+        "image": "https://img.pokemondb.net/sprites/items/latiosite.png"
+    },
+
+
+    {
+        "name": "Latiasite",
+        "description": "Enables Latias to Mega Evolve during battle.",
+        "image": "https://img.pokemondb.net/sprites/items/latiasite.png"
+    },
+
+
+    {
+        "name": "Lagging Tail",
+        "description": "Holder always attacks last.",
+        "image": "https://img.pokemondb.net/sprites/items/lagging-tail.png"
+    },
+
+
+    {
+        "name": "Kommonium Z",
+        "description": "Allows Kommo-o to upgrade Clanging Scales to a Z-Move, Clangorous Soulblaze.",
+        "image": "https://img.pokemondb.net/sprites/items/kommonium-z.png"
+    },
+
+
+    {
+        "name": "King's Rock",
+        "description": "May cause opponent to flinch. Evolves Poliwhirl and Slowpoke when traded holding the item.",
+        "image": "https://img.pokemondb.net/sprites/items/kings-rock.png"
+    },
+
+
+    {
+        "name": "Kangaskhanite",
+        "description": "Enables Kangaskhan to Mega Evolve during battle.",
+        "image": "https://img.pokemondb.net/sprites/items/kangaskhanite.png"
+    },
+
+
+    {
+        "name": "Iron Plate",
+        "description": "Increases power of Steel-type moves. Changes Arceus' type to Steel.",
+        "image": "https://img.pokemondb.net/sprites/items/iron-plate.png"
+    },
+
+
+    {
+        "name": "Iron Ball",
+        "description": "A Pokémon held item that cuts Speed. It makes Flying-type and levitating holders susceptible to Ground moves.",
+        "image": "https://img.pokemondb.net/sprites/items/iron-ball.png"
+    },
+
+
+    {
+        "name": "Intriguing Stone",
+        "description": "A rather curious stone that might appear to be valuable to some. It's all in the eye of the beholder.",
+        "image": "https://img.pokemondb.net/sprites/items/intriguing-stone.png"
+    },
+
+
+    {
+        "name": "Insect Plate",
+        "description": "Increases power of Bug-type moves. Changes Arceus' type to Bug.",
+        "image": "https://img.pokemondb.net/sprites/items/insect-plate.png"
+    },
+
+
+    {
+        "name": "Incinium Z",
+        "description": "Allows Incineroar to upgrade Darkest Lariat to a Z-Move, Malicious Moonsault.",
+        "image": "https://img.pokemondb.net/sprites/items/incinium-z.png"
+    },
+
+
+    {
+        "name": "Icy Rock",
+        "description": "A Pokémon held item that extends the duration of the move Hail used by the holder.",
+        "image": "https://img.pokemondb.net/sprites/items/icy-rock.png"
+    },
+
+
+    {
+        "name": "Icium Z",
+        "description": "Allows the use of Subzero Slammer, the Ice type Z-Move.",
+        "image": "https://img.pokemondb.net/sprites/items/icium-z.png"
+    },
+
+
+    {
+        "name": "Icicle Plate",
+        "description": "Increases power of Ice-type moves. Changes Arceus' type to Ice.",
+        "image": "https://img.pokemondb.net/sprites/items/icicle-plate.png"
+    },
+
+
+    {
+        "name": "Ice Memory",
+        "description": "Changes Silvally and its move Multi-Attack to Ice type.",
+        "image": "https://img.pokemondb.net/sprites/items/ice-memory.png"
+    },
+
+
+    {
+        "name": "Ice Gem",
+        "description": "Increases the power of an Ice-type move only once.",
+        "image": "https://img.pokemondb.net/sprites/items/ice-gem.png"
+    },
+
+
+    {
+        "name": "Houndoominite",
+        "description": "Enables Houndoom to Mega Evolve during battle.",
+        "image": "https://img.pokemondb.net/sprites/items/houndoominite.png"
+    },
+
+
+    {
+        "name": "Honor Of Kalos",
+        "description": "A precious symbol that is awarded only to an individual who has done great things for the Kalos region.",
+        "image": "https://img.pokemondb.net/sprites/items/honor-of-kalos.png"
+    },
+
+
+    {
+        "name": "Hi-tech Earbuds",
+        "description": "Strange earbuds that allow you to freely control the volume of various sounds.",
+        "image": "https://img.pokemondb.net/s.png"
+    },
+
+
+    {
+        "name": "Heracronite",
+        "description": "Enables Heracross to Mega Evolve during battle.",
+        "image": "https://img.pokemondb.net/sprites/items/heracronite.png"
+    },
+
+
+    {
+        "name": "Heavy-Duty Boots",
+        "description": "Protects the holder from traps set on the battlefield.",
+        "image": "https://img.pokemondb.net/s.png"
+    },
+
+
+    {
+        "name": "Heat Rock",
+        "description": "A Pokémon held item that extends the duration of the move Sunny Day used by the holder.",
+        "image": "https://img.pokemondb.net/sprites/items/heat-rock.png"
+    },
+
+
+    {
+        "name": "Hard Stone",
+        "description": "Increases the power of Rock-type moves.",
+        "image": "https://img.pokemondb.net/sprites/items/hard-stone.png"
+    },
+
+
+    {
+        "name": "Gyaradosite",
+        "description": "Enables Gyarados to Mega Evolve during battle.",
+        "image": "https://img.pokemondb.net/sprites/items/gyaradosite.png"
+    },
+
+
+    {
+        "name": "Grubby Hanky",
+        "description": "A handkerchief dropped by a regular at Café Warehouse. It smells faintly like a Pokémon.",
+        "image": "https://img.pokemondb.net/sprites/items/grubby-hanky.png"
+    },
+
+
+    {
+        "name": "Groundium Z",
+        "description": "Allows the use of Tectonic Rage, the Ground type Z-Move.",
+        "image": "https://img.pokemondb.net/sprites/items/groundium-z.png"
+    },
+
+
+    {
+        "name": "Ground Memory",
+        "description": "Changes Silvally and its move Multi-Attack to Ground type.",
+        "image": "https://img.pokemondb.net/sprites/items/ground-memory.png"
+    },
+
+
+    {
+        "name": "Ground Gem",
+        "description": "Increases the power of a Ground-type move only once.",
+        "image": "https://img.pokemondb.net/sprites/items/ground-gem.png"
+    },
+
+
+    {
+        "name": "Grit Rock",
+        "description": "Raises EVs by 1 in Legends: Arceus, when current EVs are between 8-9.",
+        "image": "https://img.pokemondb.net/s.png"
+    },
+
+
+    {
+        "name": "Grit Pebble",
+        "description": "Raises EVs by 1 in Legends: Arceus, when current EVs are between 6-8.",
+        "image": "https://img.pokemondb.net/s.png"
+    },
+
+
+    {
+        "name": "Grit Gravel",
+        "description": "Raises EVs by 1 in Legends: Arceus, when current EVs are between 3-5.",
+        "image": "https://img.pokemondb.net/s.png"
+    },
+
+
+    {
+        "name": "Grit Dust",
+        "description": "Raises EVs by 1 in Legends: Arceus, when current EVs are between 0-2.",
+        "image": "https://img.pokemondb.net/s.png"
+    },
+
+
+    {
+        "name": "Griseous Orb",
+        "description": "Increases the power of Dragon- and Ghost-type moves when held by Giratina, and changes it to Origin Forme.",
+        "image": "https://img.pokemondb.net/sprites/items/griseous-orb.png"
+    },
+
+
+    {
+        "name": "Griseous Core",
+        "description": "An item to be held by Giratina. This large, glowing gem wells with power and allows the Pokémon to change form.",
+        "image": "https://img.pokemondb.net/s.png"
+    },
+
+
+    {
+        "name": "Grip Claw",
+        "description": "A Pokémon held item that extends the duration of multiturn attacks like Bind and Wrap.",
+        "image": "https://img.pokemondb.net/sprites/items/grip-claw.png"
+    },
+
+
+    {
+        "name": "Grassy Seed",
+        "description": "An item to be held by a Pokémon. It boosts Defense on Grassy Terrain. It can only be used once.",
+        "image": "https://img.pokemondb.net/sprites/items/grassy-seed.png"
+    },
+
+
+    {
+        "name": "Grassium Z",
+        "description": "Allows the use of Bloom Doom, the Grass type Z-Move.",
+        "image": "https://img.pokemondb.net/sprites/items/grassium-z.png"
+    },
+
+
+    {
+        "name": "Grass Memory",
+        "description": "Changes Silvally and its move Multi-Attack to Grass type.",
+        "image": "https://img.pokemondb.net/sprites/items/grass-memory.png"
+    },
+
+
+    {
+        "name": "Grass Gem",
+        "description": "Increases the power of a Grass-type move only once.",
+        "image": "https://img.pokemondb.net/sprites/items/grass-gem.png"
+    },
+
+
+    {
+        "name": "Glalitite",
+        "description": "Enables Glalie to Mega Evolve during battle.",
+        "image": "https://img.pokemondb.net/sprites/items/glalitite.png"
+    },
+
+
+    {
+        "name": "Ghostium Z",
+        "description": "Allows the use of Never-Ending Nightmare, the Ghost type Z-Move.",
+        "image": "https://img.pokemondb.net/sprites/items/ghostium-z.png"
+    },
+
+
+    {
+        "name": "Ghost Memory",
+        "description": "Changes Silvally and its move Multi-Attack to Ghost type.",
+        "image": "https://img.pokemondb.net/sprites/items/ghost-memory.png"
+    },
+
+
+    {
+        "name": "Ghost Gem",
+        "description": "Increases the power of a Ghost-type move only once.",
+        "image": "https://img.pokemondb.net/sprites/items/ghost-gem.png"
+    },
+
+
+    {
+        "name": "Gengarite",
+        "description": "Enables Gengar to Mega Evolve during battle.",
+        "image": "https://img.pokemondb.net/sprites/items/gengarite.png"
+    },
+
+
+    {
+        "name": "Gardevoirite",
+        "description": "Enables Gardevoir to Mega Evolve during battle.",
+        "image": "https://img.pokemondb.net/sprites/items/gardevoirite.png"
+    },
+
+
+    {
+        "name": "Garchompite",
+        "description": "Enables Garchomp to Mega Evolve during battle.",
+        "image": "https://img.pokemondb.net/sprites/items/garchompite.png"
+    },
+
+
+    {
+        "name": "Galladite",
+        "description": "Enables Gallade to Mega Evolve during battle.",
+        "image": "https://img.pokemondb.net/sprites/items/galladite.png"
+    },
+
+
+    {
+        "name": "Full Incense",
+        "description": "Holder always attacks last. Breeding Snorlax produces Munchlax when held.",
+        "image": "https://img.pokemondb.net/sprites/items/full-incense.png"
+    },
+
+
+    {
+        "name": "Focus Sash",
+        "description": "An item to be held by a Pokémon. If it has full HP, the holder will endure one potential KO attack, leaving 1 HP.",
+        "image": "https://img.pokemondb.net/sprites/items/focus-sash.png"
+    },
+
+
+    {
+        "name": "Focus Band",
+        "description": "An item to be held by a Pokémon. The holder may endure a potential KO attack, leaving it with just 1 HP.",
+        "image": "https://img.pokemondb.net/sprites/items/focus-band.png"
+    },
+
+
+    {
+        "name": "Flyinium Z",
+        "description": "Allows the use of Supersonic Skystrike, the Flying type Z-Move.",
+        "image": "https://img.pokemondb.net/sprites/items/flyinium-z.png"
+    },
+
+
+    {
+        "name": "Flying Memory",
+        "description": "Changes Silvally and its move Multi-Attack to Flying type.",
+        "image": "https://img.pokemondb.net/sprites/items/flying-memory.png"
+    },
+
+
+    {
+        "name": "Flying Gem",
+        "description": "Increases the power of a Flying-type move only once.",
+        "image": "https://img.pokemondb.net/sprites/items/flying-gem.png"
+    },
+
+
+    {
+        "name": "Flower Sweet",
+        "description": "Evolves Milcery into Flower Flavor Alcremie.",
+        "image": "https://img.pokemondb.net/s.png"
+    },
+
+
+    {
+        "name": "Float Stone",
+        "description": "A very light stone. It reduces the weight of a Pokémon when held.",
+        "image": "https://img.pokemondb.net/sprites/items/float-stone.png"
+    },
+
+
+    {
+        "name": "Flame Plate",
+        "description": "Increases power of Fire-type moves. Changes Arceus' type to Fire.",
+        "image": "https://img.pokemondb.net/sprites/items/flame-plate.png"
+    },
+
+
+    {
+        "name": "Flame Orb",
+        "description": "An item to be held by a Pokémon. It is a bizarre orb that inflicts a burn on the holder in battle.",
+        "image": "https://img.pokemondb.net/sprites/items/flame-orb.png"
+    },
+
+
+    {
+        "name": "Fist Plate",
+        "description": "Increases power of Fighting-type moves. Changes Arceus' type to Fighting.",
+        "image": "https://img.pokemondb.net/sprites/items/fist-plate.png"
+    },
+
+
+    {
+        "name": "Firium Z",
+        "description": "Allows the use of Inferno Overdrive, the Fire type Z-Move.",
+        "image": "https://img.pokemondb.net/sprites/items/firium-z.png"
+    },
+
+
+    {
+        "name": "Fire Memory",
+        "description": "Changes Silvally and its move Multi-Attack to Fire type.",
+        "image": "https://img.pokemondb.net/sprites/items/fire-memory.png"
+    },
+
+
+    {
+        "name": "Fire Gem",
+        "description": "Increases the power of a Fire-type move only once.",
+        "image": "https://img.pokemondb.net/sprites/items/fire-gem.png"
+    },
+
+
+    {
+        "name": "Fightinium Z",
+        "description": "Allows the use of All-Out Pummeling, the Fighting type Z-Move.",
+        "image": "https://img.pokemondb.net/sprites/items/fightinium-z.png"
+    },
+
+
+    {
+        "name": "Fighting Memory",
+        "description": "Changes Silvally and its move Multi-Attack to Fighting type.",
+        "image": "https://img.pokemondb.net/sprites/items/fighting-memory.png"
+    },
+
+
+    {
+        "name": "Fighting Gem",
+        "description": "Increases the power of a Fighting-type move only once.",
+        "image": "https://img.pokemondb.net/sprites/items/fighting-gem.png"
+    },
+
+
+    {
+        "name": "Fairy Memory",
+        "description": "Changes Silvally and its move Multi-Attack to Fairy type.",
+        "image": "https://img.pokemondb.net/sprites/items/fairy-memory.png"
+    },
+
+
+    {
+        "name": "Fairium Z",
+        "description": "Allows the use of Twinkle Tackle, the Fairy type Z-Move.",
+        "image": "https://img.pokemondb.net/sprites/items/fairium-z.png"
+    },
+
+
+    {
+        "name": "Expert Belt",
+        "description": "Increases the power of super-effective moves.",
+        "image": "https://img.pokemondb.net/sprites/items/expert-belt.png"
+    },
+
+
+    {
+        "name": "Exp. Share",
+        "description": "An item to be held by a Pokémon. The holder gets a share of a battle's Exp. Points without battling.",
+        "image": "https://img.pokemondb.net/sprites/items/exp-share.png"
+    },
+
+
+    {
+        "name": "Eviolite",
+        "description": "A mysterious evolutionary lump. When held, it raises the Defense and Sp. Def of a Pokémon that can still evolve.",
+        "image": "https://img.pokemondb.net/sprites/items/eviolite.png"
+    },
+
+
+    {
+        "name": "Everstone",
+        "description": "An item to be held by a Pokémon. The Pokémon holding this peculiar stone is prevented from evolving.",
+        "image": "https://img.pokemondb.net/sprites/items/everstone.png"
+    },
+
+
+    {
+        "name": "Elevator Key",
+        "description": "A card key that activates the elevator in Lysandre Labs. It is emblazoned with Team Flare's logo.",
+        "image": "https://img.pokemondb.net/sprites/items/elevator-key.png"
+    },
+
+
+    {
+        "name": "Electrium Z",
+        "description": "Allows the use of Gigavolt Havoc, the Electric type Z-Move.",
+        "image": "https://img.pokemondb.net/sprites/items/electrium-z.png"
+    },
+
+
+    {
+        "name": "Electric Seed",
+        "description": "An item to be held by a Pokémon. It boosts Defense on Electric Terrain. It can only be used once.",
+        "image": "https://img.pokemondb.net/sprites/items/electric-seed.png"
+    },
+
+
+    {
+        "name": "Electric Memory",
+        "description": "Changes Silvally and its move Multi-Attack to Electric type.",
+        "image": "https://img.pokemondb.net/sprites/items/electric-memory.png"
+    },
+
+
+    {
+        "name": "Electric Gem",
+        "description": "Increases the power of an Electric-type move only once.",
+        "image": "https://img.pokemondb.net/sprites/items/electric-gem.png"
+    },
+
+
+    {
+        "name": "Eject Pack",
+        "description": "The Pokémon switches out if its stats are lowered.",
+        "image": "https://img.pokemondb.net/s.png"
+    },
+
+
+    {
+        "name": "Eject Button",
+        "description": "If the holder is hit by an attack, it will switch with another Pokémon in your party.",
+        "image": "https://img.pokemondb.net/sprites/items/eject-button.png"
+    },
+
+
+    {
+        "name": "Eevium Z",
+        "description": "Allows Eevee to upgrade Last Resort to a Z-Move, Extreme Evoboost.",
+        "image": "https://img.pokemondb.net/sprites/items/eevium-z.png"
+    },
+
+
+    {
+        "name": "Earth Plate",
+        "description": "Increases power of Ground-type moves. Changes Arceus' type to Ground.",
+        "image": "https://img.pokemondb.net/sprites/items/earth-plate.png"
+    },
+
+
+    {
+        "name": "Dropped Item",
+        "description": "The Xtransceiver found at the Nimbasa City amusement park. It seems it belongs to a boy.",
+        "image": "https://img.pokemondb.net/sprites/items/xtransceiver.png"
+    },
+
+
+    {
+        "name": "Dread Plate",
+        "description": "Increases power of Dark-type moves. Changes Arceus' type to Dark.",
+        "image": "https://img.pokemondb.net/sprites/items/dread-plate.png"
+    },
+
+
+    {
+        "name": "Dragonium Z",
+        "description": "Allows the use of Devastating Drake, the Dragon type Z-Move.",
+        "image": "https://img.pokemondb.net/sprites/items/dragonium-z.png"
+    },
+
+
+    {
+        "name": "Dragon Memory",
+        "description": "Changes Silvally and its move Multi-Attack to Dragon type.",
+        "image": "https://img.pokemondb.net/sprites/items/dragon-memory.png"
+    },
+
+
+    {
+        "name": "Dragon Gem",
+        "description": "Increases the power of a Dragon-type move only once.",
+        "image": "https://img.pokemondb.net/sprites/items/dragon-gem.png"
+    },
+
+
+    {
+        "name": "Dragon Fang",
+        "description": "Increases the power of Dragon-type moves.",
+        "image": "https://img.pokemondb.net/sprites/items/dragon-fang.png"
+    },
+
+
+    {
+        "name": "Draco Plate",
+        "description": "Increases power of Dragon-type moves. Changes Arceus' type to Dragon.",
+        "image": "https://img.pokemondb.net/sprites/items/draco-plate.png"
+    },
+
+
+    {
+        "name": "Douse Drive",
+        "description": "Changes Techno Blast to a Water-type move when held by Genesect.",
+        "image": "https://img.pokemondb.net/sprites/items/douse-drive.png"
+    },
+
+
+    {
+        "name": "Diancite",
+        "description": "Enables Diancie to Mega Evolve during battle.",
+        "image": "https://img.pokemondb.net/sprites/items/diancite.png"
+    },
+
+
+    {
+        "name": "Destiny Knot",
+        "description": "A long, thin, bright-red string to be held by a Pokémon. If the holder becomes infatuated, the foe does too.",
+        "image": "https://img.pokemondb.net/sprites/items/destiny-knot.png"
+    },
+
+
+    {
+        "name": "Deep Sea Tooth",
+        "description": "Increases Special Attack when held by Clamperl. Evolves Clamperl when traded holding the item.",
+        "image": "https://img.pokemondb.net/sprites/items/deep-sea-tooth.png"
+    },
+
+
+    {
+        "name": "Deep Sea Scale",
+        "description": "Increases Special Defense when held by Clamperl. Evolves Clamperl when traded holding the item.",
+        "image": "https://img.pokemondb.net/sprites/items/deep-sea-scale.png"
+    },
+
+
+    {
+        "name": "Decidium Z",
+        "description": "Allows Decidueye to upgrade Spirit Shackle to a Z-Move, Sinister Arrow Raid.",
+        "image": "https://img.pokemondb.net/sprites/items/decidium-z.png"
+    },
+
+
+    {
+        "name": "Darkinium Z",
+        "description": "Allows the use of Black Hole Eclipse, the Dark type Z-Move.",
+        "image": "https://img.pokemondb.net/sprites/items/darkinium-z.png"
+    },
+
+
+    {
+        "name": "Dark Memory",
+        "description": "Changes Silvally and its move Multi-Attack to Dark type.",
+        "image": "https://img.pokemondb.net/sprites/items/dark-memory.png"
+    },
+
+
+    {
+        "name": "Dark Gem",
+        "description": "Increases the power of a Dark-type move only once.",
+        "image": "https://img.pokemondb.net/sprites/items/dark-gem.png"
+    },
+
+
+    {
+        "name": "Damp Rock",
+        "description": "A Pokémon held item that extends the duration of the move Rain Dance used by the holder.",
+        "image": "https://img.pokemondb.net/sprites/items/damp-rock.png"
+    },
+
+
+    {
+        "name": "Cracked Pot",
+        "description": "Evolves Sinistea into Polteageist.",
+        "image": "https://img.pokemondb.net/s.png"
+    },
+
+
+    {
+        "name": "Covert Cloak",
+        "description": "Conceals the holder, protecting it from the additional effects of moves.",
+        "image": "https://img.pokemondb.net/s.png"
+    },
+
+
+    {
+        "name": "Clover Sweet",
+        "description": "Evolves Milcery into Clover Flavor Alcremie.",
+        "image": "https://img.pokemondb.net/s.png"
+    },
+
+
+    {
+        "name": "Cleanse Tag",
+        "description": "An item to be held by a Pokémon. It helps keep wild Pokémon away if the holder is the first one in the party.",
+        "image": "https://img.pokemondb.net/sprites/items/cleanse-tag.png"
+    },
+
+
+    {
+        "name": "Choice Specs",
+        "description": "Raises Special Attack, but only one move can be used.",
+        "image": "https://img.pokemondb.net/sprites/items/choice-specs.png"
+    },
+
+
+    {
+        "name": "Choice Scarf",
+        "description": "Raises Speed, but only one move can be used.",
+        "image": "https://img.pokemondb.net/sprites/items/choice-scarf.png"
+    },
+
+
+    {
+        "name": "Choice Band",
+        "description": "Raises Attack, but only one move can be used.",
+        "image": "https://img.pokemondb.net/sprites/items/choice-band.png"
+    },
+
+
+    {
+        "name": "Chipped Pot",
+        "description": "Evolves Sinistea into Polteageist.",
+        "image": "https://img.pokemondb.net/s.png"
+    },
+
+
+    {
+        "name": "Chill Drive",
+        "description": "Changes Techno Blast to an Ice-type move when held by Genesect.",
+        "image": "https://img.pokemondb.net/sprites/items/chill-drive.png"
+    },
+
+
+    {
+        "name": "Charizardite Y",
+        "description": "Enables Charizard to Mega Evolve during battle.",
+        "image": "https://img.pokemondb.net/sprites/items/charizardite-y.png"
+    },
+
+
+    {
+        "name": "Charizardite X",
+        "description": "Enables Charizard to Mega Evolve during battle.",
+        "image": "https://img.pokemondb.net/sprites/items/charizardite-x.png"
+    },
+
+
+    {
+        "name": "Charcoal",
+        "description": "Increases the power of Fire-type moves.",
+        "image": "https://img.pokemondb.net/sprites/items/charcoal.png"
+    },
+
+
+    {
+        "name": "Cell Battery",
+        "description": "A consumable battery. If the holder is hit by an Electric-type move, its Attack will rise.",
+        "image": "https://img.pokemondb.net/sprites/items/cell-battery.png"
+    },
+
+
+    {
+        "name": "Cameruptite",
+        "description": "Enables Camerupt to Mega Evolve during battle.",
+        "image": "https://img.pokemondb.net/sprites/items/cameruptite.png"
+    },
+
+
+    {
+        "name": "Burn Drive",
+        "description": "Changes Techno Blast to a Fire-type move when held by Genesect.",
+        "image": "https://img.pokemondb.net/sprites/items/burn-drive.png"
+    },
+
+
+    {
+        "name": "Buginium Z",
+        "description": "Allows the use of Savage Spin-Out, the Bug type Z-Move.",
+        "image": "https://img.pokemondb.net/sprites/items/buginium-z.png"
+    },
+
+
+    {
+        "name": "Bug Memory",
+        "description": "Changes Silvally and its move Multi-Attack to Bug type.",
+        "image": "https://img.pokemondb.net/sprites/items/bug-memory.png"
+    },
+
+
+    {
+        "name": "Bug Gem",
+        "description": "Increases the power of a Bug-type move only once.",
+        "image": "https://img.pokemondb.net/sprites/items/bug-gem.png"
+    },
+
+
+    {
+        "name": "Bright Powder",
+        "description": "Lowers the opponent's accuracy.",
+        "image": "https://img.pokemondb.net/sprites/items/bright-powder.png"
+    },
+
+
+    {
+        "name": "Blunder Policy",
+        "description": "Raises Speed sharply if its attack misses.",
+        "image": "https://img.pokemondb.net/s.png"
+    },
+
+
+    {
+        "name": "Blazikenite",
+        "description": "Enables Blaziken to Mega Evolve during battle.",
+        "image": "https://img.pokemondb.net/sprites/items/blazikenite.png"
+    },
+
+
+    {
+        "name": "Blastoisinite",
+        "description": "Enables Blastoise to Mega Evolve during battle.",
+        "image": "https://img.pokemondb.net/sprites/items/blastoisinite.png"
+    },
+
+
+    {
+        "name": "Blank Plate",
+        "description": "A stone tablet imbued with the essence of normalcy. When used on a certain Pokémon, it allows that Pokémon to gain the power of the Normal type.",
+        "image": "https://img.pokemondb.net/s.png"
+    },
+
+
+    {
+        "name": "Black Sludge",
+        "description": "A held item that gradually restores the HP of Poison-type Pokémon. It inflicts damage on all other types.",
+        "image": "https://img.pokemondb.net/sprites/items/black-sludge.png"
+    },
+
+
+    {
+        "name": "Black Glasses",
+        "description": "Increases the power of Dark-type moves.",
+        "image": "https://img.pokemondb.net/sprites/items/black-glasses.png"
+    },
+
+
+    {
+        "name": "Black Belt",
+        "description": "Increases the power of Fighting-type moves.",
+        "image": "https://img.pokemondb.net/sprites/items/black-belt.png"
+    },
+
+
+    {
+        "name": "Binding Band",
+        "description": "A band that increases the power of binding moves when held.",
+        "image": "https://img.pokemondb.net/sprites/items/binding-band.png"
+    },
+
+
+    {
+        "name": "Big Root",
+        "description": "Recovers more HP from HP-stealing moves.",
+        "image": "https://img.pokemondb.net/sprites/items/big-root.png"
+    },
+
+
+    {
+        "name": "Berry Sweet",
+        "description": "Evolves Milcery into Blueberry Flavor Alcremie.",
+        "image": "https://img.pokemondb.net/s.png"
+    },
+
+
+    {
+        "name": "Beedrillite",
+        "description": "Enables Beedrill to Mega Evolve during battle.",
+        "image": "https://img.pokemondb.net/sprites/items/beedrillite.png"
+    },
+
+
+    {
+        "name": "Banettite",
+        "description": "Enables Banette to Mega Evolve during battle.",
+        "image": "https://img.pokemondb.net/sprites/items/banettite.png"
+    },
+
+
+    {
+        "name": "Audinite",
+        "description": "Enables Audino to Mega Evolve during battle.",
+        "image": "https://img.pokemondb.net/sprites/items/audinite.png"
+    },
+
+
+    {
+        "name": "Assault Vest",
+        "description": "Raises Special Defense but prevents the use of status moves.",
+        "image": "https://img.pokemondb.net/sprites/items/assault-vest.png"
+    },
+
+
+    {
+        "name": "Amulet Coin",
+        "description": "Doubles prize money if held.",
+        "image": "https://img.pokemondb.net/sprites/items/amulet-coin.png"
+    },
+
+
+    {
+        "name": "Ampharosite",
+        "description": "Enables Ampharos to Mega Evolve during battle.",
+        "image": "https://img.pokemondb.net/sprites/items/ampharosite.png"
+    },
+
+
+    {
+        "name": "Altarianite",
+        "description": "Enables Altaria to Mega Evolve during battle.",
+        "image": "https://img.pokemondb.net/sprites/items/altarianite.png"
+    },
+
+
+    {
+        "name": "Aloraichium Z",
+        "description": "Allows Alolan Raichu to upgrade Thunderbolt to a Z-Move, Stoked Sparksurfer.",
+        "image": "https://img.pokemondb.net/sprites/items/aloraichium-z.png"
+    },
+
+
+    {
+        "name": "Alakazite",
+        "description": "Enables Alakazam to Mega Evolve during battle.",
+        "image": "https://img.pokemondb.net/sprites/items/alakazite.png"
+    },
+
+
+    {
+        "name": "Air Balloon",
+        "description": "When held by a Pokémon, the Pokémon will float into the air. When the holder is attacked, this item will burst.",
+        "image": "https://img.pokemondb.net/sprites/items/air-balloon.png"
+    },
+
+
+    {
+        "name": "Aggronite",
+        "description": "Enables Aggron to Mega Evolve during battle.",
+        "image": "https://img.pokemondb.net/sprites/items/aggronite.png"
+    },
+
+
+    {
+        "name": "Aerodactylite",
+        "description": "Enables Aerodactyl to Mega Evolve during battle.",
+        "image": "https://img.pokemondb.net/sprites/items/aerodactylite.png"
+    },
+
+
+    {
+        "name": "Adrenaline Orb",
+        "description": "Using it makes wild Pokémon more likely to call for help. If held by a Pokémon, it boosts Speed when intimidated. It can be used only once.",
+        "image": "https://img.pokemondb.net/sprites/items/adrenaline-orb.png"
+    },
+
+
+    {
+        "name": "Adamant Orb",
+        "description": "Increases the power of Dragon- and Steel-type moves when held by Dialga.",
+        "image": "https://img.pokemondb.net/sprites/items/adamant-orb.png"
+    },
+
+
+    {
+        "name": "Adamant Crystal",
+        "description": "An item to be held by Dialga. This large, glowing gem wells with power and allows the Pokémon to change form.",
+        "image": "https://img.pokemondb.net/s.png"
+    },
+
+
+    {
+        "name": "Absorb Bulb",
+        "description": "A consumable bulb. If the holder is hit by a Water-type move, its Sp. Atk will rise.",
+        "image": "https://img.pokemondb.net/sprites/items/absorb-bulb.png"
+    },
+
+
+    {
+        "name": "Absolite",
+        "description": "Enables Absol to Mega Evolve during battle.",
+        "image": "https://img.pokemondb.net/sprites/items/absolite.png"
+    },
+
+
+    {
+        "name": "Abomasite",
+        "description": "Enables Abomasnow to Mega Evolve during battle.",
+        "image": "https://img.pokemondb.net/sprites/items/abomasite.png"
+    },
+
+
+    {
+        "name": "Ability Capsule",
+        "description": "A capsule that allows a Pokémon with two Abilities to switch between these Abilities when it is used.",
+        "image": "https://img.pokemondb.net/sprites/items/ability-capsule.png"
+    }
+]

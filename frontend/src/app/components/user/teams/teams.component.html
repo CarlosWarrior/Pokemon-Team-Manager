@@ -1,3 +1,32 @@
-<button (click)="create()">create</button>
-<button (click)="update()">update</button>
-<button (click)="delete()">delete</button>
+<mat-accordion>
+  <mat-expansion-panel hideToggle *ngFor="let team of teams">
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        {{team.name}}
+      </mat-panel-title>
+      <mat-panel-description>
+				<span>
+					{{team.slots.length}} Pokemon
+				</span>
+				<span class="spacer"></span>
+				<div class="rankings">
+					<span *ngIf="ranking">
+						Coverage Rank {{getCoverageRanking(team._id!)}}
+					</span>
+					<span *ngIf="ranking">
+						Defense Rank {{getDefenseRanking(team._id!)}}
+					</span>
+				</div>
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+    <div class="builder" *ngIf="types.length">
+			<div class="grid">
+				<div class="line slots">
+						<div class="pokemon-slot" *ngFor="let slot of team.slots">
+							<app-pokemon-slot [name]="slot.pokemon.name" [color]="getType(slot.pokemon.type1)!.color" [image]="slot.pokemon.image"></app-pokemon-slot>
+						</div>
+				</div>
+			</div>
+		</div>
+  </mat-expansion-panel>
+</mat-accordion>
