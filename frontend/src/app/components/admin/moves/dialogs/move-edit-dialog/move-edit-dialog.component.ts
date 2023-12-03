@@ -5,7 +5,7 @@ import { MoveCategory, MoveModel, TypeModel } from 'src/app/interfaces/models';
 
 interface MoveEditDialogData{
   move: MoveModel,
-  moveNames : String[],
+  moveNames : string[],
   types: TypeModel[],
   moveCategories: MoveCategory[],
 }
@@ -19,19 +19,21 @@ export class MoveEditDialogComponent {
     const uniqueValidator = (control: AbstractControl): ValidationErrors | null => this.data.moveNames.includes(control.value ) ? {exists: {value: control.value}} : null
     this.form = new FormGroup({
       name: new FormControl(data.move.name, [Validators.required, Validators.minLength(3), Validators.maxLength(32), uniqueValidator]),
-      power: new FormControl(data.move.power, [Validators.required, Validators.min(1), Validators.max(500), Validators.pattern("^[0-9]*$")]),
-      accuracy: new FormControl(data.move.accuracy, [Validators.required, Validators.max(100), Validators.pattern("^[0-9]*$")]),
+      power: new FormControl(data.move.power, [Validators.required, Validators.min(0), Validators.max(500), Validators.pattern("^[0-9]*$")]),
+      accuracy: new FormControl(data.move.accuracy, [Validators.required, Validators.min(0), Validators.max(100), Validators.pattern("^[0-9]*$")]),
       pp: new FormControl(data.move.pp, [Validators.required, Validators.min(1), Validators.max(100), Validators.pattern("^[0-9]*$")]),
-      priority: new FormControl(data.move.priority, [Validators.required, Validators.min(-6), Validators.max(6), Validators.pattern("^[0-9]*$")]),
-      effect:new FormControl(data.move.effect, [Validators.required, Validators.minLength(6), Validators.maxLength(32)]),
+      priority: new FormControl(data.move.priority, [Validators.required, Validators.min(-7), Validators.max(6), Validators.pattern("^[0-9]*$")]),
+      effect:new FormControl(data.move.effect, [Validators.minLength(6), Validators.maxLength(32)]),
+      effect_chance:new FormControl(data.move.effect_chance, [Validators.min(1), Validators.max(100), Validators.pattern("^[0-9]*$")]),
     })
     this.type = data.move.type
     this.category = data.move.category
   }
 
   form: FormGroup
-  type: String = ""
-  category: String = ""
+  type: string = ""
+  category: string = ""
+  target: string = ""
 
   nameError(){
     if(this.form.controls['name'].hasError('required'))
@@ -48,6 +50,16 @@ export class MoveEditDialogComponent {
       return 'Effect required'
     if(this.form.controls['effect'].hasError('minlength'))
       return 'Minimum 3 charaters'
+    return ''
+  }
+
+  effectChanceError(){
+    if(this.form.controls['power'].hasError('min'))
+      return 'Minimum 1'
+    if(this.form.controls['power'].hasError('max'))
+      return 'Maximum 100'
+    if(this.form.controls['power'].hasError('pattern'))
+      return 'Integer'
     return ''
   }
 
@@ -102,7 +114,7 @@ export class MoveEditDialogComponent {
   
   action(){
     if(this.form.valid)
-      this.dialogRef.close({...this.form.value, type: this.type, category: this.category, _id: this.data.move._id})
+      this.dialogRef.close({...this.form.value, type: this.type, category: this.category, target: this.target,  _id: this.data.move._id})
   }
   onNoClick(): void {
     this.dialogRef.close();

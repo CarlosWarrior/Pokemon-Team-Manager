@@ -7,7 +7,7 @@ import { notifyError } from '../utils/errors';
 import { MatSnackBar, MatSnackBarConfig } from '@angular/material/snack-bar';
 
 const _pokemons: PokemonModel[] = []
-const _pokemonSort = (a: PokemonModel, b: PokemonModel) => a.name > b.name ? 1 : -1
+const _pokemonSort = (a: PokemonModel, b: PokemonModel) => Number(a.number) > Number(b.number) ? 1 : -1
 
 @Injectable({
   providedIn: 'root'
@@ -31,10 +31,10 @@ export class PokemonService {
     if(token){
       this.httpClient.post<PokemonModel>(`${environment.api}/admin/pokemon/`, pokemon, { headers: { token } }).subscribe({
         next:(pokemon: PokemonModel) => {
-          const _pokemons: PokemonModel[] = this.pokemons.getValue()
-          _pokemons.push(pokemon)
-          _pokemons.sort(_pokemonSort)
-          this.pokemons.next([..._pokemons])
+          const pokemons: PokemonModel[] = this.pokemons.getValue()
+          pokemons.push(pokemon)
+          pokemons.sort(_pokemonSort)
+          this.pokemons.next([...pokemons])
         },
         error:(e: HttpErrorResponse) => notifyError(e, "admin/pokemons/create", this.snackbar, this._request_snackbar_config)
       })
@@ -59,6 +59,25 @@ export class PokemonService {
       this.httpClient.delete<string[]>(`${environment.api}/admin/pokemon/`, { body: { pokemons }, headers: { token } }).subscribe({
         next:(pokemons: string[]) => this.pokemons.next(this.pokemons.getValue().filter((pokemon: PokemonModel) => !pokemons.includes(pokemon._id!))),
         error:(e: HttpErrorResponse) => notifyError(e, "admin/pokemons/delete", this.snackbar, this._request_snackbar_config)
+      })
+    }
+
+  }
+
+  bulk(data: FormData){
+    const token = localStorage.getItem(environment.tokenName)
+    if(token){
+      this.httpClient.post<PokemonModel[]>(`${environment.api}/admin/pokemon/bulk`, data, { headers: { token } }).subscribe({
+        next:(newpokemons: PokemonModel[]) => {
+          const pokemons: PokemonModel[] = this.pokemons.getValue()
+          for (let ti = 0; ti < newpokemons.length; ti++) {
+            const pokemon = newpokemons[ti];
+            pokemons.push(pokemon)
+          }
+          pokemons.sort(_pokemonSort)
+          this.pokemons.next([...pokemons])
+        },
+        error:(e: HttpErrorResponse) => notifyError(e, "admin/pokemons/bulk", this.snackbar, this._request_snackbar_config)
       })
     }
 

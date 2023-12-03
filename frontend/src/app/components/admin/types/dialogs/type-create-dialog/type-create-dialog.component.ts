@@ -4,10 +4,10 @@ import { AbstractControl, FormControl, FormGroup, ValidationErrors, Validators, 
 import { TypeModel } from 'src/app/interfaces/models';
 
 interface TypeCreateDialogData{
-  typeNames: String[]
-  attackAdvantage: String[]
-  defenseAdvantage: String[]
-  defenseWeakness: String[]
+  typeNames: string[]
+  attackAdvantage: string[]
+  defenseAdvantage: string[]
+  defenseWeakness: string[]
 }
 
 @Component({
@@ -23,9 +23,9 @@ export class TypeCreateDialogComponent {
       image: new FormControl("", [Validators.required]),
       teracrystalImage: new FormControl("", [Validators.required]),
       color: new FormControl("", [Validators.required]),
-      attackAdvantage: new FormControl([""]),
-      defenseAdvantage: new FormControl([""]),
-      defenseWeakness: new FormControl([""]),
+      attackAdvantage: new FormControl([]),
+      defenseAdvantage: new FormControl([]),
+      defenseWeakness: new FormControl([]),
     })
   }
   type: TypeModel = {name: '', image: '', teracrystalImage: '', color: '', attackAdvantage: [], defenseAdvantage: [], defenseWeakness: [],}

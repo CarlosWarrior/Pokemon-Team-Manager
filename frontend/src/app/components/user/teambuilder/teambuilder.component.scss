@@ -4,7 +4,16 @@
 :host{
   display: inline-block;
   width: 100vw;
+
 }
+.slots{
+  position: sticky;
+  top: 0;
+  z-index: 3;
+  background: $positiveColor;
+  border-radius: 10px;
+}
+
 .grid {
   @extend .container;
   

@@ -31,10 +31,10 @@ export class ItemService {
     if(token){
       this.httpClient.post<ItemModel>(`${environment.api}/admin/item/`, item, { headers: { token } }).subscribe({
         next:(item: ItemModel) => {
-          const _items: ItemModel[] = this.items.getValue()
-          _items.push(item)
-          _items.sort(_itemSort)
-          this.items.next([..._items])
+          const items: ItemModel[] = this.items.getValue()
+          items.push(item)
+          items.sort(_itemSort)
+          this.items.next([...items])
         },
         error:(e: HttpErrorResponse) => notifyError(e, "admin/items/create", this.snackbar, this._request_snackbar_config)
       })

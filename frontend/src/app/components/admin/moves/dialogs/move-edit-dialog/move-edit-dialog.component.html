@@ -48,6 +48,11 @@
         <input matInput formControlName="effect">
         <mat-error *ngIf="form.controls['effect'].invalid">{{effectError()}}</mat-error>
     </mat-form-field>
+    <mat-form-field>
+        <mat-label>Effect Chance</mat-label>
+        <input matInput formControlName="effect_chance">
+        <mat-error *ngIf="form.controls['effect_chance'].invalid">{{effectChanceError()}}</mat-error>
+    </mat-form-field>
     </form>
 </div>
 

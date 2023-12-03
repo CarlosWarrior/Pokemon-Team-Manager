@@ -11,7 +11,7 @@ export class PokemonSlotComponent {
 
   }
   @Input()
-  color: String = ""
+  color: string = ""
 
   @Input()
   image: string = ""

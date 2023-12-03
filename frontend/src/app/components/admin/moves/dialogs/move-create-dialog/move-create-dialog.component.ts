@@ -1,11 +1,12 @@
 import { Component, Inject } from '@angular/core';
 import { AbstractControl, FormControl, FormGroup, ValidationErrors, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
-import { MoveCategory, MoveModel, TypeModel } from 'src/app/interfaces/models';
+import { MoveCategory, MoveModel, MoveTarget, TypeModel } from 'src/app/interfaces/models';
 
 interface MoveCreateDialogData{
-  moveNames: String[],
+  moveNames: string[],
   moveCategories: MoveCategory[],
+  moveTargets: MoveTarget[],
   types: TypeModel[]
 }
 @Component({
@@ -18,14 +19,15 @@ export class MoveCreateDialogComponent {
     const uniqueValidator = (control: AbstractControl): ValidationErrors | null => this.data.moveNames.includes(control.value ) ? {exists: {value: control.value}} : null
     this.form = new FormGroup({
       name: new FormControl("", [Validators.required, Validators.minLength(3), Validators.maxLength(32), uniqueValidator]),
-      power: new FormControl("", [Validators.required, Validators.min(1), Validators.max(500), Validators.pattern("^[0-9]*$")]),
-      accuracy: new FormControl("", [Validators.required, Validators.max(100), Validators.pattern("^[0-9]*$")]),
+      power: new FormControl("", [Validators.required, Validators.min(0), Validators.max(500), Validators.pattern("^[0-9]*$")]),
+      accuracy: new FormControl("", [Validators.required, Validators.min(0), Validators.max(100), Validators.pattern("^[0-9]*$")]),
       pp: new FormControl("", [Validators.required, Validators.min(1), Validators.max(100), Validators.pattern("^[0-9]*$")]),
-      priority: new FormControl("", [Validators.min(-6), Validators.max(6), Validators.pattern("^[0-9]*$")]),
-      effect:new FormControl("", [Validators.required, Validators.minLength(6), Validators.maxLength(32)]),
+      priority: new FormControl("", [Validators.min(-7), Validators.max(6), Validators.pattern("^[0-9]*$")]),
+      effect:new FormControl(null, [Validators.minLength(6), Validators.maxLength(32)]),
+      effect_chance:new FormControl(null, [Validators.min(1), Validators.max(100), Validators.pattern("^[0-9]*$")]),
     })
   }
-  move: MoveModel = {name: "", type: "", category: MoveCategory.Physical, power: 0, accuracy: 0, pp: 0, priority: 0, effect: "", }
+  move: MoveModel = {name: "", type: "", category: MoveCategory.Physical, target: MoveTarget.SelectedPokemon, power: 0, accuracy: 0, pp: 0, priority: 0,  }
   
   form: FormGroup
   
@@ -46,6 +48,17 @@ export class MoveCreateDialogComponent {
       return 'Minimum 3 charaters'
     return ''
   }
+
+  effectChanceError(){
+    if(this.form.controls['power'].hasError('min'))
+      return 'Minimum 1'
+    if(this.form.controls['power'].hasError('max'))
+      return 'Maximum 100'
+    if(this.form.controls['power'].hasError('pattern'))
+      return 'Integer'
+    return ''
+  }
+
 
   powerError(){
     if(this.form.controls['power'].hasError('required'))
@@ -96,7 +109,7 @@ export class MoveCreateDialogComponent {
   
   action(){
     if(this.form.valid)
-      this.dialogRef.close({...this.form.value, type: this.move.type, category: this.move.category})
+      this.dialogRef.close({...this.form.value, type: this.move.type, category: this.move.category, target: this.move.target})
   }
   onNoClick(): void {
     this.dialogRef.close();

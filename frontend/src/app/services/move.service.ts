@@ -21,7 +21,7 @@ export class MoveService {
     const token = localStorage.getItem(environment.tokenName)
     if(token)
       this.httpClient.get<MoveModel[]>(`${environment.api}/admin/move/`, { headers: { token } }).subscribe({
-        next: (res: MoveModel[]) => this.moves.next(res),
+        next: (moves: MoveModel[]) => this.moves.next(moves.sort(_moveSort)),
         error: (e: HttpErrorResponse) => notifyError(e, "admin/moves/list", this.snackbar, this._request_snackbar_config)
       })
   }
@@ -31,10 +31,10 @@ export class MoveService {
     if(token){
       this.httpClient.post<MoveModel>(`${environment.api}/admin/move/`, move, { headers: { token } }).subscribe({
         next:(move: MoveModel) => {
-          const _moves: MoveModel[] = this.moves.getValue()
-          _moves.push(move)
-          _moves.sort(_moveSort)
-          this.moves.next([..._moves])
+          const moves: MoveModel[] = this.moves.getValue()
+          moves.push(move)
+          moves.sort(_moveSort)
+          this.moves.next([...moves])
         },
         error:(e: HttpErrorResponse) => notifyError(e, "admin/moves/create", this.snackbar, this._request_snackbar_config)
       })
@@ -62,6 +62,24 @@ export class MoveService {
       })
     }
 
+  }
+
+  bulk(data: FormData){
+    const token = localStorage.getItem(environment.tokenName)
+    if(token){
+      this.httpClient.post<MoveModel[]>(`${environment.api}/admin/move/bulk`, data, { headers: { token } }).subscribe({
+        next:(newmoves: MoveModel[]) => {
+          const moves: MoveModel[] = this.moves.getValue()
+          for (let ti = 0; ti < newmoves.length; ti++) {
+            const move = newmoves[ti];
+            moves.push(move)
+          }
+          moves.sort(_moveSort)
+          this.moves.next([...moves])
+        },
+        error:(e: HttpErrorResponse) => notifyError(e, "admin/moves/bulk", this.snackbar, this._request_snackbar_config)
+      })
+    }
   }
 
 }

@@ -1,3 +1,4 @@
+const { readFileSync } = require("fs")
 const { raise } = require("../middlewares/errors")
 const Type = require('../models/type')
 const { isUrl, isColor } = require("../utils/formats")
@@ -109,6 +110,47 @@ const TypeController = {
             return raise({ status: 422, message: "Body malformed", errors: error})
         }
         res.send(type)
+    },
+    bulkCreate: async(req, res) => {
+        if(!req.file)
+            return raise({ status: 422, message: "File not present" })
+        let typesData, modifiersData
+        try {
+            const data = JSON.parse(readFileSync(req.file.path, 'utf8'))
+            typesData = data.types
+            modifiersData = data.modifiers
+        } catch (error) {
+            return raise({ status: 422, message: "File malformed", errors: error })
+        }
+        const types = []
+        try {
+            for (let ti = 0; ti < typesData.length; ti++) {
+                const typeData = typesData[ti];
+                if(await Type.count({ name: typeData.name}) < 1)
+                    types.push(await Type.create(typeData))
+            }
+        } catch (error) {
+            return raise({ status: 422, message: "Types Data malformed", errors: error })
+        }
+        
+        try {
+            for (let ti = 0; ti < types.length; ti++) {
+                const type = types[ti];
+                const { attackAdvantage, defenseAdvantage, defenseWeakness } =  modifiersData[type.name]
+                type.attackAdvantage = attackAdvantage
+                type.defenseAdvantage = defenseAdvantage
+                type.defenseWeakness = defenseWeakness
+                await type.save()
+            }
+        } catch (error) {
+            for (let ti = 0; ti < types.length; ti++) {
+                const type = types[ti];
+                Type.delete(type._id)
+            }
+            return raise({ status: 422, message: "Types Data malformed", errors: error })
+        }
+
+        return res.send(types)
     },
     delete: async(req, res) => {
         if(!req.body.types || !req.body.types.length)

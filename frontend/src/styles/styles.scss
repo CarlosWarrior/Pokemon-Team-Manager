@@ -1,5 +1,8 @@
 @import './variables';
-
+html {
+    width: 100vw;
+    overflow-x: hidden;
+}
 body{
     background-color: $positiveColor;
 }

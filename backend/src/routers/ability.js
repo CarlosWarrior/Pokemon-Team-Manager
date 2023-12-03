@@ -1,6 +1,8 @@
+const multer = require('multer')
 const {Router} = require('express')
 const { _catch } = require('../middlewares/errors')
 const audit = require('../middlewares/audit')
+const storage = require('../middlewares/storage')
 const AbilityController = require('../controllers/ability')
 
 const AbilityRouter = Router()
@@ -124,6 +126,40 @@ AbilityRouter.post('/', audit('Ability-create'), _catch(AbilityController.create
  *          
  */
 AbilityRouter.put('/', audit('Ability-update'), _catch(AbilityController.update))
+
+/**
+ * @swagger
+ * /admin/ability/bulk:
+ *  post:
+ *      description: Endpoint to create abilities in bulk
+ *      tags:
+ *          - admin/ability
+ *      parameters:
+ *          - in: body
+ *            name: ability
+ *            schema:
+ *              abilityData: object
+ *              properties:
+ *                  file:
+ *                      ability: file
+ *              required:
+ *                  - file
+ *          - in: header
+ *            name: token
+ *            required: true
+ *      responses:
+ *          400:
+ *              description: admin token not provided
+ *          401:
+ *              description: admin token invalid
+ *          422:
+ *              description: invalid file
+ *          200:
+ *              description: Abilitis created
+ *          
+ */
+AbilityRouter.post('/bulk', audit('Ability-bulk-create'), storage.abilitiesCleanup, multer({ storage: storage.abilitiesStorage }).single('file'), _catch(AbilityController.bulkCreate))
+
 
 /**
  * @swagger

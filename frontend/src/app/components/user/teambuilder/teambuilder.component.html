@@ -1,5 +1,5 @@
 <div class="grid">
-	<div class="line">
+	<div class="line slots">
 			<div class="pokemon-slot" *ngFor="let pokemon of selected">
 				<app-pokemon-slot [name]="pokemon.name" [color]="getType(pokemon.type1).color" [image]="pokemon.image" (click)="handleSelect(pokemon)" ></app-pokemon-slot>
 			</div>
@@ -7,11 +7,11 @@
 				<app-pokemon-slot [ngClass]="'slot'" [name]="'?'" [color]="'black'" [image]="'assets/egg.png'" ></app-pokemon-slot>
 			</div>
 	</div>
-</div>
-<div class="grid">
-	<div class="line">
-			<div class="pokemon" *ngFor="let pokemon of pokemons">
-				<app-pokemon-user-card [pokemon]="pokemon" (click)="handleSelect(pokemon)" [class.isSelected]="isSelected(pokemon)" [ngStyle]="{'backgroundColor': getType(pokemon.type1).color}"></app-pokemon-user-card>
-			</div>
+	<div class="grid">
+		<div class="line">
+				<div class="pokemon" *ngFor="let pokemon of pokemons">
+					<app-pokemon-user-card [pokemon]="pokemon" (click)="handleSelect(pokemon)" [class.isSelected]="isSelected(pokemon)" [ngStyle]="{'backgroundColor': getType(pokemon.type1).color}"></app-pokemon-user-card>
+				</div>
+		</div>
 	</div>
 </div>

@@ -1,6 +1,8 @@
+const multer = require('multer')
 const {Router} = require('express')
 const { _catch } = require('../middlewares/errors')
 const audit = require('../middlewares/audit')
+const storage = require('../middlewares/storage')
 const PokemonController = require('../controllers/pokemon')
 
 const PokemonRouter = Router()
@@ -255,14 +257,47 @@ PokemonRouter.put('/', audit('Pokemon-update'), _catch(PokemonController.update)
 
 /**
  * @swagger
- * /admin/pokemon/{name}:
+ * /admin/ability/bulk:
+ *  post:
+ *      description: Endpoint to create abilities in bulk
+ *      tags:
+ *          - admin/ability
+ *      parameters:
+ *          - in: body
+ *            name: ability
+ *            schema:
+ *              abilityData: object
+ *              properties:
+ *                  file:
+ *                      ability: file
+ *              required:
+ *                  - file
+ *          - in: header
+ *            name: token
+ *            required: true
+ *      responses:
+ *          400:
+ *              description: admin token not provided
+ *          401:
+ *              description: admin token invalid
+ *          422:
+ *              description: invalid file
+ *          200:
+ *              description: Abilitis created
+ *          
+ */
+PokemonRouter.post('/bulk', audit('Pokemon-bulk-create'), storage.pokemonsCleanup, multer({ storage: storage.pokemonsStorage }).single('file'), _catch(PokemonController.bulkCreate))
+
+/**
+ * @swagger
+ * /admin/pokemon/:
  *  delete:
  *      description: Endpoint to remove a pokemon
  *      tags:
  *          - admin/pokemon
  *      parameters:
  *          - in: body
- *            types: array
+ *            pokemons: array
  *            items:
  *              type: string
  *            example: ["id1", "id2"]
@@ -278,6 +313,6 @@ PokemonRouter.put('/', audit('Pokemon-update'), _catch(PokemonController.update)
  *              description: A pokemon is removed
  *          
  */
-PokemonRouter.delete('/:name', audit('Pokemon-delete'), _catch(PokemonController.delete))
+PokemonRouter.delete('/', audit('Pokemon-delete'), _catch(PokemonController.delete))
 
 module.exports = PokemonRouter

@@ -8,6 +8,7 @@ import { PokemonDeleteDialogComponent } from './dialogs/pokemon-delete-dialog/po
 import { TypeService } from 'src/app/services/type.service';
 import { MoveService } from 'src/app/services/move.service';
 import { AbilityService } from 'src/app/services/ability.service';
+import { PokemonBulkCreateComponent } from './dialogs/pokemon-bulk-create/pokemon-bulk-create.component';
 
 @Component({
   selector: 'app-pokemons',
@@ -50,6 +51,7 @@ export class PokemonsComponent {
   openCreateDialog(){
     const dialogRef = this.dialog.open(PokemonCreateDialogComponent, {
       data:{
+        pokemonNumbers: this.pokemons.map((pokemon: PokemonModel) => `${pokemon.number}`),
         pokemonNames: this.pokemons.map((pokemon: PokemonModel) => pokemon.name),
         typeNames: this.types.map((type: TypeModel) => type.name),
         moveNames: this.moves.map((move: MoveModel) => move.name),
@@ -69,6 +71,7 @@ export class PokemonsComponent {
     const dialogRef = this.dialog.open(PokemonEditDialogComponent, {
       data: {
         pokemon: this.selected[0],
+        pokemonNumbers: this.pokemons.map((pokemon: PokemonModel) => `${pokemon.number}`),
         pokemonNames: this.pokemons.map((pokemon: PokemonModel) => pokemon.name),
         typeNames: this.types.map((type: TypeModel) => type.name),
         moveNames: this.moves.map((move: MoveModel) => move.name),
@@ -96,4 +99,14 @@ export class PokemonsComponent {
       }
     });
   }
+
+  openBulkCreateDialog(){
+    const dialogRef = this.dialog.open(PokemonBulkCreateComponent);
+    
+    dialogRef.afterClosed().subscribe((data:any) => {
+      if(data)
+        this.pokemonService.bulk(data)
+    });
+  }
+
 }

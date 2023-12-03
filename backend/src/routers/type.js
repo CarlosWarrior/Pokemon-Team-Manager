@@ -2,6 +2,8 @@ const {Router} = require('express')
 const { _catch } = require('../middlewares/errors')
 const audit = require('../middlewares/audit')
 const TypeController = require('../controllers/type')
+const storage = require('../middlewares/storage')
+const multer = require('multer')
 
 const TypeRouter = Router()
 /**
@@ -97,6 +99,39 @@ TypeRouter.get('/:name', audit('Type-get'), _catch(TypeController.get))
  */
 TypeRouter.post('/', audit('Type-create'), _catch(TypeController.create))
 
+/**
+ * @swagger
+ * /admin/type/bulk:
+ *  post:
+ *      description: Endpoint to create types in bulk
+ *      tags:
+ *          - admin/type
+ *      parameters:
+ *          - in: body
+ *            name: typeData
+ *            schema:
+ *              type: object
+ *              properties:
+ *                  file:
+ *                      type: file
+ *              required:
+ *                  - file
+ *          - in: header
+ *            name: token
+ *            required: true
+ *      responses:
+ *          400:
+ *              description: admin token not provided
+ *          401:
+ *              description: admin token invalid
+ *          422:
+ *              description: invalid file
+ *          200:
+ *              description: Types created
+ *          
+ */
+TypeRouter.post('/bulk', audit('Type-bulk-create'), storage.typesCleanup, multer({ storage: storage.typesStorage }).single('file'), _catch(TypeController.bulkCreate))
+			
 /**
  * @swagger
  * /admin/type/:

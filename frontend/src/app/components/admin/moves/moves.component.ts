@@ -1,19 +1,23 @@
 import { Component } from '@angular/core';
-import { MoveCategory, MoveModel, TypeModel } from '../../../interfaces/models'
+import { MoveCategory, MoveTarget, MoveModel, TypeModel } from '../../../interfaces/models'
 import { MoveService } from 'src/app/services/move.service';
 import { MatDialog } from '@angular/material/dialog';
 import { MoveEditDialogComponent } from './dialogs/move-edit-dialog/move-edit-dialog.component';
 import { MoveCreateDialogComponent } from './dialogs/move-create-dialog/move-create-dialog.component';
 import { MoveDeleteDialogComponent } from './dialogs/move-delete-dialog/move-delete-dialog.component';
 import { TypeService } from 'src/app/services/type.service';
+import { MoveBulkCreateComponent } from './dialogs/move-bulk-create/move-bulk-create.component';
+
+
 @Component({
   selector: 'app-moves',
   templateUrl: './moves.component.html',
   styleUrls: ['./moves.component.scss']
 })
 export class MovesComponent {
-  displayedColumns: string[] = [ "name", "type", "category", "power", "accuracy", "pp", "priority", "effect", ];
+  displayedColumns: string[] = [ "name", "type", "category", "power", "accuracy", "pp", "priority", "effect", "effect_chance",  ];
   moveCategories: MoveCategory[] = Object.values(MoveCategory)
+  moveTargets: MoveTarget[] = Object.values(MoveTarget)
   moves: MoveModel[] = [];
   types: TypeModel[] = [];
   selected: MoveModel[] = [];
@@ -27,7 +31,10 @@ export class MovesComponent {
   isSelected(element: MoveModel){
     return this.selected.find(el => el.name == element.name)
   }
-  
+
+  unselect(){
+    this.selected = []
+  }
   handleSelect(element: MoveModel){
     if(this.isSelected(element))
       this.selected = this.selected.filter(el => el.name != element.name)
@@ -41,6 +48,7 @@ export class MovesComponent {
         
         moveNames: this.moves.map((move: MoveModel) => move.name),
         moveCategories: this.moveCategories,
+        moveTargets: this.moveTargets,
         types: this.types,
       }
     });
@@ -81,7 +89,14 @@ export class MovesComponent {
     });
   }
 
-  unselect(){
-    this.selected = []
+  openBulkCreateDialog(){
+    const dialogRef = this.dialog.open(MoveBulkCreateComponent);
+    
+    dialogRef.afterClosed().subscribe((data: FormData) => {
+      if(data)
+        this.moveService.bulk(data)
+    });
   }
+
+
 }

@@ -1,11 +1,10 @@
+const { readFileSync } = require("fs")
 const { raise } = require("../middlewares/errors")
 const Pokemon = require('../models/pokemon')
 const Ability = require("../models/ability")
 const Move = require("../models/move")
 const Type = require("../models/type")
-const StatSchema = require("../models/schemas/stats")
 const { isStats, isNumber } = require("../utils/formats")
-const pokemon = require("../models/pokemon")
 
 const validMoves = async(moves)=>{
     let valid = moves?true:false
@@ -60,16 +59,18 @@ const PokemonController = {
 
         let pokemon
         try {
-            pokemon = await Pokemon.create({
+            const pokemonData = {
                 number,
                 name,
                 image,
                 type1,
-                type2,
                 moves,
                 abilities,
                 stats,
-            })
+            }
+            if(type2)
+                pokemonData["type2"] = type2
+            pokemon = await Pokemon.create(pokemonData)
         } catch (error) {
             return raise({ status: 422, message: "Body malformed", errors: error })
         }
@@ -135,9 +136,60 @@ const PokemonController = {
 
         res.send(pokemon)
     },
+    bulkCreate: async(req, res) => {
+        if(!req.file)
+            return raise({ status: 422, message: "File not present" })
+        let pokemonsData, pokemonsNames
+        try {
+            pokemonsData = JSON.parse(readFileSync(req.file.path, 'utf8'))
+            pokemonsNames = Object.keys(pokemonsData)
+        } catch (error) {
+            return raise({ status: 422, message: "File malformed", errors: error })
+        }
+        const pokemons = []
+        try {
+            for (let ti = 0; ti < pokemonsNames.length; ti++) {
+                const pokemonData = pokemonsData[pokemonsNames[ti]];
+                const pokemon = {
+                    number: pokemonData.id,
+                    name: pokemonsNames[ti],
+                    image: pokemonData.img,
+                    type1: pokemonData.type1,
+                    abilities: Object.keys(pokemonData.abilities),
+                    moves: Object.keys(pokemonData.moves),
+                    stats:{
+                        hp: pokemonData.stats["hp"].base,
+                        attack: pokemonData.stats["attack"].base,
+                        defense: pokemonData.stats["defense"].base,
+                        specialAttack: pokemonData.stats["special-attack"].base,
+                        specialDefense: pokemonData.stats["special-defense"].base,
+                        speed: pokemonData.stats["speed"].base,
+                    }
+                }
+                if(pokemonData.type2)
+                    pokemon["type2"] = pokemonData.type2
+                
+                if(await Pokemon.count({ name: pokemonsNames[ti]}) < 1)
+                    pokemons.push(await Pokemon.create(pokemon))
+                console.log(ti+1, pokemonsNames[ti])
+            }
+        } catch (error) {
+            return raise({ status: 422, message: "Pokemons Data malformed", errors: error })
+        }
+        
+        return res.send(abilities)
+    },
     delete: async(req, res) => {
-        res.send('pokemon delete')
-    }
+        if(!req.body.pokemons || !req.body.pokemons.length)
+            return raise({ status: 422, message: "Body malformed"})
+        const pokemons = req.body.pokemons
+        const _pokemons = []
+        for (let ti = 0; ti < pokemons.length; ti++) {
+            await Pokemon.count({ _id: pokemons[ti]}) && _pokemons.push(pokemons[ti])
+            await Pokemon.delete(pokemons[ti]);
+        }
+        res.send(_pokemons)
+    },
 }
 
 module.exports = PokemonController

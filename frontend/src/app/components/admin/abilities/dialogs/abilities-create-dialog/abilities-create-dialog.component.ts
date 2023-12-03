@@ -3,7 +3,7 @@ import { AbstractControl, FormControl, FormGroup, ValidationErrors, Validators }
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 
 interface AbilityCreateDialogData {
-  abilityNames: String[]
+  abilityNames: string[]
 }
 @Component({
   selector: 'app-abilities-create-dialog',

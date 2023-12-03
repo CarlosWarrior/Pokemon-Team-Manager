@@ -32,10 +32,10 @@ export class TypeService {
     if(token){
       this.httpClient.post<TypeModel>(`${environment.api}/admin/type/`, type, { headers: { token } }).subscribe({
         next:(type: TypeModel) => {
-          const _types: TypeModel[] = this.types.getValue()
-          _types.push(type)
-          _types.sort(_typeSort)
-          this.types.next([..._types])
+          const types: TypeModel[] = this.types.getValue()
+          types.push(type)
+          types.sort(_typeSort)
+          this.types.next([...types])
         },
         error:(e: HttpErrorResponse) => notifyError(e, "admin/types/create", this.snackbar, this._request_snackbar_config)
       })
@@ -60,6 +60,25 @@ export class TypeService {
       this.httpClient.delete<string[]>(`${environment.api}/admin/type/`, { body: { types }, headers: { token } }).subscribe({
         next:(types: string[]) => this.types.next(this.types.getValue().filter((_type: TypeModel) => !types.includes(_type._id!))),
         error:(e: HttpErrorResponse) => notifyError(e, "admin/types/delete", this.snackbar, this._request_snackbar_config)
+      })
+    }
+
+  }
+
+  bulk(data: FormData){
+    const token = localStorage.getItem(environment.tokenName)
+    if(token){
+      this.httpClient.post<TypeModel[]>(`${environment.api}/admin/type/bulk`, data, { headers: { token } }).subscribe({
+        next:(newtypes: TypeModel[]) => {
+          const types: TypeModel[] = this.types.getValue()
+          for (let ti = 0; ti < newtypes.length; ti++) {
+            const type = newtypes[ti];
+            types.push(type)
+          }
+          types.sort(_typeSort)
+          this.types.next([...types])
+        },
+        error:(e: HttpErrorResponse) => notifyError(e, "admin/types/bulk", this.snackbar, this._request_snackbar_config)
       })
     }
 

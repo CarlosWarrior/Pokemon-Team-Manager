@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NavigationComponent } from './components/ui/navigation/navigation.component';
@@ -50,6 +49,10 @@ import { PokemonAdminCardComponent } from './components/admin/pokemons/pokemon-a
 import { PokemonUserCardComponent } from './components/user/teambuilder/pokemon-user-card/pokemon-user-card.component';
 import { PokemonSlotComponent } from './components/user/teambuilder/pokemon-slot/pokemon-slot.component';
 import { ForDirective } from './directives/for.directive';
+import { TypeBulkCreateComponent } from './components/admin/types/dialogs/type-bulk-create/type-bulk-create.component';
+import { AbilityBulkCreateComponent } from './components/admin/abilities/dialogs/ability-bulk-create/ability-bulk-create.component';
+import { MoveBulkCreateComponent } from './components/admin/moves/dialogs/move-bulk-create/move-bulk-create.component';
+import { PokemonBulkCreateComponent } from './components/admin/pokemons/dialogs/pokemon-bulk-create/pokemon-bulk-create.component';
 
 @NgModule({
   declarations: [
@@ -97,6 +100,10 @@ import { ForDirective } from './directives/for.directive';
     PokemonUserCardComponent,
     PokemonSlotComponent,
     ForDirective,
+    TypeBulkCreateComponent,
+    AbilityBulkCreateComponent,
+    MoveBulkCreateComponent,
+    PokemonBulkCreateComponent,
   ],
   imports: [
     BrowserModule,
@@ -106,7 +113,6 @@ import { ForDirective } from './directives/for.directive';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-
   ],
   providers: [],
   bootstrap: [AppComponent]

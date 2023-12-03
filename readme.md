@@ -1,1 +1,3 @@
 # Pokemon Team Manager
+
+Esta aplicación permite a los usuarios crear equipos pokemon, compararlos y compartirlos. La aplicación permite al usuario conocer el coverage de su equipo basado en el tipo de cada pokémon y de sus movimientos. Este coverage puede ser comparado con coverages de otros usuarios mediante un ranking global. También se incluye un registrador de batallas donde el usuario podrá registrar las acciones ocurridas en una batalla pokémon.

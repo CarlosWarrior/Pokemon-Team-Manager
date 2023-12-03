@@ -45,7 +45,6 @@ const PokemonSchema = new Schema({
     },
     type2: {
         type: String,
-        required: true,
         validate: { validator: async(value) => typeExists(value) },
     },
     moves: {

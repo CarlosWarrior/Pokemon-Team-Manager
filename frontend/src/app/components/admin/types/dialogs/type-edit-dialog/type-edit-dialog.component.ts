@@ -4,11 +4,11 @@ import { AbstractControl, FormControl, FormGroup, ValidationErrors, Validators} 
 import { TypeModel } from 'src/app/interfaces/models';
 
 interface TypeEditDialogData{
-  typeNames: String[]
+  typeNames: string[]
   type : TypeModel
-  attackAdvantage: String[]
-  defenseAdvantage: String[]
-  defenseWeakness: String[]
+  attackAdvantage: string[]
+  defenseAdvantage: string[]
+  defenseWeakness: string[]
 }
 
 @Component({

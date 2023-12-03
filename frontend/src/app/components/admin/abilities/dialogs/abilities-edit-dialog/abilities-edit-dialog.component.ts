@@ -6,7 +6,7 @@ import { AbilityModel } from 'src/app/interfaces/models';
 
 interface AbilitiesEditDialogData{
   ability: AbilityModel,
-  abilityNames: String[]
+  abilityNames: string[]
 }
 
 @Component({

@@ -5,6 +5,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { TypeEditDialogComponent } from './dialogs/type-edit-dialog/type-edit-dialog.component';
 import { TypeCreateDialogComponent } from './dialogs/type-create-dialog/type-create-dialog.component';
 import { TypeDeleteDialogComponent } from './dialogs/type-delete-dialog/type-delete-dialog.component';
+import { TypeBulkCreateComponent } from './dialogs/type-bulk-create/type-bulk-create.component';
 
 @Component({
   selector: 'app-types',
@@ -77,6 +78,15 @@ export class TypesComponent {
         this.typeService.delete(deletedTypes.map((type: TypeModel) => type._id!))
 
       this.unselect()
+    });
+  }
+  
+  openBulkCreateDialog(){
+    const dialogRef = this.dialog.open(TypeBulkCreateComponent);
+    
+    dialogRef.afterClosed().subscribe((data: FormData) => {
+      if(data)
+        this.typeService.bulk(data)
     });
   }
 }

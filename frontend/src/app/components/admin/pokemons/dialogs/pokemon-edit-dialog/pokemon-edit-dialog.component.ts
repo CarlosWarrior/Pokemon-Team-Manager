@@ -4,10 +4,11 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { AbilityModel, MoveModel, PokemonModel, Stats, TypeModel } from 'src/app/interfaces/models';
 
 interface PokemonEditDialogData{
-  moveNames: String[]
-  typeNames: String[]
-  abilityNames: String[]
-  pokemonNames: String[]
+  moveNames: string[]
+  typeNames: string[]
+  abilityNames: string[]
+  pokemonNames: string[]
+  pokemonNumbers: string[]
   pokemon: PokemonModel
 }
 @Component({
@@ -17,10 +18,11 @@ interface PokemonEditDialogData{
 })
 export class PokemonEditDialogComponent {
   constructor( public dialogRef: MatDialogRef<PokemonEditDialogComponent>, @Inject(MAT_DIALOG_DATA) public data: PokemonEditDialogData, ) {
-    const uniqueValidator = (control: AbstractControl): ValidationErrors | null => control.value != this.data.pokemon.name && this.data.pokemonNames.includes(control.value ) ? {exists: {value: control.value}} : null
+    const uniquenameValidator = (control: AbstractControl): ValidationErrors | null => control.value != this.data.pokemon.name && this.data.pokemonNames.includes(control.value ) ? {existsName: {value: control.value}} : null
+    const uniqueNumberValidator = (control: AbstractControl): ValidationErrors | null => control.value != this.data.pokemon.number && this.data.pokemonNumbers.includes(control.value ) ? {existsNumber: {value: control.value}} : null
     this.form = new FormGroup({
-      name: new FormControl(this.data.pokemon.name, [Validators.required, Validators.minLength(3), Validators.maxLength(32), uniqueValidator]),
-      number: new FormControl(this.data.pokemon.number, [Validators.required, Validators.pattern("^[0-9]*$")]),
+      name: new FormControl(this.data.pokemon.name, [Validators.required, Validators.minLength(3), Validators.maxLength(32), uniquenameValidator]),
+      number: new FormControl(this.data.pokemon.number, [Validators.required, Validators.pattern("^[0-9]*$"), uniqueNumberValidator]),
       image: new FormControl(this.data.pokemon.image, [Validators.required]),
       type1: new FormControl(this.data.pokemon.type1, [Validators.required]),
       type2: new FormControl(this.data.pokemon.type2),
@@ -37,6 +39,8 @@ export class PokemonEditDialogComponent {
       return 'Name required'
     if(this.form.controls['number'].hasError('pattern'))
       return 'Must be a number'
+    if(this.form.controls['number'].hasError('existsNumber'))
+      return 'Pokemon exists'
     return ''
   }
 
@@ -45,8 +49,8 @@ export class PokemonEditDialogComponent {
       return 'Name required'
     if(this.form.controls['name'].hasError('minlength'))
       return 'Minimum 3 charaters'
-    if(this.form.controls['name'].hasError('exists'))
-      return 'Type exists'
+    if(this.form.controls['name'].hasError('existsName'))
+      return 'Pokemon exists'
     return ''
   }
 

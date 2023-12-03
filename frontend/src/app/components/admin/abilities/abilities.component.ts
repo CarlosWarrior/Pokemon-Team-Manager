@@ -5,6 +5,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { AbilitiesCreateDialogComponent } from './dialogs/abilities-create-dialog/abilities-create-dialog.component';
 import { AbilitiesEditDialogComponent } from './dialogs/abilities-edit-dialog/abilities-edit-dialog.component';
 import { AbilitiesDeleteDialogComponent } from './dialogs/abilities-delete-dialog/abilities-delete-dialog.component';
+import { AbilityBulkCreateComponent } from './dialogs/ability-bulk-create/ability-bulk-create.component';
 
 @Component({
   selector: 'app-abilities',
@@ -75,6 +76,15 @@ export class AbilitiesComponent  {
         this.ablilityService.delete(deletedAbilities.map((ability: AbilityModel) => ability._id!))
         this.unselect()
       });
+  }
+
+  openBulkCreateDialog(){
+    const dialogRef = this.dialog.open(AbilityBulkCreateComponent);
+    
+    dialogRef.afterClosed().subscribe((data:any) => {
+      if(data)
+        this.ablilityService.bulk(data)
+    });
   }
 
 }

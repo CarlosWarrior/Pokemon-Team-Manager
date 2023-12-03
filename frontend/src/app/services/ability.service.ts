@@ -22,7 +22,7 @@ export class AbilityService {
     const token = localStorage.getItem(environment.tokenName)
     if(token)
       this.httpClient.get<AbilityModel[]>(`${environment.api}/admin/ability/`, { headers: { token } }).subscribe({
-        next: (res: AbilityModel[]) => this.abilities.next(res),
+        next: (abilites: AbilityModel[]) => this.abilities.next(abilites.sort(_abilitySort)),
         error: (e: HttpErrorResponse) => notifyError(e, "admin/abilities/list", this.snackbar, this._request_snackbar_config)
       })
   }
@@ -32,10 +32,10 @@ export class AbilityService {
     if(token){
       this.httpClient.post<AbilityModel>(`${environment.api}/admin/ability/`, ability, { headers: { token } }).subscribe({
         next:(ability: AbilityModel) => {
-          const _abilities: AbilityModel[] = this.abilities.getValue()
-          _abilities.push(ability)
-          _abilities.sort(_abilitySort)
-          this.abilities.next([..._abilities])
+          const abilities: AbilityModel[] = this.abilities.getValue()
+          abilities.push(ability)
+          abilities.sort(_abilitySort)
+          this.abilities.next([...abilities])
         },
         error:(e: HttpErrorResponse) => notifyError(e, "admin/abilities/create", this.snackbar, this._request_snackbar_config)
       })
@@ -60,6 +60,24 @@ export class AbilityService {
       this.httpClient.delete<string[]>(`${environment.api}/admin/ability/`, { body: { abilities }, headers: { token } }).subscribe({
         next:(abilities: string[]) => this.abilities.next(this.abilities.getValue().filter((_ability: AbilityModel) => !abilities.includes(_ability._id!))),
         error:(e: HttpErrorResponse) => notifyError(e, "admin/abilities/delete", this.snackbar, this._request_snackbar_config)
+      })
+    }
+  }
+
+  bulk(data: FormData){
+    const token = localStorage.getItem(environment.tokenName)
+    if(token){
+      this.httpClient.post<AbilityModel[]>(`${environment.api}/admin/ability/bulk`, data, { headers: { token } }).subscribe({
+        next:(newabilities: AbilityModel[]) => {
+          const abilities: AbilityModel[] = this.abilities.getValue()
+          for (let ti = 0; ti < newabilities.length; ti++) {
+            const ability = newabilities[ti];
+            abilities.push(ability)
+          }
+          abilities.sort(_abilitySort)
+          this.abilities.next([...abilities])
+        },
+        error:(e: HttpErrorResponse) => notifyError(e, "admin/abilities/bulk", this.snackbar, this._request_snackbar_config)
       })
     }
 

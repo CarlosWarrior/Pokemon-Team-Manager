@@ -3,6 +3,9 @@
     <mat-toolbar-row>
       <span>Types</span>
       <span class="spacer"></span>
+      <button (click)="openBulkCreateDialog()" mat-icon-button matTooltip="Bulk Create">
+        <mat-icon>exposure_plus_2</mat-icon>
+      </button>
       <button (click)="openCreateDialog()" mat-icon-button matTooltip="Create">
         <mat-icon>add</mat-icon>
       </button>
@@ -24,17 +27,17 @@
   
       <ng-container matColumnDef="color">
         <th mat-header-cell mat-sort-header *matHeaderCellDef> Color </th>
-        <td mat-cell *matCellDef="let element"> {{element.color}} </td>
+        <td mat-cell *matCellDef="let element"> <span [style.backgroundColor]="element.color">{{element.name}}</span> </td>
       </ng-container>
     
       <ng-container matColumnDef="image">
         <th mat-header-cell *matHeaderCellDef> Image </th>
-        <td mat-cell *matCellDef="let element"> {{element.image}} </td>
+        <td mat-cell *matCellDef="let element"> <img height="50px" width="50px" src="{{element.image}}" alt="{{element.name}}"> </td>
       </ng-container>
     
       <ng-container matColumnDef="teracrystalImage">
         <th mat-header-cell *matHeaderCellDef> Teracrystal Image </th>
-        <td mat-cell *matCellDef="let element"> {{element.teracrystalImage}} </td>
+        <td mat-cell *matCellDef="let element"> <img height="50px" width="50px" src="{{element.teracrystalImage}}" alt="{{element.name}}"> </td>
       </ng-container>
   
       <ng-container matColumnDef="attackAdvantage">

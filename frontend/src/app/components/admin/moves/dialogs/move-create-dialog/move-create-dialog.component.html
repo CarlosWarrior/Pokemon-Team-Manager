@@ -24,6 +24,13 @@
     </mat-form-field>
 
     <mat-form-field>
+    <mat-label>Target</mat-label>
+    <mat-select [(value)]="move.target">
+        <mat-option *ngFor="let target of data.moveTargets" value="{{target}}">{{target}}</mat-option>
+    </mat-select>
+    </mat-form-field>
+
+    <mat-form-field>
         <mat-label>Power</mat-label>
         <input matInput formControlName="power">
         <mat-error *ngIf="form.controls['power'].invalid">{{powerError()}}</mat-error>
@@ -47,6 +54,11 @@
         <mat-label>Effect</mat-label>
         <input matInput formControlName="effect">
         <mat-error *ngIf="form.controls['effect'].invalid">{{effectError()}}</mat-error>
+    </mat-form-field>
+    <mat-form-field>
+        <mat-label>Effect Chance</mat-label>
+        <input matInput formControlName="effect_chance">
+        <mat-error *ngIf="form.controls['effect_chance'].invalid">{{effectChanceError()}}</mat-error>
     </mat-form-field>
     </form>
 </div>

@@ -1,3 +1,4 @@
+const { readFileSync } = require("fs")
 const { raise } = require("../middlewares/errors")
 const Ability = require('../models/ability')
 const AbilityController = {
@@ -52,6 +53,29 @@ const AbilityController = {
             return raise({ status: 422, message: "Body malformed", errors: error})
         }
         res.send(ability)
+    },
+    bulkCreate: async(req, res) => {
+        if(!req.file)
+            return raise({ status: 422, message: "File not present" })
+        let abilitiesData, abilitiesNames
+        try {
+            abilitiesData = JSON.parse(readFileSync(req.file.path, 'utf8'))
+            abilitiesNames = Object.keys(abilitiesData)
+        } catch (error) {
+            return raise({ status: 422, message: "File malformed", errors: error })
+        }
+        const abilities = []
+        try {
+            for (let ti = 0; ti < abilitiesNames.length; ti++) {
+                const abilityData = abilitiesData[abilitiesNames[ti]];
+                if(await Ability.count({ name: abilityData.name}) < 1)
+                    abilities.push(await Ability.create(abilityData))
+            }
+        } catch (error) {
+            return raise({ status: 422, message: "Abilities Data malformed", errors: error })
+        }
+        
+        return res.send(abilities)
     },
     delete: async(req, res) => {
         if(!req.body.abilities || !req.body.abilities.length)
