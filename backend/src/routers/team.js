@@ -6,20 +6,20 @@ const TeamController = require('../controllers/team')
 const TeamRouter = Router()
 /**
  * @swagger
- * /admin/team/:
+ * /user/team/:
  *  get:
  *      description: Endpoint to get a list of teams
  *      tags:
- *          - admin/team
+ *          - user/team
  *      parameters:
  *          - in: header
  *            name: token
  *            required: true
  *      responses:
  *          400:
- *              description: admin token not provided
+ *              description: user token not provided
  *          401:
- *              description: admin token invalid
+ *              description: user token invalid
  *          200:
  *              description: A list of teams is sent
  *          
@@ -28,11 +28,11 @@ TeamRouter.get('/', audit('Team-list'), _catch(TeamController.list))
 
 /**
  * @swagger
- * /admin/team/{name}:
+ * /user/team/{name}:
  *  get:
  *      description: Endpoint to get a single team
  *      tags:
- *          - admin/team
+ *          - user/team
  *      parameters:
  *          - in: path
  *            name: name
@@ -42,9 +42,9 @@ TeamRouter.get('/', audit('Team-list'), _catch(TeamController.list))
  *            required: true
  *      responses:
  *          400:
- *              description: admin token not provided
+ *              description: user token not provided
  *          401:
- *              description: admin token invalid
+ *              description: user token invalid
  *          200:
  *              description: A team is sent
  *          
@@ -53,11 +53,11 @@ TeamRouter.get('/:name', audit('Team-get'), _catch(TeamController.get))
 
 /**
  * @swagger
- * /admin/team/:
+ * /user/team/:
  *  post:
  *      description: Endpoint to create a team
  *      tags:
- *          - admin/team
+ *          - user/team
  *      parameters:
  *          - in: body
  *            name: team
@@ -79,7 +79,7 @@ TeamRouter.get('/:name', audit('Team-get'), _catch(TeamController.get))
  *            required: true
  *      responses:
  *          400:
- *              description: admin token not provided
+ *              description: user token not provided
  *          401:
  *              description: admin token invalid
  *          200:
@@ -90,11 +90,11 @@ TeamRouter.post('/', audit('Team-create'), _catch(TeamController.create))
 
 /**
  * @swagger
- * /admin/team/:
+ * /user/team/:
  *  put:
  *      description: Endpoint to create a team
  *      tags:
- *          - admin/team
+ *          - user/team
  *      parameters:
  *          - in: body
  *            name: team
@@ -115,9 +115,9 @@ TeamRouter.post('/', audit('Team-create'), _catch(TeamController.create))
  *            required: true
  *      responses:
  *          400:
- *              description: admin token not provided
+ *              description: user token not provided
  *          401:
- *              description: admin token invalid
+ *              description: user token invalid
  *          200:
  *              description: team created
  *          
@@ -126,11 +126,11 @@ TeamRouter.put('/', audit('Team-update'), _catch(TeamController.update))
 
 /**
  * @swagger
- * /admin/team/:
+ * /user/team/:
  *  delete:
  *      description: Endpoint to remove a team
  *      tags:
- *          - admin/team
+ *          - user/team
  *      parameters:
  *          - in: body
  *            types: array
@@ -142,9 +142,9 @@ TeamRouter.put('/', audit('Team-update'), _catch(TeamController.update))
  *            required: true
  *      responses:
  *          400:
- *              description: admin token not provided
+ *              description: user token not provided
  *          401:
- *              description: admin token invalid
+ *              description: user token invalid
  *          200:
  *              description: A team is removed
  *          

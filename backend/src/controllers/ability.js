@@ -83,8 +83,10 @@ const AbilityController = {
         const abilities = req.body.abilities
         const _abilities = []
         for (let ab = 0; ab < abilities.length; ab++) {
-            await Ability.count({ _id: abilities[ab]}) && _abilities.push(abilities[ab])
-            await Ability.delete(abilities[ab]);
+            if(await Ability.count({ _id: abilities[ab]})){
+                await Ability.delete(abilities[ab]);
+                _abilities.push(abilities[ab])
+            }
   
         }
         res.send(_abilities)

@@ -56,6 +56,10 @@
 						</ol>
 					</div>
 				</div>
+				<div class="line actions">
+					<button mat-button color="warn" (click)="openDeleteDialog(team)">Delete</button>
+					<button mat-raised-button color="primary" (click)="openEditDialog(team)" cdkFocusInitial>Edit</button>
+				</div>
 			</div>
 		</div>
   </mat-expansion-panel>

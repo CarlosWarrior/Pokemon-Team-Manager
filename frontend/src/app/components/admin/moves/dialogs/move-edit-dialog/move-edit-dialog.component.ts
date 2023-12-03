@@ -1,13 +1,14 @@
 import { Component, Inject } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { AbstractControl, FormControl, FormGroup, ValidationErrors, Validators } from '@angular/forms';
-import { MoveCategory, MoveModel, TypeModel } from 'src/app/interfaces/models';
+import { MoveCategory, MoveModel, MoveTarget, TypeModel } from 'src/app/interfaces/models';
 
 interface MoveEditDialogData{
   move: MoveModel,
   moveNames : string[],
   types: TypeModel[],
   moveCategories: MoveCategory[],
+  moveTargets: MoveTarget[],
 }
 @Component({
   selector: 'app-move-edit-dialog',
@@ -28,6 +29,7 @@ export class MoveEditDialogComponent {
     })
     this.type = data.move.type
     this.category = data.move.category
+    this.target = data.move.target
   }
 
   form: FormGroup

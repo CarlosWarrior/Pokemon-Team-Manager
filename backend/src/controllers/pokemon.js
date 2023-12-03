@@ -186,8 +186,10 @@ const PokemonController = {
         const pokemons = req.body.pokemons
         const _pokemons = []
         for (let ti = 0; ti < pokemons.length; ti++) {
-            await Pokemon.count({ _id: pokemons[ti]}) && _pokemons.push(pokemons[ti])
-            await Pokemon.delete(pokemons[ti]);
+            if(await Pokemon.count({ _id: pokemons[ti]})){
+                await Pokemon.delete(pokemons[ti]);
+                _pokemons.push(pokemons[ti])
+            }
         }
         res.send(_pokemons)
     },

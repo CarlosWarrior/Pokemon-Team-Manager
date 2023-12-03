@@ -31,6 +31,13 @@
 				align-items: center;
 				padding-top: 30px;
 			}
+
+			&.actions{
+				display: flex;
+				justify-content: flex-end;
+				align-items: center;
+				padding-top: 30px;
+			}
 			
 			.pokemon-slot {
 				@include col(4);

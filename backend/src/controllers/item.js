@@ -98,8 +98,10 @@ const ItemController = {
         const items = req.body.items
         const _items = []
         for (let ti = 0; ti < items.length; ti++) {
-            await Item.count({ _id: items[ti]}) && _items.push(items[ti])
-            await Item.delete(items[ti]);
+            if(await Item.count({ _id: items[ti]})){
+                await Item.delete(items[ti]);
+                _items.push(items[ti])
+            }
         }
         res.send(_items)
     },

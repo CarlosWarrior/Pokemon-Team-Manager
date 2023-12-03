@@ -15,7 +15,7 @@ import { MoveBulkCreateComponent } from './dialogs/move-bulk-create/move-bulk-cr
   styleUrls: ['./moves.component.scss']
 })
 export class MovesComponent {
-  displayedColumns: string[] = [ "name", "type", "category", "power", "accuracy", "pp", "priority", "effect", "effect_chance",  ];
+  displayedColumns: string[] = [ "name", "type", "category", "power", "accuracy", "pp", "priority", "target", "effect", "effect_chance",  ];
   moveCategories: MoveCategory[] = Object.values(MoveCategory)
   moveTargets: MoveTarget[] = Object.values(MoveTarget)
   moves: MoveModel[] = [];
@@ -66,6 +66,7 @@ export class MovesComponent {
         move: this.selected[0],
         moveNames: this.moves.map((move: MoveModel) => move.name).filter(ab => ab != this.selected[0].name),
         moveCategories: this.moveCategories,
+        moveTargets: this.moveTargets,
         types: this.types,
       }
     });

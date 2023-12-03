@@ -135,8 +135,10 @@ const MoveController = {
         const moves = req.body.moves
         const _moves = []
         for (let ti = 0; ti < moves.length; ti++) {
-            await Move.count({ _id: moves[ti]}) && _moves.push(moves[ti])
-            await Move.delete(moves[ti]);
+            if(await Move.count({ _id: moves[ti]})){
+                await Move.delete(moves[ti]);
+                _moves.push(moves[ti])
+            }
         }
         res.send(_moves)
     },

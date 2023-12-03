@@ -39,25 +39,24 @@ export class TeamService {
       })
   }
 
-  update(){
+  edit(team: TeamModel){
     const token = localStorage.getItem(environment.tokenName)
-    if(token)
-      this.httpClient.put<any>(`${environment.api}/user/team/`, {}, { headers: { token } }).subscribe({
-        next:() => {
-
-        },
-        error:(e: HttpErrorResponse) => notifyError(e, "user/team/update", this.snackbar, this._request_snackbar_config)
+    if(token){
+      this.httpClient.put<TeamModel>(`${environment.api}/user/team/`, team, { headers: { token } }).subscribe({
+        next:(team: TeamModel) => this.teams.next(this.teams.getValue().map((_team: TeamModel) => _team._id == team._id?team:_team)),
+        error:(e: HttpErrorResponse) => notifyError(e, "admin/teams/edit", this.snackbar, this._request_snackbar_config)
       })
+    }
+
   }
 
-  delete(){
+  delete(teams: string[]){
     const token = localStorage.getItem(environment.tokenName)
-    if(token)
-      this.httpClient.delete<any>(`${environment.api}/user/team/`, { body: {}, headers: { token } }).subscribe({
-        next:() => {
-
-        },
-        error:(e: HttpErrorResponse) => notifyError(e, "user/team/delete", this.snackbar, this._request_snackbar_config)
+    if(token){
+      this.httpClient.delete<string[]>(`${environment.api}/user/team/`, { body: { teams }, headers: { token } }).subscribe({
+        next:(teams: string[]) => this.teams.next(this.teams.getValue().filter((_team: TeamModel) => !teams.includes(_team._id!))),
+        error:(e: HttpErrorResponse) => notifyError(e, "admin/teams/delete", this.snackbar, this._request_snackbar_config)
       })
+    }
   }
 }

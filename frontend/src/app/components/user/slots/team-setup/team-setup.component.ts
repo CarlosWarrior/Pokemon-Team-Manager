@@ -1,9 +1,10 @@
 import { _isNumberValue } from '@angular/cdk/coercion';
 import { Component, Inject } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
-import { AbilityModel, ItemModel, MoveModel, PokemonGender, PokemonModel, PokemonSlot, SlotSetupData, Stats, TypeModel } from 'src/app/interfaces/models';
+import { AbilityModel, ItemModel, MoveModel, PokemonGender, PokemonModel, PokemonSlot, SlotSetupData, Stats, TeamModel, TypeModel } from 'src/app/interfaces/models';
 
 interface TeamSetupData{
+  team?:TeamModel
   pokemons:PokemonModel[]
   types:TypeModel[]
   items:ItemModel[]
@@ -26,20 +27,26 @@ const _stat: Stats = {
 })
 export class TeamSetupComponent {
   constructor( public dialogRef: MatDialogRef<TeamSetupComponent>, @Inject(MAT_DIALOG_DATA) public data: TeamSetupData, ) {
+    console.log(this.data.team)
+    if(this.data.team)
+      this.name = this.data.team.name
     this.slots = this.data.pokemons.map((pokemon: PokemonModel, order: number) => {
       pokemon.moves.sort((move1: string, move2: string) => move1 > move2? 1 : -1)
-      return {
-        order: order + 1,
-        pokemon,
-        gender: PokemonGender.Male,
-        item: "",
-        level: 100,
-        ability: "",
-        tera_type: "",
-        moves: [],
-        evs:_stat,
-        ivs: _stat,
-      }
+      if(this.data.team)
+        return this.data.team.slots.find((slot: PokemonSlot) => slot.pokemon._id == pokemon._id)!
+      else
+        return {
+          order: order + 1,
+          pokemon,
+          gender: PokemonGender.Male,
+          item: "",
+          level: 100,
+          ability: "",
+          tera_type: "",
+          moves: [],
+          evs:_stat,
+          ivs: _stat,
+        }
     })
   }
   name: string = ""
@@ -55,14 +62,10 @@ export class TeamSetupComponent {
     return this.data.types.find((_type: TypeModel) => _type.name == type)!
   }
 
-  handleSelect(pokemon: PokemonModel){
-
-  }
 
   validSlots(): boolean{
     let valid = true
     this.slots.forEach((slot: PokemonSlot) =>{
-      console.log(slot)
       valid = valid &&
       ((_isNumberValue(slot.order) && slot.order >= 1 && slot.order <= 6 )?true:false) &&
       ((slot.gender)?true : false) &&
@@ -78,7 +81,10 @@ export class TeamSetupComponent {
 
   action(){
     if(this.validSlots() && this.name != "")
-      this.dialogRef.close({slots: this.slots, name: this.name})
+      if(this.data.team)
+        this.dialogRef.close({slots: this.slots, name: this.name, _id: this.data.team._id})
+      else
+        this.dialogRef.close({slots: this.slots, name: this.name})
   }
 
   onNoClick(): void {
