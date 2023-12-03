@@ -57,6 +57,8 @@ import { TeamCoverageComponent } from './components/user/slots/team-coverage/tea
 import { TeamSetupComponent } from './components/user/slots/team-setup/team-setup.component';
 import { SlotSetupComponent } from './components/user/slots/slot-setup/slot-setup.component';
 import { ItemBulkCreateComponent } from './components/admin/items/dialogs/item-bulk-create/item-bulk-create.component';
+import { EditTeamDialogComponent } from './components/user/teams/dialogs/edit-team-dialog/edit-team-dialog.component';
+import { DeleteTeamDialogComponent } from './components/user/teams/dialogs/delete-team-dialog/delete-team-dialog.component';
 
 @NgModule({
   declarations: [
@@ -112,6 +114,8 @@ import { ItemBulkCreateComponent } from './components/admin/items/dialogs/item-b
     TeamSetupComponent,
     SlotSetupComponent,
     ItemBulkCreateComponent,
+    EditTeamDialogComponent,
+    DeleteTeamDialogComponent,
   ],
   imports: [
     BrowserModule,

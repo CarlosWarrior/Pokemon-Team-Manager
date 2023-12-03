@@ -28,7 +28,7 @@ export class TeamsComponent{
     this.typeService.getList()
     this.teamService.teams.subscribe((teams: TeamModel[]) => this.teams = teams)
     this.typeService.types.subscribe((types: TypeModel[]) => this.types = types)
-    this.socket.on('client-rankingUpdated', (state: Ranking) => this.rankingUpdated(this.ngZone, state))
+    this.socket.on('client-RankingUpdated', (state: Ranking) => this.rankingUpdated(this.ngZone, state))
   }
   teams: TeamModel[] = []
   types: TypeModel[] = []
@@ -36,19 +36,17 @@ export class TeamsComponent{
   
   rankingUpdated(ngZone: NgZone, state: Ranking){
     ngZone.run(()=>{
-      console.log(this.ranking, this)
       this.ranking = state
+      console.log(this.ranking)
     })
   }
 
   getCoverageRanking = (teamId: string)=>{
-    console.log(this.ranking)
     if(this.ranking)
       return this.ranking.teamsCoverageRanking.findIndex((team: string) => team == teamId ) + 1
     return 0
   }
   getDefenseRanking = (teamId: string)=>{
-    console.log(this.ranking)
     if(this.ranking)
       return this.ranking.teamsDefenseRanking.findIndex((team: string) => team == teamId ) + 1
     return 0

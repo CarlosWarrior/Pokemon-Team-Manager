@@ -24,10 +24,49 @@
 		
 		.line {
 			@extend .row;
+
+			&.title{
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				padding-top: 30px;
+			}
 			
 			.pokemon-slot {
 				@include col(4);
 			}
+			
+			.type{
+				@include col(4);
+			}
+		}
+	}
+}
+
+img.type{
+	height: 70px;
+	width: 70px;
+}
+
+ol{
+	margin: 0;
+	padding: 0;
+	list-style: none;
+	display: inline-block;
+	li{
+		display: inline-block;
+    width: 1em;
+    height: 3em;
+    text-indent: -999em;
+    background-color: $positiveColor;
+    border-radius: 0.125em;
+    margin: 0 0 0 0.3125em;
+    position: relative;
+		&.advantage{
+			background-color: $primaryColor;
+		}
+		&.weakness{
+			background-color: $secondaryColor;
 		}
 	}
 }
