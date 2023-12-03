@@ -89,6 +89,7 @@ export interface SlotSetupData{
 export enum PokemonGender{
     Male = 'male', 
     Female = 'female',
+    None = 'none',
 }
 export interface PokemonSlot{
     pokemon: PokemonModel

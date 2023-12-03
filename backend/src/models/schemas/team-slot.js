@@ -25,7 +25,7 @@ const movesExists = async(moves) => {
     }
     return count
 }
-const genders = ["male", "female"]
+const genders = ["male", "female", "none"]
 const validGender = (value) => genders.includes(value)
 
 const TeamSlotSchema = new Schema({
