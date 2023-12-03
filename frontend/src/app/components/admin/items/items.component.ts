@@ -34,7 +34,11 @@ export class ItemsComponent {
   }
   
   openCreateDialog(){
-    const dialogRef = this.dialog.open(ItemCreateDialogComponent);
+    const dialogRef = this.dialog.open(ItemCreateDialogComponent, {
+      data: {
+        itemNames: this.items.map((item: ItemModel) => item.name)
+      }
+    });
     
     dialogRef.afterClosed().subscribe((newItem: ItemModel) => {
       if(newItem)
@@ -44,7 +48,10 @@ export class ItemsComponent {
   
   openEditDialog(){
     const dialogRef = this.dialog.open(ItemEditDialogComponent, {
-      data: this.selected[0],
+      data: {
+        item: this.selected[0],
+        itemNames: this.items.map((item: ItemModel) => item.name).filter(it => it != this.selected[0].name)
+      },
     });
     
     dialogRef.afterClosed().subscribe((editedItem: ItemModel) => {

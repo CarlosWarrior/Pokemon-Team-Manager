@@ -35,7 +35,6 @@ export class AbilitiesEditDialogComponent {
   }
 
   effectError(){
-    console.log(this.form.controls)
     if(this.form.controls['effect'].hasError('required'))
       return 'Effect required'
     if(this.form.controls['effect'].hasError('minlength'))

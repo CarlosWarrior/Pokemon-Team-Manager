@@ -21,7 +21,7 @@ export class ItemService {
     const token = localStorage.getItem(environment.tokenName)
     if(token)
       this.httpClient.get<ItemModel[]>(`${environment.api}/admin/item/`, { headers: { token } }).subscribe({
-        next: (res: ItemModel[]) => this.items.next(res),
+        next: (items: ItemModel[]) => this.items.next(items.sort(_itemSort)),
         error: (e: HttpErrorResponse) => notifyError(e, "admin/items/list", this.snackbar, this._request_snackbar_config)
       })
   }
