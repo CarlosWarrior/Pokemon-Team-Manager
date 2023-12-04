@@ -62,6 +62,7 @@ import { CdkDrag, CdkDropList } from '@angular/cdk/drag-drop';
 import { MatSliderModule } from '@angular/material/slider';
 import { SelectPokemonDialogComponent } from './components/user/battle/dialogs/select-pokemon-dialog/select-pokemon-dialog.component';
 import { SelectTargetDialogComponent } from './components/user/battle/dialogs/select-target-dialog/select-target-dialog.component';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 @NgModule({
   declarations: [
@@ -132,6 +133,7 @@ import { SelectTargetDialogComponent } from './components/user/battle/dialogs/se
     CdkDropList,
     CdkDrag,
     MatSliderModule,
+    MatTooltipModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

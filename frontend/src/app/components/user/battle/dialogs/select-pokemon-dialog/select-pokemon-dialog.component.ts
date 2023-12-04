@@ -1,8 +1,12 @@
-import { Component } from '@angular/core';
+import { Component, Inject } from '@angular/core';
 import { FormGroup } from '@angular/forms';
-import { MatDialogRef } from '@angular/material/dialog';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { PokemonModel } from 'src/app/interfaces/models';
 import { PokemonService } from 'src/app/services/pokemon.service';
+
+interface SelectPokemonDialogData {
+  pokemons: PokemonModel[];
+}
 
 @Component({
   selector: 'app-select-pokemon-dialog',
@@ -10,17 +14,14 @@ import { PokemonService } from 'src/app/services/pokemon.service';
   styleUrls: ['./select-pokemon-dialog.component.scss'],
 })
 export class SelectPokemonDialogComponent {
-  pokemons: PokemonModel[] = [];
+  
   pokemon?: PokemonModel;
 
   constructor(
-    public dialogRef: MatDialogRef<SelectPokemonDialogComponent>,
-    private pokemonService: PokemonService
+    public dialogRef: MatDialogRef<SelectPokemonDialogData>,
+    @Inject(MAT_DIALOG_DATA) public data: SelectPokemonDialogData
   ) {
-    this.pokemonService.getList();
-    this.pokemonService.pokemons.subscribe(
-      (pokemons: PokemonModel[]) => (this.pokemons = pokemons)
-    );
+    
   }
 
   action() {

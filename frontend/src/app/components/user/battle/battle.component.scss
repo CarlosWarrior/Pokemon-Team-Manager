@@ -1,0 +1,16 @@
+:host{
+    z-index: 2;
+}
+
+
+.toolTip  {  white-space: pre-line !important;
+}
+
+md-tooltip .md-content {
+    height: auto;
+}
+
+::ng-deep .cdk-overlay-container, .cdk-global-overlay-wrapper {
+    white-space: pre-line;
+  }
+

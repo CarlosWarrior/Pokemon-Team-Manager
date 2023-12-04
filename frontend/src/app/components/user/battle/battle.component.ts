@@ -13,13 +13,19 @@ import { TeamService } from 'src/app/services/team.service';
 import { TeamModel } from 'src/app/interfaces/models';
 import { SelectTargetDialogComponent } from './dialogs/select-target-dialog/select-target-dialog.component';
 import { MoveModel } from 'src/app/interfaces/models';
+import { PokemonService } from 'src/app/services/pokemon.service';
+import {MatTooltipModule} from '@angular/material/tooltip';
 
 interface SelectedMove{
   [key: string]: number;
 }
 
 interface SelectedMovesData{
-[key: string]: SelectedMove;
+  [key: string]: SelectedMove;
+}
+
+interface Health{
+  [key: string]: number;
 }
 
 enum Trainer{
@@ -64,6 +70,15 @@ export class BattleComponent implements AfterContentInit {
     
   }
 
+  userHealth: Health = {
+    
+  };
+  
+  enemyHealth: Health = {
+    
+  };
+
+
   battleLogs: BattleLog[] = [];
 
   battleResults: BattleResult[] = [];
@@ -90,15 +105,18 @@ export class BattleComponent implements AfterContentInit {
   team?: TeamModel;
   textarea: HTMLTextAreaElement | null | undefined;
 
-  
+  pokemons: PokemonModel[] = [];
 
   constructor(public dialog: MatDialog,
     private teamService: TeamService,
-    
+    private pokemonService: PokemonService
   ) {
     this.teamService.getList();
     this.teamService.teams.subscribe((teams: TeamModel[]) => this.teams = teams);
-
+    this.pokemonService.getList();
+    this.pokemonService.pokemons.subscribe(
+      (pokemons: PokemonModel[]) => (this.pokemons = pokemons)
+    );
   }
   ngAfterContentInit(): void {
     this.textarea = document.getElementById("log") as HTMLTextAreaElement;
@@ -107,7 +125,7 @@ export class BattleComponent implements AfterContentInit {
   showPokemonDialog(index: number) {
     const dialogRef = this.dialog.open(SelectPokemonDialogComponent, {
       width: '40vw',
-      data: { name: 'test' },
+      data: { name: 'test', pokemons: this.pokemons },
     });
 
     dialogRef.afterClosed().subscribe((result) => {
@@ -117,6 +135,12 @@ export class BattleComponent implements AfterContentInit {
           this.inBattleEnemyPokemons[i] = undefined;
         }
         this.enemyTurns = this.inBattleEnemyPokemons;
+        this.enemyHealth = {};
+        this.enemySelectedPokemons.forEach((pokemon) => {
+          if (pokemon) {
+            this.enemyHealth[pokemon._id!] = 100;
+          }
+        });
       }
     });
   }
@@ -138,6 +162,21 @@ export class BattleComponent implements AfterContentInit {
 
   }
 
+  showUserTargetDialog(user: string, move: string) {
+    console.log("hi", user);
+    const pokemon = this.userSelectedPokemons[Number(user)];
+    console.log(pokemon);
+    const dialogRef = this.dialog.open(SelectTargetDialogComponent, {
+      width: '40vw',
+      data: { inBattleEnemyPokemons: this.inBattleEnemyPokemons, inBattleUserPokemons: this.inBattleUserPokemons, user },
+    });
+
+    dialogRef.afterClosed().subscribe((result) => {
+      console.log(result);
+      this.createResults(pokemon!, move, result.targets, Trainer.User, result.selfDamage);
+    });
+  }
+
   drop(event: CdkDragDrop<string[]>) {
     moveItemInArray(this.enemyTurns, event.previousIndex, event.currentIndex);
   }
@@ -154,12 +193,33 @@ export class BattleComponent implements AfterContentInit {
     this.sortTurns();
   }
 
+  onChangeUser(event: Event, index: number) {
+    console.log(index);
+    const value = +(event.target as HTMLSelectElement).value;
+    this.inBattleUserPokemons[index] = this.userSelectedPokemons[value];
+
+    this.userTurns = [
+      ...this.inBattleUserPokemons,
+    ];
+
+    this.sortTurns();
+  }
+
   onChangeTeam(team: TeamModel){
-      this.userSelectedPokemons = team.slots.map(slot => slot.pokemon);
+      this.userSelectedPokemons = team.slots.map(slot => ({
+        ...slot.pokemon,
+        moves: slot.moves,
+      
+      }));
       for (let i = this.userSelectedPokemons.length; i < 6; i++) {
         this.userSelectedPokemons[i] = undefined;
       }
-
+      this.userHealth = {};
+      this.userSelectedPokemons.forEach((pokemon) => {
+        if (pokemon) {
+          this.userHealth[pokemon._id!] = 100;
+        }
+      });
       console.log(this.userSelectedPokemons);
   }
 
@@ -257,6 +317,25 @@ export class BattleComponent implements AfterContentInit {
     if (this.battleLogs[index].targets.length === 0 && !this.battleLogs[index].selfDamage){
       this.battleLogs.splice(index, 1);
     }
+  }
+
+  deathResult(index: number, isUser: boolean){
+    const selectedPokemons = isUser ? this.inBattleUserPokemons : this.inBattleEnemyPokemons;
+    const trainer = isUser ? Trainer.User : Trainer.Enemy;
+    const result = `[${trainer}] El pokemon ${selectedPokemons[index]?.name} ha muerto.`;
+    this.battleResults.push({
+      log: {
+        user: selectedPokemons[index]!,
+        move: "fainted",
+        targets: [],
+        selfDamage: undefined,
+        trainer: trainer,
+      },
+      result: result,
+
+    });
+    this.textarea?.append(result + "\n");
+    selectedPokemons[index] = undefined;
   }
 
   calcHp(){
