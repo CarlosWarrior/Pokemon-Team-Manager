@@ -1,0 +1,32 @@
+@use "sass:math";
+@import './variables';
+
+// Define variables for grid settings
+$grid-columns: 24;
+$breakpoint-small: 576px;
+$breakpoint-medium: 768px;
+$breakpoint-large: 992px;
+
+// Mixin for container
+@mixin container {
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+// Mixin for columns
+@mixin col($columns, $offset: 0) {
+  flex: 0 0 percentage(math.div($columns, $grid-columns));
+  //margin-left: percentage(math.div($offset, $grid-columns));
+}
+
+// Container class
+.container {
+  @include container;
+}
+
+// Row class
+.row {
+  display: flex;
+  flex-wrap: wrap;
+}

@@ -3,6 +3,7 @@ const net = require('net')
 const disposableEmailDomains = require('disposable-email-domains')
 
 exports.verify_email = async (email)=>{
+    
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
     if (!emailRegex.test(email))
         return false
@@ -12,10 +13,12 @@ exports.verify_email = async (email)=>{
     
     const [address, domain] = email.split("@")
     const domainRegex = /^[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+
     if (!domainRegex.test(domain))
         return false
 
     const DISPOSABLEcheck = !disposableEmailDomains.includes(domain)
+    
     if(!DISPOSABLEcheck)
         return false
 
@@ -31,10 +34,12 @@ exports.verify_email = async (email)=>{
         else
             resolve(null)
     }))
+    
     if(!MXcheck)
         return false
     
-    
+    // Render no permite conexiones al puerto 25
+    return true
     const hasCode = (message, code) => message.indexOf(`${code}`) === 0 || message.indexOf(`${code}\n`) > -1
     const SMTPcheck = await new Promise(resolve => {
         const exchange = MXcheck[0].exchange
@@ -95,6 +100,7 @@ exports.verify_email = async (email)=>{
             })
         })
     })
+    
     if(!SMTPcheck)
         return false
 

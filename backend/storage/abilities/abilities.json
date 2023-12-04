@@ -1,0 +1,886 @@
+{
+  "overgrow": {
+    "name": "overgrow",
+    "effect": "Strengthens grass moves to inflict 1.5× damage at 1/3 max HP or less."
+  },
+  "chlorophyll": {
+    "name": "chlorophyll",
+    "effect": "Doubles Speed during strong sunlight."
+  },
+  "blaze": {
+    "name": "blaze",
+    "effect": "Strengthens fire moves to inflict 1.5× damage at 1/3 max HP or less."
+  },
+  "solar-power": {
+    "name": "solar-power",
+    "effect": "Increases Special Attack to 1.5× but costs 1/8 max HP after each turn during strong sunlight."
+  },
+  "torrent": {
+    "name": "torrent",
+    "effect": "Strengthens water moves to inflict 1.5× damage at 1/3 max HP or less."
+  },
+  "rain-dish": {
+    "name": "rain-dish",
+    "effect": "Heals for 1/16 max HP after each turn during rain."
+  },
+  "shield-dust": {
+    "name": "shield-dust",
+    "effect": "Protects against incoming moves' extra effects."
+  },
+  "run-away": {
+    "name": "run-away",
+    "effect": "Ensures success fleeing from wild battles."
+  },
+  "shed-skin": {
+    "name": "shed-skin",
+    "effect": "Has a 33% chance of curing any major status ailment after each turn."
+  },
+  "compound-eyes": {
+    "name": "compound-eyes",
+    "effect": "Increases moves' accuracy to 1.3×."
+  },
+  "tinted-lens": {
+    "name": "tinted-lens",
+    "effect": "Doubles damage inflicted with not-very-effective moves."
+  },
+  "swarm": {
+    "name": "swarm",
+    "effect": "Strengthens bug moves to inflict 1.5× damage at 1/3 max HP or less."
+  },
+  "sniper": {
+    "name": "sniper",
+    "effect": "Strengthens critical hits to inflict 3× damage rather than 2×."
+  },
+  "keen-eye": {
+    "name": "keen-eye",
+    "effect": "Prevents accuracy from being lowered."
+  },
+  "tangled-feet": {
+    "name": "tangled-feet",
+    "effect": "Doubles evasion when confused."
+  },
+  "big-pecks": {
+    "name": "big-pecks",
+    "effect": "Protects against Defense drops."
+  },
+  "guts": {
+    "name": "guts",
+    "effect": "Increases Attack to 1.5× with a major status ailment."
+  },
+  "hustle": {
+    "name": "hustle",
+    "effect": "Strengthens physical moves to inflict 1.5× damage, but decreases their accuracy to 0.8×."
+  },
+  "intimidate": {
+    "name": "intimidate",
+    "effect": "Lowers opponents' Attack one stage upon entering battle."
+  },
+  "unnerve": {
+    "name": "unnerve",
+    "effect": "Prevents opposing Pokémon from eating held Berries."
+  },
+  "static": {
+    "name": "static",
+    "effect": "Has a 30% chance of paralyzing attacking Pokémon on contact."
+  },
+  "lightning-rod": {
+    "name": "lightning-rod",
+    "effect": "Redirects single-target electric moves to this Pokémon where possible.  Absorbs Electric moves, raising Special Attack one stage."
+  },
+  "sand-veil": {
+    "name": "sand-veil",
+    "effect": "Increases evasion to 1.25× during a sandstorm.  Protects against sandstorm damage."
+  },
+  "sand-rush": {
+    "name": "sand-rush",
+    "effect": "Doubles Speed during a sandstorm.  Protects against sandstorm damage."
+  },
+  "poison-point": {
+    "name": "poison-point",
+    "effect": "Has a 30% chance of poisoning attacking Pokémon on contact."
+  },
+  "rivalry": {
+    "name": "rivalry",
+    "effect": "Increases damage inflicted to 1.25× against Pokémon of the same gender, but decreases damage to 0.75× against the opposite gender."
+  },
+  "sheer-force": {
+    "name": "sheer-force",
+    "effect": "Strengthens moves with extra effects to 1.3× their power, but prevents their extra effects."
+  },
+  "cute-charm": {
+    "name": "cute-charm",
+    "effect": "Has a 30% chance of infatuating attacking Pokémon on contact."
+  },
+  "magic-guard": {
+    "name": "magic-guard",
+    "effect": "Protects against damage not directly caused by a move."
+  },
+  "friend-guard": {
+    "name": "friend-guard",
+    "effect": "Decreases all direct damage taken by friendly Pokémon to 0.75×."
+  },
+  "unaware": {
+    "name": "unaware",
+    "effect": "Ignores other Pokémon's stat modifiers for damage and accuracy calculation."
+  },
+  "flash-fire": {
+    "name": "flash-fire",
+    "effect": "Protects against fire moves.  Once one has been blocked, the Pokémon's own Fire moves inflict 1.5× damage until it leaves battle."
+  },
+  "drought": {
+    "name": "drought",
+    "effect": "Summons strong sunlight that lasts indefinitely upon entering battle."
+  },
+  "competitive": {
+    "name": "competitive",
+    "effect": "Raises Special Attack by two stages upon having any stat lowered."
+  },
+  "frisk": {
+    "name": "frisk",
+    "effect": "Reveals an opponent's held item upon entering battle."
+  },
+  "inner-focus": {
+    "name": "inner-focus",
+    "effect": "Prevents flinching."
+  },
+  "infiltrator": {
+    "name": "infiltrator",
+    "effect": "Bypasses light screen, reflect, and safeguard."
+  },
+  "stench": {
+    "name": "stench",
+    "effect": "Has a 10% chance of making target Pokémon flinch with each hit."
+  },
+  "effect-spore": {
+    "name": "effect-spore",
+    "effect": "Has a 30% chance of inflcting either paralysis, poison, or sleep on attacking Pokémon on contact."
+  },
+  "dry-skin": {
+    "name": "dry-skin",
+    "effect": "Causes 1/8 max HP in damage each turn during strong sunlight, but heals for 1/8 max HP during rain.  Increases damage from fire moves to 1.25×, but absorbs water moves, healing for 1/4 max HP."
+  },
+  "damp": {
+    "name": "damp",
+    "effect": "Prevents self destruct, explosion, and aftermath from working while the Pokémon is in battle."
+  },
+  "wonder-skin": {
+    "name": "wonder-skin",
+    "effect": "Lowers incoming non-damaging moves' base accuracy to exactly 50%."
+  },
+  "arena-trap": {
+    "name": "arena-trap",
+    "effect": "Prevents opponents from fleeing or switching out.  Eluded by flying-types and Pokémon in the air."
+  },
+  "sand-force": {
+    "name": "sand-force",
+    "effect": "Strengthens rock, ground, and steel moves to 1.3× their power during a sandstorm.  Protects against sandstorm damage."
+  },
+  "pickup": {
+    "name": "pickup",
+    "effect": "Picks up other Pokémon's used and Flung held items.  May also pick up an item after battle."
+  },
+  "technician": {
+    "name": "technician",
+    "effect": "Strengthens moves of 60 base power or less to 1.5× their power."
+  },
+  "limber": {
+    "name": "limber",
+    "effect": "Prevents paralysis."
+  },
+  "cloud-nine": {
+    "name": "cloud-nine",
+    "effect": "Negates all effects of weather, but does not prevent the weather itself."
+  },
+  "swift-swim": {
+    "name": "swift-swim",
+    "effect": "Doubles Speed during rain."
+  },
+  "vital-spirit": {
+    "name": "vital-spirit",
+    "effect": "Prevents sleep."
+  },
+  "anger-point": {
+    "name": "anger-point",
+    "effect": "Raises Attack to the maximum of six stages upon receiving a critical hit."
+  },
+  "defiant": {
+    "name": "defiant",
+    "effect": "Raises Attack two stages upon having any stat lowered."
+  },
+  "justified": {
+    "name": "justified",
+    "effect": "Raises Attack one stage upon taking damage from a dark move."
+  },
+  "water-absorb": {
+    "name": "water-absorb",
+    "effect": "Absorbs water moves, healing for 1/4 max HP."
+  },
+  "synchronize": {
+    "name": "synchronize",
+    "effect": "Copies burns, paralysis, and poison received onto the Pokémon that inflicted them."
+  },
+  "no-guard": {
+    "name": "no-guard",
+    "effect": "Ensures all moves used by and against the Pokémon hit."
+  },
+  "steadfast": {
+    "name": "steadfast",
+    "effect": "Raises Speed one stage upon flinching."
+  },
+  "gluttony": {
+    "name": "gluttony",
+    "effect": "Makes the Pokémon eat any held Berry triggered by low HP below 1/2 its max HP."
+  },
+  "clear-body": {
+    "name": "clear-body",
+    "effect": "Prevents stats from being lowered by other Pokémon."
+  },
+  "liquid-ooze": {
+    "name": "liquid-ooze",
+    "effect": "Damages opponents using leeching moves for as much as they would heal."
+  },
+  "rock-head": {
+    "name": "rock-head",
+    "effect": "Protects against recoil damage."
+  },
+  "sturdy": {
+    "name": "sturdy",
+    "effect": "Prevents being KOed from full HP, leaving 1 HP instead.  Protects against the one-hit KO moves regardless of HP."
+  },
+  "flame-body": {
+    "name": "flame-body",
+    "effect": "Has a 30% chance of burning attacking Pokémon on contact."
+  },
+  "oblivious": {
+    "name": "oblivious",
+    "effect": "Prevents infatuation and protects against captivate."
+  },
+  "own-tempo": {
+    "name": "own-tempo",
+    "effect": "Prevents confusion."
+  },
+  "regenerator": {
+    "name": "regenerator",
+    "effect": "Heals for 1/3 max HP upon switching out."
+  },
+  "magnet-pull": {
+    "name": "magnet-pull",
+    "effect": "Prevents steel opponents from fleeing or switching out."
+  },
+  "analytic": {
+    "name": "analytic",
+    "effect": "Strengthens moves to 1.3× their power when moving last."
+  },
+  "early-bird": {
+    "name": "early-bird",
+    "effect": "Makes sleep pass twice as quickly."
+  },
+  "thick-fat": {
+    "name": "thick-fat",
+    "effect": "Halves damage from fire and ice moves."
+  },
+  "hydration": {
+    "name": "hydration",
+    "effect": "Cures any major status ailment after each turn during rain."
+  },
+  "ice-body": {
+    "name": "ice-body",
+    "effect": "Heals for 1/16 max HP after each turn during hail.  Protects against hail damage."
+  },
+  "sticky-hold": {
+    "name": "sticky-hold",
+    "effect": "Prevents a held item from being removed by other Pokémon."
+  },
+  "poison-touch": {
+    "name": "poison-touch",
+    "effect": "Has a 30% chance of poisoning target Pokémon upon contact."
+  },
+  "shell-armor": {
+    "name": "shell-armor",
+    "effect": "Protects against critical hits."
+  },
+  "skill-link": {
+    "name": "skill-link",
+    "effect": "Extends two-to-five-hit moves and triple kick to their full length every time."
+  },
+  "overcoat": {
+    "name": "overcoat",
+    "effect": "Protects against damage from weather."
+  },
+  "levitate": {
+    "name": "levitate",
+    "effect": "Evades ground moves."
+  },
+  "cursed-body": {
+    "name": "cursed-body",
+    "effect": "Has a 30% chance of Disabling any move that hits the Pokémon."
+  },
+  "weak-armor": {
+    "name": "weak-armor",
+    "effect": "Raises Speed and lowers Defense by one stage each upon being hit by a physical move."
+  },
+  "insomnia": {
+    "name": "insomnia",
+    "effect": "Prevents sleep."
+  },
+  "forewarn": {
+    "name": "forewarn",
+    "effect": "Reveals the opponents' strongest move upon entering battle."
+  },
+  "hyper-cutter": {
+    "name": "hyper-cutter",
+    "effect": "Prevents Attack from being lowered by other Pokémon."
+  },
+  "soundproof": {
+    "name": "soundproof",
+    "effect": "Protects against sound-based moves."
+  },
+  "aftermath": {
+    "name": "aftermath",
+    "effect": "Damages the attacker for 1/4 its max HP when knocked out by a contact move."
+  },
+  "harvest": {
+    "name": "harvest",
+    "effect": "Has a 50% chance of restoring a used Berry after each turn if the Pokémon has held no items in the meantime."
+  },
+  "battle-armor": {
+    "name": "battle-armor",
+    "effect": "Protects against critical hits."
+  },
+  "reckless": {
+    "name": "reckless",
+    "effect": "Strengthens recoil moves to 1.2× their power."
+  },
+  "unburden": {
+    "name": "unburden",
+    "effect": "Doubles Speed upon using or losing a held item."
+  },
+  "iron-fist": {
+    "name": "iron-fist",
+    "effect": "Strengthens punch-based moves to 1.2× their power."
+  },
+  "natural-cure": {
+    "name": "natural-cure",
+    "effect": "Cures any major status ailment upon switching out."
+  },
+  "serene-grace": {
+    "name": "serene-grace",
+    "effect": "Doubles the chance of moves' extra effects occurring."
+  },
+  "healer": {
+    "name": "healer",
+    "effect": "Has a 30% chance of curing each adjacent ally of any major status ailment after each turn."
+  },
+  "leaf-guard": {
+    "name": "leaf-guard",
+    "effect": "Protects against major status ailments during strong sunlight."
+  },
+  "scrappy": {
+    "name": "scrappy",
+    "effect": "Lets the Pokémon's normal and fighting moves hit ghost Pokémon."
+  },
+  "water-veil": {
+    "name": "water-veil",
+    "effect": "Prevents burns."
+  },
+  "illuminate": {
+    "name": "illuminate",
+    "effect": "Doubles the wild encounter rate."
+  },
+  "filter": {
+    "name": "filter",
+    "effect": "Decreases damage taken from super-effective moves by 1/4."
+  },
+  "mold-breaker": {
+    "name": "mold-breaker",
+    "effect": "Bypasses targets' abilities if they could hinder or prevent a move."
+  },
+  "moxie": {
+    "name": "moxie",
+    "effect": "Raises Attack one stage upon KOing a Pokémon."
+  },
+  "rattled": {
+    "name": "rattled",
+    "effect": "Raises Speed one stage upon being hit by a dark, ghost, or bug move."
+  },
+  "imposter": {
+    "name": "imposter",
+    "effect": "Transforms upon entering battle."
+  },
+  "adaptability": {
+    "name": "adaptability",
+    "effect": "Increases the same-type attack bonus from 1.5× to 2×."
+  },
+  "anticipation": {
+    "name": "anticipation",
+    "effect": "Notifies all trainers upon entering battle if an opponent has a super-effective move, self destruct, explosion, or a one-hit KO move."
+  },
+  "volt-absorb": {
+    "name": "volt-absorb",
+    "effect": "Absorbs electric moves, healing for 1/4 max HP."
+  },
+  "quick-feet": {
+    "name": "quick-feet",
+    "effect": "Increases Speed to 1.5× with a major status ailment."
+  },
+  "trace": {
+    "name": "trace",
+    "effect": "Copies an opponent's ability upon entering battle."
+  },
+  "download": {
+    "name": "download",
+    "effect": "Raises the attack stat corresponding to the opponents' weaker defense one stage upon entering battle."
+  },
+  "pressure": {
+    "name": "pressure",
+    "effect": "Increases the PP cost of moves targetting the Pokémon by one."
+  },
+  "immunity": {
+    "name": "immunity",
+    "effect": "Prevents poison."
+  },
+  "snow-cloak": {
+    "name": "snow-cloak",
+    "effect": "Increases evasion to 1.25× during hail.  Protects against hail damage."
+  },
+  "marvel-scale": {
+    "name": "marvel-scale",
+    "effect": "Increases Defense to 1.5× with a major status ailment."
+  },
+  "multiscale": {
+    "name": "multiscale",
+    "effect": "Halves damage taken from full HP."
+  },
+  "super-luck": {
+    "name": "super-luck",
+    "effect": "Raises moves' critical hit rates one stage."
+  },
+  "magic-bounce": {
+    "name": "magic-bounce",
+    "effect": "Reflects most non-damaging moves back at their user."
+  },
+  "plus": {
+    "name": "plus",
+    "effect": "Increases Special Attack to 1.5× when a friendly Pokémon has plus or minus."
+  },
+  "huge-power": {
+    "name": "huge-power",
+    "effect": "Doubles Attack in battle."
+  },
+  "sap-sipper": {
+    "name": "sap-sipper",
+    "effect": "Absorbs grass moves, raising Attack one stage."
+  },
+  "drizzle": {
+    "name": "drizzle",
+    "effect": "Summons rain that lasts indefinitely upon entering battle."
+  },
+  "speed-boost": {
+    "name": "speed-boost",
+    "effect": "Raises Speed one stage after each turn."
+  },
+  "prankster": {
+    "name": "prankster",
+    "effect": "Raises non-damaging moves' priority by one stage."
+  },
+  "shadow-tag": {
+    "name": "shadow-tag",
+    "effect": "Prevents opponents from fleeing or switching out."
+  },
+  "telepathy": {
+    "name": "telepathy",
+    "effect": "Protects against friendly Pokémon's damaging moves."
+  },
+  "light-metal": {
+    "name": "light-metal",
+    "effect": "Halves the Pokémon's weight."
+  },
+  "contrary": {
+    "name": "contrary",
+    "effect": "Inverts stat changes."
+  },
+  "pickpocket": {
+    "name": "pickpocket",
+    "effect": "Steals attacking Pokémon's held items on contact."
+  },
+  "honey-gather": {
+    "name": "honey-gather",
+    "effect": "The Pokémon may pick up honey after battle."
+  },
+  "magma-armor": {
+    "name": "magma-armor",
+    "effect": "Prevents freezing."
+  },
+  "moody": {
+    "name": "moody",
+    "effect": "Raises a random stat two stages and lowers another one stage after each turn."
+  },
+  "suction-cups": {
+    "name": "suction-cups",
+    "effect": "Prevents being forced out of battle by other Pokémon's moves."
+  },
+  "sand-stream": {
+    "name": "sand-stream",
+    "effect": "Summons a sandstorm that lasts indefinitely upon entering battle."
+  },
+  "poison-heal": {
+    "name": "poison-heal",
+    "effect": "Heals for 1/8 max HP after each turn when poisoned in place of damage."
+  },
+  "truant": {
+    "name": "truant",
+    "effect": "Skips every second turn."
+  },
+  "wonder-guard": {
+    "name": "wonder-guard",
+    "effect": "Protects against damaging moves that are not super effective."
+  },
+  "normalize": {
+    "name": "normalize",
+    "effect": "Makes the Pokémon's moves all act normal-type."
+  },
+  "stall": {
+    "name": "stall",
+    "effect": "Makes the Pokémon move last within its move's priority bracket."
+  },
+  "heavy-metal": {
+    "name": "heavy-metal",
+    "effect": "Doubles the Pokémon's weight."
+  },
+  "pure-power": {
+    "name": "pure-power",
+    "effect": "Doubles Attack in battle."
+  },
+  "minus": {
+    "name": "minus",
+    "effect": "Increases Special Attack to 1.5× when a friendly Pokémon has plus or minus."
+  },
+  "rough-skin": {
+    "name": "rough-skin",
+    "effect": "Damages attacking Pokémon for 1/8 their max HP on contact."
+  },
+  "simple": {
+    "name": "simple",
+    "effect": "Doubles the Pokémon's stat modifiers.  These doubled modifiers are still capped at -6 or 6 stages."
+  },
+  "solid-rock": {
+    "name": "solid-rock",
+    "effect": "Decreases damage taken from super-effective moves by 1/4."
+  },
+  "white-smoke": {
+    "name": "white-smoke",
+    "effect": "Prevents stats from being lowered by other Pokémon."
+  },
+  "toxic-boost": {
+    "name": "toxic-boost",
+    "effect": "Increases Attack to 1.5× when poisoned."
+  },
+  "storm-drain": {
+    "name": "storm-drain",
+    "effect": "Redirects single-target water moves to this Pokémon where possible.  Absorbs Water moves, raising Special Attack one stage."
+  },
+  "forecast": {
+    "name": "forecast",
+    "effect": "Changes castform's type and form to match the weather."
+  },
+  "color-change": {
+    "name": "color-change",
+    "effect": "Changes type to match when hit by a damaging move."
+  },
+  "protean": {
+    "name": "protean",
+    "effect": "Changes the bearer's type to match each move it uses."
+  },
+  "air-lock": {
+    "name": "air-lock",
+    "effect": "Negates all effects of weather, but does not prevent the weather itself."
+  },
+  "flower-gift": {
+    "name": "flower-gift",
+    "effect": "Increases friendly Pokémon's Attack and Special Defense to 1.5× during strong sunlight."
+  },
+  "flare-boost": {
+    "name": "flare-boost",
+    "effect": "Increases Special Attack to 1.5× when burned."
+  },
+  "klutz": {
+    "name": "klutz",
+    "effect": "Prevents the Pokémon from using its held item in battle."
+  },
+  "heatproof": {
+    "name": "heatproof",
+    "effect": "Halves damage from fire moves and burns."
+  },
+  "snow-warning": {
+    "name": "snow-warning",
+    "effect": "Summons hail that lasts indefinitely upon entering battle."
+  },
+  "motor-drive": {
+    "name": "motor-drive",
+    "effect": "Absorbs electric moves, raising Speed one stage."
+  },
+  "slow-start": {
+    "name": "slow-start",
+    "effect": "Halves Attack and Speed for five turns upon entering battle."
+  },
+  "bad-dreams": {
+    "name": "bad-dreams",
+    "effect": "Damages sleeping opponents for 1/8 their max HP after each turn."
+  },
+  "multitype": {
+    "name": "multitype",
+    "effect": "Changes arceus's type and form to match its held Plate."
+  },
+  "victory-star": {
+    "name": "victory-star",
+    "effect": "Increases moves' accuracy to 1.1× for friendly Pokémon."
+  },
+  "zen-mode": {
+    "name": "zen-mode",
+    "effect": "Changes darmanitan's form after each turn depending on its HP: Zen Mode below 50% max HP, and Standard Mode otherwise."
+  },
+  "mummy": {
+    "name": "mummy",
+    "effect": "Changes attacking Pokémon's abilities to Mummy on contact."
+  },
+  "defeatist": {
+    "name": "defeatist",
+    "effect": "Halves Attack and Special Attack at 50% max HP or less."
+  },
+  "illusion": {
+    "name": "illusion",
+    "effect": "Takes the appearance of the last conscious party Pokémon upon being sent out until hit by a damaging move."
+  },
+  "iron-barbs": {
+    "name": "iron-barbs",
+    "effect": "Damages attacking Pokémon for 1/8 their max HP on contact."
+  },
+  "slush-rush": {
+    "name": "slush-rush",
+    "effect": "During Hail, this Pokémon has double Speed."
+  },
+  "turboblaze": {
+    "name": "turboblaze",
+    "effect": "Bypasses targets' abilities if they could hinder or prevent moves."
+  },
+  "teravolt": {
+    "name": "teravolt",
+    "effect": "Bypasses targets' abilities if they could hinder or prevent moves."
+  },
+  "bulletproof": {
+    "name": "bulletproof",
+    "effect": "Protects against bullet, ball, and bomb-based moves."
+  },
+  "magician": {
+    "name": "magician",
+    "effect": "Steals the target's held item when the bearer uses a damaging move."
+  },
+  "cheek-pouch": {
+    "name": "cheek-pouch",
+    "effect": "Restores HP upon eating a Berry, in addition to the Berry's effect."
+  },
+  "gale-wings": {
+    "name": "gale-wings",
+    "effect": "Raises flying moves' priority by one stage."
+  },
+  "flower-veil": {
+    "name": "flower-veil",
+    "effect": "Protects friendly grass Pokémon from having their stats lowered by other Pokémon."
+  },
+  "symbiosis": {
+    "name": "symbiosis",
+    "effect": "Passes the bearer's held item to an ally when the ally uses up its item."
+  },
+  "grass-pelt": {
+    "name": "grass-pelt",
+    "effect": "Boosts Defense while grassy terrain is in effect."
+  },
+  "fur-coat": {
+    "name": "fur-coat",
+    "effect": "Halves damage from physical attacks."
+  },
+  "stance-change": {
+    "name": "stance-change",
+    "effect": "Changes aegislash to Blade Forme before using a damaging move, or Shield Forme before using kings shield."
+  },
+  "aroma-veil": {
+    "name": "aroma-veil",
+    "effect": "Protects allies against moves that affect their mental state."
+  },
+  "sweet-veil": {
+    "name": "sweet-veil",
+    "effect": "Prevents friendly Pokémon from sleeping."
+  },
+  "tough-claws": {
+    "name": "tough-claws",
+    "effect": "Strengthens moves that make contact to 1.33× their power."
+  },
+  "mega-launcher": {
+    "name": "mega-launcher",
+    "effect": "Strengthens aura and pulse moves to 1.5× their power."
+  },
+  "strong-jaw": {
+    "name": "strong-jaw",
+    "effect": "Strengthens biting moves to 1.5× their power."
+  },
+  "refrigerate": {
+    "name": "refrigerate",
+    "effect": "Turns the bearer's normal moves into ice moves and strengthens them to 1.3× their power."
+  },
+  "pixilate": {
+    "name": "pixilate",
+    "effect": "Turns the bearer's normal moves into fairy moves and strengthens them to 1.3× their power."
+  },
+  "gooey": {
+    "name": "gooey",
+    "effect": "Lowers attacking Pokémon's Speed by one stage on contact."
+  },
+  "fairy-aura": {
+    "name": "fairy-aura",
+    "effect": "Strengthens fairy moves to 1.33× their power for all friendly and opposing Pokémon."
+  },
+  "dark-aura": {
+    "name": "dark-aura",
+    "effect": "Strengthens dark moves to 1.33× their power for all friendly and opposing Pokémon."
+  },
+  "aura-break": {
+    "name": "aura-break",
+    "effect": "Makes dark aura and fairy aura weaken moves of their respective types."
+  },
+  "long-reach": {
+    "name": "long-reach",
+    "effect": "This Pokémon's moves do not make contact."
+  },
+  "liquid-voice": {
+    "name": "liquid-voice",
+    "effect": "Sound-based moves become Water-type."
+  },
+  "stakeout": {
+    "name": "stakeout",
+    "effect": "This Pokémon's moves have double power against Pokémon that switched in this turn."
+  },
+  "battery": {
+    "name": "battery",
+    "effect": "Ally Pokémon's moves have their power increased to 1.3×."
+  },
+  "dancer": {
+    "name": "dancer",
+    "effect": "Whenever another Pokémon uses a dance move, this Pokémon will use the same move immediately afterwards."
+  },
+  "schooling": {
+    "name": "schooling",
+    "effect": "Wishiwashi becomes Schooling Form when its HP is 25% or higher."
+  },
+  "merciless": {
+    "name": "merciless",
+    "effect": "This Pokémon's moves critical hit against poisoned targets."
+  },
+  "stamina": {
+    "name": "stamina",
+    "effect": "Raises this Pokémon's Defense by one stage when it takes damage from a move."
+  },
+  "water-bubble": {
+    "name": "water-bubble",
+    "effect": "Halves damage from Fire moves, doubles damage of Water moves, and prevents burns."
+  },
+  "corrosion": {
+    "name": "corrosion",
+    "effect": "This Pokémon can inflict poison on Poison and Steel Pokémon."
+  },
+  "fluffy": {
+    "name": "fluffy",
+    "effect": "Damage from contact moves is halved.  Damage from Fire moves is doubled."
+  },
+  "queenly-majesty": {
+    "name": "queenly-majesty",
+    "effect": "Opposing Pokémon cannot use priority attacks."
+  },
+  "triage": {
+    "name": "triage",
+    "effect": "This Pokémon's healing moves have their priority increased by 3."
+  },
+  "receiver": {
+    "name": "receiver",
+    "effect": "When an ally faints, this Pokémon gains its Ability."
+  },
+  "wimp-out": {
+    "name": "wimp-out",
+    "effect": "This Pokémon automatically switches out when its HP drops below half."
+  },
+  "emergency-exit": {
+    "name": "emergency-exit",
+    "effect": "This Pokémon automatically switches out when its HP drops below half."
+  },
+  "water-compaction": {
+    "name": "water-compaction",
+    "effect": "Raises this Pokémon's Defense by two stages when it's hit by a Water move."
+  },
+  "innards-out": {
+    "name": "innards-out",
+    "effect": "When this Pokémon faints from an opponent's move, that opponent takes damage equal to the HP this Pokémon had remaining."
+  },
+  "rks-system": {
+    "name": "rks-system",
+    "effect": "Changes this Pokémon's type to match its held Memory."
+  },
+  "shields-down": {
+    "name": "shields-down",
+    "effect": "Transforms this Minior between Core Form and Meteor Form.  Prevents major status ailments and drowsiness while in Meteor Form."
+  },
+  "comatose": {
+    "name": "comatose",
+    "effect": "This Pokémon always  acts as though it were Asleep."
+  },
+  "disguise": {
+    "name": "disguise",
+    "effect": "Prevents the first instance of battle damage."
+  },
+  "dazzling": {
+    "name": "dazzling",
+    "effect": "Opposing Pokémon cannot use priority attacks."
+  },
+  "berserk": {
+    "name": "berserk",
+    "effect": "Raises this Pokémon's Special Attack by one stage every time its HP drops below half."
+  },
+  "steelworker": {
+    "name": "steelworker",
+    "effect": "This Pokémon's Steel moves have 1.5× power."
+  },
+  "electric-surge": {
+    "name": "electric-surge",
+    "effect": "When this Pokémon enters battle, it changes the terrain to Electric Terrain."
+  },
+  "psychic-surge": {
+    "name": "psychic-surge",
+    "effect": "When this Pokémon enters battle, it changes the terrain to Psychic Terrain."
+  },
+  "grassy-surge": {
+    "name": "grassy-surge",
+    "effect": "When this Pokémon enters battle, it changes the terrain to Grassy Terrain."
+  },
+  "misty-surge": {
+    "name": "misty-surge",
+    "effect": "When this Pokémon enters battle, it changes the terrain to Misty Terrain."
+  },
+  "full-metal-body": {
+    "name": "full-metal-body",
+    "effect": "Other Pokémon cannot lower this Pokémon's stats."
+  },
+  "shadow-shield": {
+    "name": "shadow-shield",
+    "effect": "When this Pokémon has full HP, regular damage from moves is halved."
+  },
+  "beast-boost": {
+    "name": "beast-boost",
+    "effect": "Raises this Pokémon's highest stat by one stage when it faints another Pokémon."
+  },
+  "prism-armor": {
+    "name": "prism-armor",
+    "effect": "Reduces super-effective damage to 0.75×."
+  },
+  "soul-heart": {
+    "name": "soul-heart",
+    "effect": "This Pokémon's Special Attack rises by one stage every time any Pokémon faints."
+  }
+}

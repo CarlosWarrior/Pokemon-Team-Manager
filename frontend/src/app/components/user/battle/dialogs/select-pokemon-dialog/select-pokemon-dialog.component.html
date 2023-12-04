@@ -1,0 +1,15 @@
+<div mat-dialog-content class="content">    
+    <div class="grid">
+        <div class="line">
+            <div class="pokemon" *ngFor="let pokemon of this.data.pokemons">
+              <app-pokemon-admin-card [pokemon]="pokemon" (click)="handleSelect(pokemon)" [class.isSelected]="isSelected(pokemon)" ></app-pokemon-admin-card>
+            </div>
+        </div>
+    </div>
+
+</div>
+<div mat-dialog-actions class="actions">
+    <button mat-button (click)="onNoClick()">Cancel</button>
+    <button mat-raised-button color="primary" (click)="action()" cdkFocusInitial>Create</button>
+</div>
+

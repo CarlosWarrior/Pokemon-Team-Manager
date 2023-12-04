@@ -1,6 +1,8 @@
+const multer = require('multer')
 const {Router} = require('express')
 const { _catch } = require('../middlewares/errors')
 const audit = require('../middlewares/audit')
+const storage = require('../middlewares/storage')
 const PokemonController = require('../controllers/pokemon')
 
 const PokemonRouter = Router()
@@ -62,6 +64,9 @@ PokemonRouter.get('/:name', audit('Pokemon-get'), _catch(PokemonController.get))
  *            schema:
  *              type: object
  *              properties:
+ *                  number:
+ *                      type: integer
+ *                      example: 1
  *                  name:
  *                      type: string
  *                      example: "bulbasaur"
@@ -164,6 +169,12 @@ PokemonRouter.post('/', audit('Pokemon-create'), _catch(PokemonController.create
  *            schema:
  *              type: object
  *              properties:
+ *                  _id:
+ *                      type: string
+ *                      example: "id"
+ *                  number:
+ *                      type: integer
+ *                      example: 1
  *                  name:
  *                      type: string
  *                      example: "bulbasaur"
@@ -246,15 +257,50 @@ PokemonRouter.put('/', audit('Pokemon-update'), _catch(PokemonController.update)
 
 /**
  * @swagger
- * /admin/pokemon/{name}:
+ * /admin/pokemon/bulk:
+ *  post:
+ *      description: Endpoint to create abilities in bulk
+ *      tags:
+ *          - admin/pokemon
+ *      parameters:
+ *          - in: body
+ *            name: pokemon
+ *            schema:
+ *              pokemonData: object
+ *              properties:
+ *                  file:
+ *                      type: file
+ *              required:
+ *                  - file
+ *          - in: header
+ *            name: token
+ *            required: true
+ *      responses:
+ *          400:
+ *              description: admin token not provided
+ *          401:
+ *              description: admin token invalid
+ *          422:
+ *              description: invalid file
+ *          200:
+ *              description: Abilitis created
+ *          
+ */
+PokemonRouter.post('/bulk', audit('Pokemon-bulk-create'), storage.pokemonsCleanup, multer({ storage: storage.pokemonsStorage }).single('file'), _catch(PokemonController.bulkCreate))
+
+/**
+ * @swagger
+ * /admin/pokemon/:
  *  delete:
  *      description: Endpoint to remove a pokemon
  *      tags:
  *          - admin/pokemon
  *      parameters:
- *          - in: path
- *            name: name
- *            required: true
+ *          - in: body
+ *            pokemons: array
+ *            items:
+ *              type: string
+ *            example: ["id1", "id2"]
  *          - in: header
  *            name: token
  *            required: true
@@ -267,6 +313,6 @@ PokemonRouter.put('/', audit('Pokemon-update'), _catch(PokemonController.update)
  *              description: A pokemon is removed
  *          
  */
-PokemonRouter.delete('/:name', audit('Pokemon-delete'), _catch(PokemonController.delete))
+PokemonRouter.delete('/', audit('Pokemon-delete'), _catch(PokemonController.delete))
 
 module.exports = PokemonRouter

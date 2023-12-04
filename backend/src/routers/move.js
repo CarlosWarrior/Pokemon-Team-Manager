@@ -1,6 +1,8 @@
+const multer = require('multer')
 const {Router} = require('express')
 const { _catch } = require('../middlewares/errors')
 const audit = require('../middlewares/audit')
+const storage = require('../middlewares/storage')
 const MoveController = require('../controllers/move')
 
 const MoveRouter = Router()
@@ -26,6 +28,7 @@ const MoveRouter = Router()
  *          
  */
 MoveRouter.get('/', audit('Move-list'), _catch(MoveController.list))
+
 /**
  * @swagger
  * /admin/move/{name}:
@@ -50,6 +53,7 @@ MoveRouter.get('/', audit('Move-list'), _catch(MoveController.list))
  *          
  */
 MoveRouter.get('/:name', audit('Move-get'), _catch(MoveController.get))
+
 /**
  * @swagger
  * /admin/move/:
@@ -103,11 +107,12 @@ MoveRouter.get('/:name', audit('Move-get'), _catch(MoveController.get))
  *          
  */
 MoveRouter.post('/', audit('Move-create'), _catch(MoveController.create))
+
 /**
  * @swagger
  * /admin/move/:
  *  put:
- *      description: Endpoint to create an move
+ *      description: Endpoint to update an move
  *      tags:
  *          - admin/move
  *      parameters:
@@ -116,6 +121,9 @@ MoveRouter.post('/', audit('Move-create'), _catch(MoveController.create))
  *            schema:
  *              type: object
  *              properties:
+ *                  _id:
+ *                      type: string
+ *                      example: "id"
  *                  name:
  *                      type: string
  *                      example: "Karate Chop"
@@ -135,12 +143,7 @@ MoveRouter.post('/', audit('Move-create'), _catch(MoveController.create))
  *                      type: string
  *                      example: "Fighting"
  *              required:
- *                  - name
- *                  - accuracy
- *                  - damage_class
- *                  - power
- *                  - pp
- *                  - type
+ *                  - _id
  *          - in: header
  *            name: token
  *            required: true
@@ -154,17 +157,54 @@ MoveRouter.post('/', audit('Move-create'), _catch(MoveController.create))
  *          
  */
 MoveRouter.put('/', audit('Move-update'), _catch(MoveController.update))
+
 /**
  * @swagger
- * /admin/move/{name}:
+ * /admin/move/bulk:
+ *  post:
+ *      description: Endpoint to create moves in bulk
+ *      tags:
+ *          - admin/move
+ *      parameters:
+ *          - in: body
+ *            name: move
+ *            schema:
+ *              moveData: object
+ *              properties:
+ *                  file:
+ *                      type: file
+ *              required:
+ *                  - file
+ *          - in: header
+ *            name: token
+ *            required: true
+ *      responses:
+ *          400:
+ *              description: admin token not provided
+ *          401:
+ *              description: admin token invalid
+ *          422:
+ *              description: invalid file
+ *          200:
+ *              description: Abilitis created
+ *          
+ */
+MoveRouter.post('/bulk', audit('Move-bulk-create'), storage.movesCleanup, multer({ storage: storage.movesStorage }).single('file'), _catch(MoveController.bulkCreate))
+
+
+/**
+ * @swagger
+ * /admin/move/:
  *  delete:
  *      description: Endpoint to remove a single move
  *      tags:
  *          - admin/move
  *      parameters:
- *          - in: path
- *            name: name
- *            required: true
+ *          - in: body
+ *            moves: array
+ *            items:
+ *              type: string
+ *            example: ["id1", "id2"]
  *          - in: header
  *            name: token
  *            required: true
@@ -179,6 +219,6 @@ MoveRouter.put('/', audit('Move-update'), _catch(MoveController.update))
  *              description: A single move is removed
  *          
  */
-MoveRouter.delete('/:name', audit('Move-delete'), _catch(MoveController.delete))
+MoveRouter.delete('/', audit('Move-delete'), _catch(MoveController.delete))
 
 module.exports = MoveRouter

@@ -6,7 +6,6 @@ else{
 	console.log("Using development configuration file")
 	require('dotenv').config()
 }
-
 const express = require("express")
 const { readFileSync, existsSync } = require('fs')
 const app = express()
@@ -38,7 +37,10 @@ if(process.env.production!=1){
 
 app.use('/', require("./src/routes"))
 
-
+function socket(server){
+	global.io = require("./src/socket")(server)
+	
+}
 function init(){
 	console.log("listening on port: ", process.env.PORT)
 	const { createInitialAdmin } = require('./src/startup')
@@ -61,4 +63,4 @@ function mount(){
 		process.exit()
 	}
 }
-require('./src/db').connection.then(mount).catch(console.log)
+require('./src/db').connection.then(mount).then(socket).catch(console.log)

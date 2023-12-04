@@ -14,8 +14,7 @@ function parseToken(token){
     return decoded;
 }
 
-function validatetoken(req){
-    const token = req.headers.token
+function validatetoken(token){
     if(!token)
         return raise({status: 400, message: "Token not provided"})
     const decoded = parseToken(token)
@@ -29,10 +28,11 @@ function validatetoken(req){
 }
 
 const AuthMiddlewares = {
+    validatetoken,
     load: async(req) =>{
         let session
         try {
-            session = validatetoken(req)  
+            session = validatetoken(req.headers.token)  
         } catch (error) {
             return raise(error)
         }
@@ -54,7 +54,7 @@ const AuthMiddlewares = {
     user: async(req, res, next) => {
         let token
         try {
-            token = validatetoken(req)  
+            token = validatetoken(req.headers.token)  
         } catch (error) {
             return raise(error)
         }
@@ -67,7 +67,7 @@ const AuthMiddlewares = {
     admin: async(req, res, next) => {
         let token
         try {
-            token = validatetoken(req)
+            token = validatetoken(req.headers.token)
         } catch (error) {
             return raise(error)
         }

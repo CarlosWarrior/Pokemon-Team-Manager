@@ -1,0 +1,18 @@
+@import '../../../../../styles/variables';
+.slot{
+	display: flex;
+	justify-content: flex-start;
+	align-items: center;
+	padding: 15px;
+	app-pokemon-slot{
+		height: 100px;
+		width: 100px;
+		display: inline-block;
+	}
+}
+.actions{
+	position: sticky;
+	bottom: 0;
+	background: $negativeColor;
+	z-index: 1;
+}

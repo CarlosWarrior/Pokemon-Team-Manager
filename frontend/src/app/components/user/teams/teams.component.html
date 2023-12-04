@@ -1,1 +1,66 @@
-<p>teams works!</p>
+<mat-accordion>
+  <mat-expansion-panel hideToggle *ngFor="let team of teams">
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        {{team.name}}
+      </mat-panel-title>
+      <mat-panel-description>
+				<span>
+					{{team.slots.length}} Pokemon
+				</span>
+				<span class="spacer"></span>
+				<div class="rankings">
+					<span *ngIf="ranking">
+						Coverage Rank {{getCoverageRanking(team._id!)}}
+					</span>
+					<span *ngIf="ranking">
+						Defense Rank {{getDefenseRanking(team._id!)}}
+					</span>
+				</div>
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+    <div class="builder" *ngIf="types.length">
+			<div class="grid">
+				<div class="line slots">
+						<div class="pokemon-slot" *ngFor="let slot of team.slots">
+							<app-pokemon-slot [name]="slot.pokemon.name" [color]="getType(slot.pokemon.type1)!.color" [image]="slot.pokemon.image"></app-pokemon-slot>
+						</div>
+				</div>
+				<div class="line title" *ngIf="ranking">
+					<h2>Coverage</h2>
+				</div>
+				<div class="line types" *ngIf="ranking">
+					<div class="type" *ngFor="let type of types">
+						<img class="type" src="{{type.image}}" alt="{{type.name}}">
+						<ol>
+							<ng-container *for="6; let i = index">
+								<li [class.advantage]="i < ranking.teamsStates[team._id!].attackAdvantage[type.name]"></li>
+							</ng-container>
+						</ol>
+					</div>
+				</div>
+				<div class="line title" *ngIf="ranking">
+					<h2>Defense</h2>
+				</div>
+				<div class="line types" *ngIf="ranking">
+					
+					<div class="type" *ngFor="let type of types">
+						<img class="type" src="{{type.image}}" alt="{{type.name}}">
+						<ol>
+							<ng-container *for="6; let i = index">
+								<li 
+									[class.weakness]="i < ranking.teamsStates[team._id!].defenseWeakness[type.name]" 
+									[class.advantage]="i >= ranking.teamsStates[team._id!].defenseWeakness[type.name] && (i-ranking.teamsStates[team._id!].defenseWeakness[type.name]) < ranking.teamsStates[team._id!].defenseAdvantage[type.name]"
+								></li>
+							</ng-container>
+						</ol>
+					</div>
+				</div>
+				<div class="line actions">
+					<button mat-button color="warn" (click)="openDeleteDialog(team)">Delete</button>
+					<button mat-raised-button color="primary" (click)="openEditDialog(team)" cdkFocusInitial>Edit</button>
+				</div>
+			</div>
+		</div>
+  </mat-expansion-panel>
+</mat-accordion>

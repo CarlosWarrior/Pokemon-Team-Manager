@@ -1,6 +1,8 @@
+const multer = require('multer')
 const {Router} = require('express')
 const { _catch } = require('../middlewares/errors')
 const audit = require('../middlewares/audit')
+const storage = require('../middlewares/storage')
 const AbilityController = require('../controllers/ability')
 
 const AbilityRouter = Router()
@@ -101,7 +103,10 @@ AbilityRouter.post('/', audit('Ability-create'), _catch(AbilityController.create
  *            name: ability
  *            schema:
  *              type: object
- *              properties:
+  *              properties:
+ *                  _id:
+ *                      type: string
+ *                      example: "id"
  *                  name:
  *                      type: string
  *                      example: "overgrow"
@@ -124,15 +129,48 @@ AbilityRouter.put('/', audit('Ability-update'), _catch(AbilityController.update)
 
 /**
  * @swagger
- * /admin/ability/{name}:
+ * /admin/ability/bulk:
+ *  post:
+ *      description: Endpoint to create abilities in bulk
+ *      tags:
+ *          - admin/ability
+ *      parameters:
+ *          - in: body
+ *            name: ability
+ *            schema:
+ *              abilityData: object
+ *              properties:
+ *                  file:
+ *                      type: file
+ *              required:
+ *                  - file
+ *          - in: header
+ *            name: token
+ *            required: true
+ *      responses:
+ *          400:
+ *              description: admin token not provided
+ *          401:
+ *              description: admin token invalid
+ *          422:
+ *              description: invalid file
+ *          200:
+ *              description: Abilitis created
+ *          
+ */
+AbilityRouter.post('/bulk', audit('Ability-bulk-create'), storage.abilitiesCleanup, multer({ storage: storage.abilitiesStorage }).single('file'), _catch(AbilityController.bulkCreate))
+
+
+/**
+ * @swagger
+ * /admin/ability/:
  *  delete:
  *      description: Endpoint to remove a single ability
  *      tags:
  *          - admin/ability
  *      parameters:
- *          - in: path
- *            name: name
- *            required: true
+ *          - in: body
+ *            abilitites: array
  *          - in: header
  *            name: token
  *            required: true
@@ -147,6 +185,6 @@ AbilityRouter.put('/', audit('Ability-update'), _catch(AbilityController.update)
  *              description: A single ability is removed
  *          
  */
-AbilityRouter.delete('/:name', audit('Ability-delete'), _catch(AbilityController.delete))
+AbilityRouter.delete('/', audit('Ability-delete'), _catch(AbilityController.delete))
 
 module.exports = AbilityRouter

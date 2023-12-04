@@ -136,4 +136,36 @@ BattleRouter.post('/', audit('Battle-create'), _catch(BattleController.create))
  */
 BattleRouter.post('/add-log', audit('Battle-add-log'), _catch(BattleController.addLog))
 
+/**
+ * @swagger
+ * /user/battle/:
+ *  delete:
+ *      description: Endpoint to remove a single battle
+ *      tags:
+ *          - user/battle
+ *      parameters:
+ *          - in: body
+ *            battles: battles
+ *            schema:
+ *              type: array
+ *              items:
+ *                  type: string
+ *            example: ["id1", "id2"]
+ *          - in: header
+ *            name: token
+ *            required: true
+ *      responses:
+ *          400:
+ *              description: user token not provided
+ *          401:
+ *              description: user token invalid
+ *          422:
+ *              description: item is assigned to a Pokémon
+ *          200:
+ *              description: A single item is removed
+ *          
+ */
+BattleRouter.delete('/', audit('Battle-delete'), _catch(BattleController.delete))
+
+
 module.exports = BattleRouter

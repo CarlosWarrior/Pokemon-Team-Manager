@@ -1,0 +1,8 @@
+<div mat-dialog-content class="content">
+    <p>Delete {{data.length}} abilities?</p>
+    <p *ngFor="let ability of data">{{ability.name}}</p>
+</div>
+<div mat-dialog-actions class="actions">
+    <button mat-button (click)="onNoClick()">Cancel</button>
+    <button mat-raised-button color="warn" (click)="action()" cdkFocusInitial>Delete</button>
+</div>

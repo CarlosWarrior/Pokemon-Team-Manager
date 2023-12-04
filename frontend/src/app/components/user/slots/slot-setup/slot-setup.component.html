@@ -1,0 +1,44 @@
+
+<div mat-dialog-content class="content">
+	<mat-form-field>
+		<mat-label>Gender</mat-label>
+		<mat-select [(ngModel)]="slot.gender">
+			<mat-option value="male">male</mat-option>
+			<mat-option value="female">female</mat-option>
+			<mat-option value="none">none</mat-option>
+		</mat-select>
+	</mat-form-field>
+	<mat-form-field>
+		<mat-label>Level</mat-label>
+		<input matInput [(ngModel)]="slot.level">
+	</mat-form-field>
+	
+	<mat-form-field>
+		<mat-label>Teratype</mat-label>
+		<mat-select [(ngModel)]="slot.tera_type">
+			<mat-option *ngFor="let type of data.typeNames" value="{{type}}">{{type}}</mat-option>
+		</mat-select>
+	</mat-form-field>
+	<mat-form-field>
+		<mat-label>Item</mat-label>
+		<mat-select [(ngModel)]="slot.item">
+			<mat-option *ngFor="let item of data.itemNames" value="{{item}}">{{item}}</mat-option>
+		</mat-select>
+	</mat-form-field>
+	<mat-form-field>
+		<mat-label>Ability</mat-label>
+		<mat-select [(ngModel)]="slot.ability">
+			<mat-option *ngFor="let ability of slot.pokemon.abilities" value="{{ability}}">{{ability}}</mat-option>
+		</mat-select>
+	</mat-form-field>
+	<mat-form-field>
+		<mat-label>Moves</mat-label>
+		<mat-select [(ngModel)]="slot.moves" multiple>
+			<mat-option *ngFor="let move of slot.pokemon.moves" value="{{move}}" [disabled]="slot.moves.length >= 4 && !slot.moves.includes(move)">{{move}}</mat-option>
+		</mat-select>
+	</mat-form-field>
+</div>
+<!-- 
+	evs
+	ivs
+-->

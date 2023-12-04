@@ -1,0 +1,17 @@
+@import '../../../../../../styles/grid';
+@import '../../../../../../styles/variables';
+
+.grid {
+    @extend .container;
+    
+    .line {
+      @extend .row;
+      
+      .pokemon {
+        .isSelected{
+          background-color: $primaryColor;
+        }
+        @include col(2);
+      }
+    }
+  }

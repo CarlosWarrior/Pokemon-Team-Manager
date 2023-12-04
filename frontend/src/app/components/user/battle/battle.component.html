@@ -1,1 +1,339 @@
-<p>battle works!</p>
+<!--four colum table-->
+<mat-card>
+    <mat-card-content>
+<table>
+  <tr>
+    <th>Turn component</th>
+    <th>Main Battle</th>
+    <th>Turn Result</th>
+    <th>Log</th>
+  </tr>
+
+  <tr>
+    <td>
+      <div cdkDropList class="turn-list" (cdkDropListDropped)="drop($event)">
+        <div
+          class="example-box"
+          *ngFor="let enemyPokemonturn of enemyTurns"
+          cdkDrag
+        >
+          <img [src]="enemyPokemonturn?.image" />
+          <p>Speed: {{ enemyPokemonturn?.stats?.speed }}</p>
+        </div>
+      </div>
+    </td>
+    <td>
+      <table>
+        <tr>
+          <th>
+            <button div *ngFor="let pokemon of enemySelectedPokemons; let i = index" (click)="showPokemonDialog(i) " matTooltip="Hp: {{pokemon?.stats?.hp}} &#13;
+            Attack: {{pokemon?.stats?.attack}} &#13;
+            Defense: {{pokemon?.stats?.defense}} &#13;
+            SpAttack: {{pokemon?.stats?.specialAttack}} &#13;
+            SpDefense: {{pokemon?.stats?.specialDefense}} &#13;
+            Speed: {{pokemon?.stats?.speed}} &#13;" matTooltipClass="toolTip">
+              pokemon {{ i + 1 }}
+              <br />
+              <img *ngIf="pokemon" [src]="pokemon.image" />
+            </button>
+          </th>
+        </tr>
+        <tr>
+          <th>
+            <div>
+              <table>
+                <tr>
+                  <!--ENEMY POKEMONS-->
+                  <td
+                    *ngFor="
+                      let inBattle of inBattleEnemyPokemons;
+                      let i = index
+                    "
+                  >
+                    <select
+                      (change)="onChange($event, i)"
+                      [value]="inBattle?._id"
+                      #pokemon
+                    >
+                      <option value="none" [selected]="!inBattle">None</option>
+
+                      <ng-template
+                        *ngFor="
+                          let pokemon of enemySelectedPokemons;
+                          let i = index
+                        "
+                        [ngIf]="pokemon"
+                      >
+                        <option
+                          [value]="i"
+                          [selected]="inBattle && inBattle.name == pokemon.name"
+                          *ngIf="pokemon"
+                        >
+                          {{ pokemon?.name }}
+                        </option>
+                      </ng-template>
+                    </select>
+                    <img [src]="inBattle?.image" />
+
+                    <button (click)="deathResult(i,false)">Death</button>
+                    <!--ENEMY MOVES-->
+                    <mat-list role="list">
+                      <mat-list-item role="listitem">
+                        <select
+                          (change)="onChangeMove($event, 0, inBattle!)"
+                          #moveSelect0
+                        >
+                          <ng-template
+                            *ngFor="let move of inBattle?.moves"
+                            [ngIf]="move"
+                          >
+                            <option
+                              [value]="move"
+                              [selected]="
+                                inBattleEnemySelectedMoves[inBattle!._id!] &&
+                                inBattleEnemySelectedMoves[inBattle!._id!][
+                                  move
+                                ] == 0
+                              "
+                            >
+                              {{ move }}
+                            </option>
+                          </ng-template>
+                        </select>
+                        <button
+                          (click)="
+                            showEnemyTargetDialog(
+                              pokemon.value,
+                              moveSelect0.value
+                            )
+                          "
+                        >
+                          Select Target
+                        </button>
+                      </mat-list-item>
+                      <mat-list-item role="listitem">
+                        <select
+                          (change)="onChangeMove($event, 1, inBattle!)"
+                          #moveSelect1
+                        >
+                          <ng-template
+                            *ngFor="let move of inBattle?.moves"
+                            [ngIf]="move"
+                          >
+                            <option
+                              [value]="move"
+                              [selected]="
+                                inBattleEnemySelectedMoves[inBattle!._id!] &&
+                                inBattleEnemySelectedMoves[inBattle!._id!][
+                                  move
+                                ] == 1
+                              "
+                            >
+                              {{ move }}
+                            </option>
+                          </ng-template>
+                        </select>
+                        <button
+                          (click)="
+                            showEnemyTargetDialog(
+                              pokemon.value,
+                              moveSelect1.value
+                            )
+                          "
+                        >
+                          Select Target
+                        </button>
+                      </mat-list-item>
+                      <mat-list-item role="listitem">
+                        <select
+                          (change)="onChangeMove($event, 2, inBattle!)"
+                          #moveSelect2
+                        >
+                          <ng-template
+                            *ngFor="let move of inBattle?.moves"
+                            [ngIf]="move"
+                          >
+                            <option
+                              [value]="move"
+                              [selected]="
+                                inBattleEnemySelectedMoves[inBattle!._id!] &&
+                                inBattleEnemySelectedMoves[inBattle!._id!][
+                                  move
+                                ] == 2
+                              "
+                            >
+                              {{ move }}
+                            </option>
+                          </ng-template>
+                        </select>
+                        <button
+                          (click)="
+                            showEnemyTargetDialog(
+                              pokemon.value,
+                              moveSelect2.value
+                            )
+                          "
+                        >
+                          Select Target
+                        </button>
+                      </mat-list-item>
+                      <mat-list-item role="listitem">
+                        <select
+                          (change)="onChangeMove($event, 3, inBattle!)"
+                          #moveSelect3
+                        >
+                          <ng-template
+                            *ngFor="let move of inBattle?.moves"
+                            [ngIf]="move"
+                          >
+                            <option
+                              [value]="move"
+                              [selected]="
+                                inBattleEnemySelectedMoves[inBattle!._id!] &&
+                                inBattleEnemySelectedMoves[inBattle!._id!][
+                                  move
+                                ] == 3
+                              "
+                            >
+                              {{ move }}
+                            </option>
+                          </ng-template>
+                        </select>
+                        <button
+                          (click)="
+                            showEnemyTargetDialog(
+                              pokemon.value,
+                              moveSelect3.value
+                            )
+                          "
+                        >
+                          Select Target
+                        </button>
+                      </mat-list-item>
+                    </mat-list>
+                  </td>
+                </tr>
+                <!--USER POKEMONS-->
+                <tr>
+                    <td
+                      *ngFor="
+                        let inBattle of inBattleUserPokemons;
+                        let i = index
+                      "
+                    >
+                      <select
+                        (change)="onChangeUser($event, i)"
+                        [value]="inBattle?._id"
+                        #pokemon
+                      >
+                        <option value="none" [selected]="!inBattle">None</option>
+  
+                        <ng-template
+                          *ngFor="
+                            let pokemon of userSelectedPokemons;
+                            let i = index
+                          "
+                          [ngIf]="pokemon"
+                        >
+                          <option
+                            [value]="i"
+                            [selected]="inBattle && inBattle.name == pokemon.name"
+                            *ngIf="pokemon"
+                          >
+                            {{ pokemon?.name }}
+                          </option>
+                        </ng-template>
+                      </select>
+                      <img [src]="inBattle?.image" />
+  
+                      <button (click)="deathResult(i,true)">Death</button>
+                      <!--USER MOVES-->
+                      <mat-list role="list">
+                        <mat-list-item role="listitem" *ngFor="let move of inBattle?.moves">
+                          <span>
+                            {{move }}
+                          </span>
+                          <button
+                            (click)="
+                              showUserTargetDialog(
+                                pokemon.value,
+                                move
+                              )
+                            "
+                          >
+                            Select Target
+                          </button>
+                        </mat-list-item>
+                        
+                      </mat-list>
+                    </td>
+                  </tr>
+              </table>
+            </div>
+          </th>
+        </tr>
+
+        <tr>
+            <button div *ngFor="let pokemon of userSelectedPokemons; let i = index" matTooltip="Hp: {{pokemon?.stats?.hp}} &#13;
+                                                                                                Attack: {{pokemon?.stats?.attack}} &#13;
+                                                                                                Defense: {{pokemon?.stats?.defense}} &#13;
+                                                                                                SpAttack: {{pokemon?.stats?.specialAttack}} &#13;
+                                                                                                SpDefense: {{pokemon?.stats?.specialDefense}} &#13;
+                                                                                                Speed: {{pokemon?.stats?.speed}} &#13;" matTooltipClass="toolTip">
+            pokemon {{ i + 1 }}
+            <br />
+            <img *ngIf="pokemon" [src]="pokemon.image" />
+          </button>
+        </tr>
+
+
+
+        <tr>
+          <mat-form-field>
+            <mat-label>Pokemon Teams</mat-label>
+            <mat-select (selectionChange)="onChangeTeam($event.value)">
+              <mat-option *ngFor="let team of teams" [value]="team">
+                {{ team?.name }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </tr>
+      </table>
+    </td>
+    <td>
+      <div role="list">
+        <div *ngFor="let battleLog of battleLogs; let i = index">
+          <div *ngFor="let target of battleLog.targets; let j = index">
+            <p>
+              {{ battleLog.trainer }} {{ battleLog.user.name }} Use
+              {{ battleLog.move }} Againts {{ battleLog.targets[j].name }}
+            </p>
+            <p>{{ battleLog.targets[j].name }}</p>
+            <p>{{battleLog.trainer == 'User'? userHealth[battleLog.targets[j]._id!] : enemyHealth[battleLog.targets[j]._id!] }}</p>
+           
+            
+            <button (click)="deleteResult(i, j)">Delete</button>
+            <button (click)="addResult(i, j, 10)">Send</button>
+          </div>
+          <div *ngIf="battleLog.selfDamage">
+            <p>
+              {{ battleLog.trainer }} {{ battleLog.user.name }} Use
+              {{ battleLog.move }} and takes self damage
+            </p>
+            <p>{{ battleLog.selfDamage.name }}</p>
+            
+            <button (click)="deleteResult(i, -1)">Delete</button>
+            <button (click)="addResult(i, -1, 10)">Send</button>
+          </div>
+        </div>
+      </div>
+    </td>
+    <td>
+      <textarea id="log" rows="50" cols="30" disabled></textarea>
+      <br />
+      <button (click)="downloadLog()">download</button>
+    </td>
+  </tr>
+</table>
+</mat-card-content>
+</mat-card>

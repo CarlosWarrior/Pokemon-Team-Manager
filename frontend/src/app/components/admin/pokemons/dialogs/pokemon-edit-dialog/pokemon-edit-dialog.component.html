@@ -1,0 +1,48 @@
+<div mat-dialog-content class="content">
+    <form (ngSubmit)="action()"  [formGroup]="form">
+    <p>Edit pokemon</p>
+    <mat-form-field>
+        <mat-label>Number</mat-label>
+        <input matInput formControlName="number">
+        <mat-error *ngIf="form.controls['number'].invalid">{{numberError()}}</mat-error>
+    </mat-form-field>
+    <mat-form-field>
+        <mat-label>Name</mat-label>
+        <input matInput formControlName="name">
+        <mat-error *ngIf="form.controls['name'].invalid">{{nameError()}}</mat-error>
+    </mat-form-field>
+    <mat-form-field>
+        <mat-label>Image</mat-label>
+        <input matInput formControlName="image">
+        <mat-error *ngIf="form.controls['image'].invalid">{{imageError()}}</mat-error>
+    </mat-form-field>
+    <mat-form-field>
+        <mat-label>Type 1</mat-label>
+        <mat-select formControlName="type1">
+            <mat-option *ngFor="let type of data.typeNames" value="{{type}}">{{type}}</mat-option>
+        </mat-select>
+    </mat-form-field>
+    <mat-form-field>
+        <mat-label>Type 2</mat-label>
+        <mat-select formControlName="type2" >
+            <mat-option *ngFor="let type of data.typeNames" value="{{type}}">{{type}}</mat-option>
+        </mat-select>
+    </mat-form-field>
+    <mat-form-field>
+        <mat-label>Moves</mat-label>
+        <mat-select formControlName="moves" multiple>
+            <mat-option *ngFor="let move of data.moveNames" value="{{move}}">{{move}}</mat-option>
+        </mat-select>
+    </mat-form-field>
+    <mat-form-field>
+        <mat-label>Abilitites</mat-label>
+        <mat-select formControlName="abilities" multiple>
+            <mat-option *ngFor="let ability of data.abilityNames" value="{{ability}}">{{ability}}</mat-option>
+        </mat-select>
+    </mat-form-field>
+</form>
+</div>
+<div mat-dialog-actions class="actions">
+    <button mat-button (click)="onNoClick()">Cancel</button>
+    <button mat-raised-button color="primary" (click)="action()" cdkFocusInitial>Edit</button>
+</div>

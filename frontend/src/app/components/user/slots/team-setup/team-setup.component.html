@@ -1,0 +1,14 @@
+<section class="builder">
+	<div class="slot" *ngFor="let slot of slots">
+		<app-pokemon-slot [name]="slot.pokemon.name" [color]="getType(slot.pokemon.type1).color" [image]="slot.pokemon.image" ></app-pokemon-slot>
+		<app-slot-setup [slot]="slot" [data]="slotData"></app-slot-setup>
+	</div>
+	<div mat-dialog-actions class="actions">
+		<mat-form-field>
+			<mat-label>Name</mat-label>
+			<input matInput [(ngModel)]="name">
+		</mat-form-field>
+		<button mat-button (click)="onNoClick()">Cancel</button>
+		<button mat-raised-button color="primary" (click)="action()" cdkFocusInitial>Submit</button>
+	</div> 
+</section>

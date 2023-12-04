@@ -30,13 +30,13 @@ const AuthController = {
                 audience: process.env.google_client_id
             })
         } catch (error) {
-            return raise({ status: 400, message: "Invalid token", error })
+            return raise({ status: 400, message: "Invalid token", errors: error })
         }
         let decoded;
         try {
             decoded = jwt(gtoken)
         } catch (error) {
-            return raise({ status: 400, message: "Invalid token", error })
+            return raise({ status: 400, message: "Invalid token", errors: error })
         }
         let user = await User.findOne({ filter: { email: decoded.email } })
         if(!user){
@@ -48,7 +48,7 @@ const AuthController = {
                     valid: true
                 })
             } catch (error) {
-                return raise({ status: 400, message: "Invalid payload", error })
+                return raise({ status: 400, message: "Invalid payload", errors: error })
             }
         }
         else if(!user.valid){
@@ -136,7 +136,7 @@ const AuthController = {
         try {
            user = await User.create({ name, email, password })
         } catch (error) {
-            return raise({status: 400, message: "Invalid user body", error})
+            return raise({status: 400, message: "Invalid user body", errors: error})
         }
 
         const token = tokenize({ user:user.toJSON(), date: new Date().toISOString(), random: randomString(16) })
@@ -144,7 +144,7 @@ const AuthController = {
             await ses.sendEmail(user_email_confirmation_email({ token, ToAddresses:[email] }))
         } catch (error) {
             await User.delete(user._id)
-            return raise({status:500, message:"Invalid email", error})
+            return raise({status:500, message:"Invalid email", errors: error})
         }
         return res.sendStatus(200)
     },
@@ -166,7 +166,7 @@ const AuthController = {
         const token = encrypt(stringTokenData)
         ses.sendEmail(admin_register_token_email({ token, ToAddresses:[email] }))
             .then(() => res.sendStatus(200))
-            .catch((error) => raise({status:500, message:"Email failed", error}))
+            .catch((error) => raise({status:500, message:"Email failed", errors: error}))
     },
     admin_register: async(req, res)=>{
         if(!req.body.password || !req.body.name)
@@ -179,7 +179,7 @@ const AuthController = {
         try {
             decrypted = JSON.parse(decrypt(register_token))
         } catch (error) {
-            return raise({status:400, message: "Invalid token", error})
+            return raise({status:400, message: "Invalid token", errors: error})
         }
         if(!decrypted.email || !decrypted.date || !decrypted.random)
             return raise({status:400, message: "Malformed token"})
@@ -194,7 +194,7 @@ const AuthController = {
         try {
             admin = await Admin.create({ name, email, password })
         } catch (error) {
-            return raise({status: 400, message: "Invalid admin body", error})
+            return raise({status: 400, message: "Invalid admin body", errors: error})
         }
         admin = admin.toJSON()
         admin['role'] = 'admin'
@@ -234,7 +234,7 @@ const AuthController = {
         const token = encrypt(stringTokenData)
         ses.sendEmail(password_reset_token_email({ token, ToAddresses:[email] }))
             .then(() => res.sendStatus(200))
-            .catch((error) => raise({status:500, message:"Email failed", error}))
+            .catch((error) => raise({status:500, message:"Email failed", errors: error}))
     },
     password_reset: async(req, res)=>{
         if(!req.headers.token)
@@ -247,7 +247,7 @@ const AuthController = {
         try {
             decrypted = JSON.parse(decrypt(token))
         } catch (error) {
-            return raise({status:400, message: "Invalid token", error})
+            return raise({status:400, message: "Invalid token", errors: error})
         }
         if( !decrypted.email || !decrypted.date || !decrypted.random)
             return raise({status:400, message: "Malformed token"})

@@ -1,0 +1,38 @@
+div.slot{
+	position: relative;
+	div.pokeball{
+		max-width: 100%;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		svg{
+			z-index: 0;
+			position: relative;
+			path{
+				position: absolute;
+				bottom: 0;
+			}
+		}
+	}
+	img{
+		z-index: 1;
+		position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+		width: 100%;
+		height: 100%;
+	}
+}
+
+:host.slot{
+	div.slot{
+		div.pokeball{
+			opacity: 0.2;
+		}
+		img{
+			width: 100px;
+			height: 100px;
+		}
+	}
+}

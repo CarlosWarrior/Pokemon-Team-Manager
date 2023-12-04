@@ -1,0 +1,39 @@
+@import '../../../../styles/variables';
+div{
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    .spacer {
+        flex: 1 1 auto;
+    }
+    mat-toolbar{
+        position: sticky;
+        top: 0;
+    }
+    div{
+        max-width: 100%;
+        overflow: scroll;
+        table {
+            .mat-mdc-row .mat-mdc-cell {
+                border-bottom: 1px solid transparent;
+                border-top: 1px solid transparent;
+                cursor: pointer;
+            }
+            .mat-mdc-row:hover .mat-mdc-cell {
+                border-color: currentColor;
+                background-color: $primaryColor;
+            }
+            
+            .isSelected {
+                font-weight: bold;
+                background-color: $primaryColor;
+            }
+            span{
+                padding: 3px 4px;
+                border-radius: 3px;
+            }
+        }
+    }
+      
+}

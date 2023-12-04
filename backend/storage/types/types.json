@@ -1,0 +1,204 @@
+{
+  "types":[
+    {
+      "name": "bug",
+      "color": "#A8B820",
+      "image": "https://firebasestorage.googleapis.com/v0/b/pokemonteammanager.appspot.com/o/types%2Ftype%20bug.png?alt=media&token=695c4f29-79ad-4e4d-bb3f-62f6c93f006f",
+      "teracrystalImage": "https://firebasestorage.googleapis.com/v0/b/pokemonteammanager.appspot.com/o/types%2Fbug_tera.png?alt=media&token=3ca4dafd-cf98-40a8-b295-b849c9d7610a"
+    },
+    {
+      "name": "dark",
+      "color": "#705848",
+      "image": "https://firebasestorage.googleapis.com/v0/b/pokemonteammanager.appspot.com/o/types%2Ftype%20dark.png?alt=media&token=b7a1b32e-00ba-453d-b443-205f10939e4d",
+      "teracrystalImage": "https://firebasestorage.googleapis.com/v0/b/pokemonteammanager.appspot.com/o/types%2Fdark_tera.png?alt=media&token=5d512950-0b30-49a5-b957-1b9963cce740"
+    },
+    {
+      "name": "dragon",
+      "color": "#7038F8",
+      "image": "https://firebasestorage.googleapis.com/v0/b/pokemonteammanager.appspot.com/o/types%2Ftype%20dragon.png?alt=media&token=44b6128c-7308-4982-836d-957494460e6c",
+      "teracrystalImage": "https://firebasestorage.googleapis.com/v0/b/pokemonteammanager.appspot.com/o/types%2Fdragon_tera.png?alt=media&token=eb3e526b-7cd1-48f4-b0ba-f894264a60b2"
+    },
+    {
+      "name": "electric",
+      "color": "#F8D030",
+      "image": "https://firebasestorage.googleapis.com/v0/b/pokemonteammanager.appspot.com/o/types%2Ftype%20electric.png?alt=media&token=b23faea5-439f-44f5-9525-78b4f6be9922",
+      "teracrystalImage": "https://firebasestorage.googleapis.com/v0/b/pokemonteammanager.appspot.com/o/types%2Felectric_tera.png?alt=media&token=a2ffe129-21bb-4996-80de-e13ee22c7310"
+    },
+    {
+      "name": "fairy",
+      "color": "#F0B6BC",
+      "image": "https://firebasestorage.googleapis.com/v0/b/pokemonteammanager.appspot.com/o/types%2Ftype%20fairy.png?alt=media&token=b067cb1a-d319-4618-8148-646949837d9f",
+      "teracrystalImage": "https://firebasestorage.googleapis.com/v0/b/pokemonteammanager.appspot.com/o/types%2Ffairy_tera.png?alt=media&token=595b0da7-13af-4f07-8fda-f51355d10ae3"
+    },
+    {
+      "name": "fighting",
+      "color": "#C03028",
+      "image": "https://firebasestorage.googleapis.com/v0/b/pokemonteammanager.appspot.com/o/types%2Ftype%20fighting.png?alt=media&token=5e08b9fa-705b-4f05-8dc5-839ead3d4f0a",
+      "teracrystalImage": "https://firebasestorage.googleapis.com/v0/b/pokemonteammanager.appspot.com/o/types%2Ffighting_tera.png?alt=media&token=6855af83-7945-4bb3-b2c9-dce7cc21f9fe"
+    },
+    {
+      "name": "fire",
+      "color": "#F08030",
+      "image": "https://firebasestorage.googleapis.com/v0/b/pokemonteammanager.appspot.com/o/types%2Ftype%20fire.png?alt=media&token=8ff29505-933e-42ff-a3de-5e4451ee5d9c",
+      "teracrystalImage": "https://firebasestorage.googleapis.com/v0/b/pokemonteammanager.appspot.com/o/types%2Ffire_tera.png?alt=media&token=3f63bc80-18d6-41dd-8346-bf2a46d50386"
+    },
+    {
+      "name": "flying",
+      "color": "#A890F0",
+      "image": "https://firebasestorage.googleapis.com/v0/b/pokemonteammanager.appspot.com/o/types%2Ftype%20flying.png?alt=media&token=4544bc10-a3db-4f32-b673-13db733f56b8",
+      "teracrystalImage": "https://firebasestorage.googleapis.com/v0/b/pokemonteammanager.appspot.com/o/types%2Fflying_tera.png?alt=media&token=adf2f132-c622-406f-acc8-e841f5ad4b95"
+    },
+    {
+      "name": "ghost",
+      "color": "#705898",
+      "image": "https://firebasestorage.googleapis.com/v0/b/pokemonteammanager.appspot.com/o/types%2Ftype%20ghost.png?alt=media&token=c75b6b33-7010-4a82-b20e-6619a27dac17",
+      "teracrystalImage": "https://firebasestorage.googleapis.com/v0/b/pokemonteammanager.appspot.com/o/types%2Fghost_tera.png?alt=media&token=c6ae5e41-67a0-4530-a116-c457cde6f9a8"
+    },
+    {
+      "name": "grass",
+      "color": "#78C850",
+      "image": "https://firebasestorage.googleapis.com/v0/b/pokemonteammanager.appspot.com/o/types%2Ftype%20grass.png?alt=media&token=8d004a5d-079f-43d4-8910-5bb24325fe1e",
+      "teracrystalImage": "https://firebasestorage.googleapis.com/v0/b/pokemonteammanager.appspot.com/o/types%2Fgrass_tera.png?alt=media&token=8bb83ad1-062a-43a9-ae22-d77c234433e1"
+    },
+    {
+      "name": "ground",
+      "color": "#E0C068",
+      "image": "https://firebasestorage.googleapis.com/v0/b/pokemonteammanager.appspot.com/o/types%2Ftype%20ground.png?alt=media&token=de774193-4465-46c9-ba1a-e5456ee579ae",
+      "teracrystalImage": "https://firebasestorage.googleapis.com/v0/b/pokemonteammanager.appspot.com/o/types%2Fground_tera.png?alt=media&token=b08721de-8b66-43e8-a1ee-96748b48e47c"
+    },
+    {
+      "name": "ice",
+      "color": "#98D8D8",
+      "image": "https://firebasestorage.googleapis.com/v0/b/pokemonteammanager.appspot.com/o/types%2Ftype%20ice.png?alt=media&token=0392e3fd-3145-4277-a4cb-55f97494d7b6",
+      "teracrystalImage": "https://firebasestorage.googleapis.com/v0/b/pokemonteammanager.appspot.com/o/types%2Fice_tera.png?alt=media&token=785c252d-e67f-47f2-9de2-6d5ebb1e4615"
+    },
+    {
+      "name": "normal",
+      "color": "#A8A878",
+      "image": "https://firebasestorage.googleapis.com/v0/b/pokemonteammanager.appspot.com/o/types%2Ftype%20normal.png?alt=media&token=37b1aaa0-cb0b-4852-8930-ba4ef2f3a0d1",
+      "teracrystalImage": "https://firebasestorage.googleapis.com/v0/b/pokemonteammanager.appspot.com/o/types%2Fnormal_tera.png?alt=media&token=37e71e51-d752-4017-926d-e6a0bc971ba1"
+    },
+    {
+      "name": "poison",
+      "color": "#A040A0",
+      "image": "https://firebasestorage.googleapis.com/v0/b/pokemonteammanager.appspot.com/o/types%2Ftype%20poison.png?alt=media&token=b0ba9fb3-c7d8-4666-bc4c-2783eaf6541a",
+      "teracrystalImage": "https://firebasestorage.googleapis.com/v0/b/pokemonteammanager.appspot.com/o/types%2Fpoison_tera.png?alt=media&token=d4099e53-5b4e-4f34-8a98-971f934bd728"
+    },
+    {
+      "name": "psychic",
+      "color": "#F85888",
+      "image": "https://firebasestorage.googleapis.com/v0/b/pokemonteammanager.appspot.com/o/types%2Ftype%20psychic.png?alt=media&token=e1f5fc82-1d32-4109-b072-4e9db29e4bc2",
+      "teracrystalImage": "https://firebasestorage.googleapis.com/v0/b/pokemonteammanager.appspot.com/o/types%2Fpsychic_tera.png?alt=media&token=2df02e51-e9fe-4c12-b19a-69e10a79ceff"
+    },
+    {
+      "name": "rock",
+      "color": "#B8A038",
+      "image": "https://firebasestorage.googleapis.com/v0/b/pokemonteammanager.appspot.com/o/types%2Ftype%20rock.png?alt=media&token=eacf5b76-6ab8-49e9-92ac-29b6666458e5",
+      "teracrystalImage": "https://firebasestorage.googleapis.com/v0/b/pokemonteammanager.appspot.com/o/types%2Frock_tera.png?alt=media&token=1013cb95-2daa-4863-82ae-98628b2b519c"
+    },
+    {
+      "name": "steel",
+      "color": "#B8B8D0",
+      "image": "https://firebasestorage.googleapis.com/v0/b/pokemonteammanager.appspot.com/o/types%2Ftype%20steel.png?alt=media&token=1c24340f-9796-4934-a33c-75695f420687",
+      "teracrystalImage": "https://firebasestorage.googleapis.com/v0/b/pokemonteammanager.appspot.com/o/types%2Fsteel_tera.png?alt=media&token=067c0ab0-9879-420a-b894-7a323c0c50bd"
+    },
+    {
+      "name": "water",
+      "color": "#6890F0",
+      "image": "https://firebasestorage.googleapis.com/v0/b/pokemonteammanager.appspot.com/o/types%2Ftype%20water.png?alt=media&token=18d0ae5f-2ae9-4aa0-8fde-1d587e8d1ee0",
+      "teracrystalImage": "https://firebasestorage.googleapis.com/v0/b/pokemonteammanager.appspot.com/o/types%2Fwater_tera.png?alt=media&token=2bd02714-5a9c-4ea7-995a-13b54bedc2f6"
+    }
+  ],
+  "modifiers": {
+    "normal": {
+      "attackAdvantage": [],
+      "defenseAdvantage": ["ghost"],
+      "defenseWeakness": ["fighting"]
+    },
+    "fire": {
+      "attackAdvantage": ["grass", "ice", "bug", "steel"],
+      "defenseAdvantage": ["fire", "grass", "ice", "bug", "steel", "fairy"],
+      "defenseWeakness": ["water", "ground", "rock"]
+    },
+    "water": {
+      "attackAdvantage": ["fire", "ground", "rock"],
+      "defenseAdvantage": ["water", "fire", "ice", "steel"],
+      "defenseWeakness": ["electric", "grass"]
+    },
+    "electric": {
+      "attackAdvantage": ["water", "flying"],
+      "defenseAdvantage": ["electric", "flying"],
+      "defenseWeakness": ["ground"]
+    },
+    "grass": {
+      "attackAdvantage": ["water", "ground", "rock"],
+      "defenseAdvantage": ["water", "electric", "grass", "ground"],
+      "defenseWeakness": ["fire", "ice", "poison", "flying", "bug"]
+    },
+    "ice": {
+      "attackAdvantage": ["grass", "ground", "flying", "dragon"],
+      "defenseAdvantage": ["ice"],
+      "defenseWeakness": ["fire", "fighting", "rock", "steel"]
+    },
+    "fighting": {
+      "attackAdvantage": ["normal", "ice", "rock", "dark", "steel"],
+      "defenseAdvantage": ["bug", "dark", "rock"],
+      "defenseWeakness": ["flying", "psychic", "fairy"]
+    },
+    "poison": {
+      "attackAdvantage": ["grass", "fairy"],
+      "defenseAdvantage": ["fighting", "poison", "bug", "fairy"],
+      "defenseWeakness": ["ground", "psychic"]
+    },
+    "ground": {
+      "attackAdvantage": ["fire", "electric", "poison", "rock", "steel"],
+      "defenseAdvantage": ["poison", "rock"],
+      "defenseWeakness": ["water", "grass", "ice"]
+    },
+    "flying": {
+      "attackAdvantage": ["grass", "fighting", "bug"],
+      "defenseAdvantage": ["electric", "fighting", "bug", "grass"],
+      "defenseWeakness": ["electric", "ice", "rock"]
+    },
+    "psychic": {
+      "attackAdvantage": ["fighting", "poison"],
+      "defenseAdvantage": ["fighting", "psychic"],
+      "defenseWeakness": ["bug", "ghost", "dark"]
+    },
+    "bug": {
+      "attackAdvantage": ["grass", "psychic", "dark"],
+      "defenseAdvantage": ["fighting", "ground", "grass"],
+      "defenseWeakness": ["fire", "flying", "rock"]
+    },
+    "rock": {
+      "attackAdvantage": ["fire", "ice", "flying", "bug"],
+      "defenseAdvantage": ["normal", "fire", "poison", "flying"],
+      "defenseWeakness": ["water", "grass", "fighting", "ground", "steel"]
+    },
+    "ghost": {
+      "attackAdvantage": ["ghost", "psychic"],
+      "defenseAdvantage": ["poison", "bug"],
+      "defenseWeakness": ["ghost", "dark"]
+    },
+    "dragon": {
+      "attackAdvantage": ["dragon"],
+      "defenseAdvantage": ["electric", "grass", "water", "fire"],
+      "defenseWeakness": ["ice", "dragon", "fairy"]
+    },
+    "dark": {
+      "attackAdvantage": ["psychic", "ghost"],
+      "defenseAdvantage": ["fighting", "dark", "ghost"],
+      "defenseWeakness": ["bug", "fairy", "fighting"]
+    },
+    "steel": {
+      "attackAdvantage": ["ice", "rock", "fairy"],
+      "defenseAdvantage": ["normal", "grass", "ice", "flying", "psychic", "bug", "rock", "dragon", "steel", "fairy"],
+      "defenseWeakness": ["fire", "fighting", "ground"]
+    },
+    "fairy": {
+      "attackAdvantage": ["fighting", "dragon", "dark"],
+      "defenseAdvantage": ["fighting", "bug", "dark"],
+      "defenseWeakness": ["poison", "steel"]
+    }
+  }
+}

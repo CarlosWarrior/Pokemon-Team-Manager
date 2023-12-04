@@ -6,7 +6,6 @@ import { userGuard } from './guards/user.guard';
 import { PokemonsComponent } from './components/admin/pokemons/pokemons.component';
 import { ItemsComponent } from './components/admin/items/items.component';
 import { MovesComponent } from './components/admin/moves/moves.component';
-import { NaturesComponent } from './components/admin/natures/natures.component';
 import { AbilitiesComponent } from './components/admin/abilities/abilities.component';
 import { TeambuilderComponent } from './components/user/teambuilder/teambuilder.component';
 import { TeamsComponent } from './components/user/teams/teams.component';
@@ -21,9 +20,13 @@ import { ConfirmComponent } from './components/auth/confirm/confirm.component';
 import { AdminLoginComponent } from './components/auth/admin-login/admin-login.component';
 import { AdminRegisterTokenComponent } from './components/auth/admin-register-token/admin-register-token.component';
 import { AdminRegisterComponent } from './components/auth/admin-register/admin-register.component';
+import { TypesComponent } from './components/admin/types/types.component';
+import { HomeComponent } from './components/ui/home/home.component';
 
 
 const routes: Routes = [
+  {path: '', component: HomeComponent },
+
   {path: '', canActivate:[authGuard], children:[
     {path: "register", component: RegisterComponent},
     {path: "confirm", component: ConfirmComponent},
@@ -38,8 +41,8 @@ const routes: Routes = [
   {path: 'admin', canActivate:[adminGuard], children:[
     {path: "pokemons", component: PokemonsComponent},
     {path: "items", component: ItemsComponent},
+    {path: "types", component: TypesComponent },
     {path: "moves", component: MovesComponent},
-    {path: "nature", component: NaturesComponent},
     {path: "ability", component: AbilitiesComponent},
     {path: "sendAdminRegisterToken", component: AdminRegisterTokenComponent}
     

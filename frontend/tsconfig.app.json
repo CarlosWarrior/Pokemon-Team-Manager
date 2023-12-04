@@ -5,6 +5,9 @@
     "outDir": "./out-tsc/app",
     "types": []
   },
+  "angularCompilerOptions": {
+    "allowSyntheticDefaultImports": true
+  },
   "files": [
     "src/main.ts"
   ],
