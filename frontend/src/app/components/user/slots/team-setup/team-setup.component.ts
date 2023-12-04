@@ -66,15 +66,17 @@ export class TeamSetupComponent {
   validSlots(): boolean{
     let valid = true
     this.slots.forEach((slot: PokemonSlot) =>{
-      valid = valid &&
-      ((_isNumberValue(slot.order) && slot.order >= 1 && slot.order <= 6 )?true:false) &&
-      ((slot.gender)?true : false) &&
-      ((slot.level >= 1 && slot.level <= 100)?true:false) &&
-      ((slot.ability && slot.ability != "")?true:false) &&
-      ((slot.tera_type && slot.tera_type != "")?true:false) &&
-      ((slot.moves.length)?true:false) &&
-      ((slot.evs)?true:false) &&
-      ((slot.ivs)?true:false)
+
+      const validorder = ((_isNumberValue(slot.order) && slot.order >= 1 && slot.order <= 6 ))?true:false
+      const validgender = ((slot.gender))?true:false
+      const validlevel = ((slot.level >= 1 && slot.level <= 100))?true:false
+      const validability = ((slot.ability && slot.ability != ""))?true:false
+      const validtera_type = ((slot.tera_type && slot.tera_type != ""))?true:false
+      const validmoves = ((slot.moves.length))?true:false
+      const validevs = ((slot.evs))?true:false
+      const validivs = ((slot.ivs))?true:false
+      console.log(slot.pokemon.name, {validorder , validgender, validlevel, validability, validtera_type, validmoves , validevs , validivs})
+      valid = valid && validorder && validgender&& validlevel&& validability&& validtera_type&& validmoves && validevs && validivs
     })
     return valid
   }
