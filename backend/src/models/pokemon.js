@@ -5,7 +5,6 @@ const Move = require("./move")
 const Ability = require("./ability")
 const StatSchema = require("./schemas/stats")
 const movesExists = async(moves) => {
-    return true
     let count = true
     for (let moveIndex = 0; moveIndex < moves.length; moveIndex++) {
         const moveName = moves[moveIndex];
@@ -14,7 +13,6 @@ const movesExists = async(moves) => {
     return count
 }
 const abilititesExists = async(abilitites) => {
-    return true
     let count = true
     for (let ablityIndex = 0; ablityIndex < abilitites.length; ablityIndex++) {
         const ablityName = abilitites[ablityIndex];
@@ -23,7 +21,6 @@ const abilititesExists = async(abilitites) => {
     return count
 }
 const typeExists = async(type) => {
-    return true
     return await Type.count({ name: type }) > 0
 }
 const PokemonSchema = new Schema({
