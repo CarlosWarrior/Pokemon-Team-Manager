@@ -39,13 +39,13 @@
                     <!--ENEMY POKEMONS-->
                   <td *ngFor="let inBattle of inBattleEnemyPokemons; let i = index" >
                     <select (change)="onChange($event, i)" [value]="inBattle?._id" #pokemon>
-                      <option value="none">None</option>
+                      <option value="none" [selected]="!inBattle">None</option>
 
                       <ng-template
                         *ngFor="let pokemon of enemySelectedPokemons; let i = index"
                         [ngIf]="pokemon"
                       >
-                        <option [value]="i" *ngIf="pokemon">
+                        <option [value]="i" [selected]="inBattle && inBattle.name == pokemon.name" *ngIf="pokemon">
                           {{ pokemon?.name }}
                         </option>
                       </ng-template>
@@ -55,49 +55,52 @@
                     <button>Death</button>
                     <mat-list role="list">
                       <mat-list-item role="listitem">
-                        <select #moveSelect>
+                        <select (change)="onChangeMove($event, 0, inBattle!)" #moveSelect0>
                           <ng-template
-                            *ngFor="let move of inBattle?.moves"
+                            *ngFor="let move of inBattle?.moves "
                             [ngIf]="move"
                           >
                             
-                            <option [value]="move">{{ move }}</option>
+                            <option [value]="move" [selected]="inBattleEnemySelectedMoves[inBattle!._id!] && inBattleEnemySelectedMoves[inBattle!._id!][move] == 0">{{ move }}</option>
                           </ng-template>
                         </select>
-                        <button (click)="showEnemyTargetDialog(pokemon.value, moveSelect.value)">Select Target</button>
+                        <button (click)="showEnemyTargetDialog(pokemon.value, moveSelect0.value)">Select Target</button>
                       </mat-list-item>
                       <mat-list-item role="listitem">
-                        <select>
+                        <select (change)="onChangeMove($event, 1, inBattle!)" #moveSelect1>
                             <ng-template
-                              *ngFor="let move of inBattle?.moves"
+                              *ngFor="let move of inBattle?.moves "
                               [ngIf]="move"
                             >
-                              <option [value]="move">{{ move }}</option>
+                              
+                              <option [value]="move" [selected]="inBattleEnemySelectedMoves[inBattle!._id!] && inBattleEnemySelectedMoves[inBattle!._id!][move] == 1">{{ move }}</option>
                             </ng-template>
                           </select>
-                        <button>Move 2</button>
+                          <button (click)="showEnemyTargetDialog(pokemon.value, moveSelect1.value)">Select Target</button>
                       </mat-list-item>
                       <mat-list-item role="listitem">
-                        <select>
+                        <select (change)="onChangeMove($event, 2, inBattle!)" #moveSelect2>
                             <ng-template
-                              *ngFor="let move of inBattle?.moves"
+                              *ngFor="let move of inBattle?.moves "
                               [ngIf]="move"
                             >
-                              <option [value]="move">{{ move }}</option>
+                              
+                              <option [value]="move" [selected]="inBattleEnemySelectedMoves[inBattle!._id!] && inBattleEnemySelectedMoves[inBattle!._id!][move] == 2">{{ move }}</option>
                             </ng-template>
                           </select>
-                        <button>Move 3</button>
+                          <button (click)="showEnemyTargetDialog(pokemon.value, moveSelect2.value)">Select Target</button>
                       </mat-list-item>
                       <mat-list-item role="listitem">
-                        <select>
+                        <select (change)="onChangeMove($event, 3, inBattle!)" #moveSelect3>
                             <ng-template
-                              *ngFor="let move of inBattle?.moves"
+                              *ngFor="let move of inBattle?.moves "
                               [ngIf]="move"
                             >
-                              <option [value]="move">{{ move }}</option>
+                              
+                              <option [value]="move" [selected]="inBattleEnemySelectedMoves[inBattle!._id!] && inBattleEnemySelectedMoves[inBattle!._id!][move] == 3">{{ move }}</option>
                             </ng-template>
                           </select>
-                        <button>Move 4</button>
+                          <button (click)="showEnemyTargetDialog(pokemon.value, moveSelect3.value)">Select Target</button>
                       </mat-list-item>
                     </mat-list>
                   </td>
@@ -151,6 +154,7 @@
             </div>
           </th>
         </tr>
+
         <tr>
           <button>pokemon 1</button>
           <button>pokemon 2</button>
@@ -162,7 +166,7 @@
         <tr>
           <mat-form-field>
             <mat-label>Pokemon Teams</mat-label>
-            <mat-select (change)="onChangeTeam($event)">
+            <mat-select (selectionChange)="onChangeTeam($event.value)">
               <mat-option *ngFor="let team of teams" [value]="team">
                 {{ team?.name }}
               </mat-option>
@@ -173,29 +177,36 @@
     </td>
     <td>
         <div role="list">
-            <div><p>User Move Target</p>
-                <p>Target</p>
-                <mat-slider min="1" max="5" step="0.5" value="1.5">
-                    <input matSliderThumb>
-                </mat-slider>
-                <p>
-                    <mat-checkbox class="example-margin" [(ngModel)]="showSelfDamage">Self Damage</mat-checkbox>
-                </p>
-                <div class="selfDamage" *ngIf="showSelfDamage">
-                    <p>User</p>
-                    <mat-slider min="1" max="5" step="0.5" value="1.5">
+            <div *ngFor="let battleLog of battleLogs ; let i = index">
+                <div *ngFor="let target of battleLog.targets; let j = index">
+                    <p>{{battleLog.trainer}} {{battleLog.user.name}} Use {{battleLog.move}} Againts {{battleLog.targets[j].name}} </p>
+                    <p >{{battleLog.targets[j].name}}</p>
+                    <mat-slider min="0" max="100" step="1" value="100">
                         <input matSliderThumb>
                     </mat-slider>
+                    <button (click)="deleteResult(i,j)">
+                        Delete
+                    </button>
+                    <button (click)="addResult(i,j,10)">
+                        Send
+                    </button>
                 </div>
-                
+                <div *ngIf="battleLog.selfDamage">
+                    <p>{{battleLog.trainer}} {{battleLog.user.name}} Use {{battleLog.move}} Againts {{battleLog.selfDamage.name}} </p>
+                    <p >{{battleLog.targets[i].name}}</p>
+                    <mat-slider min="0" max="100" step="1" value="100">
+                        <input matSliderThumb>
+                    </mat-slider>
+                    <button (click)="deleteResult(i,-1)">
+                        Delete
+                    </button>
+                    <button (click)="addResult(i,-1,10)">
+                        Send
+                    </button>
+                </div>
             </div>
-            <button (click)="deleteResult()">
-                Delete
-            </button>
-            <button (click)="addResult()">
-                Send
-            </button>
-          </div>
+        </div>
+            
     </td>
     <td>
       <textarea id="log" rows="50" cols="30" disabled></textarea>

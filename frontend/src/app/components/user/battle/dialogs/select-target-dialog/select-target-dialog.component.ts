@@ -7,6 +7,7 @@ import { PokemonService } from 'src/app/services/pokemon.service';
 interface SelectTargetDialogData {
   inBattleEnemyPokemons: (PokemonModel | undefined)[];
   inBattleUserPokemons: (PokemonModel | undefined)[];
+  user: string;
 }
 
 @Component({
@@ -17,7 +18,7 @@ interface SelectTargetDialogData {
 export class SelectTargetDialogComponent {
   inBattleEnemyPokemons: (PokemonModel | undefined)[] = [undefined, undefined];
   inBattleUserPokemons: (PokemonModel | undefined)[] = [undefined, undefined];
-
+  selfDamage: PokemonModel | undefined;
   targets: (PokemonModel | undefined)[] = [
     undefined,
     undefined,
@@ -38,15 +39,28 @@ export class SelectTargetDialogComponent {
     this.targets[1] = this.data.inBattleEnemyPokemons[1];
     this.targets[2] = this.data.inBattleUserPokemons[0];
     this.targets[3] = this.data.inBattleUserPokemons[1];
+
   }
 
   action() {
+
     for (let i = 0; i < this.selectedTargets.length; i++) {
       if (this.selectedTargets[i]) {
-        this.resultTargets.push(this.targets[i]);
+        if(Number(this.data.user) == i){
+          this.selfDamage = this.targets[i];
+        }
+        else
+        {
+          this.resultTargets.push(this.targets[i]);
+        }
       }
     }
-    this.dialogRef.close(this.resultTargets);
+    this.dialogRef.close(
+      {
+        targets: this.resultTargets,
+        selfDamage: this.selfDamage,
+      }
+    );
   }
 
   onNoClick(): void {
