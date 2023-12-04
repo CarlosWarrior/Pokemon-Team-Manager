@@ -1,5 +1,5 @@
 import { Component, NgZone, OnInit } from '@angular/core';
-import { environment } from 'src/environments/environment.development';
+import { environment } from 'src/environments/environment';
 import { io, Socket } from 'socket.io-client';
 import { TeamService } from 'src/app/services/team.service';
 import { AbilityModel, ItemModel, MoveModel, PokemonModel, PokemonSlot, Ranking, TeamModel, TypeModel } from 'src/app/interfaces/models';

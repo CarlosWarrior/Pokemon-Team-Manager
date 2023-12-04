@@ -9,7 +9,6 @@ import { MovesComponent } from './components/admin/moves/moves.component';
 import { TeambuilderComponent } from './components/user/teambuilder/teambuilder.component';
 import { TeamsComponent } from './components/user/teams/teams.component';
 import { BattleComponent } from './components/user/battle/battle.component';
-import { AccountComponent } from './components/user/account/account.component';
 import { FooterComponent } from './components/ui/footer/footer.component';
 import { LoginComponent } from './components/auth/login/login.component';
 import { RegisterComponent } from './components/auth/register/register.component';
@@ -74,7 +73,6 @@ import { MatTooltipModule } from '@angular/material/tooltip';
     TeambuilderComponent,
     TeamsComponent,
     BattleComponent,
-    AccountComponent,
     FooterComponent,
     LoginComponent,
     RegisterComponent,
