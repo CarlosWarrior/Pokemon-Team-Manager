@@ -58,6 +58,10 @@ import { TeamSetupComponent } from './components/user/slots/team-setup/team-setu
 import { SlotSetupComponent } from './components/user/slots/slot-setup/slot-setup.component';
 import { ItemBulkCreateComponent } from './components/admin/items/dialogs/item-bulk-create/item-bulk-create.component';
 import { DeleteTeamDialogComponent } from './components/user/teams/dialogs/delete-team-dialog/delete-team-dialog.component';
+import { CdkDrag, CdkDropList } from '@angular/cdk/drag-drop';
+import { MatSliderModule } from '@angular/material/slider';
+import { SelectPokemonDialogComponent } from './components/user/battle/dialogs/select-pokemon-dialog/select-pokemon-dialog.component';
+import { SelectTargetDialogComponent } from './components/user/battle/dialogs/select-target-dialog/select-target-dialog.component';
 
 @NgModule({
   declarations: [
@@ -114,6 +118,8 @@ import { DeleteTeamDialogComponent } from './components/user/teams/dialogs/delet
     SlotSetupComponent,
     ItemBulkCreateComponent,
     DeleteTeamDialogComponent,
+    SelectPokemonDialogComponent,
+    SelectTargetDialogComponent,
   ],
   imports: [
     BrowserModule,
@@ -123,6 +129,9 @@ import { DeleteTeamDialogComponent } from './components/user/teams/dialogs/delet
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
+    CdkDropList,
+    CdkDrag,
+    MatSliderModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,1 +1,206 @@
-<p>battle works!</p>
+<!--four colum table-->
+<table>
+  <tr>
+    <th>Turn component</th>
+    <th>Main Battle</th>
+    <th>Turn Result</th>
+    <th>Log</th>
+  </tr>
+
+  <tr>
+    <td>
+        <div cdkDropList class="turn-list" (cdkDropListDropped)="drop($event)">
+            <div class="example-box" *ngFor="let enemyPokemonturn of enemyTurns" cdkDrag>
+                <img [src]="enemyPokemonturn?.image">
+                <p>Speed: {{enemyPokemonturn?.stats?.speed}}</p>
+            </div>
+        </div>
+    </td>
+    <td>
+      <table>
+        <tr>
+          <th>
+            <button
+              div
+              *ngFor="let pokemon of enemySelectedPokemons; let i = index"
+              (click)="showPokemonDialog(i)"
+            >
+              pokemon {{ i + 1 }}
+              <br />
+              <img *ngIf="pokemon" [src]="pokemon.image" />
+            </button>
+          </th>
+        </tr>
+        <tr>
+          <th>
+            <div>
+              <table>
+                <tr>
+                    <!--ENEMY POKEMONS-->
+                  <td *ngFor="let inBattle of inBattleEnemyPokemons; let i = index" >
+                    <select (change)="onChange($event, i)" [value]="inBattle?._id" #pokemon>
+                      <option value="none">None</option>
+
+                      <ng-template
+                        *ngFor="let pokemon of enemySelectedPokemons; let i = index"
+                        [ngIf]="pokemon"
+                      >
+                        <option [value]="i" *ngIf="pokemon">
+                          {{ pokemon?.name }}
+                        </option>
+                      </ng-template>
+                    </select>
+                    <img [src]="inBattle?.image" />
+
+                    <button>Death</button>
+                    <mat-list role="list">
+                      <mat-list-item role="listitem">
+                        <select #moveSelect>
+                          <ng-template
+                            *ngFor="let move of inBattle?.moves"
+                            [ngIf]="move"
+                          >
+                            
+                            <option [value]="move">{{ move }}</option>
+                          </ng-template>
+                        </select>
+                        <button (click)="showEnemyTargetDialog(pokemon.value, moveSelect.value)">Select Target</button>
+                      </mat-list-item>
+                      <mat-list-item role="listitem">
+                        <select>
+                            <ng-template
+                              *ngFor="let move of inBattle?.moves"
+                              [ngIf]="move"
+                            >
+                              <option [value]="move">{{ move }}</option>
+                            </ng-template>
+                          </select>
+                        <button>Move 2</button>
+                      </mat-list-item>
+                      <mat-list-item role="listitem">
+                        <select>
+                            <ng-template
+                              *ngFor="let move of inBattle?.moves"
+                              [ngIf]="move"
+                            >
+                              <option [value]="move">{{ move }}</option>
+                            </ng-template>
+                          </select>
+                        <button>Move 3</button>
+                      </mat-list-item>
+                      <mat-list-item role="listitem">
+                        <select>
+                            <ng-template
+                              *ngFor="let move of inBattle?.moves"
+                              [ngIf]="move"
+                            >
+                              <option [value]="move">{{ move }}</option>
+                            </ng-template>
+                          </select>
+                        <button>Move 4</button>
+                      </mat-list-item>
+                    </mat-list>
+                  </td>
+                </tr>
+                <!--USER POKEMONS-->
+                <tr>
+                  <td>
+                    <img
+                      src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png"
+                      alt="pokemon 1"
+                    />
+                    <button>Death</button>
+                    <mat-list role="list">
+                      <mat-list-item role="listitem">
+                        <button>Move 1</button>
+                      </mat-list-item>
+                      <mat-list-item role="listitem">
+                        <button>Move 2</button>
+                      </mat-list-item>
+                      <mat-list-item role="listitem">
+                        <button>Move 3</button>
+                      </mat-list-item>
+                      <mat-list-item role="listitem">
+                        <button>Move 4</button>
+                      </mat-list-item>
+                    </mat-list>
+                  </td>
+                  <td>
+                    <img
+                      src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png"
+                      alt="pokemon 1"
+                    />
+                    <button>Death</button>
+                    <mat-list role="list">
+                      <mat-list-item role="listitem">
+                        <button>Move 1</button>
+                      </mat-list-item>
+                      <mat-list-item role="listitem">
+                        <button>Move 2</button>
+                      </mat-list-item>
+                      <mat-list-item role="listitem">
+                        <button>Move 3</button>
+                      </mat-list-item>
+                      <mat-list-item role="listitem">
+                        <button>Move 4</button>
+                      </mat-list-item>
+                    </mat-list>
+                  </td>
+                </tr>
+              </table>
+            </div>
+          </th>
+        </tr>
+        <tr>
+          <button>pokemon 1</button>
+          <button>pokemon 2</button>
+          <button>pokemon 3</button>
+          <button>pokemon 4</button>
+          <button>pokemon 5</button>
+          <button>pokemon 6</button>
+        </tr>
+        <tr>
+          <mat-form-field>
+            <mat-label>Pokemon Teams</mat-label>
+            <mat-select (change)="onChangeTeam($event)">
+              <mat-option *ngFor="let team of teams" [value]="team">
+                {{ team?.name }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </tr>
+      </table>
+    </td>
+    <td>
+        <div role="list">
+            <div><p>User Move Target</p>
+                <p>Target</p>
+                <mat-slider min="1" max="5" step="0.5" value="1.5">
+                    <input matSliderThumb>
+                </mat-slider>
+                <p>
+                    <mat-checkbox class="example-margin" [(ngModel)]="showSelfDamage">Self Damage</mat-checkbox>
+                </p>
+                <div class="selfDamage" *ngIf="showSelfDamage">
+                    <p>User</p>
+                    <mat-slider min="1" max="5" step="0.5" value="1.5">
+                        <input matSliderThumb>
+                    </mat-slider>
+                </div>
+                
+            </div>
+            <button (click)="deleteResult()">
+                Delete
+            </button>
+            <button (click)="addResult()">
+                Send
+            </button>
+          </div>
+    </td>
+    <td>
+      <textarea id="log" rows="50" cols="30" disabled></textarea>
+      <br>
+      <button (click)="downloadLog()">download</button>
+    </td>
+  </tr>
+</table>

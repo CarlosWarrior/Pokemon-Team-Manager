@@ -1,0 +1,42 @@
+<div mat-dialog-content class="content">
+    <table>
+        <tr>
+           <td>
+            <mat-checkbox [(ngModel)]="selectedTargets[0]">
+                <img [src]="targets[0]?.image" />
+                <p>{{ targets[0]?.name }}</p>
+              </mat-checkbox>
+           </td> 
+           <td>
+            <mat-checkbox [(ngModel)]="selectedTargets[1]">
+                <img [src]="targets[1]?.image" />
+                <p>{{ targets[1]?.name }}</p>
+              </mat-checkbox>
+           </td>
+        </tr>
+        <tr>
+            <td>
+             <mat-checkbox [(ngModel)]="selectedTargets[2]">
+                 <img [src]="targets[2]?.image" />
+                 <p>{{ targets[2]?.name }}</p>
+               </mat-checkbox>
+            </td> 
+            <td>
+             <mat-checkbox [(ngModel)]="selectedTargets[3]">
+                 <img [src]="targets[3]?.image" />
+                 <p>{{ targets[3]?.name }}</p>
+               </mat-checkbox>
+            </td>
+         </tr>
+        
+    </table>
+  <div class="target">
+   
+  </div>
+</div>
+<div mat-dialog-actions class="actions">
+  <button mat-button (click)="onNoClick()">Cancel</button>
+  <button mat-raised-button color="primary" (click)="action()" cdkFocusInitial>
+    Send Result
+  </button>
+</div>
